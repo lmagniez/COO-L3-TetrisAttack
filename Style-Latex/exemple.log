@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.6)  9 JAN 2017 21:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.1.6)  9 JAN 2017 23:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -561,19 +561,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
  []
 
-<img1.jpg, id=36, 481.8pt x 361.35pt>
+<img1.jpg, id=40, 481.8pt x 361.35pt>
 File: img1.jpg Graphic file (type jpg)
  <use img1.jpg>
-Package pdftex.def Info: img1.jpg used on input line 23.
-(pdftex.def)             Requested size: 481.79881pt x 361.34912pt.
+Package pdftex.def Info: img1.jpg used on input line 24.
+(pdftex.def)             Requested size: 433.61598pt x 325.21199pt.
 
-<gant.png, id=37, 585.387pt x 71.7882pt>
+<gant.png, id=41, 585.387pt x 71.7882pt>
 File: gant.png Graphic file (type png)
  <use gant.png>
-Package pdftex.def Info: gant.png used on input line 31.
+Package pdftex.def Info: gant.png used on input line 33.
 (pdftex.def)             Requested size: 526.84343pt x 64.60875pt.
 
-Overfull \hbox (29.69383pt too wide) in paragraph at lines 31--32
+Overfull \hbox (29.69383pt too wide) in paragraph at lines 33--34
 [][] 
  []
 
@@ -583,45 +583,45 @@ Overfull \hbox (29.69383pt too wide) in paragraph at lines 31--32
 jpg> <./gant.png>]
 File: img1.jpg Graphic file (type jpg)
  <use img1.jpg>
-Package pdftex.def Info: img1.jpg used on input line 45.
+Package pdftex.def Info: img1.jpg used on input line 53.
 (pdftex.def)             Requested size: 192.71658pt x 144.53743pt.
- <img2.png, id=49, 301.125pt x 262.9825pt>
+ <img2.png, id=53, 301.125pt x 262.9825pt>
 File: img2.png Graphic file (type png)
 
 <use img2.png>
-Package pdftex.def Info: img2.png used on input line 49.
+Package pdftex.def Info: img2.png used on input line 60.
 (pdftex.def)             Requested size: 180.67638pt x 157.7907pt.
- <img3.jpg, id=50, 1252.68pt x 1084.05pt>
+ <img3.jpg, id=54, 1252.68pt x 1084.05pt>
 File: img3.jpg Graphic file (type jpg)
  <use img3.jpg>
-Package pdftex.def Info: img3.jpg used on input line 53.
+Package pdftex.def Info: img3.jpg used on input line 66.
 (pdftex.def)             Requested size: 187.89389pt x 162.60048pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 56.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
  [2 <./img2.png> <./img3.jpg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
  (./exemple.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `exemple.out' has not changed.
-(rerunfilecheck)             Checksum: 6034C4F6425AD74B6970F7043976F013;457.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
+(rerunfilecheck)             Checksum: 7FD87E78AAE291C722F417B002ACDEAE;533.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 9420 strings out of 493014
- 132036 string characters out of 6133352
- 211432 words of memory out of 5000000
- 12861 multiletter control sequences out of 15000+600000
+ 9423 strings out of 493014
+ 132066 string characters out of 6133352
+ 212432 words of memory out of 5000000
+ 12863 multiletter control sequences out of 15000+600000
  6157 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,5n,37p,624b,439s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,5n,37p,624b,464s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-Output written on exemple.pdf (2 pages, 291164 bytes).
+Output written on exemple.pdf (2 pages, 294459 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 79 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

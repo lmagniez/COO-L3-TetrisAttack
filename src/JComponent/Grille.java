@@ -14,33 +14,35 @@ import Constante.ConstanteJeux;
 public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux {
 
 	private boolean animationHaut=true;
+	private boolean gameOver=false;
+	
 	public Case [][] tab=new Case[nombredecase][nombredeLigne];
-	public Case [] ligneajout=new Case[nombredecase];
 	private final static Random RND=new Random();
 	
 	private int y;
 	private int tailleny;
 	
 	public Grille() {
-		int val;
-		int nblignedessiner=8;
 		tailleny=DimensionGrilley/(nombredeLigne-2*reserve);
-		for(int i=0;i<nombredeLigne;i++){
-			for(int a=0;a<nombredecase;a++){
-				val= (i<(nombredeLigne-(reserve+nblignedessiner))) ? 0 : 1+RND.nextInt(5-1);
-				y=(i*tailleny);
-				tab[a][i]=new Case(a*(DimensionGrillex/nombredecase),y,(DimensionGrillex/nombredecase),tailleny,val);
-			}
-		}
-		
+		initGrille();
 		this.setPreferredSize(new Dimension(DimensionGrillex,DimensionGrilley));
 		setBackground(new Color(0,0,0,90));
 		animation();
 	}
 	
-	public void animationHaut(){
-		
-		
+	private void initGrille(){
+		for(int a=0;a<nombredecase;a++){		
+			creercolonne(a);
+		}
+	}
+	
+	private void creercolonne(int a) {
+		int val,nblignedessiner=2+RND.nextInt(8-2);;
+		for(int i=0;i<nombredeLigne;i++){
+			val= (i<(nombredeLigne-(reserve+nblignedessiner))) ? 0 : 1+RND.nextInt(5-1);
+			y=(i*tailleny);
+			tab[a][i]=new Case(a*(DimensionGrillex/nombredecase),y,(DimensionGrillex/nombredecase),tailleny,val);
+		}
 		
 	}
 	
@@ -60,15 +62,15 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 				int taille=0;
 				while (animationHaut) {
 					try {
-						if(tab[4][9].getY() % tailleny==0){
-							Grille.this.decalagetab();
-						}
 						for(int a=0;a<nombredeLigne;a++){
 							for(int i=0;i<nombredecase;i++){
 								tab[i][a].setY(tab[i][a].getY()-1);
 							}
 						}
-						Thread.sleep(100);
+						if(tab[5][9].getY() % tailleny==0){
+							Grille.this.decalagetab();
+						}
+						Thread.sleep(10);
 					} catch (InterruptedException e) {
 					}
 					Grille.this.repaint();
@@ -81,16 +83,29 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	
 
 	protected void decalagetab() {
-		System.out.println("decalage tab");
-		//generationLigne();
-		
+		for(int a=0;a<nombredeLigne-1;a++){
+			for(int i=0;i<nombredecase;i++){
+					tab[i][a].setValeur(tab[i][a+1].getValeur());
+					tab[i][a].setX(tab[i][a+1].getX());
+					tab[i][a].setY(tab[i][a+1].getY());
+					if(((tab[i][a].getValeur()!=0) && (a==0))==true){
+						animationHaut=false;
+						gameOver=true;
+						break;
+					}
+			}
+			if(gameOver)
+				break;
+		}
+		if(!gameOver)
+			generationLigne();
 	}
 
 	public void generationLigne(){
 		int val;
 		for(int i=0;i<nombredecase;i++){
 			val= 1+RND.nextInt(5-1);
-			tab[i][y]=new Case(i*(DimensionGrillex/nombredecase),y,(DimensionGrillex/nombredecase),tailleny,val);
+			tab[i][nombredeLigne-1]=new Case(i*(DimensionGrillex/nombredecase),y,(DimensionGrillex/nombredecase),tailleny,val);
 		}
 	}
 	

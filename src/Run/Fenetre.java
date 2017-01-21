@@ -12,6 +12,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 	EcranTitre title;
 	
 	public Fenetre(){
+		
 			j1=new Jeux1j();
 		    title=new EcranTitre();
 			

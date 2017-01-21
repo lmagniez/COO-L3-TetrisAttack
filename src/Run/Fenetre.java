@@ -18,7 +18,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 			this.setResizable(false);
 			this.setFocusable(false);
 			
-		    this.add(j1);
+		    //this.add(j1);
 		    //
 			
 		    this.setVisible(true);

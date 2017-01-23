@@ -83,9 +83,7 @@ public class Menu implements ConstanteImage{
 		menu.add(boutonAide);
 		menu.add(boutonCredit);
 		menu.add(boutonQuit);
-		menu.setOpaque(true);
-		menu.setBackground(Color.BLACK);
-		fen.setContentPane(menu);
+		fen.add(menu);
 		
 		
 		

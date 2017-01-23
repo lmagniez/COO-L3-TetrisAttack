@@ -10,6 +10,5 @@ public class Main {
 		//Menu m=new Menu();
 		Toolkit.getDefaultToolkit().sync();
 		Fenetre f=new Fenetre();
-		
 	}
 }

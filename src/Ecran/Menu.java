@@ -51,11 +51,7 @@ public class Menu extends JPanel{
 		Cb.getBJoueur2().setContentAreaFilled(false);
 		Cb.getBJoueur2().addActionListener(new Aide());
 		
-		
-		Cb.getBoutonAide().setBorderPainted(false);
-		Cb.getBoutonAide().setFocusPainted(false);
-		Cb.getBoutonAide().setContentAreaFilled(false);
-		Cb.getBoutonAide().addActionListener(new Aide());
+
 		
 		Cb.getBoutonCredit().setBorderPainted(false);
 		Cb.getBoutonCredit().setFocusPainted(false);

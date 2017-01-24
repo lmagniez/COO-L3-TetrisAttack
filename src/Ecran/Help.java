@@ -1,22 +1,22 @@
 package Ecran;
 
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Constante.ConstanteImage;
+import Constante.ConstanteImages;
 
-public class Help implements ConstanteImage {
-	private JPanel help;
+public class Help extends JPanel {
+	private ConstanteImages i;
 	private JLabel helpRegle;
-	Help(){
-		help=new JPanel();
-		helpRegle = new JLabel(AideJeu);
-		help.add(helpRegle);
+	public Help(){
+		i= new ConstanteImages();
+		helpRegle = new JLabel(i.getAideJeu());
 		
-	}
-	public void Visible() {
-		// TODO Auto-generated method stub
+		this.add(helpRegle);
+		this.setBackground(new Color(90,90,90));
 		
 	}
 }

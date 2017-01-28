@@ -10,9 +10,11 @@ public class ConstanteImages {
 	public ImageIcon Quitter;
 	public ImageIcon Joueur1;
 	public ImageIcon Joueur2;
+	public ImageIcon Controles;
 		public ConstanteImages(){
 			Jouer = new ImageIcon(getClass().getResource("/Images/jouer.png" ));
 			Aide = new ImageIcon(getClass().getResource("/Images/aide.png" ));
+			//Controles = new ImageIcon(getClass().getResource("/Images/controles.png"));
 			Credit = new ImageIcon(getClass().getResource("/Images/Credit.png" ));
 			AideJeu = new ImageIcon(getClass().getResource("/Images/AideJeu.png" ));
 			Quitter =new ImageIcon(getClass().getResource(("/Images/quitter.png" )));
@@ -45,6 +47,9 @@ public class ConstanteImages {
 		public ImageIcon getBoutonQuitter() {
 			return Quitter;
 		}
-
+		
+		public ImageIcon getControles(){
+			return Controles;
+		}
 		
 }

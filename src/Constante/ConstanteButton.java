@@ -10,6 +10,7 @@ public class ConstanteButton extends ConstanteImages {
 	private JButton boutonAide = new JButton();
 	private JButton boutonCredit = new JButton();
 	private JButton boutonQuit = new JButton();
+	private JButton boutonControles = new JButton();
 	
 	public ConstanteButton(){
 		Ci=new ConstanteImages();
@@ -45,5 +46,8 @@ public class ConstanteButton extends ConstanteImages {
 		return boutonQuit;
 	}
 
+	public JButton getBoutonControles(){
+		return boutonControles;
+	}
 	
 }

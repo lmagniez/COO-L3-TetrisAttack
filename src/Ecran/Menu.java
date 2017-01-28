@@ -4,11 +4,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import Constante.ConstanteButton;
 import Constante.ConstanteImages;
@@ -19,12 +22,14 @@ public class Menu extends JPanel{
 	Help h;
 	Credit c;
 	ConstanteButton Cb;
+	Controles ctrls;
 	
-	public Menu(Fenetre f){
+	public Menu(Fenetre f) throws ParseException{
 		fen = f;
 		h=new Help();
 		c=new Credit();
 		Cb= new ConstanteButton();
+		ctrls= new Controles();
 		
 		/*class Credit implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
@@ -37,7 +42,7 @@ public class Menu extends JPanel{
 	
 		
 		
-		grille = new GridLayout(5, 1);
+		grille = new GridLayout(6, 1);
 		this.setLayout(grille);
 		
 		
@@ -51,7 +56,11 @@ public class Menu extends JPanel{
 		Cb.getBJoueur2().setContentAreaFilled(false);
 		Cb.getBJoueur2().addActionListener(new Aide());
 		
-
+		Cb.getBoutonControles().setBorderPainted(false);
+		Cb.getBoutonControles().setFocusPainted(false);
+		Cb.getBoutonControles().setContentAreaFilled(false);
+		Cb.getBoutonControles().setText("CONTROLES");
+		Cb.getBoutonControles().addActionListener(new Controls());
 		
 		Cb.getBoutonCredit().setBorderPainted(false);
 		Cb.getBoutonCredit().setFocusPainted(false);
@@ -64,6 +73,7 @@ public class Menu extends JPanel{
 		
 		this.add(Cb.getBJoueur1());
 		this.add(Cb.getBJoueur2());
+		this.add(Cb.getBoutonControles());
 		this.add(Cb.getBoutonAide());
 		this.add(Cb.getBoutonCredit());
 		this.add(Cb.getBoutonQuit());
@@ -92,5 +102,17 @@ public class Menu extends JPanel{
 		}
 	}
 
+	public class Controls extends JPanel implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			collerAFenetre(ctrls);			
+		}
+	}
+	
+	public void collerAFenetre(Controles c){
+		this.setVisible(false);
+		fen.setContentPane(c);
+	}
 	
 }

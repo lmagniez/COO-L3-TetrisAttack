@@ -1,5 +1,7 @@
 package Run;
 
+import java.text.ParseException;
+
 import javax.swing.JFrame;
 
 import Constante.ConstanteDimension;
@@ -15,7 +17,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 
 	EcranTitre title;
 	
-	public Fenetre(){
+	public Fenetre() throws ParseException{
 		
 		m=new Menu(this);
 			j1=new Jeux1j();

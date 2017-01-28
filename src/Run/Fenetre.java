@@ -19,7 +19,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 	
 	public Fenetre() throws ParseException{
 		
-		m=new Menu(this);
+			m=new Menu(this);
 			j1=new Jeux1j();
 		    title=new EcranTitre();
 			
@@ -30,9 +30,9 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 			this.setResizable(false);
 			this.setFocusable(false);
 
-			this.add(m);
+			//this.add(m);
 		    //this.add(j1);
-		    //this.add(j1);
+		    this.add(title);
 			
 		    this.setVisible(true);
 	}

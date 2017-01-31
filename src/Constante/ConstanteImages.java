@@ -11,15 +11,17 @@ public class ConstanteImages {
 	public ImageIcon Joueur1;
 	public ImageIcon Joueur2;
 	public ImageIcon Controles;
+	public ImageIcon retour;
 		public ConstanteImages(){
 			Jouer = new ImageIcon(getClass().getResource("/Images/jouer.png" ));
 			Aide = new ImageIcon(getClass().getResource("/Images/aide.png" ));
 			//Controles = new ImageIcon(getClass().getResource("/Images/controles.png"));
 			Credit = new ImageIcon(getClass().getResource("/Images/Credit.png" ));
 			AideJeu = new ImageIcon(getClass().getResource("/Images/AideJeu.png" ));
-			Quitter =new ImageIcon(getClass().getResource(("/Images/quitter.png" )));
-			Joueur1 =new ImageIcon(getClass().getResource(("/Images/joueur1.png" )));
-			Joueur2 =new ImageIcon(getClass().getResource(("/Images/joueur2.png" )));
+			Quitter =new ImageIcon(getClass().getResource("/Images/quitter.png" ));
+			Joueur1 =new ImageIcon(getClass().getResource("/Images/joueur1.png" ));
+			Joueur2 =new ImageIcon(getClass().getResource("/Images/joueur2.png" ));
+			retour = new ImageIcon(getClass().getResource("/Images/unJoueur.png" ));
 		}
 		public ImageIcon getJoueur1() {
 			return Joueur1;
@@ -44,12 +46,16 @@ public class ConstanteImages {
 			return AideJeu;
 		}
 
-		public ImageIcon getBoutonQuitter() {
+		public ImageIcon getQuitter() {
 			return Quitter;
 		}
 		
 		public ImageIcon getControles(){
 			return Controles;
+		}
+		
+		public ImageIcon getRetour(){
+			return retour;
 		}
 		
 }

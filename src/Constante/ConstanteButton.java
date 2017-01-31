@@ -11,6 +11,7 @@ public class ConstanteButton extends ConstanteImages {
 	private JButton boutonCredit = new JButton();
 	private JButton boutonQuit = new JButton();
 	private JButton boutonControles = new JButton();
+	private JButton boutonRetour = new JButton();
 	
 	public ConstanteButton(){
 		Ci=new ConstanteImages();
@@ -18,8 +19,8 @@ public class ConstanteButton extends ConstanteImages {
 		BoutonJoueur2.setIcon(Ci.getJoueur2());
 		boutonAide.setIcon(Ci.getAide());
 		boutonCredit.setIcon(Ci.getCredit());
-		boutonQuit.setIcon(Ci.getBoutonQuitter());
-		
+		boutonQuit.setIcon(Ci.getQuitter());
+		boutonRetour.setIcon(Ci.getRetour());
 	}
 
 	public JButton getBJoueur1() {
@@ -44,6 +45,10 @@ public class ConstanteButton extends ConstanteImages {
 
 	public JButton getBoutonQuit() {
 		return boutonQuit;
+	}
+	
+	public JButton getBoutonRetour(){
+		return boutonRetour;
 	}
 
 	public JButton getBoutonControles(){

@@ -1,9 +1,11 @@
 package Ecran;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -20,8 +22,13 @@ public class MenuJouer1 extends JPanel {
 	private Menu menu;
 	private ConstanteButton Cb;
 	private JLabel labelTaille;
+	private JLabel labelBox;
+	private JComboBox perso;
 	MenuJouer1(Menu m){
 		Cb = new ConstanteButton();
+		labelBox = new JLabel();
+		perso = new JComboBox();
+		
 		menu=m;
 		this.setLayout(null);
 		initSlide();
@@ -42,6 +49,10 @@ public class MenuJouer1 extends JPanel {
 		sliderLevel = new JSlider();
 		labelTaille = new JLabel("Difficulte = ");
 		
+		perso.setPreferredSize(new Dimension(100,20));
+		perso.addItem("Yoshi vert");
+		perso.addItem("Yoshi rose");
+		
 		sliderLevel.setMaximum(4);
 	    sliderLevel.setMinimum(1);
 	    
@@ -56,12 +67,14 @@ public class MenuJouer1 extends JPanel {
 	        }
 	      });
 	    
-	    sliderLevel.setBounds(50,20,150,60);
-	    labelTaille.setBounds(50,70,90,90);
+	    sliderLevel.setBounds(300,150,200,60);
+	    labelTaille.setBounds(300,215,100,90);
+	    perso.setBounds(350, 350, 100, 20);
 	    Cb.getBoutonRetour().setBounds(50,400,100,80);
 	    Cb.getBoutonRetour().addActionListener(new actionRetour(this));
 	    this.add(sliderLevel);
 	    this.add(labelTaille);
+	    this.add(perso);
 	    this.add(Cb.getBoutonRetour());
 	    
 	    

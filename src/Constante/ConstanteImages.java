@@ -21,7 +21,7 @@ public class ConstanteImages {
 			Quitter =new ImageIcon(getClass().getResource("/Images/quitter.png" ));
 			Joueur1 =new ImageIcon(getClass().getResource("/Images/joueur1.png" ));
 			Joueur2 =new ImageIcon(getClass().getResource("/Images/joueur2.png" ));
-			retour = new ImageIcon(getClass().getResource("/Images/unJoueur.png" ));
+			retour = new ImageIcon(getClass().getResource("/Images/retour.png" ));
 		}
 		public ImageIcon getJoueur1() {
 			return Joueur1;

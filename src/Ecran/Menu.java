@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 
 import javax.swing.ImageIcon;
@@ -25,6 +27,9 @@ public class Menu extends JPanel{
 	MenuJouer1 mj1;
 	Controles ctrls;
 	
+	public JButton[] tabuttons = new JButton[6]; // le tableau de boutons pour le focus
+	public int boutonCourant = 0;
+	
 	public Menu(Fenetre f) throws ParseException{
 		fen = f;
 		h=new Help();
@@ -32,6 +37,7 @@ public class Menu extends JPanel{
 		mj1 = new MenuJouer1(this);
 		Cb= new ConstanteButton();
 		ctrls= new Controles();
+		
 		
 		/*class Credit implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
@@ -44,18 +50,27 @@ public class Menu extends JPanel{
 	
 		
 		
-		grille = new GridLayout(6, 1);
-		this.setLayout(grille);
+		//grille = new GridLayout(6, 1);
+		this.setLayout(null);
 		
 		
+        Cb.getBJoueur1().requestFocus();
+        
 		Cb.getBJoueur1().setBorderPainted(false);
 		Cb.getBJoueur1().setFocusPainted(false);
 		Cb.getBJoueur1().setContentAreaFilled(false);
 		Cb.getBJoueur1().addActionListener(new Joueur1());
+		Cb.getBJoueur1().setBounds(50,50,94,14);
+		tabuttons[0] = Cb.getBJoueur1();
+		
 		
 		Cb.getBJoueur2().setBorderPainted(false);
 		Cb.getBJoueur2().setFocusPainted(false);
 		Cb.getBJoueur2().setContentAreaFilled(false);
+		Cb.getBJoueur2().setBounds(50,64,94,14);
+		tabuttons[1] = Cb.getBJoueur2();
+
+
 		//Cb.getBJoueur2().addActionListener(new Aide());
 		
 		Cb.getBoutonControles().setBorderPainted(false);
@@ -63,21 +78,37 @@ public class Menu extends JPanel{
 		Cb.getBoutonControles().setContentAreaFilled(false);
 		Cb.getBoutonControles().setText("CONTROLES");//replace by "Control" image
 		Cb.getBoutonControles().addActionListener(new Controls());
+		Cb.getBoutonControles().setBounds(50,78,94,14);
+		tabuttons[2] = Cb.getBoutonControles();
+
+
 		
 		Cb.getBoutonCredit().setBorderPainted(false);
 		Cb.getBoutonCredit().setFocusPainted(false);
 		Cb.getBoutonCredit().setContentAreaFilled(false);
+		Cb.getBoutonCredit().setBounds(50,92,94,14);
+		tabuttons[3] = Cb.getBoutonCredit();
+
+
 		
 		Cb.getBoutonAide().setBorderPainted(false);
 		Cb.getBoutonAide().setFocusPainted(false);
 		Cb.getBoutonAide().setContentAreaFilled(false);
 		Cb.getBoutonAide().addActionListener(new Aide());
+		Cb.getBoutonAide().setBounds(50,106,94,14);
+		tabuttons[4] = Cb.getBoutonAide();
+
+
 		
 		
 		Cb.getBoutonQuit().setBorderPainted(false);
 		Cb.getBoutonQuit().setFocusPainted(false);
 		Cb.getBoutonQuit().setContentAreaFilled(false);
 		Cb.getBoutonQuit().addActionListener(new Quitter());
+		Cb.getBoutonQuit().setBounds(50,120,94,14);
+		tabuttons[5] = Cb.getBoutonQuit();
+
+
 		
 		
 	    //Cb.getBoutonRetour().setActionCommand("Retour Jouer");
@@ -89,8 +120,12 @@ public class Menu extends JPanel{
 		this.add(Cb.getBoutonCredit());
 		this.add(Cb.getBoutonQuit());
 		this.setBackground(new Color(90,90,90));
+		this.addKeyListener(new MyKeyListener());
+		
+		this.setFocusable(true);
 		//fen.add(menu);
 		
+		//this.getRootPane().setDefaultButton(Cb.getBJoueur1());
 	}
 	
 	public Fenetre getFen() {
@@ -119,7 +154,48 @@ public class Menu extends JPanel{
 	}
 	
 	
-	
+	class MyKeyListener implements KeyListener{
+		public void keyPressed(KeyEvent e) {
+		    int keyCode = e.getKeyCode();
+		    switch( keyCode ) { 
+		        case KeyEvent.VK_UP:
+		            System.out.println("up");
+		            if(boutonCourant<6){
+		            	boutonCourant++;
+		            	tabuttons[boutonCourant].requestFocus();
+		            }
+		            System.out.println(boutonCourant);
+		            
+		            break;
+		        case KeyEvent.VK_DOWN:
+		            System.out.println("down");
+		            if(boutonCourant>=0){
+		            	boutonCourant--;
+		            	tabuttons[boutonCourant].requestFocus();
+		            }
+		            System.out.println(boutonCourant);
+
+		            break;
+		        case KeyEvent.VK_ENTER:
+		            System.out.println("left");
+
+		            // handle left
+		            break;
+		     }
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
 
 	
 	public void ajoute(Help h){
@@ -152,5 +228,8 @@ public class Menu extends JPanel{
 		this.setVisible(false);
 		fen.setContentPane(c);
 	}
+
+	
+
 	
 }

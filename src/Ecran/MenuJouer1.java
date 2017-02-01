@@ -106,7 +106,6 @@ public class MenuJouer1 extends JPanel {
 		// TODO Auto-generated method stub
 		//.setVisible(false);
 		menu.fen.setContentPane(this.menu);
-		System.out.println("c bonnnn");
 	}
 
 	/*public void actionPerformed(ActionEvent e) {

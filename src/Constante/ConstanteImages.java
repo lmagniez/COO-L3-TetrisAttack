@@ -13,7 +13,7 @@ public class ConstanteImages {
 	public ImageIcon Controles;
 	public ImageIcon retour;
 		public ConstanteImages(){
-			Jouer = new ImageIcon(getClass().getResource("/Images/jouer.png" ));
+			Jouer = new ImageIcon(getClass().getResource("/Images/unJoueur.png" ));
 			Aide = new ImageIcon(getClass().getResource("/Images/aide.png" ));
 			//Controles = new ImageIcon(getClass().getResource("/Images/controles.png"));
 			Credit = new ImageIcon(getClass().getResource("/Images/Credit.png" ));

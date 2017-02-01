@@ -13,23 +13,23 @@ import Ecran.Controles;
 import Ecran.Credit;
 import Ecran.EcranTitre;
 import Ecran.Jeux1j;
-import Ecran.Menu;
+import Ecran.EcranMenu;
 import Ecran.MenuJouer1;
 
 public class Fenetre extends JFrame implements ConstanteDimension{
 	
-	Jeux1j j1=new Jeux1j(this);
-	Menu m=new Menu(this);;
-	Controles c=new Controles(this);
-	Credit credit=new Credit(this);
-	Help help=new Help(this);
-	MenuJouer1 menuj1=new MenuJouer1(this);
-	HowToPlay howtoPlay=new HowToPlay(this);
-	HowToImprove howtoImprove=new HowToImprove(this);
+	private Jeux1j j1=new Jeux1j(this);
+	protected EcranMenu m;
+	private Controles c=new Controles(this);
+	private Credit credit=new Credit(this);
+	private Help help=new Help(this);
+	private	MenuJouer1 menuj1=new MenuJouer1(this);
+	private HowToPlay howtoPlay=new HowToPlay(this);
+	private HowToImprove howtoImprove=new HowToImprove(this);
 	
 	
 	
-	EcranTitre title=new EcranTitre();
+	protected EcranTitre title=new EcranTitre(this);
 	
 	public Fenetre() throws ParseException{
 
@@ -38,17 +38,40 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 		    this.setLocationRelativeTo(null);
 		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 			this.setResizable(false);
-			this.setFocusable(false);
+			this.setFocusable(true);
 
-			this.add(m);
-		    //this.add(j1);
-		   //this.add(title);
+			this.m= new EcranMenu(this);
 			
+			
+		    //this.add(j1);
+		    this.add(title);
+			//this.add(m);
 		    this.setVisible(true);
+		    title.requestFocus();
+		    //this.afficherPanneau(m);
+		    //m.requestFocusInWindow();
 	}
 
+	
+	/**
+	 * Méthode générique affichant un panneau sur la fenêtre
+	 * @param p
+	 */
+	public void afficherPanneau(JPanel p)
+	{
+		getContentPane().removeAll();
+		getContentPane().repaint();
+		getContentPane().add(p);
+		getContentPane().validate();
+		
+		p.setVisible(true);
+		this.repaint();
+		
+		
+	}
+	
 	public void afficheMenu() {
-		swapEcran(m);
+		swapEcran(getM());
 	}
 	
 	public void afficheJeuxJ1() {
@@ -81,6 +104,12 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 	public void afficheHowToImprove() {
 		swapEcran(howtoImprove);
 	}
+
+
+	public EcranMenu getM() {
+		return m;
+	}
+
 
 	
 

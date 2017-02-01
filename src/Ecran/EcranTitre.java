@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.awt.image.FilteredImageSource;
 import java.awt.image.ImageFilter;
@@ -23,7 +25,7 @@ import javax.swing.Timer;
 import Constante.ConstanteDimension;
 import Run.Fenetre;
 
-public class EcranTitre extends JPanel implements ActionListener{
+public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	
 	private Fenetre f;
 	private Image fond;
@@ -109,8 +111,11 @@ public class EcranTitre extends JPanel implements ActionListener{
 	public static final int NB_IMAGEBULLE=2;
 	
 	
-	public EcranTitre()
+	public EcranTitre(Fenetre f)
 	{
+		
+		this.vue=f;
+		
 		Toolkit.getDefaultToolkit().sync();
 		//fond= Toolkit.getDefaultToolkit().createImage("r")
 		fond=new ImageIcon("./ressources/Accueil/accueil.png").getImage();
@@ -155,6 +160,8 @@ public class EcranTitre extends JPanel implements ActionListener{
         
 		this.revalidate();
 		this.repaint();
+		
+		this.addKeyListener(this);
 		
 		
     }
@@ -228,6 +235,27 @@ public class EcranTitre extends JPanel implements ActionListener{
 	    
 	    
 	   
+		
+	}
+
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		this.focusNouvelEcran(vue.getM());
+	}
+
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 }

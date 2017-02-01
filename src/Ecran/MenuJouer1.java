@@ -20,7 +20,7 @@ public class MenuJouer1 extends JPanel implements ActionListener {
 
 	Fenetre fen;
 	private JSlider sliderLevel;
-	private Menu menu;
+	private EcranMenu menu;
 	
 	private Commande retour = new Commande(this,"Retour");
 	

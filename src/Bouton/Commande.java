@@ -1,13 +1,14 @@
 package Bouton;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import com.sun.prism.Graphics;
 
 public class Commande extends JButton {
 
@@ -22,9 +23,8 @@ public class Commande extends JButton {
 		this.setText(Commande);
 		this.setActionCommand(Commande);
 		this.addActionListener((ActionListener) j);
+		this.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
 
-	public void paintComponent(Graphics g) {
-
-	}
+	
 }

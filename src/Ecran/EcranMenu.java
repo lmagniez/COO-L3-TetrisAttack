@@ -2,6 +2,8 @@ package Ecran;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,9 +11,11 @@ import java.awt.event.KeyListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import Bouton.Commande;
 import Bouton.Joueur;
@@ -29,18 +33,32 @@ public class EcranMenu extends Ecran implements ActionListener{
 	protected JButton option = new Commande(this, "Option");
 	protected JButton howToPlay = new Commande(this, "How To Play");
 	protected JButton howToImprove = new Commande(this, "How To Improve");
-
 	protected JPanel p = new JPanel();
 	
 	public int boutonCourant = 0;
 	private int cptButton=0;
+	
+	
+	private Timer timer;
+	
+	private Image fond;
+	private Image shadow;
+	private Animation yoshi;
+	
+	private Image yoshiImg;
+	private int cptyoshi=0, widthyoshi=68, heightyoshi=96, 
+			screenwidthyoshi=widthyoshi*3, screenheightyoshi=heightyoshi*3;
+	private int posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
+				posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
+	public static final int NB_IMAGE=5;
+	
 
 	public EcranMenu(Fenetre f) {
 		this.vue = f;
 		this.setLayout(null);
 		
 		
-		p.setBounds(ConstanteDimension.DimensionFenetrex/4, ConstanteDimension.DimensionFenetrey/4,
+		p.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
 				300, 300);
 		p.setLayout(new BoxLayout(p,BoxLayout.PAGE_AXIS));
 		p.setBackground(new Color(90, 90, 90));
@@ -54,11 +72,16 @@ public class EcranMenu extends Ecran implements ActionListener{
 		NB_BUTTONS_X=5;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
-		//creerLayout();
 		ajout();
 		
-		//this.joueur2.requestFocusInWindow();
-		
+		//ANIMATIONS
+		timer = new Timer(200, this);
+		timer.start();
+		fond=new ImageIcon("./ressources/Menu/menu.png").getImage();
+		shadow=new ImageIcon("./ressources/Accueil/shadow.png").getImage();
+		yoshiImg=new ImageIcon("./ressources/Accueil/YoshiMenu/spriteSheet.png").getImage();
+		yoshi= new Animation(yoshiImg,posyoshiX,posyoshiY,widthyoshi,heightyoshi,
+				screenwidthyoshi,screenheightyoshi,cptyoshi, NB_IMAGE, this);
 		
 		
 	}
@@ -112,22 +135,44 @@ public class EcranMenu extends Ecran implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e){
-		if (e.getActionCommand().equals("Option")){
-			vue.afficheControles();
+		
+		
+		if (e.getSource() == timer){
+			repaint();
+			yoshi.updateCpt();	
 		}
-		if (e.getActionCommand().equals("How To Play")){
-			vue.afficheHowToPlay();
-		}
-		if (e.getActionCommand().equals("1 Player")){
-			vue.afficheJeuxJ1();
-		}
-		if (e.getActionCommand().equals("2 Players")){
-			vue.afficheJeuxJ1();
-		}
-		if (e.getActionCommand().equals("How To Improve")){
-			vue.afficheHowToImprove();
+		else
+		{
+			if (e.getActionCommand().equals("Option")){
+				vue.afficheControles();
+			}
+			if (e.getActionCommand().equals("How To Play")){
+				vue.afficheHowToPlay();
+			}
+			if (e.getActionCommand().equals("1 Player")){
+				vue.afficheJeuxJ1();
+			}
+			if (e.getActionCommand().equals("2 Players")){
+				vue.afficheJeuxJ1();
+			}
+			if (e.getActionCommand().equals("How To Improve")){
+				vue.afficheHowToImprove();
+			}
 		}
 		
 	}
 
+	public void paintComponent(Graphics g) {
+	    super.paintComponent(g);
+		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(shadow, ConstanteDimension.DimensionFenetrex-screenwidthyoshi*4/3, 
+				ConstanteDimension.DimensionFenetrey-screenheightyoshi*3/4, 56*3, 72*3, this);
+		yoshi.draw(g);
+	    
+		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
+		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
+	   
+		
+	}
+	
 }

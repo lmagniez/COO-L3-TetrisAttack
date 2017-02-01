@@ -7,13 +7,15 @@ import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 import Gestion.Jeux1Joueur;
-import javafx.scene.paint.Color;
+import Run.Fenetre;
 
 public class Jeux1j extends JPanel implements ConstanteDimension,ConstanteJeux,ConstanteGraphique{
 	
-	Jeux1Joueur j;
+	private Fenetre fen;
+	private Jeux1Joueur j;
 	
-	public Jeux1j(){
+	public Jeux1j(Fenetre f){
+		fen=f;
 		j=new Jeux1Joueur();
 		creerlayout();
 	}

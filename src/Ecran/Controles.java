@@ -21,9 +21,13 @@ import java.nio.charset.Charset;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
+import Run.Fenetre;
+
 public class Controles extends JPanel implements ActionListener{
 	
-	JButton boutonValider = new JButton("I WANT TO PLAY NOW");
+	
+	private Fenetre fen;
+	JButton boutonValider = new JButton("Retour");
 	
 	MaskFormatter selectj1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField sel1 = new JFormattedTextField(selectj1);
@@ -43,10 +47,12 @@ public class Controles extends JPanel implements ActionListener{
 	MaskFormatter droitej2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
     JFormattedTextField d2 = new JFormattedTextField(droitej2);
 	
-	public Controles() throws java.text.ParseException{
+	public Controles(Fenetre f) throws java.text.ParseException{
 		
+		fen=f;
 		this.setBackground(new Color(90,90,90));
 		this.setLayout(new GridLayout(7,2));
+		
 		
 		this.add(new JLabel("Select J1"));
 		try{
@@ -119,6 +125,7 @@ public class Controles extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==boutonValider){
 			recupDonnees();
+			fen.afficheMenu();
 		}
 	}
 }

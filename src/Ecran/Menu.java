@@ -19,10 +19,9 @@ public class Menu extends JPanel implements ActionListener {
 	
 	Joueur joueur1 = new Joueur(this, 1);
 	Joueur joueur2 = new Joueur(this, 2);
-	Commande Controle = new Commande(this, "controle");
-	Commande Credit = new Commande(this, "Credit");
-	Commande Aide = new Commande(this, "Aide");
-	Commande Quitter = new Commande(this, "Quitter");
+	Commande Option = new Commande(this, "Option");
+	Commande HowToPlay = new Commande(this, "How To Play");
+	Commande HowToImprove = new Commande(this, "How To Improve");
 
 	public JButton[] tabuttons = new JButton[6]; // le tableau de boutons pour
 													// le focus
@@ -40,19 +39,17 @@ public class Menu extends JPanel implements ActionListener {
 	private void ajout() {
 		this.add(joueur1);
 		this.add(joueur2);
-		this.add(Controle);
-		this.add(Credit);
-		this.add(Aide);
-		this.add(Quitter);
+		this.add(Option);
+		this.add(HowToPlay);
+		this.add(HowToImprove);
 	}
 
 	private void creerLayout() {
 		joueur1.setBounds(20, 100, 200, 50);
 		joueur2.setBounds(20, 170, 200, 50);
-		Controle.setBounds(20, 240, 200, 50);
-		Credit.setBounds(20, 310, 200, 50);
-		Aide.setBounds(20, 370, 200, 50);
-		Quitter.setBounds(20, 440, 200, 50);
+		Option.setBounds(20, 240, 200, 50);
+		HowToImprove.setBounds(20, 310, 300, 50);
+		HowToPlay.setBounds(20, 370, 200, 50);
 	}
 
 	public Fenetre getFen() {
@@ -65,24 +62,20 @@ public class Menu extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e){
-		System.out.println("coucou");
-		if (e.getActionCommand().equals("Quitter")){
-			fen.dispose();
-		}
-		if (e.getActionCommand().equals("controle")){
+		if (e.getActionCommand().equals("Option")){
 			fen.afficheControles();
 		}
-		if (e.getActionCommand().equals("Credit")){
-			fen.affichecredit();
-		}
-		if (e.getActionCommand().equals("Aide")){
-			fen.dispose();
+		if (e.getActionCommand().equals("How To Play")){
+			fen.afficheHowToPlay();
 		}
 		if (e.getActionCommand().equals("Joueur1")){
 			fen.afficheJeuxJ1();
 		}
 		if (e.getActionCommand().equals("Joueur2")){
 			fen.afficheJeuxJ1();
+		}
+		if (e.getActionCommand().equals("How To Improve")){
+			fen.afficheHowToImprove();
 		}
 		
 	}

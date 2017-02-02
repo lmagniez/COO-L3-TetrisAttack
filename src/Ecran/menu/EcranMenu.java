@@ -1,4 +1,4 @@
-package Ecran;
+package Ecran.menu;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,6 +21,8 @@ import javax.swing.Timer;
 import Bouton.Commande;
 import Bouton.Joueur;
 import Constante.ConstanteDimension;
+import Ecran.Animation;
+import Ecran.Ecran;
 import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener{
@@ -31,6 +33,8 @@ public class EcranMenu extends Ecran implements ActionListener{
 	//JButton joueur1 = new Commande(this, "1 Player");
 	
 	protected PanelMenu1 p1;
+	protected PanelMenu2 p2;
+	
 	
 	public int boutonCourant = 0;
 	
@@ -55,12 +59,11 @@ public class EcranMenu extends Ecran implements ActionListener{
 		this.setLayout(null);
 		
 		
-		p1=new PanelMenu1(f);
-		buttons=p1.buttons;
+		p1=new PanelMenu1(f,this);
+		p2=new PanelMenu2(f,this);
 		
-		this.addListener();
+		changeMenuBox(p1);
 		
-		this.add(p1);
 		//ANIMATIONS
 		timer = new Timer(200, this);
 		timer.start();
@@ -73,9 +76,17 @@ public class EcranMenu extends Ecran implements ActionListener{
 		
 	}
 	
-	public void changeMenuBox()
+	public void changeMenuBox(PanelMenu p)
 	{
+
+		p.setVisible(true);
+		this.removeAll();
+		this.repaint();
+		this.add(p);
+		this.validate();
 		
+		buttons=p.buttons;
+		p.buttons[0][0].requestFocus();
 	}
 	
 	

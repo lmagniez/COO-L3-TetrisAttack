@@ -11,10 +11,10 @@ import Ecran.HowToImprove;
 import Ecran.HowToPlay;
 import Ecran.Controles;
 import Ecran.Credit;
-import Ecran.EcranTitre;
 import Ecran.Jeux1j;
-import Ecran.EcranMenu;
 import Ecran.MenuJouer1;
+import Ecran.menu.EcranMenu;
+import Ecran.titre.EcranTitre;
 
 public class Fenetre extends JFrame implements ConstanteDimension{
 	

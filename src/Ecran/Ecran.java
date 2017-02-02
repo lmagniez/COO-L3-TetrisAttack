@@ -27,14 +27,14 @@ public abstract class Ecran extends JPanel{
 	{
 		for(int i=0; i<NB_BUTTONS_X; i++){
 			for(int j=0; j<NB_BUTTONS_Y; j++){
-				if(buttons[i][j] instanceof JButton)
-					((AbstractButton) buttons[i][j]).addActionListener(new ButtonListener());
-				if(buttons[i][j] instanceof JComboBox)
-					((JComboBox) buttons[i][j]).addActionListener(new ComboBoxListener());
+				if(getButtons()[i][j] instanceof JButton)
+					((AbstractButton) getButtons()[i][j]).addActionListener(new ButtonListener());
+				if(getButtons()[i][j] instanceof JComboBox)
+					((JComboBox) getButtons()[i][j]).addActionListener(new ComboBoxListener());
 				
 			}
 		}
-		GestionBouton.ajoutListenerBouton(buttons);
+		GestionBouton.ajoutListenerBouton(getButtons());
 		
 	}
 	
@@ -45,8 +45,8 @@ public abstract class Ecran extends JPanel{
 		{
 			for(int j=0; j<NB_BUTTONS_Y; j++)
 			{
-				buttons[i][j].setEnabled(false);
-				buttons[i][j].setForeground(Color.BLACK);
+				getButtons()[i][j].setEnabled(false);
+				getButtons()[i][j].setForeground(Color.BLACK);
 			}
 		}
 		
@@ -56,8 +56,8 @@ public abstract class Ecran extends JPanel{
 		{
 			for(int j=0; j<c.NB_BUTTONS_Y; j++)
 			{
-				c.buttons[i][j].setEnabled(true);
-				c.buttons[i][j].setForeground(Color.BLACK);
+				c.getButtons()[i][j].setEnabled(true);
+				c.getButtons()[i][j].setForeground(Color.BLACK);
 			}
 		}
 		
@@ -67,20 +67,28 @@ public abstract class Ecran extends JPanel{
 		this.setVisible(false);
 		c.setVisible(true);
 		
-		c.buttons[0][0].requestFocus();
-		c.buttons[0][0].setForeground(Color.GREEN);
+		c.getButtons()[0][0].requestFocus();
+		c.getButtons()[0][0].setForeground(Color.GREEN);
 		
 		
 		
 	}
 	
+	public JComponent[][] getButtons() {
+		return buttons;
+	}
+
+	public void setButtons(JComponent buttons[][]) {
+		this.buttons = buttons;
+	}
+
 	class ButtonListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			
 			
 			for(int i=0; i<NB_BUTTONS_X; i++)
 				for(int j=0; j<NB_BUTTONS_Y; j++)
-					buttons[i][j].setForeground(Color.BLACK);
+					getButtons()[i][j].setForeground(Color.BLACK);
 			
 			JButton b = ((JButton) e.getSource());
 			b.setForeground(Color.GREEN);
@@ -98,7 +106,7 @@ public abstract class Ecran extends JPanel{
 			
 			for(int i=0; i<NB_BUTTONS_X; i++)
 				for(int j=0; j<NB_BUTTONS_Y; j++)
-					buttons[i][j].setForeground(Color.BLACK);
+					getButtons()[i][j].setForeground(Color.BLACK);
 			
 			
 			JComboBox b = ((JComboBox) e.getSource());

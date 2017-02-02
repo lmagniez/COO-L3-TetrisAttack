@@ -11,7 +11,9 @@ public class Animation {
 	private JPanel p;
 	
 	private Image img;
-	protected int posX,posY;
+	private int posX;
+
+	private int posY;
 	private int imgWidth, imgHeight;
 	private int screenWidth,screenHeight;
 	private int cpt;	
@@ -21,8 +23,8 @@ public class Animation {
 			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
 	{
 		this.img=img;
-		this.posX=posX;
-		this.posY=posY;
+		this.setPosX(posX);
+		this.setPosY(posY);
 		this.imgWidth=imgWidth;
 		this.imgHeight=imgHeight;
 		this.screenWidth=screenWidth;
@@ -39,16 +41,32 @@ public class Animation {
 
 	public void draw(Graphics g)
 	{
-		g.drawImage(img, posX, posY, posX-screenWidth, posY-screenHeight,
+		g.drawImage(img, getPosX(), getPosY(), getPosX()-screenWidth, getPosY()-screenHeight,
 	    		imgWidth*(cpt+1), imgHeight, 
 	    		imgWidth*(cpt), 0, p);
 	}
 
 	@Override
 	public String toString() {
-		return "Animation [p=" + p + ", img=" + img + ", posX=" + posX + ", posY=" + posY + ", imgWidth=" + imgWidth
+		return "Animation [p=" + p + ", img=" + img + ", posX=" + getPosX() + ", posY=" + getPosY() + ", imgWidth=" + imgWidth
 				+ ", imgHeight=" + imgHeight + ", screenWidth=" + screenWidth + ", screenHeight=" + screenHeight
 				+ ", cpt=" + cpt + ", nbImage=" + nbImage + "]";
+	}
+
+	public int getPosX() {
+		return posX;
+	}
+
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
+	public void setPosY(int posY) {
+		this.posY = posY;
 	}
 		
 	

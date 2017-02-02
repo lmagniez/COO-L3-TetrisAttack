@@ -1,4 +1,4 @@
-package Ecran;
+package Ecran.titre;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,6 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Constante.ConstanteDimension;
+import Ecran.Animation;
+import Ecran.Ecran;
 import Run.Fenetre;
 
 public class EcranTitre extends Ecran implements ActionListener, KeyListener{
@@ -188,13 +190,13 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 			
 			for(int i=0; i<NB_BULLE; i++){
 				bulle[i].updateCpt();
-				bulle[i].posX= (bulle[i].posX - 3);
+				bulle[i].setPosX((bulle[i].getPosX() - 3));
 				
-				if(bulle[i].posX<0)
-					bulle[i].posX+=getWidth();
-				bulle[i].posY = (bulle[i].posY - 3);
-				if(bulle[i].posY<0)
-					bulle[i].posY+=getHeight();
+				if(bulle[i].getPosX()<0)
+					bulle[i].setPosX(bulle[i].getPosX() + getWidth());
+				bulle[i].setPosY((bulle[i].getPosY() - 3));
+				if(bulle[i].getPosY()<0)
+					bulle[i].setPosY(bulle[i].getPosY() + getHeight());
 			}
 			
 		}

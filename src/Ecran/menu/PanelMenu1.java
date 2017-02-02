@@ -1,4 +1,4 @@
-package Ecran;
+package Ecran.menu;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,9 +16,10 @@ import javax.swing.JPanel;
 
 import Bouton.Commande;
 import Constante.ConstanteDimension;
+import Ecran.Ecran;
 import Run.Fenetre;
 
-public class PanelMenu1 extends JPanel implements ActionListener{
+public class PanelMenu1 extends PanelMenu implements ActionListener{
 	
 	protected JButton joueur1 = new Commande (this, "1 Player");
 	protected JButton joueur2 = new Commande(this, "2 Players");
@@ -26,17 +27,15 @@ public class PanelMenu1 extends JPanel implements ActionListener{
 	protected JButton howToPlay = new Commande(this, "How To Play");
 	protected JButton howToImprove = new Commande(this, "How To Improve");
 	
-	private Fenetre vue;
-	private Image fond;
-	
-	public static final int NB_BUTTONS_Y=1;
-	public static final int NB_BUTTONS_X=5;
-	
-	protected JComponent[][] buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 	private int cptButton=0;
 	
-	public PanelMenu1(Fenetre vue)
+	public PanelMenu1(Fenetre vue, EcranMenu e)
 	{
+		NB_BUTTONS_Y=1;
+		NB_BUTTONS_X=5;
+		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
+		
+		this.ecran=e;
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.vue=vue;
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
@@ -48,6 +47,9 @@ public class PanelMenu1 extends JPanel implements ActionListener{
 		this.setMaximumSize(new Dimension(300,500));
 		
 		ajout();
+		
+		
+		
 	}
 	
 	private void ajout() {
@@ -78,6 +80,10 @@ public class PanelMenu1 extends JPanel implements ActionListener{
 		
 		System.out.println(this.joueur2.isFocusable());
 		
+		ecran.setButtons(buttons);
+		ecran.addListener();
+		
+		
 		
 	}
 	
@@ -90,7 +96,8 @@ public class PanelMenu1 extends JPanel implements ActionListener{
 				vue.afficheHowToPlay();
 			}
 			if (e.getActionCommand().equals("1 Player")){
-				vue.afficheJeuxJ1();
+				//vue.afficheJeuxJ1();
+				ecran.changeMenuBox(ecran.p2);
 			}
 			if (e.getActionCommand().equals("2 Players")){
 				vue.afficheJeuxJ1();

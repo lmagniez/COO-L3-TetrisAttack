@@ -15,6 +15,16 @@ public class Case {
 		valeur=v;
 	}
 
+	public Case(Case case1) {
+		x=case1.x;
+		y=case1.y;
+		tailleX=case1.tailleX;
+		tailleY=case1.tailleY;
+		valeur=case1.valeur;
+	}
+	
+	
+
 	public int getX() {
 		return x;
 	}

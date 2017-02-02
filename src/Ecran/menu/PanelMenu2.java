@@ -139,12 +139,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e){
 		
-			if (e.getActionCommand().equals("Option")){
-				vue.afficheControles();
-			}
-			if (e.getActionCommand().equals("How To Play")){
-				vue.afficheHowToPlay();
-			}
 			if (e.getActionCommand().equals("Retour")){
 				ecran.changeMenuBox(ecran.p1);
 			}

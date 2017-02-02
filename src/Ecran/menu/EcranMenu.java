@@ -129,10 +129,6 @@ public class EcranMenu extends Ecran implements ActionListener{
 				heightbutton*3/4,widthbutton, heightbutton,this);
 		
 		
-		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
-		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
-	   
-		
 	}
 
 	@Override

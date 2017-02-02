@@ -12,7 +12,6 @@ import Ecran.HowToPlay;
 import Ecran.Controles;
 import Ecran.Credit;
 import Ecran.Jeux1j;
-import Ecran.MenuJouer1;
 import Ecran.menu.EcranMenu;
 import Ecran.titre.EcranTitre;
 
@@ -23,7 +22,6 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 	private Controles c=new Controles(this);
 	private Credit credit=new Credit(this);
 	private Help help=new Help(this);
-	private	MenuJouer1 menuj1=new MenuJouer1(this);
 	private HowToPlay howtoPlay=new HowToPlay(this);
 	private HowToImprove howtoImprove=new HowToImprove(this);
 	
@@ -45,7 +43,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 			
 		    //this.add(j1);
 		    this.add(title);
-			//this.add(m);
+			//this.add(credit);
 		    this.setVisible(true);
 		    title.requestFocus();
 		    //this.afficherPanneau(m);
@@ -69,13 +67,9 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 		
 		
 	}
-	
+	/*
 	public void afficheMenu() {
 		swapEcran(getM());
-	}
-	
-	public void afficheJeuxJ1() {
-		swapEcran(menuj1);
 	}
 	
 	public void afficheControles() {
@@ -103,7 +97,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 
 	public void afficheHowToImprove() {
 		swapEcran(howtoImprove);
-	}
+	}*/
 
 
 	public EcranMenu getM() {

@@ -12,19 +12,29 @@ import javax.swing.JComponent;
 
 public abstract class GestionBouton {
 	
-	
+	public static boolean is_busy=false;
 	
 	private static KeyListener enter = new KeyAdapter() {
 	      @Override
 	      public void keyTyped(KeyEvent e) {
 	         if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+	        	 System.out.println("enter");
 	        	if(e.getComponent() instanceof JButton)
 	        		((JButton) e.getComponent()).doClick();
 	        	if(e.getComponent() instanceof JComboBox){
+	        		System.out.println("comboBox");
 	        		if(((JComboBox) e.getComponent()).isPopupVisible())
+	        		{
+	        			System.out.println("ok!");
 	        			((JComboBox) e.getComponent()).setPopupVisible(false);
+	        			is_busy=false;
+	        		}
 	        		else
+	        		{
+	        			System.out.println("else");
 	        			((JComboBox) e.getComponent()).setPopupVisible(true);
+	        			is_busy=true;
+	        		}
 	        	}
 	         }
 	      }
@@ -44,6 +54,7 @@ public abstract class GestionBouton {
 				buttons[i][j].addKeyListener(enter);	
 				buttons[i][j].addKeyListener(new KeyAdapter(){
 					public void keyPressed(KeyEvent e) {
+						//if(!is_busy){
 						System.out.println("key pressed");
 		                  switch (e.getKeyCode()) {
 		                  case KeyEvent.VK_UP:
@@ -82,9 +93,10 @@ public abstract class GestionBouton {
 		                      break;
 		                  default:
 		                     break;
-		                  }
-		                  
-						}
+		                  }//switch
+		                 
+						//}//is busy
+					}//key pressed
 			
 					}				
 				);

@@ -93,7 +93,7 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 				ecran.changeMenuBox(ecran.p4);
 			}
 			if (e.getActionCommand().equals("How To Play")){
-				vue.afficheHowToPlay();
+				ecran.changeMenuBox(ecran.p5);
 			}
 			if (e.getActionCommand().equals("1 Player")){
 				//vue.afficheJeuxJ1();
@@ -104,7 +104,7 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 				ecran.changeMenuBox(ecran.p3);
 			}
 			if (e.getActionCommand().equals("How To Improve")){
-				vue.afficheHowToImprove();
+				ecran.changeMenuBox(ecran.p6);
 			}
 		
 	}

@@ -37,6 +37,9 @@ public class EcranMenu extends Ecran implements ActionListener{
 	protected PanelMenu2 p2;
 	protected PanelMenu3 p3;
 	protected PanelMenu4 p4;
+	protected PanelMenu5 p5;
+	protected PanelMenu6 p6;
+	
 	
 	public int boutonCourant = 0;
 	
@@ -70,6 +73,8 @@ public class EcranMenu extends Ecran implements ActionListener{
 		p2=new PanelMenu2(f,this);
 		p3=new PanelMenu3(f,this);
 		p4=new PanelMenu4(f,this);
+		p5=new PanelMenu5(f,this);
+		p6=new PanelMenu6(f,this);
 		
 		
 		changeMenuBox(p1);
@@ -98,7 +103,14 @@ public class EcranMenu extends Ecran implements ActionListener{
 		this.validate();
 		
 		buttons=p.buttons;
+		
+		/*
+		for(int i=0; i<p.buttons.length; i++)
+			for(int j=0; j<p.buttons[0].length;j++)
+				buttons[0][0].setForeground(Color.black);
+		p.buttons[0][0].setForeground(Color.GREEN);
 		p.buttons[0][0].requestFocus();
+		*/
 	}
 	
 	

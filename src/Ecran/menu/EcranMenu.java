@@ -44,6 +44,11 @@ public class EcranMenu extends Ecran implements ActionListener{
 	
 	private Image fond;
 	private Image shadow;
+	private Image buttonLabel,selectLabel;
+	private int widthbutton=349, heightbutton=50;
+	private int widthselect=389, heightselect=77;
+	
+	
 	private Animation yoshi;
 	
 	private Image yoshiImg;
@@ -73,6 +78,8 @@ public class EcranMenu extends Ecran implements ActionListener{
 		yoshi= new Animation(yoshiImg,posyoshiX,posyoshiY,widthyoshi,heightyoshi,
 				screenwidthyoshi,screenheightyoshi,cptyoshi, NB_IMAGE, this);
 		
+		buttonLabel=new ImageIcon("./ressources/Menu/buttonlabel.png").getImage();
+		selectLabel=new ImageIcon("./ressources/Menu/selectlabel.png").getImage();
 		
 	}
 	
@@ -116,7 +123,12 @@ public class EcranMenu extends Ecran implements ActionListener{
 		g.drawImage(shadow, ConstanteDimension.DimensionFenetrex-screenwidthyoshi*4/3, 
 				ConstanteDimension.DimensionFenetrey-screenheightyoshi*3/4, 56*3, 72*3, this);
 		yoshi.draw(g);
-	    
+	    g.drawImage(selectLabel,ConstanteDimension.DimensionFenetrex/9, 
+				heightselect*3/4,widthselect*3/4, heightselect*3/4,this);
+	    g.drawImage(buttonLabel,ConstanteDimension.DimensionFenetrex-widthbutton, 
+				heightbutton*3/4,widthbutton, heightbutton,this);
+		
+		
 		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
 		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
 	   

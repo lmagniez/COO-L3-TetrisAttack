@@ -109,8 +109,9 @@ public class EcranMenu extends Ecran implements ActionListener{
 			for(int j=0; j<p.buttons[0].length;j++)
 				buttons[0][0].setForeground(Color.black);
 		p.buttons[0][0].setForeground(Color.GREEN);
-		p.buttons[0][0].requestFocus();
 		*/
+		p.buttons[0][0].requestFocus();
+		
 	}
 	
 	

@@ -90,7 +90,7 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		
 			if (e.getActionCommand().equals("Option")){
-				vue.afficheControles();
+				ecran.changeMenuBox(ecran.p4);
 			}
 			if (e.getActionCommand().equals("How To Play")){
 				vue.afficheHowToPlay();
@@ -100,7 +100,8 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 				ecran.changeMenuBox(ecran.p2);
 			}
 			if (e.getActionCommand().equals("2 Players")){
-				vue.afficheJeuxJ1();
+				//vue.afficheJeuxJ1();
+				ecran.changeMenuBox(ecran.p3);
 			}
 			if (e.getActionCommand().equals("How To Improve")){
 				vue.afficheHowToImprove();

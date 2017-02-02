@@ -1,11 +1,19 @@
-package Ecran;
+package Ecran.menu;
+
+
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,13 +29,19 @@ import java.nio.charset.Charset;
 
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
+import Bouton.Commande;
+import Constante.ConstanteDimension;
 import Run.Fenetre;
 
-public class Controles extends JPanel implements ActionListener{
+
+
+
+public class PanelMenu4 extends PanelMenu implements ActionListener{
 	
 	
 	private Fenetre fen;
-	JButton boutonValider = new JButton("Retour");
+	private JButton retour=new Commande(this,"Retour");
+	private JButton start=new Commande(this,"Valider");
 	
 	MaskFormatter selectj1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField sel1 = new JFormattedTextField(selectj1);
@@ -47,11 +61,45 @@ public class Controles extends JPanel implements ActionListener{
 	MaskFormatter droitej2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
     JFormattedTextField d2 = new JFormattedTextField(droitej2);
 	
-	public Controles(Fenetre f) throws java.text.ParseException{
+    
+    int cptButton=0;
+    
+	public PanelMenu4(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		
-		fen=f;
-		this.setBackground(new Color(90,90,90));
+		NB_BUTTONS_Y=2;
+		NB_BUTTONS_X=1;
+		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
+		
+		this.ecran=ecran;
+		this.vue=f;
 		this.setLayout(new GridLayout(7,2));
+		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		
+		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
+				300, 300);
+		
+		this.setBackground(new Color(90, 90, 90));
+		this.setFocusable(true);
+		this.setVisible(true);
+		this.requestFocusInWindow();
+		this.setMaximumSize(new Dimension(300,500));
+		
+		this.ajout();
+		
+	}
+	
+	public void ajout() {
+		
+		/*
+		buttons[cptButton++][0]=sel1;
+		buttons[cptButton++][0]=g1;
+		buttons[cptButton++][0]=d1;
+		buttons[cptButton++][0]=sel2;
+		buttons[cptButton++][0]=g2;
+		buttons[cptButton++][0]=d2;
+		*/
+		buttons[0][cptButton++]=retour;
+		buttons[0][cptButton++]=start;
 		
 		
 		this.add(new JLabel("Select J1"));
@@ -84,8 +132,25 @@ public class Controles extends JPanel implements ActionListener{
 			  this.add(d2);
 		}catch(ParseException e){e.printStackTrace();}
 		
-		boutonValider.addActionListener(this);
-		this.add(boutonValider);
+		
+		this.add(retour);
+		this.add(start);
+		
+		
+		
+		
+		/*
+		System.out.println(this.joueur2.isRequestFocusEnabled());
+		this.joueur2.setRequestFocusEnabled(true);
+		
+		System.out.println(this.joueur2.isFocusable());
+		*/
+		
+		ecran.setButtons(buttons);
+		ecran.addListener();
+		
+		
+		
 	}
 	
 	public void recupDonnees(){
@@ -123,9 +188,27 @@ public class Controles extends JPanel implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==boutonValider){
+		if (e.getActionCommand().equals("Valider")){
 			recupDonnees();
-			fen.afficheMenu();
+			ecran.changeMenuBox(ecran.p1);
+		}
+		if (e.getActionCommand().equals("Retour")){
+			ecran.changeMenuBox(ecran.p1);
 		}
 	}
+
+	
+
+	
+	public void paintComponent(Graphics g) {
+	    super.paintComponent(g);
+		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
+		
+		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
+		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
+	   
+		
+	}
+	
+	
 }

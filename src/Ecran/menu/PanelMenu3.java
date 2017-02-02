@@ -25,7 +25,7 @@ import Ecran.Ecran;
 import Run.Fenetre;
 import Variable.VariableJeu;
 
-public class PanelMenu2 extends PanelMenu implements ActionListener{
+public class PanelMenu3 extends PanelMenu implements ActionListener{
 	
 	/*
 	protected JButton joueur1 = new Commande (this, "11 Player");
@@ -34,41 +34,42 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 	protected JButton howToPlay = new Commande(this, "How To Play");
 	*/
 	
-	private JLabel labelTaille;
-	private JLabel labelBox;
-	private JComboBox perso;
-	private JSlider sliderLevel;
+	private JLabel labelTaille,labelTaille2;
+	private JLabel labelBox,labelBox2;
+	private JComboBox perso,perso2;
+	private JSlider sliderLevel,sliderLevel2;
 	private JButton retour=new Commande(this,"Retour");
 	private JButton start=new Commande(this,"Démarrer");
 	
 	
 	private int cptButton=0;
 	
-	public PanelMenu2(Fenetre vue, EcranMenu e)
+	public PanelMenu3(Fenetre vue, EcranMenu e)
 	{
 		NB_BUTTONS_Y=1;
-		NB_BUTTONS_X=5;
+		NB_BUTTONS_X=8;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
 		this.ecran=e;
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.vue=vue;
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
-				300, 300);
+				500, 400);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.requestFocusInWindow();
+		this.setMaximumSize(new Dimension(300,300));
 		
 		
 		
 		labelBox = new JLabel();
+		labelBox2= new JLabel();
 		perso = new JComboBox();
+		perso2 = new JComboBox();
 		
 		initSlide();
 
-		
-		
 		ajout();
 	}
 
@@ -76,19 +77,41 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		
 		sliderLevel = new JSlider();
 		labelTaille = new JLabel("Difficulte = ");
+		sliderLevel2 = new JSlider();
+		labelTaille2 = new JLabel("Difficulte = ");
+		
 		
 		perso.setMaximumSize(new Dimension(100, 20));
-		sliderLevel.setMaximumSize(new Dimension(250,40));
+		sliderLevel.setMaximumSize(new Dimension(300,40));
 		perso.addItem("Yoshi vert");
 		perso.addItem("Yoshi rose");
 
+		perso2.setMaximumSize(new Dimension(100, 20));
+		sliderLevel2.setMaximumSize(new Dimension(300,40));
+		perso2.addItem("Yoshi vert");
+		perso2.addItem("Yoshi rose");
+
+		
 		sliderLevel.setMaximum(4);
 		sliderLevel.setMinimum(1);
-
 		sliderLevel.setPaintTicks(true);
 		sliderLevel.setPaintLabels(true);
 		sliderLevel.setMajorTickSpacing(1);
 
+		sliderLevel2.setMaximum(4);
+		sliderLevel2.setMinimum(1);
+		sliderLevel2.setPaintTicks(true);
+		sliderLevel2.setPaintLabels(true);
+		sliderLevel2.setMajorTickSpacing(1);
+
+		
+		sliderLevel2.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent event) {
+				labelTaille.setText("Difficulte = " + ((JSlider) event.getSource()).getValue());
+				VariableJeu.level = ((int) ((JSlider) event.getSource()).getValue());
+			}
+		});
+		
 		sliderLevel.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent event) {
 				labelTaille.setText("Difficulte = " + ((JSlider) event.getSource()).getValue());
@@ -101,15 +124,21 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		labelTaille.setBounds(300, 215, 100, 90);
 		perso.setBounds(350, 350, 100, 20);
 		*/
+		
+		
 	}
 	
-	private void ajout() {
+	public void ajout() {
 		
 		buttons[cptButton++][0]=sliderLevel;
 		buttons[cptButton++][0]=labelTaille;
 		buttons[cptButton++][0]=perso;
+		buttons[cptButton++][0]=sliderLevel2;
+		buttons[cptButton++][0]=labelTaille2;
+		buttons[cptButton++][0]=perso2;
 		buttons[cptButton++][0]=retour;
 		buttons[cptButton++][0]=start;
+		
 		
 		this.add(Box.createRigidArea(new Dimension(10,30)));
 		this.add(sliderLevel);
@@ -117,6 +146,12 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		this.add(labelTaille);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(perso);
+		this.add(Box.createRigidArea(new Dimension(10,30)));
+		this.add(sliderLevel2);
+		this.add(Box.createRigidArea(new Dimension(10,20)));
+		this.add(labelTaille2);
+		this.add(Box.createRigidArea(new Dimension(10,20)));
+		this.add(perso2);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(retour);
 		this.add(Box.createRigidArea(new Dimension(10,20)));

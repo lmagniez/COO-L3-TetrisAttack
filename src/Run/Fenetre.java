@@ -67,9 +67,13 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 		
 		
 	}
-	/*
+	
 	public void afficheMenu() {
 		swapEcran(getM());
+	}
+	
+	public void afficheJeu1J() {
+		swapEcran(j1);
 	}
 	
 	public void afficheControles() {
@@ -97,7 +101,7 @@ public class Fenetre extends JFrame implements ConstanteDimension{
 
 	public void afficheHowToImprove() {
 		swapEcran(howtoImprove);
-	}*/
+	}
 
 
 	public EcranMenu getM() {

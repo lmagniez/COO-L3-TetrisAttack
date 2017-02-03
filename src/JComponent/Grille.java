@@ -78,7 +78,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 
 	public void swapvertical(int x, int y1, int y2) {
-		System.out.println("vertical");
 		int value = tab[x][y2].getValeur();
 		this.tab[x][y2].setValeur(this.tab[x][y1].getValeur());
 		this.tab[x][y1].setValeur(value);
@@ -116,7 +115,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 					break;
 
 				}
-				g.fillRect(i * taillenx, a * tailleny, taillenx, tailleny);
+				g.fillRect(PositionGrille1JX+ i * taillenx, PositionGrille1JY +a * tailleny, taillenx, tailleny);
 			}
 		}
 	}

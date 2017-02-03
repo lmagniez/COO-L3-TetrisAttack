@@ -47,7 +47,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	private void creerlayout() {
 		this.setLayout(null);
-		g.setBounds(250, 100, DimensionGrillex, DimensionGrilley);
 		this.add(g);
 	}
 

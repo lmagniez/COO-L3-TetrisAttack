@@ -5,10 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import Com.Controller.JoueurController;
+import Constante.ConstanteJeux;
 import JComponent.Grille;
 import JComponent.Score;
 
-public class Joueur {
+public class Joueur implements ConstanteJeux {
 	
 	private int x1;
 	private int x2;
@@ -49,8 +50,8 @@ public class Joueur {
 
 	public void dessinerJoueur(Graphics g,int sizex,int sizey) {
 		g.setColor(Color.white);
-		g.drawRect(x1*sizex, y1*sizey, sizex, sizey);
-		g.drawRect(x2*sizex, y1*sizey, sizex, sizey);
+		g.drawRect(PositionGrille1JX+x1*sizex, PositionGrille1JY+ y1*sizey, sizex, sizey);
+		g.drawRect(PositionGrille1JX+x2*sizex, PositionGrille1JY+y1*sizey, sizex, sizey);
 	}
 	
 	public void keyPressed(KeyEvent e) {

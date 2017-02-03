@@ -20,7 +20,7 @@ public class JoueurController extends AbstractControler implements ConstanteJeux
 	}
 
 	public void verifDown(int y1) {
-		if (y1 != nombredeLigne - 5) {
+		if (y1 != nombredeLigne - reserve-1) {
 			((JoueurModel) this.calc).changeBas();
 		}
 	}

@@ -51,7 +51,31 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux,ConstanteDim
 		tab[x1][y1]=tab[x2][y1];
 		tab[x2][y1]=tmp;
 		JeuxModel.UpdateSwapHorizontal(x1,x2,y1);
+		decendreCube();
 	}
 
+	private static void decendreCube() {
+		int tmp;
+		for (int i = 0; i < nombredeLigne-1; i++) {
+			for (int a = 0; a < nombredecase; a++) {
+				if(tab[a][i+1]==0 && tab[a][i]!=0){
+					tmp=tab[a][i];
+					tab[a][i]=tab[a][i+1];
+					tab[a][i+1]=tmp;
+					JeuxModel.UpdateSwapVertical(a,i,i+1);
+					i=0;
+				}
+			}
+		}
+	}
+	
+	static void affiche(){
+		for (int i = 0; i < nombredeLigne; i++) {
+			for (int a = 0; a < nombredecase; a++) {
+				System.out.print(tab[a][i]+" ");
+			}
+			System.out.println();
+		}
+	}
 
 }

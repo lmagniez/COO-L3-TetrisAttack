@@ -75,15 +75,13 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		int value = tab[x1][y].getValeur();
 		this.tab[x1][y].setValeur(this.tab[x2][y].getValeur());
 		this.tab[x2][y].setValeur(value);
-		affiche();
 	}
 
 	public void swapvertical(int x, int y1, int y2) {
 		System.out.println("vertical");
 		int value = tab[x][y2].getValeur();
-		this.tab[x][y1].setValeur(this.tab[x][y2].getValeur());
-		this.tab[x][y2].setValeur(value);
-		affiche();
+		this.tab[x][y2].setValeur(this.tab[x][y1].getValeur());
+		this.tab[x][y1].setValeur(value);
 	}
 	
 	public void affiche(){

@@ -9,10 +9,6 @@ public class GrilleControler extends AbstractControler {
 		super(cal);
 	}
 
-	public void swap(int x1, int x2, int y1) {
-
-	}
-
 	public void initGrille() {
 		((GrilleModel) this.calc).recupGrille();
 	}

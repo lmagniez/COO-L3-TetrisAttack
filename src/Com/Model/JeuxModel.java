@@ -22,8 +22,13 @@ public class JeuxModel extends AbstractModel {
 	
 	protected static void UpdateSwapHorizontal(int x1, int x2, int y) {
 		for (Observer obs : JeuxObserver) {
-			System.out.println("HAHAH");
 			obs.swaphorizontal(x1, x2,y);
+		}
+	}
+	
+	public static void UpdateSwapVertical(int x, int y1, int y2) {
+		for (Observer obs : JeuxObserver) {
+			obs.swapvertical(x, y1,y2);
 		}
 	}
 
@@ -40,5 +45,7 @@ public class JeuxModel extends AbstractModel {
 	public void swap(int x1, int x2, int y1){
 		GrilleModel.swapCase(x1, x2, y1);
 	}
+
+
 
 }

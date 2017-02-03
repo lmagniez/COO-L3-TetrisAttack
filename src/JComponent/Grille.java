@@ -3,67 +3,40 @@ package JComponent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 import java.util.Random;
 
 import javax.swing.JPanel;
 
+import Com.Controller.GrilleControler;
+import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
-import Gestion.Jeux1Joueur;
 
 public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux {
 
-	private boolean animationHaut = true;
+	private boolean animationHaut = false;
 	private boolean gameOver = false;
 
 	public Case[][] tab = new Case[nombredecase][nombredeLigne];
-	private final static Random RND = new Random();
+
+	private GrilleControler controlerGrille;
 
 	private int y;
-	private int tailleny;
+	private int tailleny, taillenx;
 
-	private Jeux1Joueur j;
-
-	public Grille() {
-		j = new Jeux1Joueur();
+	public Grille(GrilleControler controler) {
+		controlerGrille = controler;
 		tailleny = DimensionGrilley / (nombredeLigne - 2 * reserve);
-		initGrille();
+		taillenx = DimensionGrillex / nombredecase;
+
 		this.setPreferredSize(new Dimension(DimensionGrillex, DimensionGrilley));
 		setBackground(new Color(0, 0, 0, 90));
 	}
 
-	private void initGrille() {
-		for (int a = 0; a < nombredecase; a++) {
-			creercolonne(a);
-		}
-		//animation();
-	}
+	public void init() {controlerGrille.initGrille();affiche();}
 
-	private void creercolonne(int a) {
-		int val, nblignedessiner = 2 + RND.nextInt(8 - 2);
-		;
-		for (int i = 0; i < nombredeLigne; i++) {
-			val = (i < (nombredeLigne - (reserve + nblignedessiner))) ? 0 : 1 + RND.nextInt(5 - 1);
-			y = (i * tailleny);
-			tab[a][i] = new Case(a * (DimensionGrillex / nombredecase), y, (DimensionGrillex / nombredecase), tailleny,
-					val);
-		}
-
-	}
-
-	public void affiche() {
-		for (int a = 0; a < nombredeLigne; a++) {
-			System.out.println("case: " + a);
-			for (int i = 0; i < nombredecase; i++) {
-				System.out.print("case: " + i + " " + tab[i][a].getValeur() + " ");
-			}
-			System.out.println();
-		}
-	}
-
-	public void animation() {
+	/*public void animation() {
 		Thread thread = new Thread(new Runnable() {
 			public void run() {
 				int taille = 0;
@@ -74,10 +47,9 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 								tab[i][a].setY(tab[i][a].getY() - 1);
 							}
 						}
-						j.getJ1().setY1(j.getJ1().getY1() - 1);
 
 						if (tab[5][9].getY() % tailleny == 0) {
-							Grille.this.decalagetab();
+							//Grille.this.decalagetab();
 						}
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -87,39 +59,45 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 			}
 		});
 		thread.start();
+	}*/
+
+	/*
+	 * protected void decalagetab() { for (int a = 0; a < nombredeLigne - 1;
+	 * a++) { for (int i = 0; i < nombredecase; i++) {
+	 * tab[i][a].setValeur(tab[i][a + 1].getValeur()); tab[i][a].setX(tab[i][a +
+	 * 1].getX()); tab[i][a].setY(tab[i][a + 1].getY()); if
+	 * (((tab[i][a].getValeur() != 0) && (a == 0)) == true) { animationHaut =
+	 * false; gameOver = true; break; } } if (gameOver) break; } if (!gameOver)
+	 * generationLigne(); }
+	 */
+
+	public void swaphorizontal(int x1, int x2, int y) {
+		int value = tab[x1][y].getValeur();
+		this.tab[x1][y].setValeur(this.tab[x2][y].getValeur());
+		this.tab[x2][y].setValeur(value);
+		affiche();
 	}
 
-	protected void decalagetab() {
-		for (int a = 0; a < nombredeLigne - 1; a++) {
+	public void swapvertical(int x, int y1, int y2) {
+		System.out.println("vertical");
+		int value = tab[x][y2].getValeur();
+		this.tab[x][y1].setValeur(this.tab[x][y2].getValeur());
+		this.tab[x][y2].setValeur(value);
+		affiche();
+	}
+	
+	public void affiche(){
+		for (int a = 0; a < nombredeLigne - reserve; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-				tab[i][a].setValeur(tab[i][a + 1].getValeur());
-				tab[i][a].setX(tab[i][a + 1].getX());
-				tab[i][a].setY(tab[i][a + 1].getY());
-				if (((tab[i][a].getValeur() != 0) && (a == 0)) == true) {
-					animationHaut = false;
-					gameOver = true;
-					break;
-				}
+				 System.out.print(tab[i][a].getValeur()+"  ");
 			}
-			if (gameOver)
-				break;
-		}
-		if (!gameOver)
-			generationLigne();
-	}
-
-	public void generationLigne() {
-		int val;
-		for (int i = 0; i < nombredecase; i++) {
-			val = 1 + RND.nextInt(5 - 1);
-			tab[i][nombredeLigne - 1] = new Case(i * (DimensionGrillex / nombredecase), y,
-					(DimensionGrillex / nombredecase), tailleny, val);
+			System.out.println();
 		}
 	}
-
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	
+	
+	
+	public void dessinerGrille(Graphics g) {
 		for (int a = 0; a < nombredeLigne - reserve; a++) {
 			for (int i = 0; i < nombredecase; i++) {
 				switch (tab[i][a].getValeur()) {
@@ -140,64 +118,20 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 					break;
 
 				}
-				g.fillRect(tab[i][a].getX(), tab[i][a].getY(), tab[i][a].getTailleX(), tab[i][a].getTailleY());
+				g.fillRect(i * taillenx, a * tailleny, taillenx, tailleny);
 			}
 		}
-		g.setColor(Color.white);
-
-		g.drawRect(j.getJ1().getX1() * tab[0][0].getTailleX(), j.getJ1().getY1() * tab[0][0].getTailleY(),
-				tab[0][0].getTailleX(), tab[0][0].getTailleY());
-		g.drawRect(j.getJ1().getX2() * tab[0][0].getTailleX(), j.getJ1().getY1() * tab[0][0].getTailleY(),
-				tab[0][0].getTailleX(), tab[0][0].getTailleY());
 	}
 
-	public int getTailleny() {
+	public int tailleX() {
+		return taillenx;
+	}
+
+	public int tailleY() {
 		return tailleny;
 	}
 
-	public void keyPressed(KeyEvent e) {
-		int keyCode = e.getKeyCode();
-		switch (keyCode) {
-		case KeyEvent.VK_UP:
-			if (j.getJ1().getY1() != 0)
-				j.getJ1().setY1(j.getJ1().getY1() - 1);
-			getParent().repaint();
-			break;
-		case KeyEvent.VK_DOWN:
-			if (j.getJ1().getY1() != nombredeLigne-5)
-				j.getJ1().setY1((j.getJ1().getY1()) + 1);
-			getParent().repaint();
-			break;
-		case KeyEvent.VK_LEFT:
-			if (j.getJ1().getX1() != 0) {
-				j.getJ1().setX1(j.getJ1().getX1() - 1);
-				j.getJ1().setX2(j.getJ1().getX2() - 1);
-			}
-			getParent().repaint();
-			break;
-		case KeyEvent.VK_RIGHT:
-			if (j.getJ1().getX2() != nombredecase-1) {
-				j.getJ1().setX1(j.getJ1().getX1() + 1);
-				j.getJ1().setX2(j.getJ1().getX2() + 1);
-			}
-			getParent().repaint();
-			break;
-		case KeyEvent.VK_A:
-			swapcase();
-			break;
-		case KeyEvent.VK_ESCAPE:
-
-		default:
-			return;
-		}
-
+	public void updateCase(int y, int x, int val) {
+		tab[x][y] = new Case(x * taillenx, y * tailleny, taillenx, tailleny, val);
 	}
-
-	private void swapcase() {
-		int value=tab[j.getJ1().getX1()][j.getJ1().getY1()].getValeur();
-		this.tab[j.getJ1().getX1()][j.getJ1().getY1()].setValeur(this.tab[j.getJ1().getX2()][j.getJ1().getY1()].getValeur());
-		this.tab[j.getJ1().getX2()][j.getJ1().getY1()].setValeur(value);
-		getParent().repaint();
-	}
-
 }

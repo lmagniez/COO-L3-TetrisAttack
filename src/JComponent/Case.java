@@ -22,8 +22,6 @@ public class Case {
 		tailleY=case1.tailleY;
 		valeur=case1.valeur;
 	}
-	
-	
 
 	public int getX() {
 		return x;

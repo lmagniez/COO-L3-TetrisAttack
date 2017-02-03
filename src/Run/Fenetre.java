@@ -7,8 +7,8 @@ import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Com.Vue.Jeux1j;
 import Constante.ConstanteDimension;
-import Ecran.Jeux1j;
 import Ecran.menu.EcranMenu;
 import Ecran.titre.EcranTitre;
 
@@ -32,7 +32,7 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 
 		this.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				Fenetre.this.j1.getG().keyPressed(e);
+				Fenetre.this.j1.getJ().keyPressed(e);
 			}
 		});
 

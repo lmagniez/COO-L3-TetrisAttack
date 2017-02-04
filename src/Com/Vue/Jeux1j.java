@@ -16,33 +16,53 @@ import Gestion.Joueur;
 import JComponent.Grille;
 import Run.Fenetre;
 
-public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique,Observer{
+public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
 
 	private Fenetre fen;
 	private Grille g;
 	private Joueur j;
-	
+
 	private GrilleModel modelGrille;
 	private GrilleControler controlerGrille;
-	
+
 	private JoueurModel modelJoueur;
 	private JoueurController controlerJoueur;
 
 	public Jeux1j(Fenetre f) {
 		fen = f;
-		
-		modelGrille=new GrilleModel();
-		controlerGrille=new GrilleControler(modelGrille);
+
+		modelGrille = new GrilleModel();
+		controlerGrille = new GrilleControler(modelGrille);
 		g = new Grille(controlerGrille);
-		
-		modelJoueur=new JoueurModel();
-		controlerJoueur=new JoueurController(modelJoueur);
-		j = new Joueur(controlerJoueur);
+
+		modelJoueur = new JoueurModel();
+		controlerJoueur = new JoueurController(modelJoueur);
+		j = new Joueur(controlerJoueur, g.tailleX(), g.tailleY(),1);
 		modelJoueur.addObserverJeux(this);
-		
+
 		g.init();
-	
+
 		creerlayout();
+		animation();
+	}
+
+	public void animation() {
+		Thread thread = new Thread(new Runnable() {
+			public void run() {
+				int taille = 0;
+				int i=0;
+				while (g.isAnimationHaut()) {
+					try {
+						Jeux1j.this.controlerJoueur.verifUp(Jeux1j.this.j.getY1());
+						Jeux1j.this.controlerGrille.ajoutLigne();
+						Thread.sleep(2500);
+					} catch (InterruptedException e) {
+					}
+					
+				}
+			}
+		});
+		thread.start();
 	}
 
 	private void creerlayout() {
@@ -58,10 +78,10 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public Grille getG() {
 		return g;
 	}
-	
-	public void paintComponent(Graphics g){
+
+	public void paintComponent(Graphics g) {
 		(this.g).dessinerGrille(g);
-		(this.j).dessinerJoueur(g,(this.g).tailleX(),(this.g).tailleY());
+		(this.j).dessinerJoueur(g);
 	}
 
 	public Joueur getJ() {
@@ -90,7 +110,8 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void updateCase(int y, int x, int val) {
-		this.g.updateCase(y,x,val);
+		this.g.updateCase(y, x, val);
+		repaint();
 	}
-	
+
 }

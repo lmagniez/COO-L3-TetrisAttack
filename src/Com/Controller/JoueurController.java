@@ -17,6 +17,9 @@ public class JoueurController extends AbstractControler implements ConstanteJeux
 		if (y1 != 0) {
 			((JoueurModel) this.calc).changeHaut();
 		}
+		else{
+			return;
+		}
 	}
 
 	public void verifDown(int y1) {

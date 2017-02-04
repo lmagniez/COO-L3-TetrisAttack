@@ -2,7 +2,7 @@ package Constante;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class ConstanteImages {
+public class ConstanteImagesIcon {
 	public ImageIcon Jouer;
 	public ImageIcon Aide;
 	public ImageIcon Credit;
@@ -12,7 +12,7 @@ public class ConstanteImages {
 	public ImageIcon Joueur2;
 	public ImageIcon Controles;
 	public ImageIcon retour;
-		public ConstanteImages(){
+		public ConstanteImagesIcon(){
 			Jouer = new ImageIcon(getClass().getResource("/Images/unJoueur.png" ));
 			Aide = new ImageIcon(getClass().getResource("/Images/aide.png" ));
 			//Controles = new ImageIcon(getClass().getResource("/Images/controles.png"));

@@ -13,4 +13,8 @@ public class GrilleControler extends AbstractControler {
 		((GrilleModel) this.calc).recupGrille();
 	}
 
+	public void ajoutLigne() {
+		((GrilleModel) this.calc).ajoutGrille();
+	}
+
 }

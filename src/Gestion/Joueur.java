@@ -13,14 +13,33 @@ public class Joueur implements ConstanteJeux {
 	
 	private int x1;
 	private int x2;
+	
+	private int x1Grille;
+	private int x2Grille;
+	private int yGrille;
+	
 	private int y1;
+	
+	 private int sizex;
+	 private int sizey;
+	 private int indice;
 	
 	private JoueurController controlerJoueur;
 	
-	public Joueur(JoueurController controler){
-		x1=5;
-		x2=6;
-		y1=9;
+	public Joueur(JoueurController controler,int sizex,int sizey,int indice){
+		this.x1=5;
+		this.x2=6;
+		this.y1=9;
+		
+		this.indice=indice;
+		
+		this.x1Grille=PositionGrille1JX+x1*sizex;
+		this.x2Grille=PositionGrille1JX+x2*sizex;
+		this.yGrille=PositionGrille1JY+y1*sizey;	
+		
+		this.sizex=sizex;
+		this.sizey=sizey;
+
 		controlerJoueur=controler;
 	}
 
@@ -38,20 +57,31 @@ public class Joueur implements ConstanteJeux {
 
 	public void setX1(int x1) {
 		this.x1 = x1;
+		this.x1Grille=PositionGrille1JX+x1*sizex;
 	}
 
 	public void setX2(int x2) {
 		this.x2 = x2;
+		this.x2Grille=PositionGrille1JX+x2*sizex;
 	}
 
 	public void setY1(int y1) {
 		this.y1 = y1;
+		this.yGrille=PositionGrille1JY+y1*sizey;	
 	}
 
-	public void dessinerJoueur(Graphics g,int sizex,int sizey) {
+	public int getyGrille() {
+		return yGrille;
+	}
+
+	public void setyGrille(int yGrille) {
+		this.yGrille = yGrille;
+	}
+
+	public void dessinerJoueur(Graphics g) {
 		g.setColor(Color.white);
-		g.drawRect(PositionGrille1JX+x1*sizex, PositionGrille1JY+ y1*sizey, sizex, sizey);
-		g.drawRect(PositionGrille1JX+x2*sizex, PositionGrille1JY+y1*sizey, sizex, sizey);
+		g.drawRect(x1Grille, yGrille, sizex, sizey);
+		g.drawRect(x2Grille, yGrille, sizex, sizey);
 	}
 	
 	public void keyPressed(KeyEvent e) {

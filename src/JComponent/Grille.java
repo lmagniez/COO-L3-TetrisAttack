@@ -15,7 +15,7 @@ import Constante.ConstanteJeux;
 
 public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux {
 
-	private boolean animationHaut = false;
+	private boolean animationHaut = true;
 	private boolean gameOver = false;
 
 	public Case[][] tab = new Case[nombredecase][nombredeLigne];
@@ -34,32 +34,8 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		setBackground(new Color(0, 0, 0, 90));
 	}
 
-	public void init() {controlerGrille.initGrille();affiche();}
+	public void init() {controlerGrille.initGrille();}
 
-	/*public void animation() {
-		Thread thread = new Thread(new Runnable() {
-			public void run() {
-				int taille = 0;
-				while (animationHaut) {
-					try {
-						for (int a = 0; a < nombredeLigne; a++) {
-							for (int i = 0; i < nombredecase; i++) {
-								tab[i][a].setY(tab[i][a].getY() - 1);
-							}
-						}
-
-						if (tab[5][9].getY() % tailleny == 0) {
-							//Grille.this.decalagetab();
-						}
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-					}
-					Grille.this.repaint();
-				}
-			}
-		});
-		thread.start();
-	}*/
 
 	/*
 	 * protected void decalagetab() { for (int a = 0; a < nombredeLigne - 1;
@@ -92,8 +68,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		}
 	}
 	
-	
-	
 	public void dessinerGrille(Graphics g) {
 		for (int a = 0; a < nombredeLigne - reserve; a++) {
 			for (int i = 0; i < nombredecase; i++) {
@@ -113,7 +87,12 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 				case 4:
 					g.setColor(couleur4);
 					break;
-
+				case 5:
+					g.setColor(couleur5);
+					break;
+				case 6:
+					g.setColor(couleur6);
+					break;
 				}
 				g.fillRect(PositionGrille1JX+ i * taillenx, PositionGrille1JY +a * tailleny, taillenx, tailleny);
 			}
@@ -131,4 +110,22 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public void updateCase(int y, int x, int val) {
 		tab[x][y] = new Case(x * taillenx, y * tailleny, taillenx, tailleny, val);
 	}
+
+	public boolean isAnimationHaut() {
+		return animationHaut;
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
+	public void setAnimationHaut(boolean animationHaut) {
+		this.animationHaut = animationHaut;
+	}
+
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
+	}
+	
+	
 }

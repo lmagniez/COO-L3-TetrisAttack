@@ -7,12 +7,14 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JToggleButton;
+import javax.swing.border.Border;
 
 import Bouton.Commande;
 import Bouton.JoueurIcon;
@@ -91,7 +93,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 		}
 		
 		//Joueur 2
-		this.add(Box.createRigidArea(new Dimension(0,40)));
+		this.add(Box.createRigidArea(new Dimension(0,25)));
 		
 		Box rowOnebis=Box.createHorizontalBox();
 		for (int i = 0; i < 3; i++) {
@@ -100,7 +102,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 			this.add(rowOnebis);
 		}
 		
-		this.add(Box.createRigidArea(new Dimension(10,20)));
+		this.add(Box.createRigidArea(new Dimension(10,10)));
 		
 		Box rowtwobis=Box.createHorizontalBox();
 		for (int i = 0; i < 3; i++) {
@@ -125,8 +127,16 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 		g.setFont(new Font("Verdana",Font.BOLD,20));
 		g.drawString("Joueur1",20,45);
 		g.drawString("Joueur2",20,220);
-		// posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
-		// posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
-
+		
+		for(int i=0;i<buttons.length;i++){
+			for(int a=0;a<buttons[0].length;a++){
+				if(buttons[i][a].hasFocus()){
+					buttons[i][a].setBorder(BorderFactory.createLineBorder(Color.blue,5));
+				}
+				else{
+					buttons[i][a].setBorder(null);
+				}
+			}
+		}
 	}
 }

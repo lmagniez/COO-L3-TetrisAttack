@@ -8,6 +8,7 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,7 +27,7 @@ public class JoueurIcon extends JButton{
 		this.setFont(new Font("Verdana", Font.BOLD, 20));
 		setBorderPainted(false);
 		setOpaque(true);
-		this.setBackground(Color.WHITE);
+		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setForeground(Color.BLACK);
 		this.setVisible(true);
 		this.setActionCommand("j"+icon);
@@ -34,4 +35,7 @@ public class JoueurIcon extends JButton{
 		this.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
 	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+	}
 }

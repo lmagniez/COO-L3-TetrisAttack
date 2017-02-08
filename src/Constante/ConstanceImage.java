@@ -18,12 +18,12 @@ public class ConstanceImage {
 	public static Image triangleInverse = Toolkit.getDefaultToolkit().createImage("./sprites/triangleInverse.png");
 
 	public static ImageIcon[] icon = { 
-			scaled("/iconJoueur/j1.png",50),
-			scaled("/iconJoueur/j2.png",50),
-			scaled("/iconJoueur/j3.png",50),
-			scaled("/iconJoueur/j4.png",50),
-			scaled("/iconJoueur/j5.png",50),
-			scaled("/iconJoueur/j6.png",50),
+			scaled("/iconJoueur/j1.png",70),
+			scaled("/iconJoueur/j2.png",70),
+			scaled("/iconJoueur/j3.png",70),
+			scaled("/iconJoueur/j4.png",70),
+			scaled("/iconJoueur/j5.png",70),
+			scaled("/iconJoueur/j6.png",70),
 			};
 
 	public static ImageIcon scaled(String imageName,int n) {

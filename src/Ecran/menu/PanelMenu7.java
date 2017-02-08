@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -87,7 +88,16 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
-
+		for(int i=0;i<buttons.length;i++){
+			for(int a=0;a<buttons[0].length;a++){
+				if(buttons[i][a].hasFocus()){
+					buttons[i][a].setBorder(BorderFactory.createLineBorder(Color.blue,5));
+				}
+				else{
+					buttons[i][a].setBorder(null);
+				}
+			}
+		}
 		// posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
 		// posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
 

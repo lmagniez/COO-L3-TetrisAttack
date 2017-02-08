@@ -71,7 +71,6 @@ public abstract class Ecran extends JPanel{
 		c.getButtons()[0][0].setForeground(Color.GREEN);
 		
 		
-		
 	}
 	
 	public JComponent[][] getButtons() {

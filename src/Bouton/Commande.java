@@ -17,7 +17,6 @@ public class Commande extends JButton {
 		this.setFont(new Font("Verdana", Font.BOLD, 20));
 		setBorderPainted(false);
 		setOpaque(true);
-
 		this.setBackground(Color.WHITE);
 		this.setForeground(Color.BLACK);
 		this.setText(Commande);
@@ -25,6 +24,4 @@ public class Commande extends JButton {
 		this.addActionListener((ActionListener) j);
 		this.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
-
-	
 }

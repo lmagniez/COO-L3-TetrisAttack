@@ -36,7 +36,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 	
 	private JLabel labelTaille;
 	private JLabel labelBox;
-	private JComboBox perso;
 	private JSlider sliderLevel;
 	private JButton retour=new Commande(this,"Retour");
 	private JButton start=new Commande(this,"Démarrer");
@@ -47,7 +46,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 	public PanelMenu2(Fenetre vue, EcranMenu e)
 	{
 		NB_BUTTONS_Y=1;
-		NB_BUTTONS_X=5;
+		NB_BUTTONS_X=4;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
 		this.ecran=e;
@@ -63,12 +62,9 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		
 		
 		labelBox = new JLabel();
-		perso = new JComboBox();
 		
 		initSlide();
 
-		
-		
 		ajout();
 	}
 
@@ -77,11 +73,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		sliderLevel = new JSlider();
 		labelTaille = new JLabel("Difficulte = ");
 		
-		perso.setMaximumSize(new Dimension(100, 20));
 		sliderLevel.setMaximumSize(new Dimension(250,40));
-		perso.addItem("Yoshi vert");
-		perso.addItem("Yoshi rose");
-
 		sliderLevel.setMaximum(4);
 		sliderLevel.setMinimum(1);
 
@@ -107,7 +99,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		
 		buttons[cptButton++][0]=sliderLevel;
 		buttons[cptButton++][0]=labelTaille;
-		buttons[cptButton++][0]=perso;
 		buttons[cptButton++][0]=retour;
 		buttons[cptButton++][0]=start;
 		
@@ -115,8 +106,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 		this.add(sliderLevel);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(labelTaille);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
-		this.add(perso);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(retour);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
@@ -138,14 +127,12 @@ public class PanelMenu2 extends PanelMenu implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e){
-		
 			if (e.getActionCommand().equals("Retour")){
 				ecran.changeMenuBox(ecran.p1);
 			}
 			if (e.getActionCommand().equals("Démarrer")){
-				vue.afficheJeu1J();
+				ecran.changeMenuBox(ecran.p7);
 			}
-		
 	}
 	
 	public void paintComponent(Graphics g) {

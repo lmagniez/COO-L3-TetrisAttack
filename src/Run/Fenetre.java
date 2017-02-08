@@ -38,12 +38,12 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 
 		j1.focus();
 
-		this.add(j1);
+		//this.add(j1);
 
-		// this.add(title);
+		 this.add(title);
 		// this.add(credit);
 		this.setVisible(true);
-		// title.requestFocus();
+		 title.requestFocus();
 		// this.afficherPanneau(m);
 		// m.requestFocusInWindow();
 	}

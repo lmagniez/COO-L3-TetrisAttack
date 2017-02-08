@@ -36,7 +36,6 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 	
 	private JLabel labelTaille,labelTaille2;
 	private JLabel labelBox,labelBox2;
-	private JComboBox perso,perso2;
 	private JSlider sliderLevel,sliderLevel2;
 	private JButton retour=new Commande(this,"Retour");
 	private JButton start=new Commande(this,"Démarrer");
@@ -47,7 +46,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 	public PanelMenu3(Fenetre vue, EcranMenu e)
 	{
 		NB_BUTTONS_Y=1;
-		NB_BUTTONS_X=8;
+		NB_BUTTONS_X=6;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
 		this.ecran=e;
@@ -65,8 +64,6 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 		
 		labelBox = new JLabel();
 		labelBox2= new JLabel();
-		perso = new JComboBox();
-		perso2 = new JComboBox();
 		
 		initSlide();
 
@@ -81,17 +78,11 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 		labelTaille2 = new JLabel("Difficulte = ");
 		
 		
-		perso.setMaximumSize(new Dimension(100, 20));
+	
 		sliderLevel.setMaximumSize(new Dimension(300,40));
-		perso.addItem("Yoshi vert");
-		perso.addItem("Yoshi rose");
-
-		perso2.setMaximumSize(new Dimension(100, 20));
+	
 		sliderLevel2.setMaximumSize(new Dimension(300,40));
-		perso2.addItem("Yoshi vert");
-		perso2.addItem("Yoshi rose");
 
-		
 		sliderLevel.setMaximum(4);
 		sliderLevel.setMinimum(1);
 		sliderLevel.setPaintTicks(true);
@@ -132,10 +123,10 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 		
 		buttons[cptButton++][0]=sliderLevel;
 		buttons[cptButton++][0]=labelTaille;
-		buttons[cptButton++][0]=perso;
+	
 		buttons[cptButton++][0]=sliderLevel2;
 		buttons[cptButton++][0]=labelTaille2;
-		buttons[cptButton++][0]=perso2;
+
 		buttons[cptButton++][0]=retour;
 		buttons[cptButton++][0]=start;
 		
@@ -144,14 +135,12 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 		this.add(sliderLevel);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(labelTaille);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
-		this.add(perso);
+
 		this.add(Box.createRigidArea(new Dimension(10,30)));
 		this.add(sliderLevel2);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(labelTaille2);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
-		this.add(perso2);
+
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(retour);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
@@ -178,7 +167,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 				ecran.changeMenuBox(ecran.p1);
 			}
 			if (e.getActionCommand().equals("Démarrer")){
-				vue.afficheJeu1J();
+				ecran.changeMenuBox(ecran.p8);
 			}
 		
 	}

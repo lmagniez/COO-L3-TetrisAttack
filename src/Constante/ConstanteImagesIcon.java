@@ -12,6 +12,7 @@ public class ConstanteImagesIcon {
 	public ImageIcon Joueur2;
 	public ImageIcon Controles;
 	public ImageIcon retour;
+	
 		public ConstanteImagesIcon(){
 			Jouer = new ImageIcon(getClass().getResource("/Images/unJoueur.png" ));
 			Aide = new ImageIcon(getClass().getResource("/Images/aide.png" ));

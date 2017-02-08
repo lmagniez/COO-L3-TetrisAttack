@@ -36,7 +36,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 	
     int cptButton=0;
     
-    
+ 
     private final static String ECRANS[] = {"Ecran1","Ecran2","Ecran3"};
 	private final static int NB_ECRANS=3;
 	private int ecranActuel;
@@ -169,8 +169,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		ecran.setButtons(buttons);
 		ecran.addListener();
 		
-		
-		
+	
 	}
 
 

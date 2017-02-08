@@ -39,6 +39,8 @@ public class EcranMenu extends Ecran implements ActionListener{
 	protected PanelMenu4 p4;
 	protected PanelMenu5 p5;
 	protected PanelMenu6 p6;
+	protected PanelMenu7 p7;
+	protected PanelMenu8 p8;
 	
 	
 	public int boutonCourant = 0;
@@ -75,7 +77,8 @@ public class EcranMenu extends Ecran implements ActionListener{
 		p4=new PanelMenu4(f,this);
 		p5=new PanelMenu5(f,this);
 		p6=new PanelMenu6(f,this);
-		
+		p7=new PanelMenu7(f,this);
+		p8=new PanelMenu8(f,this);
 		
 		changeMenuBox(p1);
 		

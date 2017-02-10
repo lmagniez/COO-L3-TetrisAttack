@@ -37,8 +37,8 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 	private JLabel labelTaille,labelTaille2;
 	private JLabel labelBox,labelBox2;
 	private JSlider sliderLevel,sliderLevel2;
-	private JButton retour=new Commande(this,"Retour");
-	private JButton start=new Commande(this,"Démarrer");
+	private JButton retour=new Commande(this,"Retour",1);
+	private JButton start=new Commande(this,"Démarrer",6);
 	
 	
 	private int cptButton=0;

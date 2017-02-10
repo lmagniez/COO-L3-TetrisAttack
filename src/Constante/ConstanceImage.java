@@ -25,10 +25,31 @@ public class ConstanceImage {
 			scaled("/Ressource/IconJoueur/j5.png",70),
 			scaled("/Ressource/IconJoueur/j6.png",70),
 	};
+	
+	public static ImageIcon[] iconbouton = { 
+			scaledButton("/Ressource/IconButton/1Player.png",260,50),
+			scaledButton("/Ressource/IconButton/2Player.png",260,50),
+			scaledButton("/Ressource/IconButton/Credit.png",260,50),
+			scaledButton("/Ressource/IconButton/Help.png",260,50),
+			scaledButton("/Ressource/IconButton/Option.png",260,50),
+			scaledButton("/Ressource/IconButton/Exit.png",260,50),
+			scaledButton("/Ressource/IconButton/Play.png",260,50),
+			scaledButton("/Ressource/IconButton/2AI.png",260,50)
+	};
+	
 
 	public static ImageIcon scaled(String imageName,int n) {
 		try {
 			return new ImageIcon(ImageIO.read(ConstanceImage.class.getResource(imageName)).getScaledInstance(n, n,
+					Image.SCALE_DEFAULT));
+		} catch (IOException e) {
+			return new ImageIcon();
+		}
+	}	
+	
+	public static ImageIcon scaledButton(String imageName,int n,int an) {
+		try {
+			return new ImageIcon(ImageIO.read(ConstanceImage.class.getResource(imageName)).getScaledInstance(n, an,
 					Image.SCALE_DEFAULT));
 		} catch (IOException e) {
 			return new ImageIcon();

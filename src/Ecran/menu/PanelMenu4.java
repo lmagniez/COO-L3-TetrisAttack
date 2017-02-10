@@ -40,8 +40,8 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 	
 	
 	private Fenetre fen;
-	private JButton retour=new Commande(this,"Retour");
-	private JButton start=new Commande(this,"Valider");
+	private JButton retour=new Commande(this,"Retour",1);
+	private JButton start=new Commande(this,"Valider",6);
 	
 	MaskFormatter selectj1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField sel1 = new JFormattedTextField(selectj1);

@@ -21,11 +21,11 @@ import Run.Fenetre;
 
 public class PanelMenu1 extends PanelMenu implements ActionListener{
 	
-	protected JButton joueur1 = new Commande (this, "1 Player");
-	protected JButton joueur2 = new Commande(this, "2 Players");
-	protected JButton option = new Commande(this, "Option");
-	protected JButton howToPlay = new Commande(this, "How To Play");
-	protected JButton howToImprove = new Commande(this, "How To Improve");
+	protected JButton joueur1 = new Commande (this, "1 Player",0);
+	protected JButton joueur2 = new Commande(this, "2 Players",1);
+	protected JButton option = new Commande(this, "Option",4);
+	protected JButton howToPlay = new Commande(this, "How To Play",3);
+	protected JButton howToImprove = new Commande(this, "How To Improve",2);
 	
 	private int cptButton=0;
 	
@@ -60,20 +60,12 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 		buttons[cptButton++][0]=howToPlay;
 		buttons[cptButton++][0]=howToImprove;
 		
-		
 		this.add(Box.createRigidArea(new Dimension(10,30)));
 		this.add(joueur1);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(joueur2);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(option);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(howToPlay);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(howToImprove);
-		this.add(Box.createRigidArea(new Dimension(10,30)));
-		
-		
 		
 		System.out.println(this.joueur2.isRequestFocusEnabled());
 		this.joueur2.setRequestFocusEnabled(true);
@@ -96,11 +88,9 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 				ecran.changeMenuBox(ecran.p5);
 			}
 			if (e.getActionCommand().equals("1 Player")){
-				//vue.afficheJeuxJ1();
 				ecran.changeMenuBox(ecran.p2);
 			}
 			if (e.getActionCommand().equals("2 Players")){
-				//vue.afficheJeuxJ1();
 				ecran.changeMenuBox(ecran.p3);
 			}
 			if (e.getActionCommand().equals("How To Improve")){

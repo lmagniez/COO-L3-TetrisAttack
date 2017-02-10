@@ -36,14 +36,14 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 			}
 		});
 
-		j1.focus();
+		//j1.focus();
 
-		this.add(j1);
-
-		// this.add(title);
+		//this.add(j1);
+		Sound.accueil.loop();
+		 this.add(title);
 		// this.add(credit);
 		this.setVisible(true);
-		// title.requestFocus();
+		title.requestFocus();
 		// this.afficherPanneau(m);
 		// m.requestFocusInWindow();
 	}
@@ -70,6 +70,7 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 
 	public void afficheJeu1J() {
 		swapEcran(j1);
+		j1.lancementAnimation();
 	}
 
 	public void swapEcran(JPanel j) {

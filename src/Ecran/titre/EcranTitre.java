@@ -158,7 +158,7 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		this.setLayout(new FlowLayout());
 		timer = new Timer(100, this);
 		timer.start();
-	
+
         
 		this.revalidate();
 		this.repaint();

@@ -117,7 +117,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
+		System.out.println();
 	}
 
 	public void paintComponent(Graphics g) {

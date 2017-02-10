@@ -82,7 +82,7 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
+		vue.afficheJeu1J();
 	}
 
 	public void paintComponent(Graphics g) {

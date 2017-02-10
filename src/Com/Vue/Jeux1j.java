@@ -43,9 +43,13 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		g.init();
 
 		creerlayout();
-		animation();
+		
 	}
 
+	public void lancementAnimation(){
+		animation();
+	}
+	
 	public void animation() {
 		Thread thread = new Thread(new Runnable() {
 			public void run() {

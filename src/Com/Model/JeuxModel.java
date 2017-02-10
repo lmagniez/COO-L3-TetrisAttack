@@ -14,7 +14,7 @@ public class JeuxModel extends AbstractModel {
 		}
 	}
 
-	protected void UpdateCase(int y, int x, int val) {
+	protected static void UpdateCase(int y, int x, int val) {
 		for (Observer obs : JeuxObserver) {
 			obs.updateCase(y, x, val);
 		}
@@ -44,6 +44,8 @@ public class JeuxModel extends AbstractModel {
 
 	public void swap(int x1, int x2, int y1){
 		GrilleModel.swapCase(x1, x2, y1);
+		while(GrilleModel.comboColonne()){}
+		while(GrilleModel.comboLigne()){}
 	}
 
 

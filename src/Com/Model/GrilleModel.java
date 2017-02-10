@@ -23,16 +23,16 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 	}
 
 	private void creercolonne(int a) {
-		int val,nombrelignedessin=2+RND.nextInt(5 - 0);;
+		int val, nombrelignedessin = 2 + RND.nextInt(5 - 0);
+		;
 		for (int i = 0; i < nombredeLigne; i++) {
-			if(nombrelignedessin >= nombredeLigne-i){
+			if (nombrelignedessin >= nombredeLigne - i) {
 				val = 1 + RND.nextInt(5 - 0);
 				tab[a][i] = val;
-			}
-			else{
+			} else {
 				tab[a][i] = 0;
 			}
-			
+
 		}
 	}
 
@@ -86,7 +86,7 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 
 	public void ajoutGrille() {
 		int tmp;
-		for (int i = 0; i < nombredeLigne-1; i++) {
+		for (int i = 0; i < nombredeLigne - 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {
 				tmp = tab[a][i + 1];
 				tab[a][i + 1] = tab[a][i];
@@ -95,6 +95,85 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 		}
 		generationLigne();
 		recupGrille();
+	}
+
+	public static boolean comboColonne() {
+		affiche();
+		int nb = 1;
+		int prec;
+		boolean changement = false;
+		System.out.println(nombredeLigne - 1 - reserve);
+		for (int a = 0; a < nombredecase; a++) {
+			prec = tab[a][0];
+			nb = 1;
+			for (int i = 1; i <= nombredeLigne - 1 - reserve; i++) {
+				if (prec != 0 && prec == tab[a][i]) {
+					nb++;
+				} 
+				if(nb >=4 && a == (nombredecase-1) ){
+					supprimerCaseColonne(a, (i - nb), i);
+					changement = true;
+				}
+				if(prec != tab[a][i]) {
+					if (nb >= 4) {
+						supprimerCaseColonne(a, (i - nb), i);
+						changement = true;
+					}
+					prec = tab[a][i];
+					nb = 1;
+				}
+			}
+		}
+		return changement;
+	}
+
+	private static void supprimerCaseColonne(int colonne, int indicedepart, int indicefin) {
+		for (int i = indicedepart; i < indicefin; i++) {
+			tab[colonne][i] = 0;
+			JeuxModel.UpdateCase(i, colonne, tab[colonne][i]);
+		}
+		decendreCube();
+		decendreCube();
+	}
+	
+	private static void supprimerCaseLigne(int ligne, int indicedepart, int indicefin) {
+		for (int i = indicedepart; i < indicefin; i++) {
+			tab[i][ligne] = 0;
+			JeuxModel.UpdateCase(ligne,i,tab[i][ligne]);
+		}
+		decendreCube();
+		decendreCube();
+	}
+
+	public static boolean comboLigne() {
+		System.out.println("ligne >>>>>>>>>>>>>><");
+		int nb = 1;
+		int prec;
+		boolean changement = false;
+		for (int i = 1; i <= nombredeLigne - 1 - reserve; i++) {
+			prec = tab[0][i];
+			nb = 1;
+			for (int a = 0; a < nombredecase; a++) {
+				if (prec != 0 && prec == tab[a][i]) {
+					nb++;
+				} 
+				if(nb >=4 && a == (nombredecase-1) ){
+					supprimerCaseLigne(i, (a - (nb-1)), a);
+					changement = true;
+					System.out.println("coucou2");
+				}
+				if(prec != tab[a][i]) {
+					if (nb >=4) {
+						supprimerCaseLigne(i, (a - (nb-1)), a);
+						changement = true;
+						System.out.println("coucou");
+					}
+					prec = tab[a][i];
+					nb = 1;
+				}
+			}
+		}
+		return changement;
 	}
 
 }

@@ -69,29 +69,29 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 	
 	public void dessinerGrille(Graphics g) {
-		for (int a = 0; a < nombredeLigne - reserve; a++) {
+		for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
 			for (int i = 0; i < nombredecase; i++) {
 				switch (tab[i][a].getValeur()) {
 				case 0:
 					g.setColor(transparent);
 					break;
 				case 1:
-					g.setColor(couleur1);
+					g.setColor(couleur1); //
 					break;
 				case 2:
-					g.setColor(couleur2);
+					g.setColor(couleur2); //
 					break;
 				case 3:
-					g.setColor(couleur3);
+					g.setColor(couleur3); //
 					break;
 				case 4:
-					g.setColor(couleur4);
+					g.setColor(couleur4); //
 					break;
 				case 5:
-					g.setColor(couleur5);
+					g.setColor(couleur5); //
 					break;
 				case 6:
-					g.setColor(couleur6);
+					g.setColor(couleur6); //
 					break;
 				}
 				g.fillRect(PositionGrille1JX+ i * taillenx, PositionGrille1JY +a * tailleny, taillenx, tailleny);

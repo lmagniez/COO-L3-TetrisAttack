@@ -39,8 +39,8 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		//j1.focus();
 
 		//this.add(j1);
-		Sound.accueil.loop();
-		 this.add(title);
+		Sound.accueil.loop(0);
+		this.add(title);
 		// this.add(credit);
 		this.setVisible(true);
 		title.requestFocus();

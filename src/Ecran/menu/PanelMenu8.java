@@ -20,6 +20,7 @@ import Bouton.Commande;
 import Bouton.JoueurIcon;
 import Constante.ConstanteDimension;
 import Run.Fenetre;
+import Run.Sound;
 
 public class PanelMenu8 extends PanelMenu implements ActionListener {
 
@@ -117,7 +118,8 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		System.out.println();
+		Sound.stop(1);
+		Sound.loop(2);
 	}
 
 	public void paintComponent(Graphics g) {

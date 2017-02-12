@@ -26,6 +26,7 @@ import Constante.ConstanteDimension;
 import Ecran.Animation;
 import Ecran.Ecran;
 import Run.Fenetre;
+import Run.Sound;
 
 public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	
@@ -202,6 +203,7 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		}
 		else if (e.getActionCommand().equals("arreter")) timer.stop();
 		else if (e.getActionCommand().equals("reprendre")) timer.restart();
+		
 	}
 
 
@@ -245,6 +247,8 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		this.focusNouvelEcran(vue.getM());
+		Sound.stop(0);
+		Sound.loop(1);
 	}
 
 

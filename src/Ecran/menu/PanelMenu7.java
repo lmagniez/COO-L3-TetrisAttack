@@ -18,6 +18,7 @@ import Bouton.Commande;
 import Bouton.JoueurIcon;
 import Constante.ConstanteDimension;
 import Run.Fenetre;
+import Run.Sound;
 
 public class PanelMenu7 extends PanelMenu implements ActionListener {
 
@@ -83,6 +84,8 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		vue.afficheJeu1J();
+		Sound.stop(1);
+		Sound.loop(2);
 	}
 
 	public void paintComponent(Graphics g) {

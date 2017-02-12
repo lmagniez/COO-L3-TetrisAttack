@@ -98,15 +98,13 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 	}
 
 	public static boolean comboColonne() {
-		affiche();
 		int nb = 1;
 		int prec;
 		boolean changement = false;
-		System.out.println(nombredeLigne - 1 - reserve);
 		for (int a = 0; a < nombredecase; a++) {
 			prec = tab[a][0];
 			nb = 1;
-			for (int i = 1; i <= nombredeLigne - 1 - reserve; i++) {
+			for (int i = 1; i <= nombredeLigne - reserve; i++) {
 				if (prec != 0 && prec == tab[a][i]) {
 					nb++;
 				} 
@@ -146,7 +144,6 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 	}
 
 	public static boolean comboLigne() {
-		System.out.println("ligne >>>>>>>>>>>>>><");
 		int nb = 1;
 		int prec;
 		boolean changement = false;
@@ -160,13 +157,11 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 				if(nb >=4 && a == (nombredecase-1) ){
 					supprimerCaseLigne(i, (a - (nb-1)), a);
 					changement = true;
-					System.out.println("coucou2");
 				}
 				if(prec != tab[a][i]) {
 					if (nb >=4) {
 						supprimerCaseLigne(i, (a - (nb-1)), a);
 						changement = true;
-						System.out.println("coucou");
 					}
 					prec = tab[a][i];
 					nb = 1;

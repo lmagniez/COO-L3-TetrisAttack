@@ -2,10 +2,13 @@ package Ecran.menu;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -20,12 +23,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import Bouton.Commande;
+import Bouton.SliderDifficulte;
 import Constante.ConstanteDimension;
 import Ecran.Ecran;
 import Run.Fenetre;
 import Variable.VariableJeu;
 
-public class PanelMenu3 extends PanelMenu implements ActionListener{
+public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 	
 	/*
 	protected JButton joueur1 = new Commande (this, "11 Player");
@@ -34,9 +38,9 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 	protected JButton howToPlay = new Commande(this, "How To Play");
 	*/
 	
-	private JLabel labelTaille,labelTaille2;
 	private JLabel labelBox,labelBox2;
-	private JSlider sliderLevel,sliderLevel2;
+	private SliderDifficulte sliderLevel1= new SliderDifficulte(this,0);
+	private SliderDifficulte sliderLevel2 = new SliderDifficulte(this,1);
 	private JButton retour=new Commande(this,"Retour",1);
 	private JButton start=new Commande(this,"Démarrer",6);
 	
@@ -46,7 +50,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 	public PanelMenu3(Fenetre vue, EcranMenu e)
 	{
 		NB_BUTTONS_Y=1;
-		NB_BUTTONS_X=6;
+		NB_BUTTONS_X=4;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
 		this.ecran=e;
@@ -64,84 +68,31 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 		
 		labelBox = new JLabel();
 		labelBox2= new JLabel();
-		
-		initSlide();
+
 
 		ajout();
 	}
 
-	public void initSlide() {
-		
-		sliderLevel = new JSlider();
-		labelTaille = new JLabel("Difficulte = ");
-		sliderLevel2 = new JSlider();
-		labelTaille2 = new JLabel("Difficulte = ");
-		
-		
-	
-		sliderLevel.setMaximumSize(new Dimension(300,40));
-	
-		sliderLevel2.setMaximumSize(new Dimension(300,40));
 
-		sliderLevel.setMaximum(4);
-		sliderLevel.setMinimum(1);
-		sliderLevel.setPaintTicks(true);
-		sliderLevel.setPaintLabels(true);
-		sliderLevel.setMajorTickSpacing(1);
-
-		sliderLevel2.setMaximum(4);
-		sliderLevel2.setMinimum(1);
-		sliderLevel2.setPaintTicks(true);
-		sliderLevel2.setPaintLabels(true);
-		sliderLevel2.setMajorTickSpacing(1);
-
-		
-		sliderLevel2.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent event) {
-				labelTaille.setText("Difficulte = " + ((JSlider) event.getSource()).getValue());
-				VariableJeu.level = ((int) ((JSlider) event.getSource()).getValue());
-			}
-		});
-		
-		sliderLevel.addChangeListener(new ChangeListener() {
-			public void stateChanged(ChangeEvent event) {
-				labelTaille.setText("Difficulte = " + ((JSlider) event.getSource()).getValue());
-				VariableJeu.level = ((int) ((JSlider) event.getSource()).getValue());
-			}
-		});
-
-		/*
-		sliderLevel.setBounds(300, 150, 200, 60);
-		labelTaille.setBounds(300, 215, 100, 90);
-		perso.setBounds(350, 350, 100, 20);
-		*/
-		
-		
-	}
-	
 	public void ajout() {
 		
-		buttons[cptButton++][0]=sliderLevel;
-		buttons[cptButton++][0]=labelTaille;
+		buttons[cptButton++][0]=sliderLevel1;
 	
 		buttons[cptButton++][0]=sliderLevel2;
-		buttons[cptButton++][0]=labelTaille2;
 
 		buttons[cptButton++][0]=retour;
 		buttons[cptButton++][0]=start;
 		
 		
 		this.add(Box.createRigidArea(new Dimension(10,30)));
-		this.add(sliderLevel);
+		this.add(sliderLevel1);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
-		this.add(labelTaille);
 
 		this.add(Box.createRigidArea(new Dimension(10,30)));
 		this.add(sliderLevel2);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
-		this.add(labelTaille2);
 
-		this.add(Box.createRigidArea(new Dimension(10,20)));
+		this.add(Box.createRigidArea(new Dimension(10,80)));
 		this.add(retour);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 		this.add(start);
@@ -175,10 +126,27 @@ public class PanelMenu3 extends PanelMenu implements ActionListener{
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
-		
+		g.setFont(new Font("Verdana",Font.BOLD,20));
+		g.drawString("Difficulte", 60, 90);
+		g.drawString("Difficulte", 60, 190);
 		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
 		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
 	   
+		
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		if (e.getSource() instanceof SliderDifficulte){
+			System.out.println(sliderLevel1.getValue());
+			System.out.println(sliderLevel2.getValue());
+		}
 		
 	}
 	

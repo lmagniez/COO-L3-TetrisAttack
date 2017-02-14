@@ -15,7 +15,6 @@ public class Sound {
 
 	public Sound(String fichier) {
 		try {
-			System.out.println(Sound.class.getResource(fichier));
 			audio.add(Applet.newAudioClip(Sound.class.getResource(fichier)));
 			indice++;
 		} catch (Exception e) {

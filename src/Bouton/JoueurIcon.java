@@ -15,13 +15,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import Constante.ConstanceImage;
+import Constante.ConstanteImage;
 
 public class JoueurIcon extends JButton{
 
 	private int icon;
 	public JoueurIcon(JPanel p,int s){
-		super(ConstanceImage.icon[s]);
+		super(ConstanteImage.icon[s]);
 		this.icon=s;
 		this.setPreferredSize(new Dimension(50,50));
 		this.setFont(new Font("Verdana", Font.BOLD, 20));

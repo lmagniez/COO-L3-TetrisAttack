@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 
-public class ConstanceImage {
+public class ConstanteImage {
 	// Grille
 	public static Image coeur = Toolkit.getDefaultToolkit().createImage("./sprites/coeur.png");
 	public static Image etoile = Toolkit.getDefaultToolkit().createImage("./sprites/etoile.png");
@@ -40,7 +40,7 @@ public class ConstanceImage {
 
 	public static ImageIcon scaled(String imageName,int n) {
 		try {
-			return new ImageIcon(ImageIO.read(ConstanceImage.class.getResource(imageName)).getScaledInstance(n, n,
+			return new ImageIcon(ImageIO.read(ConstanteImage.class.getResource(imageName)).getScaledInstance(n, n,
 					Image.SCALE_DEFAULT));
 		} catch (IOException e) {
 			return new ImageIcon();
@@ -49,7 +49,7 @@ public class ConstanceImage {
 	
 	public static ImageIcon scaledButton(String imageName,int n,int an) {
 		try {
-			return new ImageIcon(ImageIO.read(ConstanceImage.class.getResource(imageName)).getScaledInstance(n, an,
+			return new ImageIcon(ImageIO.read(ConstanteImage.class.getResource(imageName)).getScaledInstance(n, an,
 					Image.SCALE_DEFAULT));
 		} catch (IOException e) {
 			return new ImageIcon();

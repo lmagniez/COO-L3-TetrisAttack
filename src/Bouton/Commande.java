@@ -12,12 +12,12 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import Constante.ConstanceImage;
+import Constante.ConstanteImage;
 
 public class Commande extends JButton {
 
 	public Commande(JPanel j, String Commande,int i) {
-		super(ConstanceImage.iconbouton[i]);
+		super(ConstanteImage.iconbouton[i]);
 		setBorderPainted(false);
 		setOpaque(true);
 		this.setBorder(BorderFactory.createEmptyBorder());

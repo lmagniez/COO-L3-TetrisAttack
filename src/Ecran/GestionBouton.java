@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 
 import Constante.ConstanteParametres;
+import Constante.ConstanteSon;
 import Run.Sound;
 
 public abstract class GestionBouton {
@@ -63,6 +64,7 @@ public abstract class GestionBouton {
 		                  case KeyEvent.VK_UP:
 		                     if (curRow > 0)
 		                     {
+		                    	Sound.jouerSon(ConstanteSon.PRESS_BOUTON);
 		                        buttons[curRow - 1][curCol].requestFocus();
 		                     	buttons[curRow - 1][curCol].setForeground(Color.GREEN);
 		                     	buttons[curRow][curCol].setForeground(Color.BLACK);
@@ -71,6 +73,7 @@ public abstract class GestionBouton {
 		                  case KeyEvent.VK_DOWN:
 		                     if (curRow < buttons.length - 1)
 		                     {  
+		                    	 Sound.jouerSon(ConstanteSon.PRESS_BOUTON);
 		                    	buttons[curRow + 1][curCol].requestFocus();
 		                     	buttons[curRow + 1][curCol].setForeground(Color.GREEN);
 		                     	buttons[curRow][curCol].setForeground(Color.BLACK);

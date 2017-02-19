@@ -23,7 +23,9 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Constante.ConstanteDimension;
+import Constante.ConstanteMusique;
 import Constante.ConstanteParametres;
+import Constante.ConstanteSon;
 import Ecran.Animation;
 import Ecran.Ecran;
 import Run.Fenetre;
@@ -71,7 +73,7 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	private int cptyoshi4=0, widthyoshi4=44, heightyoshi4=96,
 	screenwidthyoshi4=widthyoshi4*3, screenheightyoshi4=heightyoshi4*3;
 	private int posyoshi4Y=(int)(ConstanteDimension.DimensionFenetrey),
-			posyoshi4X=ConstanteDimension.DimensionFenetrex*5/7+screenwidthyoshi4/2;
+			posyoshi4X=ConstanteDimension.DimensionFenetrex*21/28+screenwidthyoshi4/2;
 	
 	
 	private Animation yoshi5;
@@ -79,7 +81,7 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	private int cptyoshi5=0, widthyoshi5=44, heightyoshi5=96,
 	screenwidthyoshi5=widthyoshi5*3, screenheightyoshi5=heightyoshi5*3;
 	private int posyoshi5Y=(int)(ConstanteDimension.DimensionFenetrey),
-			posyoshi5X=ConstanteDimension.DimensionFenetrex*2/7+screenwidthyoshi5/2;
+			posyoshi5X=ConstanteDimension.DimensionFenetrex*7/28+screenwidthyoshi5/2;
 	
 	public static final int NB_FLEUR=3;
 	private Animation fleur[]= new Animation[NB_FLEUR];
@@ -91,6 +93,9 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	
 	private Image press;
 	private int widthPress=79, heightPress=7;
+	private int screenwidthpress=widthPress*4, screenheightpress=heightPress*4;
+	private int pospressY=ConstanteDimension.DimensionFenetrey*4/5-screenheightpress/2;
+	private int pospressX=ConstanteDimension.DimensionFenetrex*1/2-screenwidthpress/2;
 	
 	
 	
@@ -131,7 +136,10 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		yoshi4Img=new ImageIcon("./ressources/Accueil/Yoshi4/spriteSheet.png").getImage();
 		yoshi5Img=new ImageIcon("./ressources/Accueil/Yoshi4/spriteSheet2.png").getImage();
 		
-		press=new ImageIcon("./ressources/Accueil/pushKey.gif").getImage();
+		//press=new ImageIcon("./ressources/Accueil/pushKey.gif").getImage();
+		
+		press = new ImageIcon("./ressources/Accueil/pushKey.gif").getImage();
+	    
 		
 		for(int i=0; i<NB_FLEUR;i++){
 			fleurImg[i]=new ImageIcon("./ressources/Accueil/fleur.png").getImage();
@@ -217,11 +225,15 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		
 		//cropped.getGraphics()
 	    
-		yoshi1.draw(g);
+		for(int i=0; i<NB_FLEUR; i++){
+	    	fleur[i].draw(g);
+	    }
+		
 		yoshi2.draw(g);
 		yoshi3.draw(g);
 		yoshi4.draw(g);
 		yoshi5.draw(g);
+		yoshi1.draw(g);
 		
 		
 		
@@ -234,10 +246,8 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	    for(int i=0; i<NB_BULLE; i++){
 	    	bulle[i].draw(g);
 	    }
-	    for(int i=0; i<NB_FLEUR; i++){
-	    	fleur[i].draw(g);
-	    }
 	    
+	    g.drawImage(press, this.pospressX, this.pospressY, this.screenwidthpress,this.screenheightpress, this);
 	    
 	   
 		
@@ -253,8 +263,17 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
         		Sound.changerParam();
         	break;
         	default:
+        		Sound.jouerSon(ConstanteSon.PRESS_START);
+        		try {
+					Thread.sleep(1000);
+				} 		catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+        		
+        		
         		this.focusNouvelEcran(vue.getM());
-        		Sound.changerMusique(1);
+        		Sound.changerMusique(ConstanteMusique.MUSIQUE_MENU);
         	break;
 		}
 		

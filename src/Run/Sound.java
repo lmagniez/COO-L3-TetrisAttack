@@ -2,28 +2,46 @@ package Run;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
+import java.net.URL;
 import java.util.ArrayList;
 
 import Constante.ConstanteParametres;
 
 public class Sound {
-	public static ArrayList<AudioClip> audio = new ArrayList<AudioClip>();
+	public static ArrayList<AudioClip> musics = new ArrayList<AudioClip>();
+	public static ArrayList<AudioClip> sounds = new ArrayList<AudioClip>();
 
-	public static final Sound accueil = new Sound("/Ressource/Son/audioAccueil.wav");
-	public static final Sound menu = new Sound("/Ressource/Son/audioMenu.wav");
-	public static final Sound game = new Sound("/Ressource/Son/audioJeu.wav");
+	
+	public static final Sound accueil = new Sound("/Ressource/Son/audioAccueil.wav",SoundType.MUSIQUE);
+	public static final Sound menu = new Sound("/Ressource/Son/audioMenu.wav",SoundType.MUSIQUE);
+	public static final Sound game = new Sound("/Ressource/Son/audioJeu.wav",SoundType.MUSIQUE);
 
+	public static final Sound press_start = new Sound("/Ressource/Son/audioSelectAccueil.wav",SoundType.SON);
+	public static final Sound press_button = new Sound("/Ressource/Son/audioDeplacement.wav",SoundType.SON);
+	
+	
 	private int indice = 0;
 
-	public Sound(String fichier) {
+	public Sound(String fichier, SoundType type) {
+		
+		URL url=Sound.class.getResource(fichier);
+		System.out.println("Sound>>"+url);
 		try {
-			audio.add(Applet.newAudioClip(Sound.class.getResource(fichier)));
+			if(type==SoundType.MUSIQUE)
+				musics.add(Applet.newAudioClip(url));
+			if(type==SoundType.SON)
+				sounds.add(Applet.newAudioClip(url));
 			indice++;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
+	public static void jouerSon(int idSon){
+		sounds.get(idSon).play();
+	}
+	
 	public static void changerParam(){
 	  if(ConstanteParametres.SOUND_ENABLED){
   		  ConstanteParametres.SOUND_ENABLED=false;
@@ -47,7 +65,7 @@ public class Sound {
 			try {
 				new Thread() {
 					public void run() {
-						audio.get(ConstanteParametres.ID_MUSIQUE).loop();
+						musics.get(ConstanteParametres.ID_MUSIQUE).loop();
 					}
 				}.start();
 			} catch (Exception e) {
@@ -57,7 +75,7 @@ public class Sound {
 	}
 
 	public static void stop() {
-		audio.get(ConstanteParametres.ID_MUSIQUE).stop();
+		musics.get(ConstanteParametres.ID_MUSIQUE).stop();
 	}
 	
 	

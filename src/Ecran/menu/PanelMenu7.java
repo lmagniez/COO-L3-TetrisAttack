@@ -17,6 +17,7 @@ import javax.swing.JToggleButton;
 import Bouton.Commande;
 import Bouton.JoueurIcon;
 import Constante.ConstanteDimension;
+import Constante.ConstanteParametres;
 import Run.Fenetre;
 import Run.Sound;
 
@@ -84,8 +85,9 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		vue.afficheJeu1J();
-		Sound.stop(1);
-		Sound.loop(2);
+		Sound.stop();
+		ConstanteParametres.ID_MUSIQUE=2;
+		Sound.loop();
 	}
 
 	public void paintComponent(Graphics g) {

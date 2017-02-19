@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import Constante.ConstanteDimension;
+import Constante.ConstanteParametres;
 import Ecran.Animation;
 import Ecran.Ecran;
 import Run.Fenetre;
@@ -246,9 +247,18 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		this.focusNouvelEcran(vue.getM());
-		Sound.stop(0);
-		Sound.loop(1);
+		
+		switch (e.getKeyCode()) {
+        	case KeyEvent.VK_M:
+        		Sound.changerParam();
+        	break;
+        	default:
+        		this.focusNouvelEcran(vue.getM());
+        		Sound.changerMusique(1);
+        	break;
+		}
+		
+		
 	}
 
 

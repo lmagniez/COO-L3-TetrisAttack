@@ -8,6 +8,7 @@ import Com.Controller.JoueurController;
 import Constante.ConstanteJeux;
 import JComponent.Grille;
 import JComponent.Score;
+import Run.Sound;
 
 public class Joueur implements ConstanteJeux {
 	
@@ -102,6 +103,9 @@ public class Joueur implements ConstanteJeux {
 		case KeyEvent.VK_A:
 			controlerJoueur.actionswap(x1,x2,y1);
 			break;
+		case KeyEvent.VK_M:
+      	  Sound.changerParam();
+        break;
 		case KeyEvent.VK_ESCAPE:
 			
 		default:

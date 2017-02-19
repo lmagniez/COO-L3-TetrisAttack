@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 
+import Constante.ConstanteParametres;
+import Run.Sound;
+
 public abstract class GestionBouton {
 	
 	public static boolean is_busy=false;
@@ -91,6 +94,9 @@ public abstract class GestionBouton {
 			                     buttons[curRow][curCol].setForeground(Color.BLACK);
 		                      }
 		                      break;
+		                  case KeyEvent.VK_M:
+		                	  Sound.changerParam();
+		                  break;
 		                  default:
 		                     break;
 		                  }//switch

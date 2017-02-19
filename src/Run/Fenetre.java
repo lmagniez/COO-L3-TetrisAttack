@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import Com.Vue.Jeux1j;
 import Constante.ConstanteDimension;
+import Constante.ConstanteParametres;
 import Ecran.menu.EcranMenu;
 import Ecran.titre.EcranTitre;
 
@@ -39,7 +40,12 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		//j1.focus();
 
 		//this.add(j1);
-		Sound.accueil.loop(0);
+		
+		Sound.changerMusique(0);
+		
+		//ConstanteParametres.ID_MUSIQUE=0;
+		//Sound.loop();
+		
 		this.add(title);
 		// this.add(credit);
 		this.setVisible(true);

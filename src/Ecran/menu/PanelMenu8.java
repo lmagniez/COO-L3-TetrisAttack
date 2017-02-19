@@ -118,8 +118,9 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		Sound.stop(1);
-		Sound.loop(2);
+		//Sound.stop(1);
+		//Sound.loop(2);
+		Sound.changerMusique(2);
 	}
 
 	public void paintComponent(Graphics g) {

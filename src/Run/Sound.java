@@ -4,6 +4,8 @@ import java.applet.Applet;
 import java.applet.AudioClip;
 import java.util.ArrayList;
 
+import Constante.ConstanteParametres;
+
 public class Sound {
 	public static ArrayList<AudioClip> audio = new ArrayList<AudioClip>();
 
@@ -22,19 +24,42 @@ public class Sound {
 		}
 	}
 
-	public static void loop(int i) {
-		try {
-			new Thread() {
-				public void run() {
-					audio.get(i).loop();
-				}
-			}.start();
-		} catch (Exception e) {
-			e.printStackTrace();
+	public static void changerParam(){
+	  if(ConstanteParametres.SOUND_ENABLED){
+  		  ConstanteParametres.SOUND_ENABLED=false;
+  	  	  Sound.stop();
+  	  }
+  	  else
+  	  {
+  		  ConstanteParametres.SOUND_ENABLED=true;
+  		  Sound.loop();
+  	  }
+	}
+	
+	public static void changerMusique(int idMusique){
+		Sound.stop();
+		ConstanteParametres.ID_MUSIQUE=idMusique;
+		Sound.loop();
+	}
+	
+	public static void loop() {
+		if(ConstanteParametres.SOUND_ENABLED){
+			try {
+				new Thread() {
+					public void run() {
+						audio.get(ConstanteParametres.ID_MUSIQUE).loop();
+					}
+				}.start();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	public static void stop(int i) {
-		audio.get(i).stop();
+	public static void stop() {
+		audio.get(ConstanteParametres.ID_MUSIQUE).stop();
 	}
+	
+	
+	
 }

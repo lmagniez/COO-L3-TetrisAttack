@@ -234,13 +234,6 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		yoshi4.draw(g);
 		yoshi5.draw(g);
 		yoshi1.draw(g);
-		
-		
-		
-	    g.drawImage(press, 150, 500, 150-(widthPress), 500-(heightPress),
-	    		widthPress, heightPress, 
-	    		widthPress, 0, this);
-	    
 	    
 	    
 	    for(int i=0; i<NB_BULLE; i++){

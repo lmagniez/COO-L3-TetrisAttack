@@ -43,6 +43,7 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 	private JButton retour=new Commande(this,"Retour",1);
 	private JButton start=new Commande(this,"Valider",6);
 	
+	
 	MaskFormatter selectj1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField sel1 = new JFormattedTextField(selectj1);
 	
@@ -66,12 +67,24 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
     
 	public PanelMenu4(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		
+		this.ecran=ecran;
+		this.vue=vue;
+		this.pred_panel=this.ecran.p1;
+		this.has_cursor=true; 
+		
+		
 		NB_BUTTONS_Y=2;
 		NB_BUTTONS_X=1;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
+		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
-		this.ecran=ecran;
-		this.vue=f;
+		for(int i=0; i<NB_BUTTONS_X; i++){
+			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
+			posButtonY[i][0]=180+50*i;
+		}
+		
+		
 		this.setLayout(new GridLayout(7,2));
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		
@@ -190,10 +203,10 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Valider")){
 			recupDonnees();
-			ecran.changeMenuBox(ecran.p1);
+			EcranMenu.changeMenuBox(ecran,ecran.p1);
 		}
 		if (e.getActionCommand().equals("Retour")){
-			ecran.changeMenuBox(ecran.p1);
+			EcranMenu.changeMenuBox(ecran,ecran.p1);
 		}
 	}
 

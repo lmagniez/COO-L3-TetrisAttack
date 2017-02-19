@@ -26,14 +26,26 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 	private JButton[] icon = new JoueurIcon[6];
 	private int cptButton = 0;
 
+	
 	public PanelMenu7(Fenetre vue, EcranMenu e) {
+		this.ecran=e;
+		this.vue=vue;
+		this.pred_panel=this.ecran.p2;
+		
+		this.has_cursor=false; 
 		NB_BUTTONS_Y = 3;
 		NB_BUTTONS_X = 2;
 		buttons = new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 
-		this.ecran = e;
+		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		
+		for(int i=0; i<NB_BUTTONS_X; i++){
+			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
+			posButtonY[i][0]=180+50*i;
+		}
+		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.vue = vue;
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 300);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));

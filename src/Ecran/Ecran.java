@@ -19,6 +19,8 @@ public abstract class Ecran extends JPanel {
 	protected int NB_BUTTONS_X;
 	protected int NB_BUTTONS_Y;
 	protected JComponent buttons[][];
+	protected int[][] posButtonX;
+	protected int[][] posButtonY;
 	protected Fenetre vue;
 
 	public void addListener() {

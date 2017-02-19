@@ -31,9 +31,19 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 	
 	public PanelMenu1(Fenetre vue, EcranMenu e)
 	{
+		this.has_cursor=true;
+		this.pred_panel=this;
 		NB_BUTTONS_Y=1;
 		NB_BUTTONS_X=5;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
+		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		
+		for(int i=0; i<NB_BUTTONS_X; i++){
+			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
+			posButtonY[i][0]=180+50*i;
+		}
+		
 		
 		this.ecran=e;
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
@@ -82,19 +92,19 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		
 			if (e.getActionCommand().equals("Option")){
-				ecran.changeMenuBox(ecran.p4);
+				EcranMenu.changeMenuBox(ecran,ecran.p4);
 			}
 			if (e.getActionCommand().equals("How To Play")){
-				ecran.changeMenuBox(ecran.p5);
+				EcranMenu.changeMenuBox(ecran,ecran.p6);
 			}
 			if (e.getActionCommand().equals("1 Player")){
-				ecran.changeMenuBox(ecran.p2);
+				EcranMenu.changeMenuBox(ecran,ecran.p2);
 			}
 			if (e.getActionCommand().equals("2 Players")){
-				ecran.changeMenuBox(ecran.p3);
+				EcranMenu.changeMenuBox(ecran,ecran.p3);
 			}
 			if (e.getActionCommand().equals("How To Improve")){
-				ecran.changeMenuBox(ecran.p6);
+				EcranMenu.changeMenuBox(ecran,ecran.p5);
 			}
 		
 	}

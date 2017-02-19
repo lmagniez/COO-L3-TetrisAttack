@@ -24,6 +24,7 @@ import Bouton.Joueur;
 import Constante.ConstanteDimension;
 import Ecran.Animation;
 import Ecran.Ecran;
+import Ecran.GestionBouton;
 import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener{
@@ -43,10 +44,6 @@ public class EcranMenu extends Ecran implements ActionListener{
 	protected PanelMenu8 p8;
 	
 	
-	public int boutonCourant = 0;
-	
-	
-	
 	private Timer timer;
 	
 	private Image fond;
@@ -54,16 +51,23 @@ public class EcranMenu extends Ecran implements ActionListener{
 	private Image buttonLabel,selectLabel;
 	private int widthbutton=349, heightbutton=50;
 	private int widthselect=389, heightselect=77;
+	public static boolean cursor_actif=true;
 	
-	
+	//yoshi
 	private Animation yoshi;
-	
 	private Image yoshiImg;
 	private int cptyoshi=0, widthyoshi=68, heightyoshi=96, 
 			screenwidthyoshi=widthyoshi*3, screenheightyoshi=heightyoshi*3;
 	private int posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
 				posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
 	public static final int NB_IMAGE=5;
+	
+	//curseur
+	protected Image cursor;
+	protected int widthcursor=6, heightcursor=11;
+	protected int screenwidthcursor=widthcursor*5, screenheightcursor=heightcursor*5;
+	
+	
 	
 
 	public EcranMenu(Fenetre f) throws ParseException {
@@ -80,7 +84,7 @@ public class EcranMenu extends Ecran implements ActionListener{
 		p7=new PanelMenu7(f,this);
 		p8=new PanelMenu8(f,this);
 		
-		changeMenuBox(p1);
+		changeMenuBox(this, p1);
 		
 		//ANIMATIONS
 		timer = new Timer(200, this);
@@ -93,19 +97,22 @@ public class EcranMenu extends Ecran implements ActionListener{
 		
 		buttonLabel=new ImageIcon("./ressources/Menu/buttonlabel.png").getImage();
 		selectLabel=new ImageIcon("./ressources/Menu/selectlabel.png").getImage();
-		
+		cursor=new ImageIcon("./ressources/Menu/cursor.gif").getImage();
 	}
 	
-	public void changeMenuBox(PanelMenu p)
+	public static void changeMenuBox(EcranMenu m, PanelMenu p)
 	{
 
 		p.setVisible(true);
-		this.removeAll();
-		this.repaint();
-		this.add(p);
-		this.validate();
+		m.removeAll();
+		m.repaint();
+		m.add(p);
+		m.validate();
 		
-		buttons=p.buttons;
+		m.buttons=p.buttons;
+		m.posButtonX=p.posButtonX;
+		m.posButtonY=p.posButtonY;
+		EcranMenu.cursor_actif=p.has_cursor;
 		
 		/*
 		for(int i=0; i<p.buttons.length; i++)
@@ -113,7 +120,16 @@ public class EcranMenu extends Ecran implements ActionListener{
 				buttons[0][0].setForeground(Color.black);
 		p.buttons[0][0].setForeground(Color.GREEN);
 		*/
-		p.buttons[0][0].requestFocus();
+		if(m.buttons.length!=0){
+			p.buttons[0][0].requestFocus();
+			GestionBouton.current_col=0;
+			GestionBouton.current_row=0;
+		}
+		else{
+			p.requestFocus();
+		}
+		GestionBouton.pred_panel=p.pred_panel;
+		
 		
 	}
 	
@@ -149,6 +165,11 @@ public class EcranMenu extends Ecran implements ActionListener{
 	    g.drawImage(buttonLabel,ConstanteDimension.DimensionFenetrex-widthbutton, 
 				heightbutton*3/4,widthbutton, heightbutton,this);
 		
+	    if(EcranMenu.cursor_actif){
+	    	g.drawImage(cursor, this.posButtonX[GestionBouton.current_row][GestionBouton.current_col], 
+	    			this.posButtonY[GestionBouton.current_row][GestionBouton.current_col],
+	    			this.screenwidthcursor,this.screenheightcursor, this);
+	    }
 		
 	}
 

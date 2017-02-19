@@ -38,14 +38,27 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 
 	private int cptButton = 0;
 
+	
+	
 	public PanelMenu2(Fenetre vue, EcranMenu e) {
+		this.ecran = e;
+		this.vue = vue;
+		
+		this.has_cursor=true; 
+		this.pred_panel=this.ecran.p1;
 		NB_BUTTONS_Y = 1;
 		NB_BUTTONS_X = 3;
 		buttons = new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
-
-		this.ecran = e;
+		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
+		
+		for(int i=0; i<NB_BUTTONS_X; i++){
+			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
+			posButtonY[i][0]=180+50*i;
+		}
+		
+		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.vue = vue;
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 300);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
@@ -97,10 +110,10 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("Retour")) {
-			ecran.changeMenuBox(ecran.p1);
+			EcranMenu.changeMenuBox(ecran,ecran.p1);
 		}
 		if (e.getActionCommand().equals("Démarrer")) {
-			ecran.changeMenuBox(ecran.p7);
+			EcranMenu.changeMenuBox(ecran,ecran.p7);
 		}
 	}
 

@@ -12,16 +12,23 @@ import javax.swing.JComponent;
 
 import Constante.ConstanteParametres;
 import Constante.ConstanteSon;
+import Ecran.menu.EcranMenu;
+import Ecran.menu.PanelMenu;
 import Run.Sound;
 
 public abstract class GestionBouton {
 	
 	public static boolean is_busy=false;
+	public static int current_row;
+	public static int current_col;
+	public static PanelMenu pred_panel;
+	
 	
 	private static KeyListener enter = new KeyAdapter() {
 	      @Override
 	      public void keyTyped(KeyEvent e) {
 	         if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+	        	 Sound.jouerSon(ConstanteSon.PRESS_START);
 	        	 System.out.println("enter");
 	        	if(e.getComponent() instanceof JButton)
 	        		((JButton) e.getComponent()).doClick();
@@ -51,9 +58,11 @@ public abstract class GestionBouton {
 		{
 			for(int j=0; j<buttons[i].length; j++)
 			{	
-				final int curRow = i;
-				final int curCol = j;
-				System.out.println(curRow);
+				
+				//System.out.println(curRow);
+				final int curRow=i;
+				final int curCol=j;
+				
 				
 				buttons[i][j].addKeyListener(enter);	
 				buttons[i][j].addKeyListener(new KeyAdapter(){
@@ -66,8 +75,11 @@ public abstract class GestionBouton {
 		                     {
 		                    	Sound.jouerSon(ConstanteSon.PRESS_BOUTON);
 		                        buttons[curRow - 1][curCol].requestFocus();
-		                     	buttons[curRow - 1][curCol].setForeground(Color.GREEN);
-		                     	buttons[curRow][curCol].setForeground(Color.BLACK);
+		                     	//buttons[curRow - 1][curCol].setForeground(Color.GREEN);
+		                     	//buttons[curRow][curCol].setForeground(Color.BLACK);
+		                     	GestionBouton.current_row=curRow-1;
+		                     	GestionBouton.current_col=curCol;
+		                     	
 		                     }
 		                     break;
 		                  case KeyEvent.VK_DOWN:
@@ -75,9 +87,10 @@ public abstract class GestionBouton {
 		                     {  
 		                    	 Sound.jouerSon(ConstanteSon.PRESS_BOUTON);
 		                    	buttons[curRow + 1][curCol].requestFocus();
-		                     	buttons[curRow + 1][curCol].setForeground(Color.GREEN);
-		                     	buttons[curRow][curCol].setForeground(Color.BLACK);
-		                     	
+		                     	//buttons[curRow + 1][curCol].setForeground(Color.GREEN);
+		                     	//buttons[curRow][curCol].setForeground(Color.BLACK);
+		                    	GestionBouton.current_row=curRow+1;
+		                     	GestionBouton.current_col=curCol;
 		                     }
 		                     
 		                     break;
@@ -85,21 +98,32 @@ public abstract class GestionBouton {
 		                      if (curCol > 0)
 		                      {
 		                         buttons[curRow][curCol - 1].requestFocus();
-		                         buttons[curRow][curCol - 1].setForeground(Color.GREEN);
-			                     buttons[curRow][curCol].setForeground(Color.BLACK);
+		                         //buttons[curRow][curCol - 1].setForeground(Color.GREEN);
+			                     //buttons[curRow][curCol].setForeground(Color.BLACK);
+			                     GestionBouton.current_row=curRow;
+			                     GestionBouton.current_col=curCol-1;
 		                      }
 		                      break;
 		                  case KeyEvent.VK_RIGHT:
 		                      if (curCol < buttons[curRow].length - 1)
 		                      {
 		                         buttons[curRow][curCol + 1].requestFocus();
-		                         buttons[curRow][curCol + 1].setForeground(Color.GREEN);
-			                     buttons[curRow][curCol].setForeground(Color.BLACK);
+		                         //buttons[curRow][curCol + 1].setForeground(Color.GREEN);
+			                     //buttons[curRow][curCol].setForeground(Color.BLACK);
+			                     GestionBouton.current_row=curRow;
+			                     GestionBouton.current_col=curCol+1;
 		                      }
 		                      break;
 		                  case KeyEvent.VK_M:
 		                	  Sound.changerParam();
 		                  break;
+		                  
+		                  case KeyEvent.VK_ESCAPE:
+		                	  EcranMenu.changeMenuBox(pred_panel.getEcran(), pred_panel);
+		                	  
+		                	  
+		                  break;
+		                  
 		                  default:
 		                     break;
 		                  }//switch

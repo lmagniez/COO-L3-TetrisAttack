@@ -115,8 +115,6 @@ public class PanelMenu5 extends PanelMenu implements ActionListener{
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
-		
-		
 	}
 	
 

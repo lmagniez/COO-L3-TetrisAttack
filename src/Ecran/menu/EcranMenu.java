@@ -1,26 +1,14 @@
 package Ecran.menu;
 
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.text.ParseException;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Bouton.Commande;
-import Bouton.Joueur;
 import Constante.ConstanteDimension;
 import Ecran.Animation;
 import Ecran.Ecran;
@@ -73,7 +61,6 @@ public class EcranMenu extends Ecran implements ActionListener{
 	public EcranMenu(Fenetre f) throws ParseException {
 		this.vue = f;
 		this.setLayout(null);
-		
 		
 		p1=new PanelMenu1(f,this);
 		p2=new PanelMenu2(f,this);

@@ -68,7 +68,7 @@ public class PanelMenu5 extends PanelMenu implements ActionListener{
 		
 		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/10,
 				300, 300);
-		
+		this.setOpaque(false);
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.setVisible(true);

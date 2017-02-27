@@ -48,6 +48,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 	
 	public PanelMenu3(Fenetre vue, EcranMenu e)
 	{
+		this.setOpaque(false);
 		this.ecran=e;
 		this.vue=vue;
 		this.pred_panel=this.ecran.p1;

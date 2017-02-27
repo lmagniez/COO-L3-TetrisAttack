@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import Bouton.Commande;
 import Bouton.JoueurIcon;
 import Constante.ConstanteDimension;
+import Constante.ConstanteParametres;
 import Run.Fenetre;
 import Run.Sound;
 
@@ -55,7 +56,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-
+		this.setOpaque(false);
 		creationIcon();
 		ajout();
 	}
@@ -131,9 +132,10 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		//Sound.stop(1);
-		//Sound.loop(2);
-		Sound.changerMusique(2);
+		vue.afficheJeu2J();
+		Sound.stop();
+		ConstanteParametres.ID_MUSIQUE=2;
+		Sound.loop();
 	}
 
 	public void paintComponent(Graphics g) {

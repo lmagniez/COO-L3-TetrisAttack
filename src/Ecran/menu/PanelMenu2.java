@@ -43,7 +43,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 	public PanelMenu2(Fenetre vue, EcranMenu e) {
 		this.ecran = e;
 		this.vue = vue;
-		
+		this.setOpaque(false);
 		this.has_cursor=true; 
 		this.pred_panel=this.ecran.p1;
 		NB_BUTTONS_Y = 1;

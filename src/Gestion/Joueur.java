@@ -19,24 +19,29 @@ public class Joueur implements ConstanteJeux {
 	private int x2Grille;
 	private int yGrille;
 	
+	 
+	
 	private int y1;
 	
 	 private int sizex;
 	 private int sizey;
 	 private int indice;
+	 
+	 private int posXG,posYG;
 	
 	private JoueurController controlerJoueur;
 	
-	public Joueur(JoueurController controler,int sizex,int sizey,int indice){
+	public Joueur(int x,int y,JoueurController controler,int sizex,int sizey,int indice){
 		this.x1=5;
 		this.x2=6;
 		this.y1=9;
-		
+		this.posXG=x;
+		this.posYG=y;
 		this.indice=indice;
 		
-		this.x1Grille=PositionGrille1JX+x1*sizex;
-		this.x2Grille=PositionGrille1JX+x2*sizex;
-		this.yGrille=PositionGrille1JY+y1*sizey;	
+		this.x1Grille=posXG+x1*sizex;
+		this.x2Grille=posXG+x2*sizex;
+		this.yGrille=posYG+y1*sizey;	
 		
 		this.sizex=sizex;
 		this.sizey=sizey;
@@ -58,17 +63,17 @@ public class Joueur implements ConstanteJeux {
 
 	public void setX1(int x1) {
 		this.x1 = x1;
-		this.x1Grille=PositionGrille1JX+x1*sizex;
+		this.x1Grille=posXG+x1*sizex;
 	}
 
 	public void setX2(int x2) {
 		this.x2 = x2;
-		this.x2Grille=PositionGrille1JX+x2*sizex;
+		this.x2Grille=posXG+x2*sizex;
 	}
 
 	public void setY1(int y1) {
 		this.y1 = y1;
-		this.yGrille=PositionGrille1JY+y1*sizey;	
+		this.yGrille=posYG+y1*sizey;	
 	}
 
 	public int getyGrille() {

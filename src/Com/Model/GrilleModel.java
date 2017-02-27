@@ -2,17 +2,22 @@ package Com.Model;
 
 import java.util.Random;
 
+import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
-import JComponent.Case;
 
-public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDimension {
+public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
-	public static int[][] tab = new int[nombredecase][nombredeLigne];
+	private Observer joueurVue;
 
-	private final static Random RND = new Random();
+	public int[][] tab = new int[nombredecase][nombredeLigne];
+	public int score = 0;
+	private int id;
 
-	public GrilleModel() {
+	private final Random RND = new Random();
+
+	public GrilleModel(int i) {
+		id=i;
 		initGrille();
 	}
 
@@ -52,15 +57,15 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 		}
 	}
 
-	public static void swapCase(int x1, int x2, int y1) {
+	public void swapCase(int x1, int x2, int y1) {
 		int tmp = tab[x1][y1];
 		tab[x1][y1] = tab[x2][y1];
 		tab[x2][y1] = tmp;
-		JeuxModel.UpdateSwapHorizontal(x1, x2, y1);
-		decendreCube();
+		this.UpdateSwapHorizontal(x1, x2, y1);
+		this.decendreCube();
 	}
 
-	private static void decendreCube() {
+	private void decendreCube() {
 		int tmp;
 		for (int i = 0; i < nombredeLigne - 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {
@@ -68,19 +73,10 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 					tmp = tab[a][i];
 					tab[a][i] = tab[a][i + 1];
 					tab[a][i + 1] = tmp;
-					JeuxModel.UpdateSwapVertical(a, i, i + 1);
+					this.UpdateSwapVertical(a, i, i + 1);
 					i = 0;
 				}
 			}
-		}
-	}
-
-	static void affiche() {
-		for (int i = 0; i < nombredeLigne; i++) {
-			for (int a = 0; a < nombredecase; a++) {
-				System.out.print(tab[a][i] + " ");
-			}
-			System.out.println();
 		}
 	}
 
@@ -97,7 +93,7 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 		recupGrille();
 	}
 
-	public static boolean comboColonne() {
+	public boolean comboColonne() {
 		int nb = 1;
 		int prec;
 		boolean changement = false;
@@ -107,13 +103,15 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 			for (int i = 1; i <= nombredeLigne - reserve; i++) {
 				if (prec != 0 && prec == tab[a][i]) {
 					nb++;
-				} 
-				if(nb >=4 && a == (nombredecase-1) ){
+				}
+				if (nb >= 3 && a == (nombredecase - 1)) {
+					score+=nb*scorepoint;
 					supprimerCaseColonne(a, (i - nb), i);
 					changement = true;
 				}
-				if(prec != tab[a][i]) {
-					if (nb >= 4) {
+				if (prec != tab[a][i]) {
+					if (nb >= 3) {
+						score+=nb*scorepoint;
 						supprimerCaseColonne(a, (i - nb), i);
 						changement = true;
 					}
@@ -125,25 +123,25 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 		return changement;
 	}
 
-	private static void supprimerCaseColonne(int colonne, int indicedepart, int indicefin) {
+	private void supprimerCaseColonne(int colonne, int indicedepart, int indicefin) {
 		for (int i = indicedepart; i < indicefin; i++) {
 			tab[colonne][i] = 0;
-			JeuxModel.UpdateCase(i, colonne, tab[colonne][i]);
-		}
-		decendreCube();
-		decendreCube();
-	}
-	
-	private static void supprimerCaseLigne(int ligne, int indicedepart, int indicefin) {
-		for (int i = indicedepart; i < indicefin; i++) {
-			tab[i][ligne] = 0;
-			JeuxModel.UpdateCase(ligne,i,tab[i][ligne]);
+			this.UpdateCase(i, colonne, tab[colonne][i]);
 		}
 		decendreCube();
 		decendreCube();
 	}
 
-	public static boolean comboLigne() {
+	private void supprimerCaseLigne(int ligne, int indicedepart, int indicefin) {
+		for (int i = indicedepart; i < indicefin; i++) {
+			tab[i][ligne] = 0;
+			this.UpdateCase(ligne, i, tab[i][ligne]);
+		}
+		decendreCube();
+		decendreCube();
+	}
+
+	public boolean comboLigne() {
 		int nb = 1;
 		int prec;
 		boolean changement = false;
@@ -153,14 +151,16 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 			for (int a = 0; a < nombredecase; a++) {
 				if (prec != 0 && prec == tab[a][i]) {
 					nb++;
-				} 
-				if(nb >=4 && a == (nombredecase-1) ){
-					supprimerCaseLigne(i, (a - (nb-1)), a);
+				}
+				if (nb >= 3 && a == (nombredecase - 1)) {
+					score+=nb*scorepoint;
+					supprimerCaseLigne(i, (a - (nb - 1)), a);
 					changement = true;
 				}
-				if(prec != tab[a][i]) {
-					if (nb >=4) {
-						supprimerCaseLigne(i, (a - (nb-1)), a);
+				if (prec != tab[a][i]) {
+					if (nb >= 3) {
+						score+=nb*scorepoint;
+						supprimerCaseLigne(i, (a - (nb - 1)), a);
 						changement = true;
 					}
 					prec = tab[a][i];
@@ -171,4 +171,25 @@ public class GrilleModel extends JeuxModel implements ConstanteJeux, ConstanteDi
 		return changement;
 	}
 
+	public void UpdateCase(int y, int x, int val) {
+		joueurVue.updateCase(id,y, x, val);
+	}
+
+	public void UpdateSwapHorizontal(int x1, int x2, int y) {
+		joueurVue.swaphorizontal(x1, x2, y);
+	}
+
+	public void UpdateSwapVertical(int x, int y1, int y2) {
+		joueurVue.swapvertical(x, y1, y2);
+	}
+	
+	public void add(Observer joueurVue){
+		this.joueurVue=joueurVue;
+	}
+
+	public void swap(int x1, int x2, int y1){
+		this.swapCase(x1, x2, y1);
+		while(this.comboColonne()){}
+		while(this.comboLigne()){}
+	}
 }

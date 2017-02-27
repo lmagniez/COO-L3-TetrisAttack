@@ -90,7 +90,7 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 		
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
 				300, 300);
-		
+		this.setOpaque(false);
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.setVisible(true);

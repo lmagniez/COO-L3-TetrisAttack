@@ -31,14 +31,15 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public Jeux1j(Fenetre f) {
 		fen = f;
 
-		modelGrille = new GrilleModel();
+		modelGrille = new GrilleModel(1);
 		controlerGrille = new GrilleControler(modelGrille);
-		g = new Grille(controlerGrille);
+		g = new Grille(controlerGrille,PositionGrille1JX,PositionGrille1JY);
+		modelGrille.add(this);
 
-		modelJoueur = new JoueurModel();
-		controlerJoueur = new JoueurController(modelJoueur);
-		j = new Joueur(controlerJoueur, g.tailleX(), g.tailleY(),1);
-		modelJoueur.addObserverJeux(this);
+		modelJoueur = new JoueurModel(1);
+		controlerJoueur = new JoueurController(modelJoueur,controlerGrille);
+		j = new Joueur(PositionGrille1JX,PositionGrille1JY,controlerJoueur, g.tailleX(), g.tailleY(),1);
+		modelJoueur.add(this);
 
 		g.init();
 
@@ -105,7 +106,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void updateJoueur(int x1, int x2, int y) {
+	public void updateJoueur(int id,int x1, int x2, int y) {
 		this.j.setX1(x1);
 		this.j.setX2(x2);
 		this.j.setY1(y);
@@ -113,7 +114,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void updateCase(int y, int x, int val) {
+	public void updateCase(int j , int y, int x, int val) {
 		this.g.updateCase(y, x, val);
 		repaint();
 	}

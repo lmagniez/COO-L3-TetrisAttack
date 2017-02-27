@@ -77,7 +77,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		this.setVisible(true);
 		this.requestFocusInWindow();
 		this.setMaximumSize(new Dimension(300,500));
-		
+		this.setOpaque(false);
 
 		
 		

@@ -113,30 +113,8 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void lancementAnimation() {
-		animation(controlerGrille1, controlerJoueur1, g1, j1);
-		animation(controlerGrille2, controlerJoueur2, g2, j2);
-	}
-
-	public void animation(GrilleControler controlerGrille, JoueurController controlerJoueur, Grille g, Joueur j) {
-		Thread thread = new Thread(new Runnable() {
-			public void run() {
-				Joueur myj = j;
-				GrilleControler controlGrille = controlerGrille;
-				JoueurController controlJoueur = controlerJoueur;
-				int taille = 0;
-				int i = 0;
-				while (g.isAnimationHaut()) {
-					try {
-						controlJoueur.verifUp(myj.getY1());
-						controlGrille.ajoutLigne();
-						Thread.sleep(2500);
-					} catch (InterruptedException e) {
-					}
-
-				}
-			}
-		});
-		thread.start();
+		controlerJoueur1.animation();
+		controlerJoueur2.animation();
 	}
 
 	private void creerlayout() {

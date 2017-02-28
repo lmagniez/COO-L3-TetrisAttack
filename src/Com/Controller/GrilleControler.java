@@ -16,6 +16,8 @@ public class GrilleControler {
 		grilleModel.recupGrille();
 	}
 
+	
+	
 	public void ajoutLigne() {
 		grilleModel.ajoutGrille();
 	}

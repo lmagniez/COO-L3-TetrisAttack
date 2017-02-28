@@ -47,6 +47,19 @@ public class JoueurModel {
 	public void add(Observer jeux1j) {
 		this.joueurVue=jeux1j;
 	}
+
+	public int getX1() {
+		return x1;
+	}
+
+	public int getX2() {
+		return x2;
+	}
+
+	public int getY1() {
+		return y1;
+	}
+	
 	
 	
 }

@@ -35,7 +35,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected boolean deplacementJoueur = true;
 	private MyKeyAdapter adapt = new MyKeyAdapter();
 
-	public Jeux1j(Fenetre f) {
+	public Jeux1j(Fenetre f, int indiceTheme) {
 		fen = f;
 
 		modelGrille = new GrilleModel(1);
@@ -60,22 +60,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void animation() {
-		Thread thread = new Thread(new Runnable() {
-			public void run() {
-				int taille = 0;
-				int i = 0;
-				while (g.isAnimationHaut()) {
-					try {
-						Jeux1j.this.controlerJoueur.verifUp(Jeux1j.this.j.getY1());
-						Jeux1j.this.controlerGrille.ajoutLigne();
-						Thread.sleep(2500);
-					} catch (InterruptedException e) {
-					}
-
-				}
-			}
-		});
-		thread.start();
+		controlerJoueur.animation();
 	}
 
 	public void threadClavier() {

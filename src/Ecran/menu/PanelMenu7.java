@@ -69,6 +69,7 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 		}
 		
 		cptButton++;
+		
 		for (int i = 0; i < 3; i++) {
 			buttons[cptButton][i] = icon[i + 3];
 		}
@@ -96,7 +97,8 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		vue.afficheJeu1J();
+		int indiceT = ((JoueurIcon) e.getSource()).getIconId();
+		vue.afficheJeu1J(indiceT);
 		Sound.stop();
 		ConstanteParametres.ID_MUSIQUE=2;
 		Sound.loop();

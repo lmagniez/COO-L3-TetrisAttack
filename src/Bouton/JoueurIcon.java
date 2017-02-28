@@ -20,9 +20,12 @@ import Constante.ConstanteImage;
 public class JoueurIcon extends JButton{
 
 	private int icon;
+	private int idJ;
+	
 	public JoueurIcon(JPanel p,int s){
 		super(ConstanteImage.icon[s]);
 		this.icon=s;
+		idJ=1;
 		this.setPreferredSize(new Dimension(50,50));
 		this.setFont(new Font("Verdana", Font.BOLD, 20));
 		setBorderPainted(false);
@@ -35,7 +38,26 @@ public class JoueurIcon extends JButton{
 		this.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
 	
+	public JoueurIcon(JPanel panelMenu8, int i, int j) {
+		this(panelMenu8,i);
+		idJ=j;
+	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	}
+
+	public int getIconId() {
+		return icon;
+	}
+
+	public void setIcon(int icon) {
+		this.icon = icon;
+	}
+
+	public int getIdJ() {
+		return idJ;
+	}
+	
+	
 }

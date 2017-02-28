@@ -61,9 +61,9 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		swapEcran(getM());
 	}
 
-	public void afficheJeu1J() {
+	public void afficheJeu1J(int indiceTheme) {
 		this.setFocusable(false);
-		j1= new Jeux1j(this);
+		j1= new Jeux1j(this,indiceTheme);
 		swapEcran(j1);
 		j1.lancementAnimation();
 		j1.focus();

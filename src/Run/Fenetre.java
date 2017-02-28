@@ -17,8 +17,8 @@ import Ecran.titre.EcranTitre;
 
 public class Fenetre extends JFrame implements ConstanteDimension {
 
-	private Jeux1j j1 = new Jeux1j(this);
-	private Jeux2j j2 = new Jeux2j(this);
+	private Jeux1j j1;
+	private Jeux2j j2;
 	protected EcranMenu m;
 
 	protected EcranTitre title = new EcranTitre(this);
@@ -62,17 +62,18 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 	}
 
 	public void afficheJeu1J() {
-		this.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent e) {
-				Fenetre.this.j1.getJ().keyPressed(e);
-			}
-		});
+		this.setFocusable(false);
+		j1= new Jeux1j(this);
 		swapEcran(j1);
 		j1.lancementAnimation();
+		j1.focus();
+		j1.threadClavier();
 	}
 	
 	public void afficheJeu2J() {
+		j2= new Jeux2j(this);
 		swapEcran(j2);
+		this.setFocusable(false);
 		j2.lancementAnimation();
 		j2.focus();
 		j2.threadClavier();

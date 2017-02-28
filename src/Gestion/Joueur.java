@@ -103,34 +103,6 @@ public class Joueur implements ConstanteJeux {
 		g.drawRect(x2Grille, yGrille, sizex, sizey);
 	}
 
-	public void keyPressed(KeyEvent e) {
-		int keyCode = e.getKeyCode();
-		switch (keyCode) {
-		case KeyEvent.VK_UP:
-			controlerJoueur.verifUp(y1);
-			break;
-		case KeyEvent.VK_DOWN:
-			controlerJoueur.verifDown(y1);
-			break;
-		case KeyEvent.VK_LEFT:
-			controlerJoueur.verifLeft(x1);
-			break;
-		case KeyEvent.VK_RIGHT:
-			controlerJoueur.verifRigth(x2);
-			break;
-		case KeyEvent.VK_A:
-			controlerJoueur.actionswap(x1, x2, y1);
-			break;
-		case KeyEvent.VK_M:
-			Sound.changerParam();
-			break;
-		case KeyEvent.VK_ESCAPE:
-		default:
-			return;
-		}
-
-	}
-
 	public void setScore(int score) {
 		this.score.setText(Integer.toString(score));
 		this.score.repaint();

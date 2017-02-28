@@ -27,7 +27,7 @@ public class JoueurController implements ConstanteJeux {
 	}
 
 	public void verifDown(int y1) {
-		if (y1 != nombredeLigne - reserve-1) {
+		if (y1 != nombredeLigne - reserve -2) {
 			this.joueurModel.changeBas();
 		}
 	}

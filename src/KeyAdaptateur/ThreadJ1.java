@@ -26,7 +26,6 @@ public class ThreadJ1 extends Thread {
 			controlerJoueur.verifUp(y);
 		}
 		if (isSPressed) {
-			System.out.println("Y: "+ y);
 			controlerJoueur.verifDown(y);
 		}
 		if (isQPressed) {

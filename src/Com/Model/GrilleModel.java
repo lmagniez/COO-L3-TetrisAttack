@@ -17,7 +17,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	private final Random RND = new Random();
 
 	public GrilleModel(int i) {
-		id=i;
+		id = i;
 		initGrille();
 	}
 
@@ -105,13 +105,13 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 					nb++;
 				}
 				if (nb >= 3 && a == (nombredecase - 1)) {
-					score+=nb*scorepoint;
+					score += nb * scorepoint;
 					supprimerCaseColonne(a, (i - nb), i);
 					changement = true;
 				}
 				if (prec != tab[a][i]) {
 					if (nb >= 3) {
-						score+=nb*scorepoint;
+						score += nb * scorepoint;
 						supprimerCaseColonne(a, (i - nb), i);
 						changement = true;
 					}
@@ -120,6 +120,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
+		joueurVue.score(id,score);
 		return changement;
 	}
 
@@ -153,13 +154,13 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 					nb++;
 				}
 				if (nb >= 3 && a == (nombredecase - 1)) {
-					score+=nb*scorepoint;
+					score += nb * scorepoint;
 					supprimerCaseLigne(i, (a - (nb - 1)), a);
 					changement = true;
 				}
 				if (prec != tab[a][i]) {
 					if (nb >= 3) {
-						score+=nb*scorepoint;
+						score += nb * scorepoint;
 						supprimerCaseLigne(i, (a - (nb - 1)), a);
 						changement = true;
 					}
@@ -168,28 +169,31 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
+		joueurVue.score(id, score);
 		return changement;
 	}
 
 	public void UpdateCase(int y, int x, int val) {
-		joueurVue.updateCase(id,y, x, val);
+		joueurVue.updateCase(id, y, x, val);
 	}
 
 	public void UpdateSwapHorizontal(int x1, int x2, int y) {
-		joueurVue.swaphorizontal(x1, x2, y);
+		joueurVue.swaphorizontal(id, x1, x2, y);
 	}
 
 	public void UpdateSwapVertical(int x, int y1, int y2) {
-		joueurVue.swapvertical(x, y1, y2);
-	}
-	
-	public void add(Observer joueurVue){
-		this.joueurVue=joueurVue;
+		joueurVue.swapvertical(id, x, y1, y2);
 	}
 
-	public void swap(int x1, int x2, int y1){
+	public void add(Observer joueurVue) {
+		this.joueurVue = joueurVue;
+	}
+
+	public void swap(int x1, int x2, int y1) {
 		this.swapCase(x1, x2, y1);
-		while(this.comboColonne()){}
-		while(this.comboLigne()){}
+		while (this.comboColonne()) {
+		}
+		while (this.comboLigne()) {
+		}
 	}
 }

@@ -75,6 +75,7 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		swapEcran(j2);
 		j2.lancementAnimation();
 		j2.focus();
+		j2.threadClavier();
 	}
 
 	public void swapEcran(JPanel j) {

@@ -137,4 +137,8 @@ public class MyKeyAdapter extends KeyAdapter {
 	public boolean isPresser() {
 		return presser;
 	}
+
+	public void doActionD() {
+		
+	}
 }

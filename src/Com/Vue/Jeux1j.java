@@ -73,6 +73,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private void creerlayout() {
 		this.setLayout(null);
 		this.add(g);
+		this.add(j.getScore());
 	}
 
 	public void focus() {
@@ -94,13 +95,13 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void swaphorizontal(int x1, int x2, int y) {
+	public void swaphorizontal(int j, int x1, int x2, int y) {
 		this.g.swaphorizontal(x1, x2, y);
 		this.repaint();
 	}
 
 	@Override
-	public void swapvertical(int x, int y1, int y2) {
+	public void swapvertical(int j,int x, int y1, int y2) {
 		this.g.swapvertical(x, y1, y2);
 		this.repaint();
 	}
@@ -118,5 +119,12 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.g.updateCase(y, x, val);
 		repaint();
 	}
+
+	@Override
+	public void score(int id, int score) {
+		this.j.setScore(score);
+	}
+	
+	
 
 }

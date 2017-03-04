@@ -10,7 +10,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	private Observer joueurVue;
 
-	public int[][] tab = new int[nombredecase][nombredeLigne];
+	public ValeurCase[][] tab = new ValeurCase[nombredecase][nombredeLigne];
 	public int score = 0;
 	private int id;
 
@@ -27,28 +27,38 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 	}
 
+	/**
+	 * Initialisation? Création de colonne
+	 * @param a abscisse
+	 */
 	private void creercolonne(int a) {
 		int val, nombrelignedessin = 2 + RND.nextInt(5 - 0);
 		;
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
 				val = 1 + RND.nextInt(5 - 0);
-				tab[a][i] = val;
+				tab[a][i] = ValeurCase.fromInteger(val);
 			} else {
-				tab[a][i] = 0;
+				tab[a][i] = ValeurCase.VIDE;
 			}
 
 		}
 	}
 
+	/**
+	 * Génére une ligne aléatoire et l'ajoute au fond de la grille
+	 */
 	private void generationLigne() {
 		int val;
 		for (int i = 0; i < nombredecase; i++) {
 			val = 1 + RND.nextInt(6 - 1);
-			tab[i][nombredeLigne - 1] = val;
+			tab[i][nombredeLigne - 1] = ValeurCase.fromInteger(val);
 		}
 	}
 
+	/**
+	 * Envoi la grille du modèle à la vue
+	 */
 	public void recupGrille() {
 		for (int i = 0; i < nombredeLigne; i++) {
 			for (int a = 0; a < nombredecase; a++) {
@@ -57,8 +67,14 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 	}
 
+	/**
+	 * Swap entre deux cases adjacentes horizontalement
+	 * @param x1
+	 * @param x2
+	 * @param y1
+	 */
 	public void swapCase(int x1, int x2, int y1) {
-		int tmp = tab[x1][y1];
+		ValeurCase tmp = tab[x1][y1];
 		tab[x1][y1] = tab[x2][y1];
 		tab[x2][y1] = tmp;
 		this.UpdateSwapHorizontal(x1, x2, y1);
@@ -66,10 +82,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 
 	private void decendreCube() {
-		int tmp;
+		ValeurCase tmp;
 		for (int i = 0; i < nombredeLigne - 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {
-				if (tab[a][i + 1] == 0 && tab[a][i] != 0) {
+				if (tab[a][i + 1] == ValeurCase.VIDE && tab[a][i] != ValeurCase.VIDE) {
 					tmp = tab[a][i];
 					tab[a][i] = tab[a][i + 1];
 					tab[a][i + 1] = tmp;
@@ -81,7 +97,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 
 	public void ajoutGrille() {
-		int tmp;
+		ValeurCase tmp;
 		for (int i = 0; i < nombredeLigne - 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {
 				tmp = tab[a][i + 1];
@@ -95,13 +111,13 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	public boolean comboColonne() {
 		int nb = 1;
-		int prec;
+		ValeurCase prec;
 		boolean changement = false;
 		for (int a = 0; a < nombredecase; a++) {
 			prec = tab[a][0];
 			nb = 1;
 			for (int i = 1; i <= nombredeLigne - reserve; i++) {
-				if (prec != 0 && prec == tab[a][i]) {
+				if (prec != ValeurCase.VIDE && prec == tab[a][i]) {
 					nb++;
 				}
 				if (nb >= 3 && a == (nombredecase - 1)) {
@@ -126,7 +142,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	private void supprimerCaseColonne(int colonne, int indicedepart, int indicefin) {
 		for (int i = indicedepart; i < indicefin; i++) {
-			tab[colonne][i] = 0;
+			tab[colonne][i] = ValeurCase.VIDE;
 			this.UpdateCase(i, colonne, tab[colonne][i]);
 		}
 		decendreCube();
@@ -135,7 +151,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	private void supprimerCaseLigne(int ligne, int indicedepart, int indicefin) {
 		for (int i = indicedepart; i < indicefin; i++) {
-			tab[i][ligne] = 0;
+			tab[i][ligne] = ValeurCase.VIDE;
 			this.UpdateCase(ligne, i, tab[i][ligne]);
 		}
 		decendreCube();
@@ -144,13 +160,13 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	public boolean comboLigne() {
 		int nb = 1;
-		int prec;
+		ValeurCase prec;
 		boolean changement = false;
 		for (int i = 1; i <= nombredeLigne - 1 - reserve; i++) {
 			prec = tab[0][i];
 			nb = 1;
 			for (int a = 0; a < nombredecase; a++) {
-				if (prec != 0 && prec == tab[a][i]) {
+				if (prec != ValeurCase.VIDE && prec == tab[a][i]) {
 					nb++;
 				}
 				if (nb >= 3 && a == (nombredecase - 1)) {
@@ -173,8 +189,8 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		return changement;
 	}
 
-	public void UpdateCase(int y, int x, int val) {
-		joueurVue.updateCase(id, y, x, val);
+	public void UpdateCase(int y, int x, ValeurCase tab2) {
+		joueurVue.updateCase(id, y, x, tab2);
 	}
 
 	public void UpdateSwapHorizontal(int x1, int x2, int y) {

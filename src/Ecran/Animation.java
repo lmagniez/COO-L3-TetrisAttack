@@ -33,7 +33,7 @@ public class Animation {
 		this.nbImage=nbImage;
 		this.p=p;
 	}
-	
+
 	public void updateCpt()
 	{
 		cpt= (cpt + 1) % nbImage;
@@ -69,7 +69,13 @@ public class Animation {
 		this.posY = posY;
 	}
 		
-	
+	public Image getImg() {
+		return img;
+	}
+
+	public void setImg(Image img) {
+		this.img = img;
+	}
 	
 	
 

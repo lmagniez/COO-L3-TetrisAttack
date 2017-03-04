@@ -3,30 +3,46 @@ package JComponent;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import Com.Controller.GrilleControler;
+import Com.Model.ValeurCase;
 import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 
-public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux {
+public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux, ActionListener {
 
 	private boolean animationHaut = true;
 	private boolean gameOver = false;
 
+	private JPanel jeu;
 	private int posGx,posGy;
-	public Case[][] tab = new Case[nombredecase][nombredeLigne];
+	private Case[][] tab = new Case[nombredecase][nombredeLigne];
 
 	private GrilleControler controlerGrille;
-
+	//public static ValeurCase[] couleurs=new ValeurCase[ConstanteJeux.nombreCouleur];
+	private Timer timer;
+	
 	private int y;
 	private int tailleny, taillenx;
 
-	public Grille(GrilleControler controler,int x,int y) {
+	
+	/**
+	 * Constructeur
+	 * @param jeu JPanel intégrant la grille
+	 * @param controler controler
+	 * @param x abscisse grille
+	 * @param y ordonnée grille
+	 */
+	public Grille(JPanel jeu, GrilleControler controler,int x,int y) {
+		this.jeu=jeu;
 		controlerGrille = controler;
 		posGx=x;
 		posGy=y;
@@ -35,18 +51,49 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 
 		this.setPreferredSize(new Dimension(DimensionGrillex, DimensionGrilley));
 		setBackground(new Color(0, 0, 0, 90));
+		
+		//pour faciliter dessin grille
+		/*
+		for(int i=0; i<ConstanteJeux.nombreCouleur; i++){
+			couleurs[i]=ValeurCase.fromInteger(i);
+		}*/
+		
+		timer = new Timer(100, this);
+		timer.start();
+		
+		
 	}
 
+	
+	public void actionPerformed(ActionEvent e){
+		if (e.getSource() == timer){
+			System.out.println("TIMEEEEEEEEEEEEEEER");
+			//repaint();
+			//cptyoshi1 = (cptyoshi1 + 1) % NB_IMAGE;
+			for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
+				for (int i = 0; i < nombredecase; i++) {
+					tab[i][a].animBloc.updateCpt();
+					tab[i][a].animBloc.setPosX(posGx+ (i+1) * taillenx);
+					tab[i][a].animBloc.setPosY(posGy+ (a+1) * tailleny);
+				}
+			}
+			jeu.repaint();	
+		}
+		else if (e.getActionCommand().equals("arreter")) timer.stop();
+		else if (e.getActionCommand().equals("reprendre")) timer.restart();
+		
+	}
+	
 	public void init() {controlerGrille.initGrille();}
 
 	public void swaphorizontal(int x1, int x2, int y) {
-		int value = tab[x1][y].getValeur();
+		ValeurCase value = tab[x1][y].getValeur();
 		this.tab[x1][y].setValeur(this.tab[x2][y].getValeur());
 		this.tab[x2][y].setValeur(value);
 	}
 
 	public void swapvertical(int x, int y1, int y2) {
-		int value = tab[x][y2].getValeur();
+		ValeurCase value = tab[x][y2].getValeur();
 		this.tab[x][y2].setValeur(this.tab[x][y1].getValeur());
 		this.tab[x][y1].setValeur(value);
 	}
@@ -60,36 +107,62 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		}
 	}
 	
+	/*
 	public void dessinerGrille(Graphics g) {
+		
 		for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
 			for (int i = 0; i < nombredecase; i++) {
+				tab[i][a].animBloc.updateCpt();
+				tab[i][a].animBloc.setPosX(posGx+ (i+1) * taillenx);
+				tab[i][a].animBloc.setPosY(posGy+ (a+1) * tailleny);
+				tab[i][a].animBloc.draw(g);
+				/*
 				switch (tab[i][a].getValeur()) {
-				case 0:
+				case VIDE:
 					g.setColor(transparent);
 					break;
-				case 1:
+				case CYAN:
 					g.setColor(couleur1); //
 					break;
-				case 2:
+				case ROUGE:
 					g.setColor(couleur2); //
 					break;
-				case 3:
+				case JAUNE:
 					g.setColor(couleur3); //
 					break;
-				case 4:
+				case VERT:
 					g.setColor(couleur4); //
 					break;
-				case 5:
+				case VIOLET:
 					g.setColor(couleur5); //
 					break;
-				case 6:
+				case BLEU:
 					g.setColor(couleur6); //
 					break;
+				case GRIS:
+					g.setColor(couleur7); //
+					break;
 				}
+				
+				
+				
 				g.fillRect(posGx+ i * taillenx, posGy +a * tailleny, taillenx, tailleny);
+				
+				
+				
 			}
 		}
 	}
+	*/
+	
+	public void paintComponent(Graphics g){
+		for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
+			for (int i = 0; i < nombredecase; i++) {
+				tab[i][a].animBloc.draw(g);
+			}
+		}
+	}
+	
 
 	public int tailleX() {
 		return taillenx;
@@ -99,8 +172,8 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		return tailleny;
 	}
 
-	public void updateCase(int y, int x, int val) {
-		tab[x][y] = new Case(x * taillenx, y * tailleny, taillenx, tailleny, val);
+	public void updateCase(int y, int x, ValeurCase val) {
+		tab[x][y] = new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, val);
 	}
 
 	public boolean isAnimationHaut() {

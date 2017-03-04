@@ -1,5 +1,6 @@
 package Com.Vue;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.util.concurrent.TimeUnit;
@@ -10,6 +11,7 @@ import Com.Controller.GrilleControler;
 import Com.Controller.JoueurController;
 import Com.Model.GrilleModel;
 import Com.Model.JoueurModel;
+import Com.Model.ValeurCase;
 import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
@@ -46,12 +48,14 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected boolean deplacementJoueur = true;
 	private MyKeyAdapter adapt = new MyKeyAdapter();
 
+	private boolean drawOnce=true;
+	
 	public Jeux2j(Fenetre f) {
 		fen = f;
 
 		modelGrille1 = new GrilleModel(1);
 		controlerGrille1 = new GrilleControler(modelGrille1);
-		g1 = new Grille(controlerGrille1, PositionGrille2JX1, PositionGrille2JY1);
+		g1 = new Grille(this, controlerGrille1, PositionGrille2JX1, PositionGrille2JY1);
 		modelGrille1.add(this);
 
 		modelJoueur1 = new JoueurModel(1);
@@ -61,7 +65,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		modelGrille2 = new GrilleModel(2);
 		controlerGrille2 = new GrilleControler(modelGrille2);
-		g2 = new Grille(controlerGrille2, PositionGrille2JX2, PositionGrille2JY2);
+		g2 = new Grille(this, controlerGrille2, PositionGrille2JX2, PositionGrille2JY2);
 		modelGrille2.add(this);
 
 		modelJoueur2 = new JoueurModel(2);
@@ -131,9 +135,22 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void paintComponent(Graphics g) {
-		(this.g1).dessinerGrille(g);
+		
+		this.removeAll();
+		this.revalidate();
+		this.validate();
+		
+		if(this.drawOnce){
+			Color c = Color.black;
+			g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
+			//drawOnce=false;
+		}
+		
+		(this.g1).paintComponent(g);
+		//(this.g1).dessinerGrille(g);
 		(this.j1).dessinerJoueur(g);
-		(this.g2).dessinerGrille(g);
+		(this.g2).paintComponent(g);
+		//(this.g2).dessinerGrille(g);
 		(this.j2).dessinerJoueur(g);
 	}
 
@@ -175,7 +192,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void updateCase(int j, int y, int x, int val) {
+	public void updateCase(int j, int y, int x, ValeurCase val) {
 		if (j == 1)
 			this.g1.updateCase(y, x, val);
 		else
@@ -192,4 +209,6 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		repaint();
 	}
 
+	
+	
 }

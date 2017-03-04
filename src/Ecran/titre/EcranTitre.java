@@ -131,10 +131,13 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		titleImg=new ImageIcon("./ressources/Accueil/title.png").getImage();
 		
 		yoshi1Img=new ImageIcon("./ressources/Accueil/Yoshi1/feuille.png").getImage();
+		
 		yoshi2Img=new ImageIcon("./ressources/Accueil/Yoshi2/spriteSheet.png").getImage();
 		yoshi3Img=new ImageIcon("./ressources/Accueil/Yoshi3/spriteSheet.png").getImage();
 		yoshi4Img=new ImageIcon("./ressources/Accueil/Yoshi4/spriteSheet.png").getImage();
 		yoshi5Img=new ImageIcon("./ressources/Accueil/Yoshi4/spriteSheet2.png").getImage();
+		
+		
 		
 		//press=new ImageIcon("./ressources/Accueil/pushKey.gif").getImage();
 		

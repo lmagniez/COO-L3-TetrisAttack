@@ -80,10 +80,18 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 	}
 
 	public void swapEcran(JPanel j) {
+		//this.removeAll();
+		
 		getContentPane().removeAll();
+		getContentPane().revalidate();
 		getContentPane().repaint();
+		
 		this.add(j);
-		validate();
+		
+		//this.revalidate();
+		//this.repaint();
+		
+		//validate();
 	}
 
 	public EcranMenu getM() {

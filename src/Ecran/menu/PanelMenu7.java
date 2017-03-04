@@ -21,6 +21,12 @@ import Constante.ConstanteParametres;
 import Run.Fenetre;
 import Run.Sound;
 
+
+/**
+ * CHOIX DES PERSOS J1
+ * @author loick
+ *
+ */
 public class PanelMenu7 extends PanelMenu implements ActionListener {
 
 	private JButton[] icon = new JoueurIcon[6];
@@ -96,6 +102,9 @@ public class PanelMenu7 extends PanelMenu implements ActionListener {
 
 	}
 
+	/**
+	 * ActionPerformed démarrant le jeu
+	 */
 	public void actionPerformed(ActionEvent e) {
 		int indiceT = ((JoueurIcon) e.getSource()).getIconId();
 		vue.afficheJeu1J(indiceT);

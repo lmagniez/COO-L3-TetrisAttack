@@ -1,5 +1,6 @@
 package Com.Vue;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 
@@ -9,6 +10,7 @@ import Com.Controller.GrilleControler;
 import Com.Controller.JoueurController;
 import Com.Model.GrilleModel;
 import Com.Model.JoueurModel;
+import Com.Model.ValeurCase;
 import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
@@ -40,7 +42,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		modelGrille = new GrilleModel(1);
 		controlerGrille = new GrilleControler(modelGrille);
-		g = new Grille(controlerGrille, PositionGrille1JX, PositionGrille1JY);
+		g = new Grille(this, controlerGrille, PositionGrille1JX, PositionGrille1JY);
 		modelGrille.add(this);
 
 		modelJoueur = new JoueurModel(1);
@@ -77,7 +79,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 						tA.setDPressed(adapt.isDPressed());
 						tA.setFPressed(adapt.isFPressed());
 						tA.run(Jeux1j.this.j.getX1(), Jeux1j.this.j.getX2(), Jeux1j.this.j.getY1());
-						Thread.sleep(100);
+						Thread.sleep(150);
 					} catch (InterruptedException e) {
 					}
 					Toolkit.getDefaultToolkit().sync();
@@ -99,7 +101,11 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void paintComponent(Graphics g) {
-		(this.g).dessinerGrille(g);
+		Color c = Color.black;
+		g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
+		
+		(this.g).paintComponent(g);
+		//(this.g).dessinerGrille(g);
 		(this.j).dessinerJoueur(g);
 	}
 
@@ -124,9 +130,9 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void updateCase(int j, int y, int x, int val) {
+	public void updateCase(int j, int y, int x, ValeurCase val) {
 		this.g.updateCase(y, x, val);
-		repaint();
+		//repaint();
 	}
 
 	@Override

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Com.Vue.Jeux1j;
+import Com.Vue.Jeux2j;
 import Constante.ConstanteDimension;
 import Constante.ConstanteMusique;
 import Constante.ConstanteParametres;
@@ -16,7 +17,8 @@ import Ecran.titre.EcranTitre;
 
 public class Fenetre extends JFrame implements ConstanteDimension {
 
-	private Jeux1j j1 = new Jeux1j(this);
+	private Jeux1j j1;
+	private Jeux2j j2;
 	protected EcranMenu m;
 
 	protected EcranTitre title = new EcranTitre(this);
@@ -32,27 +34,11 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 
 		this.m = new EcranMenu(this);
 
-		this.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent e) {
-				Fenetre.this.j1.getJ().keyPressed(e);
-			}
-		});
-
-		//j1.focus();
-
-		//this.add(j1);
-		
 		Sound.changerMusique(ConstanteMusique.MUSIQUE_TITRE);
 		
-		//ConstanteParametres.ID_MUSIQUE=0;
-		//Sound.loop();
-		
 		this.add(title);
-		// this.add(credit);
 		this.setVisible(true);
 		title.requestFocus();
-		// this.afficherPanneau(m);
-		// m.requestFocusInWindow();
 	}
 
 	/**
@@ -75,9 +61,22 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		swapEcran(getM());
 	}
 
-	public void afficheJeu1J() {
+	public void afficheJeu1J(int indiceTheme) {
+		this.setFocusable(false);
+		j1= new Jeux1j(this,indiceTheme);
 		swapEcran(j1);
 		j1.lancementAnimation();
+		j1.focus();
+		j1.threadClavier();
+	}
+	
+	public void afficheJeu2J() {
+		j2= new Jeux2j(this);
+		swapEcran(j2);
+		this.setFocusable(false);
+		j2.lancementAnimation();
+		j2.focus();
+		j2.threadClavier();
 	}
 
 	public void swapEcran(JPanel j) {

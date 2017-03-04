@@ -44,7 +44,7 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 			posButtonY[i][0]=180+50*i;
 		}
 		
-		
+		this.setOpaque(false);
 		this.ecran=e;
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.vue=vue;

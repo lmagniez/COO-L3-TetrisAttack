@@ -1,5 +1,6 @@
 package Ecran.menu;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 
@@ -28,5 +29,5 @@ public abstract class PanelMenu extends JPanel {
 	public EcranMenu getEcran(){
 		return ecran;
 	}
-	
+
 }

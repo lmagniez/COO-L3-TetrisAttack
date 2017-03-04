@@ -69,7 +69,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		//this.setLayout(new BorderLayout());
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		
-		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/10,
+		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/4,
 				300, 300);
 		
 		this.setBackground(new Color(90, 90, 90));
@@ -77,7 +77,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		this.setVisible(true);
 		this.requestFocusInWindow();
 		this.setMaximumSize(new Dimension(300,500));
-		
+		this.setOpaque(false);
 
 		
 		
@@ -96,12 +96,15 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		
 		for(int i=0; i<NB_ECRANS; i++)
 		{
-			labels[i]=new JLabel();
-			labels[i].setIcon(img[i]);
-			reglePanels[i]=new JPanel();
-			reglePanels[i].add(labels[i]);
 			
-			//reglePanels[i].add(regleLabels[i]);
+			labels[i]=new JLabel(img[i]);
+			labels[i].setBounds(20, 20, 250, 250);
+
+			
+			reglePanels[i]=new JPanel();
+			reglePanels[i].setOpaque(false);
+			reglePanels[i].setBounds(0, 0, 300, 300);
+			reglePanels[i].add(labels[i]);
 			
 			cardPanel.add(reglePanels[i], ECRANS[i]);
 		}

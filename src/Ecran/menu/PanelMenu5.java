@@ -29,7 +29,9 @@ import Run.Fenetre;
 
 
 
-
+/**
+ * Ecran de Credit
+ */
 public class PanelMenu5 extends PanelMenu implements ActionListener{
 	
 	
@@ -66,14 +68,14 @@ public class PanelMenu5 extends PanelMenu implements ActionListener{
 		
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		
-		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/10,
-				300, 300);
-		
+		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/4,
+				400, 400);
+		this.setOpaque(false);
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.setVisible(true);
 		this.requestFocusInWindow();
-		this.setMaximumSize(new Dimension(300,500));
+		this.setMaximumSize(new Dimension(300,300));
 		
 
 		cardPanel=new JPanel();

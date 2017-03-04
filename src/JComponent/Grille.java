@@ -18,6 +18,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	private boolean animationHaut = true;
 	private boolean gameOver = false;
 
+	private int posGx,posGy;
 	public Case[][] tab = new Case[nombredecase][nombredeLigne];
 
 	private GrilleControler controlerGrille;
@@ -25,8 +26,10 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	private int y;
 	private int tailleny, taillenx;
 
-	public Grille(GrilleControler controler) {
+	public Grille(GrilleControler controler,int x,int y) {
 		controlerGrille = controler;
+		posGx=x;
+		posGy=y;
 		tailleny = DimensionGrilley / (nombredeLigne - 2 * reserve);
 		taillenx = DimensionGrillex / nombredecase;
 
@@ -35,17 +38,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 
 	public void init() {controlerGrille.initGrille();}
-
-
-	/*
-	 * protected void decalagetab() { for (int a = 0; a < nombredeLigne - 1;
-	 * a++) { for (int i = 0; i < nombredecase; i++) {
-	 * tab[i][a].setValeur(tab[i][a + 1].getValeur()); tab[i][a].setX(tab[i][a +
-	 * 1].getX()); tab[i][a].setY(tab[i][a + 1].getY()); if
-	 * (((tab[i][a].getValeur() != 0) && (a == 0)) == true) { animationHaut =
-	 * false; gameOver = true; break; } } if (gameOver) break; } if (!gameOver)
-	 * generationLigne(); }
-	 */
 
 	public void swaphorizontal(int x1, int x2, int y) {
 		int value = tab[x1][y].getValeur();
@@ -94,7 +86,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 					g.setColor(couleur6); //
 					break;
 				}
-				g.fillRect(PositionGrille1JX+ i * taillenx, PositionGrille1JY +a * tailleny, taillenx, tailleny);
+				g.fillRect(posGx+ i * taillenx, posGy +a * tailleny, taillenx, tailleny);
 			}
 		}
 	}

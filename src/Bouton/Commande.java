@@ -19,7 +19,7 @@ public class Commande extends JButton {
 	public Commande(JPanel j, String Commande,int i) {
 		super(ConstanteImage.iconbouton[i]);
 		setBorderPainted(false);
-		setOpaque(true);
+		setOpaque(false);
 		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setActionCommand(Commande);
 		this.addActionListener((ActionListener) j);

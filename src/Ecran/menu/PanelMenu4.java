@@ -50,8 +50,14 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 	MaskFormatter gauchej1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField g1 = new JFormattedTextField(gauchej1);
 	
-	MaskFormatter droitej1 = new MaskFormatter("U");//recup uni;quement si c'est une lettre, U passe la lettre en maj automatiquement
+	MaskFormatter droitej1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField d1 = new JFormattedTextField(droitej1);
+	
+	MaskFormatter hautj1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
+	JFormattedTextField h1 = new JFormattedTextField(hautj1);
+	
+	MaskFormatter basj1 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
+	JFormattedTextField b1 = new JFormattedTextField(basj1);
 	
 	MaskFormatter selectj2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField sel2= new JFormattedTextField(selectj2);
@@ -61,6 +67,12 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 
 	MaskFormatter droitej2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
     JFormattedTextField d2 = new JFormattedTextField(droitej2);
+    
+    MaskFormatter hautj2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
+	JFormattedTextField h2 = new JFormattedTextField(hautj2);
+    
+    MaskFormatter basj2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
+	JFormattedTextField b2 = new JFormattedTextField(basj2);
 	
     
     int cptButton=0;
@@ -85,7 +97,7 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 		}
 		
 		
-		this.setLayout(new GridLayout(7,2));
+		this.setLayout(new GridLayout(11,2));
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
@@ -130,6 +142,16 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 			  this.add(d1);
 		}catch(ParseException e){e.printStackTrace();}
 		
+		this.add(new JLabel("Up J1"));
+		try{
+			  this.add(h1);
+		}catch(ParseException e){e.printStackTrace();}
+		
+		this.add(new JLabel("Down J1"));
+		try{
+			  this.add(b1);
+		}catch(ParseException e){e.printStackTrace();}
+		
 		this.add(new JLabel("Select J2"));
 		try{
 			  this.add(sel2);
@@ -145,6 +167,15 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
 			  this.add(d2);
 		}catch(ParseException e){e.printStackTrace();}
 		
+		this.add(new JLabel("Up J2"));
+		try{
+			  this.add(h2);
+		}catch(ParseException e){e.printStackTrace();}
+		
+		this.add(new JLabel("Down J2"));
+		try{
+			  this.add(b2);
+		}catch(ParseException e){e.printStackTrace();}
 		
 		this.add(retour);
 		this.add(start);

@@ -67,9 +67,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	
 	public void actionPerformed(ActionEvent e){
 		if (e.getSource() == timer){
-			System.out.println("TIMEEEEEEEEEEEEEEER");
-			//repaint();
-			//cptyoshi1 = (cptyoshi1 + 1) % NB_IMAGE;
 			for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
 				for (int i = 0; i < nombredecase; i++) {
 					tab[i][a].animBloc.updateCpt();
@@ -107,62 +104,13 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		}
 	}
 	
-	/*
-	public void dessinerGrille(Graphics g) {
-		
-		for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
-			for (int i = 0; i < nombredecase; i++) {
-				tab[i][a].animBloc.updateCpt();
-				tab[i][a].animBloc.setPosX(posGx+ (i+1) * taillenx);
-				tab[i][a].animBloc.setPosY(posGy+ (a+1) * tailleny);
-				tab[i][a].animBloc.draw(g);
-				/*
-				switch (tab[i][a].getValeur()) {
-				case VIDE:
-					g.setColor(transparent);
-					break;
-				case CYAN:
-					g.setColor(couleur1); //
-					break;
-				case ROUGE:
-					g.setColor(couleur2); //
-					break;
-				case JAUNE:
-					g.setColor(couleur3); //
-					break;
-				case VERT:
-					g.setColor(couleur4); //
-					break;
-				case VIOLET:
-					g.setColor(couleur5); //
-					break;
-				case BLEU:
-					g.setColor(couleur6); //
-					break;
-				case GRIS:
-					g.setColor(couleur7); //
-					break;
-				}
-				
-				
-				
-				g.fillRect(posGx+ i * taillenx, posGy +a * tailleny, taillenx, tailleny);
-				
-				
-				
-			}
-		}
-	}
-	*/
-	
 	public void paintComponent(Graphics g){
 		for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
 			for (int i = 0; i < nombredecase; i++) {
 				tab[i][a].animBloc.draw(g);
 			}
 		}
-	}
-	
+	}	
 
 	public int tailleX() {
 		return taillenx;
@@ -175,22 +123,4 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public void updateCase(int y, int x, ValeurCase val) {
 		tab[x][y] = new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, val);
 	}
-
-	public boolean isAnimationHaut() {
-		return animationHaut;
-	}
-
-	public boolean isGameOver() {
-		return gameOver;
-	}
-
-	public void setAnimationHaut(boolean animationHaut) {
-		this.animationHaut = animationHaut;
-	}
-
-	public void setGameOver(boolean gameOver) {
-		this.gameOver = gameOver;
-	}
-	
-	
 }

@@ -2,6 +2,7 @@ package Run;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.text.ParseException;
 
 import javax.swing.JFrame;
@@ -67,7 +68,11 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		swapEcran(j1);
 		j1.lancementAnimation();
 		j1.focus();
-		j1.threadClavier();
+		j1.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				j1.GestionClavier(e);
+			}
+		});
 	}
 	
 	public void afficheJeu2J() {
@@ -76,7 +81,11 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		this.setFocusable(false);
 		j2.lancementAnimation();
 		j2.focus();
-		j2.threadClavier();
+		j2.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				j2.GestionClavier(e);
+			}
+		});
 	}
 
 	public void swapEcran(JPanel j) {

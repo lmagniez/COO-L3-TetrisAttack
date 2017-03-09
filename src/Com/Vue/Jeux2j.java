@@ -2,8 +2,7 @@ package Com.Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.util.concurrent.TimeUnit;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
@@ -18,9 +17,6 @@ import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 import Gestion.Joueur;
 import JComponent.Grille;
-import KeyAdaptateur.MyKeyAdapter;
-import KeyAdaptateur.ThreadJ1;
-import KeyAdaptateur.ThreadJ2;
 import Run.Fenetre;
 
 public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
@@ -46,10 +42,9 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	private Thread GestionClavier;
 	protected boolean deplacementJoueur = true;
-	private MyKeyAdapter adapt = new MyKeyAdapter();
 
-	private boolean drawOnce=true;
-	
+	private boolean drawOnce = true;
+
 	public Jeux2j(Fenetre f) {
 		fen = f;
 
@@ -75,45 +70,42 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		g1.init();
 		g2.init();
-
-		this.addKeyListener(adapt);
-
 		creerlayout();
 	}
 
-	public void threadClavier() {
-		GestionClavier = new Thread(new Runnable() {
-			public void run() {
-				ThreadJ1 tA = new ThreadJ1(adapt.isZPressed(), adapt.isSPressed(), adapt.isQPressed(),
-						adapt.isDPressed(), adapt.isFPressed(), Jeux2j.this.controlerJoueur1);
-				ThreadJ2 tB = new ThreadJ2(adapt.isOPressed(), adapt.isLPressed(), adapt.isKPressed(),
-						adapt.isMPressed(), adapt.isJPressed(), Jeux2j.this.controlerJoueur2);
-				tA.start();
-				tB.start();
-				while (Jeux2j.this.deplacementJoueur) {
-					try {
-						tA.setZPressed(adapt.isZPressed());
-						tA.setSPressed(adapt.isSPressed());
-						tA.setQPressed(adapt.isQPressed());
-						tA.setDPressed(adapt.isDPressed());
-						tA.setFPressed(adapt.isFPressed());
-						tA.run(Jeux2j.this.j1.getX1(), Jeux2j.this.j1.getX2(), Jeux2j.this.j1.getY1());
-
-						tB.setOPressed(adapt.isOPressed());
-						tB.setLPressed(adapt.isLPressed());
-						tB.setMPressed(adapt.isMPressed());
-						tB.setKPressed(adapt.isKPressed());
-						tB.setJPressed(adapt.isJPressed());
-						tB.run(Jeux2j.this.j2.getX1(), Jeux2j.this.j2.getX2(), Jeux2j.this.j2.getY1());
-
-						Thread.sleep(100);
-					} catch (InterruptedException e) {
-					}
-					Toolkit.getDefaultToolkit().sync();
-				}
-			}
-		});
-		GestionClavier.start();
+	public void GestionClavier(KeyEvent e) {
+		System.out.println(e);
+		if (e.getKeyCode() == KeyEvent.VK_Z) {
+			controlerJoueur1.verifUp(j1.getY1());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_S) {
+			controlerJoueur1.verifDown(j1.getY1());
+		}
+		else  if (e.getKeyCode() == KeyEvent.VK_Q) {
+			controlerJoueur1.verifLeft(j1.getX1());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_D) {
+			controlerJoueur1.verifRigth(j1.getX2());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_F) {
+			controlerGrille1.swap(j1.getX1(), j1.getX2(), j1.getY1());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_O) {
+			controlerJoueur2.verifUp(j2.getY1());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_L) {
+			controlerJoueur2.verifDown(j2.getY1());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_K) {
+			controlerJoueur2.verifLeft(j2.getX1());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_M) {
+			controlerJoueur2.verifRigth(j2.getX2());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_J) {
+			controlerGrille2.swap(j2.getX1(), j2.getX2(), j2.getY1());
+		}
+		else return ;
 	}
 
 	public void lancementAnimation() {
@@ -135,22 +127,22 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void paintComponent(Graphics g) {
-		
+
 		this.removeAll();
 		this.revalidate();
 		this.validate();
-		
-		if(this.drawOnce){
+
+		if (this.drawOnce) {
 			Color c = Color.black;
 			g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
-			//drawOnce=false;
+			// drawOnce=false;
 		}
-		
+
 		(this.g1).paintComponent(g);
-		//(this.g1).dessinerGrille(g);
+		// (this.g1).dessinerGrille(g);
 		(this.j1).dessinerJoueur(g);
 		(this.g2).paintComponent(g);
-		//(this.g2).dessinerGrille(g);
+		// (this.g2).dessinerGrille(g);
 		(this.j2).dessinerJoueur(g);
 	}
 
@@ -158,8 +150,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void swaphorizontal(int j, int x1, int x2, int y) {
 		if (j == 1) {
 			this.g1.swaphorizontal(x1, x2, y);
-		}
-		else{
+		} else {
 			this.g2.swaphorizontal(x1, x2, y);
 		}
 		this.repaint();
@@ -209,6 +200,4 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		repaint();
 	}
 
-	
-	
 }

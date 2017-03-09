@@ -67,20 +67,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 	}
 
-	/**
-	 * Swap entre deux cases adjacentes horizontalement
-	 * @param x1
-	 * @param x2
-	 * @param y1
-	 */
-	public void swapCase(int x1, int x2, int y1) {
-		ValeurCase tmp = tab[x1][y1];
-		tab[x1][y1] = tab[x2][y1];
-		tab[x2][y1] = tmp;
-		this.UpdateSwapHorizontal(x1, x2, y1);
-		this.decendreCube();
-	}
-
 	private void decendreCube() {
 		ValeurCase tmp;
 		for (int i = 0; i < nombredeLigne - 1; i++) {
@@ -115,24 +101,23 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		boolean changement = false;
 		for (int a = 0; a < nombredecase; a++) {
 			prec = tab[a][0];
-			nb = 1;
-			for (int i = 1; i <= nombredeLigne - reserve; i++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i]) {
+			System.out.println(">>>>>>>>>>");
+			for (int i = 1; i <= nombredeLigne - reserve ; i++) {
+				if (prec != ValeurCase.VIDE && prec == tab[a][i]) { //changemement
 					nb++;
 				}
-				if (nb >= 3 && a == (nombredecase - 1)) {
-					score += nb * scorepoint;
-					supprimerCaseColonne(a, (i - nb), i);
-					changement = true;
-				}
-				if (prec != tab[a][i]) {
-					if (nb >= 3) {
-						score += nb * scorepoint;
-						supprimerCaseColonne(a, (i - nb), i);
-						changement = true;
+				if(prec != tab[a][i] || i==(nombredeLigne - reserve)){
+					if(i==(nombredeLigne - reserve - 1) && nb>=nbCaseCombo){
+						
+						changement=true;
+						supprimerCaseColonne(a,nb,i); //derniere case soit la case ou on est 
+					}
+					else if(nb>=nbCaseCombo){
+						changement=true;
+						supprimerCaseColonne(a,nb,i-1); //case d'avant pour les cases du mileu
 					}
 					prec = tab[a][i];
-					nb = 1;
+					nb=1;
 				}
 			}
 		}
@@ -140,48 +125,43 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		return changement;
 	}
 
-	private void supprimerCaseColonne(int colonne, int indicedepart, int indicefin) {
-		for (int i = indicedepart; i < indicefin; i++) {
+	private void supprimerCaseColonne(int colonne, int nbbloc, int indicefin) {
+		for (int i = indicefin; i > (indicefin-nbbloc); i--) {
 			tab[colonne][i] = ValeurCase.VIDE;
 			this.UpdateCase(i, colonne, tab[colonne][i]);
 		}
 		decendreCube();
-		decendreCube();
 	}
 
-	private void supprimerCaseLigne(int ligne, int indicedepart, int indicefin) {
-		for (int i = indicedepart; i < indicefin; i++) {
+	private void supprimerCaseLigne(int ligne, int nbblock, int indicefin) {
+		for (int i = indicefin; i > (indicefin-nbblock); i--) {
 			tab[i][ligne] = ValeurCase.VIDE;
 			this.UpdateCase(ligne, i, tab[i][ligne]);
 		}
-		decendreCube();
-		decendreCube();
+		this.decendreCube();
 	}
 
 	public boolean comboLigne() {
 		int nb = 1;
 		ValeurCase prec;
 		boolean changement = false;
-		for (int i = 1; i <= nombredeLigne - 1 - reserve; i++) {
+		for (int i = 1; i <= nombredeLigne - reserve - 2 ; i++) {
 			prec = tab[0][i];
-			nb = 1;
-			for (int a = 0; a < nombredecase; a++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i]) {
+			for (int a = 1; a < nombredecase; a++) {
+				if (prec != ValeurCase.VIDE && prec == tab[a][i]) { //changemement
 					nb++;
 				}
-				if (nb >= 3 && a == (nombredecase - 1)) {
-					score += nb * scorepoint;
-					supprimerCaseLigne(i, (a - (nb - 1)), a);
-					changement = true;
-				}
-				if (prec != tab[a][i]) {
-					if (nb >= 3) {
-						score += nb * scorepoint;
-						supprimerCaseLigne(i, (a - (nb - 1)), a);
-						changement = true;
+				if(prec != tab[a][i] || a==nombredecase-1){
+					if(a==nombredecase-1 && nb>=nbCaseCombo){
+						changement=true;
+						supprimerCaseLigne(i,nb,a); //derniere case soit la case ou on est 
+					}
+					else if(nb>=nbCaseCombo){
+						changement=true;
+						supprimerCaseLigne(i,nb,a-1); //case d'avant pour les cases du mileu
 					}
 					prec = tab[a][i];
-					nb = 1;
+					nb=1;
 				}
 			}
 		}
@@ -207,9 +187,22 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	public void swap(int x1, int x2, int y1) {
 		this.swapCase(x1, x2, y1);
-		while (this.comboColonne()) {
-		}
-		while (this.comboLigne()) {
-		}
+		boolean chang=true;
+		this.comboColonne(); this.comboLigne();
+		
+	}
+	
+	/**
+	 * Swap entre deux cases adjacentes horizontalement
+	 * @param x1
+	 * @param x2
+	 * @param y1
+	 */
+	public void swapCase(int x1, int x2, int y1) {
+		ValeurCase tmp = tab[x1][y1];
+		tab[x1][y1] = tab[x2][y1];
+		tab[x2][y1] = tmp;
+		this.UpdateSwapHorizontal(x1, x2, y1);
+		this.decendreCube();
 	}
 }

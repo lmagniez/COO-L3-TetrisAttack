@@ -15,8 +15,6 @@ public class GrilleControler {
 	public void initGrille() {
 		grilleModel.recupGrille();
 	}
-
-	
 	
 	public void ajoutLigne() {
 		grilleModel.ajoutGrille();
@@ -25,5 +23,4 @@ public class GrilleControler {
 	public void swap(int x1, int x2, int y1) {
 		grilleModel.swap(x1, x2, y1);
 	}
-
 }

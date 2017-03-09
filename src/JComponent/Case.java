@@ -27,8 +27,6 @@ public class Case {
 	private int posblocY=ConstanteDimension.DimensionFenetrey,
 				posblocX=ConstanteDimension.DimensionFenetrex/2+screenwidthbloc/2;
 	
-	
-	//public static Image[] blocsImg=new Image[ConstanteJeux.nombreCouleur];
 	protected Image[] blocsImg;
 	public static int NB_IMAGE=4;
 	
@@ -38,6 +36,7 @@ public class Case {
 	
 	public Case(Grille g,int a,int b,int dimx,int dimy,ValeurCase v){
 		blocsImg=new Image[ConstanteJeux.nombreCouleur];
+		
 		blocsImg[0]=new ImageIcon("./ressources/Game/Blocks/vide.png").getImage();
 		blocsImg[1]=new ImageIcon("./ressources/Game/Blocks/cyan.png").getImage();
 		blocsImg[2]=new ImageIcon("./ressources/Game/Blocks/rouge.png").getImage();
@@ -61,11 +60,7 @@ public class Case {
 		
 		blocImg=blocsImg[v.ordinal()];
 		animBloc= new Animation(blocImg,0,0,widthbloc,heightbloc,
-				screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);
-		
-		//bloc= new Animation(bloc,posyoshi1X,posyoshi1Y,widthyoshi1,heightyoshi1,
-		//		screenwidthyoshi1,screenheightyoshi1,cptyoshi1, NB_IMAGE, this);
-		
+				screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);	
 	}
 
 	public Case(Case case1) {
@@ -115,8 +110,7 @@ public class Case {
 	public void setValeur(ValeurCase valeur) {
 		this.valeur = valeur;
 		blocImg=blocsImg[valeur.ordinal()];
-		animBloc.setImg(blocImg);
-		
+		animBloc.setImg(blocImg);	
 	}
 	
 	

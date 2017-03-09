@@ -2,7 +2,7 @@ package Com.Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JPanel;
 
@@ -17,8 +17,6 @@ import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 import Gestion.Joueur;
 import JComponent.Grille;
-import KeyAdaptateur.MyKeyAdapter;
-import KeyAdaptateur.ThreadJ1;
 import Run.Fenetre;
 
 public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
@@ -35,7 +33,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	private Thread GestionClavier;
 	protected boolean deplacementJoueur = true;
-	private MyKeyAdapter adapt = new MyKeyAdapter();
 
 	public Jeux1j(Fenetre f, int indiceTheme) {
 		fen = f;
@@ -50,8 +47,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		j = new Joueur(PositionGrille1JX, PositionGrille1JY, controlerJoueur, g.tailleX(), g.tailleY(), 1);
 		modelJoueur.add(this);
 
-		this.addKeyListener(adapt);
-
 		g.init();
 
 		creerlayout();
@@ -65,28 +60,22 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		controlerJoueur.animation();
 	}
 
-	public void threadClavier() {
-		GestionClavier = new Thread(new Runnable() {
-			public void run() {
-				ThreadJ1 tA = new ThreadJ1(adapt.isZPressed(), adapt.isSPressed(), adapt.isQPressed(),
-						adapt.isDPressed(), adapt.isFPressed(), Jeux1j.this.controlerJoueur);
-				tA.start();
-				while (Jeux1j.this.deplacementJoueur) {
-					try {
-						tA.setZPressed(adapt.isZPressed());
-						tA.setSPressed(adapt.isSPressed());
-						tA.setQPressed(adapt.isQPressed());
-						tA.setDPressed(adapt.isDPressed());
-						tA.setFPressed(adapt.isFPressed());
-						tA.run(Jeux1j.this.j.getX1(), Jeux1j.this.j.getX2(), Jeux1j.this.j.getY1());
-						Thread.sleep(150);
-					} catch (InterruptedException e) {
-					}
-					Toolkit.getDefaultToolkit().sync();
-				}
-			}
-		});
-		GestionClavier.start();
+	public void GestionClavier(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_Z) {
+			controlerJoueur.verifUp(j.getY1());
+		}
+		if (e.getKeyCode() == KeyEvent.VK_S) {
+			controlerJoueur.verifDown(j.getY1());
+		}
+		if (e.getKeyCode() == KeyEvent.VK_Q) {
+			controlerJoueur.verifLeft(j.getX1());
+		}
+		if (e.getKeyCode() == KeyEvent.VK_D) {
+			controlerJoueur.verifRigth(j.getX1());
+		}
+		if (e.getKeyCode() == KeyEvent.VK_F) {
+			controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());
+		}
 	}
 
 	private void creerlayout() {
@@ -103,9 +92,9 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void paintComponent(Graphics g) {
 		Color c = Color.black;
 		g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
-		
+
 		(this.g).paintComponent(g);
-		//(this.g).dessinerGrille(g);
+		// (this.g).dessinerGrille(g);
 		(this.j).dessinerJoueur(g);
 	}
 
@@ -132,7 +121,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	@Override
 	public void updateCase(int j, int y, int x, ValeurCase val) {
 		this.g.updateCase(y, x, val);
-		//repaint();
+		repaint();
 	}
 
 	@Override

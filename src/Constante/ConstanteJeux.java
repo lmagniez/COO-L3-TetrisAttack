@@ -19,5 +19,5 @@ public interface ConstanteJeux {
 
 	public int scorepoint=100;
 	
-	
+	public int nbCaseCombo=3;
 }

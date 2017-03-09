@@ -54,14 +54,9 @@ public class JoueurController implements ConstanteJeux,ConstanteDimension {
 				int i = 0;
 				while (true) {
 					try {
-						i++;
-						
-						if(i==(DimensionGrilley / (nombredeLigne - 2 * reserve))){
-							i=0;
 							JoueurController.this.verifUp(JoueurController.this.joueurModel.getY1());
 							JoueurController.this.grilleCont.ajoutLigne();
-						}
-						Thread.sleep(40);
+						Thread.sleep(5000);
 					} catch (InterruptedException e) {
 					}
 

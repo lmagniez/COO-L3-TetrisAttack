@@ -27,7 +27,6 @@ import Run.Fenetre;
 /**
  * Panel des regles
  * @author loick
- *
  */
 
 public class PanelMenu6 extends PanelMenu implements ActionListener{
@@ -64,13 +63,10 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
-		
-		
-		//this.setLayout(new BorderLayout());
+	
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		
-		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/4,
-				300, 300);
+		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/4,300, 300);
 		
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
@@ -83,8 +79,6 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		
 		cardPanel=new JPanel();
 		cardPanel.setLayout(new CardLayout());
-		
-		
 		reglePanels=new JPanel[3];
 		
 		Icon img[]=new ImageIcon[3];
@@ -96,16 +90,10 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		
 		for(int i=0; i<NB_ECRANS; i++)
 		{
-			
-			labels[i]=new JLabel(img[i]);
-			labels[i].setBounds(20, 20, 250, 250);
-
-			
+			labels[i]=new JLabel();
+			labels[i].setIcon(img[i]);
 			reglePanels[i]=new JPanel();
-			reglePanels[i].setOpaque(false);
-			reglePanels[i].setBounds(0, 0, 300, 300);
 			reglePanels[i].add(labels[i]);
-			
 			cardPanel.add(reglePanels[i], ECRANS[i]);
 		}
 		

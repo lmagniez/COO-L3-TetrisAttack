@@ -51,7 +51,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 		}
 
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 400);
+		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, (ConstanteDimension.DimensionFenetrey / 6) + 20, 300, 430);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
@@ -98,7 +98,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 			this.add(rowOne);
 		}
 
-		this.add(Box.createRigidArea(new Dimension(10, 10)));
+		this.add(Box.createRigidArea(new Dimension(10, 20)));
 
 		Box rowtwo = Box.createHorizontalBox();
 		for (int i = 0; i < 3; i++) {
@@ -108,7 +108,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 		}
 
 		// Joueur 2
-		this.add(Box.createRigidArea(new Dimension(0, 25)));
+		this.add(Box.createRigidArea(new Dimension(0, 27)));
 
 		Box rowOnebis = Box.createHorizontalBox();
 		for (int i = 0; i < 3; i++) {
@@ -144,7 +144,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 		g.setColor(Color.white);
 		g.setFont(new Font("Verdana", Font.BOLD, 20));
 		g.drawString("Joueur1", 20, 45);
-		g.drawString("Joueur2", 20, 220);
+		g.drawString("Joueur2", 20, 236);
 
 		for (int i = 0; i < buttons.length; i++) {
 			for (int a = 0; a < buttons[0].length; a++) {

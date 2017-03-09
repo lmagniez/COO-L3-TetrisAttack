@@ -33,7 +33,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 	 */
 
 	private SliderDifficulte sliderLevel;
-	private JButton retour = new Commande(this, "Retour", 1);
 	private JButton start = new Commande(this, "Démarrer", 6);
 
 	private int cptButton = 0;
@@ -47,7 +46,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		this.has_cursor=true; 
 		this.pred_panel=this.ecran.p1;
 		NB_BUTTONS_Y = 1;
-		NB_BUTTONS_X = 3;
+		NB_BUTTONS_X = 2;
 		buttons = new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
@@ -56,7 +55,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
 			posButtonY[i][0]=180+50*i;
 		}
-		
 		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 300);
@@ -83,7 +81,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 	private void ajout() {
 
 		buttons[cptButton++][0] = sliderLevel;
-		buttons[cptButton++][0] = retour;
 		buttons[cptButton++][0] = start;
 
 		this.add(Box.createRigidArea(new Dimension(10, 30)));
@@ -92,7 +89,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		this.add(Box.createRigidArea(new Dimension(10, 20)));
 		this.add(Box.createRigidArea(new Dimension(10, 20)));
 		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(retour);
 		this.add(Box.createRigidArea(new Dimension(10, 20)));
 		this.add(start);
 
@@ -122,8 +118,6 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
 		g.setFont(new Font("Verdana",Font.BOLD,20));
 		g.drawString("Difficulte", 60, 100);
-		// posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
-		// posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
 
 	}
 

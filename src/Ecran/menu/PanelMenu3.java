@@ -31,13 +31,6 @@ import Variable.VariableJeu;
 
 public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 	
-	/*
-	protected JButton joueur1 = new Commande (this, "11 Player");
-	protected JButton joueur2 = new Commande(this, "22 Players");
-	protected JButton option = new Commande(this, "Option");
-	protected JButton howToPlay = new Commande(this, "How To Play");
-	*/
-	
 	private JLabel labelBox,labelBox2;
 	private SliderDifficulte sliderLevel1= new SliderDifficulte(this,0);
 	private SliderDifficulte sliderLevel2 = new SliderDifficulte(this,1);

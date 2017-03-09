@@ -25,14 +25,9 @@ import Run.Fenetre;
 
 public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 
-	/*
-	 * protected JButton joueur1 = new Commande (this, "11 Player"); protected
-	 * JButton joueur2 = new Commande(this, "22 Players"); protected JButton
-	 * option = new Commande(this, "Option"); protected JButton howToPlay = new
-	 * Commande(this, "How To Play");
-	 */
 
 	private SliderDifficulte sliderLevel;
+	private JButton jeuxIa = new Commande(this, "IA", 7);
 	private JButton start = new Commande(this, "Démarrer", 6);
 
 	private int cptButton = 0;
@@ -46,7 +41,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		this.has_cursor=true; 
 		this.pred_panel=this.ecran.p1;
 		NB_BUTTONS_Y = 1;
-		NB_BUTTONS_X = 2;
+		NB_BUTTONS_X = 3;
 		buttons = new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
@@ -81,15 +76,14 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 	private void ajout() {
 
 		buttons[cptButton++][0] = sliderLevel;
+		buttons[cptButton++][0] = jeuxIa;
 		buttons[cptButton++][0] = start;
 
 		this.add(Box.createRigidArea(new Dimension(10, 30)));
 		this.add(sliderLevel);
-
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
+		this.add(Box.createRigidArea(new Dimension(10, 60)));
+		this.add(jeuxIa);
+		this.add(Box.createRigidArea(new Dimension(10, 30)));
 		this.add(start);
 
 		/*

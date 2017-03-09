@@ -23,7 +23,7 @@ public class SliderDifficulte extends JSlider {
 
 	public SliderDifficulte(JPanel j) {
 		super(JSlider.HORIZONTAL, nb_min, nb_max, init);
-		this.setBounds(30, 50, 40, 20);
+		this.setBounds(30, 50, 20, 20);
 		this.addChangeListener((ChangeListener) j);
 		this.setOpaque(false);
 		this.setBounds(x, y, sizex, sizey);

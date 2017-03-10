@@ -30,7 +30,7 @@ import Run.Fenetre;
  * @author loick
  */
 
-public class PanelMenu6 extends PanelMenu implements ActionListener{
+public class PanelMenuRegles extends PanelMenu implements ActionListener{
 	
 	
 	private Fenetre fen;
@@ -57,7 +57,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 	private int sizexRegle=sizex-20;
 	private int sizeyRegle=sizey-20;
     
-	public PanelMenu6(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
+	public PanelMenuRegles(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		this.ecran=ecran;
 		this.vue=f;
 		this.pred_panel=this.ecran.p1;
@@ -114,7 +114,7 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 		this.addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent e){
 				System.out.println("pressed! ");
-				PanelMenu6.this.gestion(e);
+				PanelMenuRegles.this.gestion(e);
 			}
 		});
 		this.requestFocus();

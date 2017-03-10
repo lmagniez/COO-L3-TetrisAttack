@@ -27,13 +27,13 @@ import Run.Sound;
  * @author loick
  *
  */
-public class PanelMenu7 extends PanelMenu implements ActionListener {
+public class PanelMenu1JPerso extends PanelMenu implements ActionListener {
 
 	private JButton[] icon = new JoueurIcon[6];
 	private int cptButton = 0;
 
 	
-	public PanelMenu7(Fenetre vue, EcranMenu e) {
+	public PanelMenu1JPerso(Fenetre vue, EcranMenu e) {
 		this.ecran=e;
 		this.vue=vue;
 		this.pred_panel=this.ecran.p2;

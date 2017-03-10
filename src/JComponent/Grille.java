@@ -58,8 +58,16 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 			couleurs[i]=ValeurCase.fromInteger(i);
 		}*/
 		
-		timer = new Timer(100, this);
+		timer = new Timer(10, this);
 		timer.start();
+		
+		for(int i=0; i<nombredecase; i++){
+			for(int j=0; j<nombredeLigne; j++){
+				tab[i][j]= new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, ValeurCase.VIDE);
+				tab[i][j].animBloc.addInfosGrille(i, j, posGx, posGy, taillenx, tailleny);
+			}
+				
+		}
 		
 		
 	}
@@ -67,14 +75,16 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	
 	public void actionPerformed(ActionEvent e){
 		if (e.getSource() == timer){
+			
+			/*
 			for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
 				for (int i = 0; i < nombredecase; i++) {
 					tab[i][a].animBloc.updateCpt();
 					tab[i][a].animBloc.setPosX(posGx+ (i+1) * taillenx);
 					tab[i][a].animBloc.setPosY(posGy+ (a+1) * tailleny);
 				}
-			}
-			jeu.repaint();	
+			}*/
+			jeu.repaint();
 		}
 		else if (e.getActionCommand().equals("arreter")) timer.stop();
 		else if (e.getActionCommand().equals("reprendre")) timer.restart();
@@ -121,6 +131,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 
 	public void updateCase(int y, int x, ValeurCase val) {
-		tab[x][y] = new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, val);
+		tab[x][y].setValeur(val);
+		//tab[x][y] = new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, val);
 	}
 }

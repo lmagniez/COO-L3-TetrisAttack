@@ -23,7 +23,7 @@ import Constante.ConstanteParametres;
 import Run.Fenetre;
 import Run.Sound;
 
-public class PanelMenu8 extends PanelMenu implements ActionListener {
+public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 
 	private JButton[] icon1 = new JoueurIcon[6];
 	private JButton[] icon2 = new JoueurIcon[6];
@@ -31,7 +31,7 @@ public class PanelMenu8 extends PanelMenu implements ActionListener {
 	private Boolean[] tabIcon = { false, false };
 	private int cptButton = 0;
 
-	public PanelMenu8(Fenetre vue, EcranMenu e) {
+	public PanelMenu2JPerso(Fenetre vue, EcranMenu e) {
 
 		this.ecran = e;
 		this.vue = vue;

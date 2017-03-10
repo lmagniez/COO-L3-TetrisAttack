@@ -23,7 +23,7 @@ import Run.Fenetre;
 /**
  * Ecran de Credit
  */
-public class PanelMenu5 extends PanelMenu implements ActionListener {
+public class PanelMenuCredits extends PanelMenu implements ActionListener {
 
 	int cptButton = 0;
 
@@ -35,7 +35,7 @@ public class PanelMenu5 extends PanelMenu implements ActionListener {
 
 	private String[] tache={"<br/>Animations,Menu,Jeu </html>","<br/> Jeu,Menu,Animations </html>","",""};
 	
-	public PanelMenu5(Fenetre f, EcranMenu ecran) throws java.text.ParseException {
+	public PanelMenuCredits(Fenetre f, EcranMenu ecran) throws java.text.ParseException {
 
 		this.ecran = ecran;
 		this.vue = f;
@@ -67,7 +67,7 @@ public class PanelMenu5 extends PanelMenu implements ActionListener {
 
 		this.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				PanelMenu5.this.gestion(e);
+				PanelMenuCredits.this.gestion(e);
 			}
 		});
 

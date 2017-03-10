@@ -19,7 +19,7 @@ import Constante.ConstanteDimension;
 import Ecran.Ecran;
 import Run.Fenetre;
 
-public class PanelMenu1 extends PanelMenu implements ActionListener{
+public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 	
 	protected JButton joueur1 = new Commande (this, "1 Player",0);
 	protected JButton joueur2 = new Commande(this, "2 Players",1);
@@ -29,7 +29,7 @@ public class PanelMenu1 extends PanelMenu implements ActionListener{
 	
 	private int cptButton=0;
 	
-	public PanelMenu1(Fenetre vue, EcranMenu e)
+	public PanelMenuPrincipal(Fenetre vue, EcranMenu e)
 	{
 		this.has_cursor=true;
 		this.pred_panel=this;

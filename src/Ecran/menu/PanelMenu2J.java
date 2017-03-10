@@ -29,7 +29,7 @@ import Ecran.Ecran;
 import Run.Fenetre;
 import Variable.VariableJeu;
 
-public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
+public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 	
 	private JLabel labelBox,labelBox2;
 	private SliderDifficulte sliderLevel1= new SliderDifficulte(this,0);
@@ -38,7 +38,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 	
 	private int cptButton=0;
 	
-	public PanelMenu3(Fenetre vue, EcranMenu e)
+	public PanelMenu2J(Fenetre vue, EcranMenu e)
 	{
 		this.setOpaque(false);
 		this.ecran=e;

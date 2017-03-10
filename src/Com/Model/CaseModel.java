@@ -1,6 +1,6 @@
 package Com.Model;
 
-public class CaseModel {
+public class CaseModel extends Thread{
 	
 	protected boolean swappable;
 	protected boolean isBloc;
@@ -8,6 +8,12 @@ public class CaseModel {
 	
 	public CaseModel(){
 		this.v=ValeurCase.VIDE;
+	}
+	
+	public void run(){
+		//this.notify();
+		//Thread.sleep(1000);
+		
 	}
 	
 }

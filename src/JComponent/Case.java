@@ -27,24 +27,22 @@ public class Case {
 	private int posblocY=ConstanteDimension.DimensionFenetrey,
 				posblocX=ConstanteDimension.DimensionFenetrex/2+screenwidthbloc/2;
 	
-	protected Image[] blocsImg;
+	//protected Image[] blocsImg;
 	public static int NB_IMAGE=4;
+	//blocsImg=new Image[ConstanteJeux.nombreCouleur];
 	
-	
-	
-	
+	protected Image vide=new ImageIcon("./ressources/Game/Blocks/vide.png").getImage();
+	protected Image cyan=new ImageIcon("./ressources/Game/Blocks/cyan.png").getImage();
+	protected Image rouge=new ImageIcon("./ressources/Game/Blocks/rouge.png").getImage();
+	protected Image jaune=new ImageIcon("./ressources/Game/Blocks/jaune.png").getImage();
+	protected Image vert=new ImageIcon("./ressources/Game/Blocks/vert.png").getImage();
+	protected Image violet=new ImageIcon("./ressources/Game/Blocks/violet.png").getImage();
+	protected Image bleu=new ImageIcon("./ressources/Game/Blocks/bleu.png").getImage();
+	protected Image gris=new ImageIcon("./ressources/Game/Blocks/gris.png").getImage();
+
+	protected Image[] blocsImg={vide,cyan,rouge,jaune,vert,violet,bleu,gris};
 	
 	public Case(Grille g,int a,int b,int dimx,int dimy,ValeurCase v){
-		blocsImg=new Image[ConstanteJeux.nombreCouleur];
-		
-		blocsImg[0]=new ImageIcon("./ressources/Game/Blocks/vide.png").getImage();
-		blocsImg[1]=new ImageIcon("./ressources/Game/Blocks/cyan.png").getImage();
-		blocsImg[2]=new ImageIcon("./ressources/Game/Blocks/rouge.png").getImage();
-		blocsImg[3]=new ImageIcon("./ressources/Game/Blocks/jaune.png").getImage();
-		blocsImg[4]=new ImageIcon("./ressources/Game/Blocks/vert.png").getImage();
-		blocsImg[5]=new ImageIcon("./ressources/Game/Blocks/violet.png").getImage();
-		blocsImg[6]=new ImageIcon("./ressources/Game/Blocks/bleu.png").getImage();
-		blocsImg[7]=new ImageIcon("./ressources/Game/Blocks/gris.png").getImage();
 		
 		this.g=g;
 		
@@ -56,11 +54,10 @@ public class Case {
 		tailleY=dimy;
 		valeur=v;
 
-		
-		
 		blocImg=blocsImg[v.ordinal()];
 		animBloc= new Animation(blocImg,0,0,widthbloc,heightbloc,
 				screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);	
+		animBloc.start();
 	}
 
 	public Case(Case case1) {

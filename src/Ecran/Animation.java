@@ -6,7 +6,7 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
-public class Animation {
+public class Animation extends Thread {
 
 	private JPanel p;
 	
@@ -18,6 +18,11 @@ public class Animation {
 	private int screenWidth,screenHeight;
 	private int cpt;	
 	private int nbImage;
+	
+	protected int grilleX,grilleY,grillePosX,grillePosY,grilleTailleEltX,grilleTailleEltY;
+	
+	
+	protected boolean running=true;
 	
 	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, 
 			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
@@ -32,6 +37,45 @@ public class Animation {
 		this.cpt=cpt;
 		this.nbImage=nbImage;
 		this.p=p;
+	}
+	
+	public void addInfosGrille(int grilleX, int grilleY, int grillePosX, int grillePosY, int grilleTailleEltX, int grilleTailleEltY){
+		this.grilleX=grilleX;
+		this.grilleY=grilleY;
+		this.grilleTailleEltX=grilleTailleEltX;
+		this.grilleTailleEltY=grilleTailleEltY;
+		this.grillePosX=grillePosX;
+		this.grillePosY=grillePosY;
+	}
+	
+	public void run(){
+		while(running){
+			try {
+				Thread.sleep(100);
+				updateCpt();
+				this.setPosXGrille(grillePosX, grilleX, grilleTailleEltX);
+				this.setPosYGrille(grillePosY, grilleY, grilleTailleEltY);
+				
+				System.out.println("grillePos"+ grillePosX+" "+grillePosY+" // "+"pos: "+posX+" "+posY);
+				System.out.println("grilleXY"+ grilleX+" "+grilleY);
+				System.out.println("grilleTaille"+ grilleTailleEltX+" "+grilleTailleEltY);
+				
+				
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			this.updateCpt();
+			
+		}
+	}
+	
+	
+	public void stopper(){
+		this.running=false;
+	}
+	public void reprendre(){
+		this.running=true;
 	}
 
 	public void updateCpt()
@@ -60,6 +104,15 @@ public class Animation {
 	public void setPosX(int posX) {
 		this.posX = posX;
 	}
+	
+	public void setPosXGrille(int posGrilleX, int x, int tailleEltX) {
+		this.posX = posGrilleX+ (x+1) * tailleEltX;
+	}
+	
+	public void setPosYGrille(int posGrilleY, int y, int tailleEltY) {
+		this.posY = posGrilleY+ (y+1) * tailleEltY;
+	}
+	
 
 	public int getPosY() {
 		return posY;

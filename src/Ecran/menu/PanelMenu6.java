@@ -22,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import Constante.ConstanteDimension;
+import Constante.ConstanteImage;
 import Run.Fenetre;
 
 /**
@@ -50,7 +51,11 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 	
 	protected Image fond;
 	
+	private int sizex=450;
+	private int sizey=400;
 	
+	private int sizexRegle=sizex-20;
+	private int sizeyRegle=sizey-20;
     
 	public PanelMenu6(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		this.ecran=ecran;
@@ -66,33 +71,38 @@ public class PanelMenu6 extends PanelMenu implements ActionListener{
 	
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		
-		this.setBounds(ConstanteDimension.DimensionFenetrex/10, ConstanteDimension.DimensionFenetrey/4,300, 300);
+		this.setBounds(ConstanteDimension.DimensionFenetrex/30, ConstanteDimension.DimensionFenetrey/4,sizex, sizey);
 		
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.setVisible(true);
 		this.requestFocusInWindow();
-		this.setMaximumSize(new Dimension(300,500));
+		this.setMaximumSize(new Dimension(sizex,sizey));
 		this.setOpaque(false);
 
-		
+		this.setLayout(null);
 		
 		cardPanel=new JPanel();
+		cardPanel.setBounds(10, 10, sizexRegle, sizeyRegle);
+		cardPanel.setOpaque(false);
 		cardPanel.setLayout(new CardLayout());
 		reglePanels=new JPanel[3];
 		
 		Icon img[]=new ImageIcon[3];
-		img[0]=new ImageIcon("./ressources/Menu/rules1.png");
-		img[1]=new ImageIcon("./ressources/Menu/rules2.png");
-		img[2]=new ImageIcon("./ressources/Menu/rules3.png");
+		img[0]=ConstanteImage.scaledButton("/Ressource/Regle/rules1.png",sizexRegle,sizeyRegle);
+		img[1]=ConstanteImage.scaledButton("/Ressource/Regle/rules2.png",sizexRegle,sizeyRegle);
+		img[2]=ConstanteImage.scaledButton("/Ressource/Regle/rules3.png",sizexRegle,sizeyRegle);
 		
 		JLabel labels[]=new JLabel[3];
 		
 		for(int i=0; i<NB_ECRANS; i++)
 		{
-			labels[i]=new JLabel();
-			labels[i].setIcon(img[i]);
+			labels[i]=new JLabel(img[i]);
+			labels[i].setBounds(0, 0, sizexRegle, sizeyRegle);
 			reglePanels[i]=new JPanel();
+			reglePanels[i].setOpaque(false);
+			reglePanels[i].setLayout(null);
+			reglePanels[i].setBounds(0, 0, sizexRegle, sizeyRegle);
 			reglePanels[i].add(labels[i]);
 			cardPanel.add(reglePanels[i], ECRANS[i]);
 		}

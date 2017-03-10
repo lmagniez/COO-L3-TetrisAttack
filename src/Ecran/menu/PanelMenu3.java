@@ -33,7 +33,6 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 	
 	private JLabel labelBox,labelBox2;
 	private SliderDifficulte sliderLevel1= new SliderDifficulte(this,0);
-	private SliderDifficulte sliderLevel2 = new SliderDifficulte(this,1);
 	private JButton retour=new Commande(this,"Retour",1);
 	private JButton start=new Commande(this,"Démarrer",6);
 	
@@ -47,7 +46,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 		this.pred_panel=this.ecran.p1;
 		this.has_cursor=true; 
 		NB_BUTTONS_Y=1;
-		NB_BUTTONS_X=4;
+		NB_BUTTONS_X=3;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
@@ -80,8 +79,6 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 	public void ajout() {
 		
 		buttons[cptButton++][0]=sliderLevel1;
-	
-		buttons[cptButton++][0]=sliderLevel2;
 
 		buttons[cptButton++][0]=retour;
 		buttons[cptButton++][0]=start;
@@ -91,9 +88,6 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 		this.add(sliderLevel1);
 		this.add(Box.createRigidArea(new Dimension(10,20)));
 
-		this.add(Box.createRigidArea(new Dimension(10,30)));
-		this.add(sliderLevel2);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
 
 		this.add(Box.createRigidArea(new Dimension(10,80)));
 		this.add(retour);
@@ -146,11 +140,7 @@ public class PanelMenu3 extends PanelMenu implements ActionListener, ChangeListe
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		if (e.getSource() instanceof SliderDifficulte){
-			System.out.println(sliderLevel1.getValue());
-			System.out.println(sliderLevel2.getValue());
-		}
-		
+
 	}
 	
 

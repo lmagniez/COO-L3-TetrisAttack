@@ -25,19 +25,12 @@ import Run.Fenetre;
 
 public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 
-	/*
-	 * protected JButton joueur1 = new Commande (this, "11 Player"); protected
-	 * JButton joueur2 = new Commande(this, "22 Players"); protected JButton
-	 * option = new Commande(this, "Option"); protected JButton howToPlay = new
-	 * Commande(this, "How To Play");
-	 */
 
 	private SliderDifficulte sliderLevel;
+	private JButton jeuxIa = new Commande(this, "IA", 7);
 	private JButton start = new Commande(this, "Démarrer", 6);
 
 	private int cptButton = 0;
-
-	
 	
 	public PanelMenu2(Fenetre vue, EcranMenu e) {
 		this.ecran = e;
@@ -46,7 +39,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		this.has_cursor=true; 
 		this.pred_panel=this.ecran.p1;
 		NB_BUTTONS_Y = 1;
-		NB_BUTTONS_X = 2;
+		NB_BUTTONS_X = 3;
 		buttons = new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
@@ -58,46 +51,30 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 300);
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-
-		initSlide();
+		
+		sliderLevel = new SliderDifficulte(this);
 
 		ajout();
 	}
 
-	public void initSlide() {
-
-		sliderLevel = new SliderDifficulte(this);
-
-		/*
-		 * sliderLevel.setBounds(300, 150, 200, 60); labelTaille.setBounds(300,
-		 * 215, 100, 90); perso.setBounds(350, 350, 100, 20);
-		 */
-	}
 
 	private void ajout() {
-
+		this.setLayout(null);
+		sliderLevel.setBounds(50, 30, 200, 50);
+		jeuxIa.setBounds(10, 100, 280, 50);
+		start.setBounds(10, 170, 280, 50);
+		
 		buttons[cptButton++][0] = sliderLevel;
+		buttons[cptButton++][0] = jeuxIa;
 		buttons[cptButton++][0] = start;
-
-		this.add(Box.createRigidArea(new Dimension(10, 30)));
+		
 		this.add(sliderLevel);
-
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
+		this.add(jeuxIa);
 		this.add(start);
 
-		/*
-		 * System.out.println(this.joueur2.isRequestFocusEnabled());
-		 * this.joueur2.setRequestFocusEnabled(true);
-		 * 
-		 * System.out.println(this.joueur2.isFocusable());
-		 */
 
 		ecran.setButtons(buttons);
 		ecran.addListener();
@@ -117,14 +94,12 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		super.paintComponent(g);
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
 		g.setFont(new Font("Verdana",Font.BOLD,20));
-		g.drawString("Difficulte", 60, 100);
+		//g.drawString("Difficulte", 60, 100);
 
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		if (e.getSource() instanceof SliderDifficulte)
-			System.out.println(sliderLevel.getValue());
 	}
 
 	@Override

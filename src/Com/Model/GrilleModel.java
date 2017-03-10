@@ -17,7 +17,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	private final Random RND = new Random();
 
 	public GrilleModel(int id) {
-		id = id;
+		this.id = id;
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
 				tab[i][j]=new CaseModel(i,j);

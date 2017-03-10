@@ -27,10 +27,6 @@ public class SliderDifficulte extends JProgressBar implements KeyListener {
 		UIManager.put("ProgressBar.foreground", Color.GREEN);
 		
 	}
-
-	public SliderDifficulte(JPanel j, int i) {
-		this(j);
-	}
 	
 	@Override
 	public void keyTyped(KeyEvent e) {

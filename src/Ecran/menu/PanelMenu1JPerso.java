@@ -107,7 +107,9 @@ public class PanelMenu1JPerso extends PanelMenu implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		int indiceT = ((JoueurIcon) e.getSource()).getIconId();
-		vue.afficheJeu1J(indiceT);
+		EcranMenu.option[1]=indiceT;
+		vue.afficheJeu1J(EcranMenu.option);
+
 		Sound.stop();
 		ConstanteParametres.ID_MUSIQUE=2;
 		Sound.loop();

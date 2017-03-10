@@ -23,4 +23,8 @@ public class GrilleControler {
 	public void swap(int x1, int x2, int y1) {
 		grilleModel.swap(x1, x2, y1);
 	}
+
+	public void montegrilleGraphique() {
+		grilleModel.monteGrilleGraphique();
+	}
 }

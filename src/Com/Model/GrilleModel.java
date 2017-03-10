@@ -235,4 +235,8 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		this.UpdateSwapHorizontal(x1, x2, y1);
 		this.descendreCube();
 	}
+
+	public void monteGrilleGraphique() {
+		joueurVue.bougerGrilleGraphique();
+	}
 }

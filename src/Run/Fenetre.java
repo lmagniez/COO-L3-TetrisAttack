@@ -62,11 +62,11 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		swapEcran(getM());
 	}
 
-	public void afficheJeu1J(int indiceTheme) {
+	public void afficheJeu1J(int[] option) {
 		this.setFocusable(false);
-		j1= new Jeux1j(this,indiceTheme);
+		j1= new Jeux1j(this,option);
 		swapEcran(j1);
-		j1.lancementAnimation();
+		j1.animation();
 		j1.focus();
 		j1.addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent e){
@@ -75,8 +75,8 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		});
 	}
 	
-	public void afficheJeu2J() {
-		j2= new Jeux2j(this);
+	public void afficheJeu2J(int[] option) {
+		j2= new Jeux2j(this,option);
 		swapEcran(j2);
 		this.setFocusable(false);
 		j2.lancementAnimation();

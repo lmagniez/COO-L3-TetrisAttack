@@ -32,8 +32,8 @@ import Variable.VariableJeu;
 public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 	
 	private JLabel labelBox,labelBox2;
-	private SliderDifficulte sliderLevel1= new SliderDifficulte(this,0);
-	private JButton retour=new Commande(this,"Retour",1);
+	private SliderDifficulte sliderLevel1= new SliderDifficulte(this);
+	private SliderDifficulte sliderLevel2= new SliderDifficulte(this);
 	private JButton start=new Commande(this,"Démarrer",6);
 	
 	private int cptButton=0;
@@ -59,7 +59,7 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
-				500, 400);
+				300, 300);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
@@ -79,33 +79,22 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 	public void ajout() {
 		
 		buttons[cptButton++][0]=sliderLevel1;
-
-		buttons[cptButton++][0]=retour;
+		buttons[cptButton++][0]=sliderLevel2;
 		buttons[cptButton++][0]=start;
 		
+		this.setLayout(null);
+		sliderLevel1.setBounds(50, 30, 200, 50);
+		sliderLevel2.setBounds(50, 80, 200, 50);
+		start.setBounds(10, 160, 280, 50);
 		
-		this.add(Box.createRigidArea(new Dimension(10,30)));
 		this.add(sliderLevel1);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
-
-
-		this.add(Box.createRigidArea(new Dimension(10,80)));
-		this.add(retour);
-		this.add(Box.createRigidArea(new Dimension(10,20)));
+		this.add(sliderLevel2);
 		this.add(start);
-		
-		
-		/*
-		System.out.println(this.joueur2.isRequestFocusEnabled());
-		this.joueur2.setRequestFocusEnabled(true);
-		
-		System.out.println(this.joueur2.isFocusable());
-		*/
 		
 		ecran.setButtons(buttons);
 		ecran.addListener();
 		
-		
+
 		
 	}
 	
@@ -116,6 +105,8 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 			}
 			if (e.getActionCommand().equals("Démarrer")){
 				EcranMenu.changeMenuBox(ecran,ecran.p8);
+				EcranMenu.option[0]=sliderLevel1.getValue();
+				EcranMenu.option[2]=sliderLevel2.getValue();
 			}
 		
 	}
@@ -124,8 +115,6 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 	    super.paintComponent(g);
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
 		g.setFont(new Font("Verdana",Font.BOLD,20));
-		g.drawString("Difficulte", 60, 90);
-		g.drawString("Difficulte", 60, 190);
 		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
 		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
 	   

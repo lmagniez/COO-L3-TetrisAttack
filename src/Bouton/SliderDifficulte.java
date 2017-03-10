@@ -1,40 +1,61 @@
 package Bouton;
 
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
-import javax.swing.JSlider;
+import javax.swing.JProgressBar;
+import javax.swing.UIManager;
 import javax.swing.event.ChangeListener;
 
-import Constante.ConstanteGraphique;
+public class SliderDifficulte extends JProgressBar implements KeyListener {
 
-public class SliderDifficulte extends JSlider {
-	
-	private static final int nb_min = 1;
-	private static final int nb_max = 3;
-	private static final int init = 2;
-	
 	private int x = 10;
 	private int y = 300;
 	private int sizex = 240;
 	private int sizey = 50;
 
 	public SliderDifficulte(JPanel j) {
-		super(JSlider.HORIZONTAL, nb_min, nb_max, init);
-		this.setBounds(30, 50, 20, 20);
+		this.setPreferredSize(new Dimension(280,50 ));
 		this.addChangeListener((ChangeListener) j);
-		this.setOpaque(false);
 		this.setBounds(x, y, sizex, sizey);
-		this.setMajorTickSpacing(1);
-		this.setMinorTickSpacing(1);
-		this.setSnapToTicks(true);
-	}
-	
-	public SliderDifficulte(JPanel j,int i) {
-		this(j);
-		this.setBounds(30, 50*i, 40, 20);
+		this.setMinimum(0);
+		this.addKeyListener(this);
+		UIManager.put("ProgressBar.foreground", Color.GREEN);
+		
 	}
 
+	public SliderDifficulte(JPanel j, int i) {
+		this(j);
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			this.setValue(this.getValue()+2);
+			repaint();
+			System.out.println(this.getValue());
+		}
+		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			this.setValue(this.getValue()-2);
+			repaint();
+			System.out.println(this.getValue());
+		}
+		if( this.getValue() > 30 ){UIManager.put("ProgressBar.foreground", Color.ORANGE);}
+		if( this.getValue() > 70 ){UIManager.put("ProgressBar.foreground", Color.RED);}
+		repaint();
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

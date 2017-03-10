@@ -52,7 +52,6 @@ public class Animation {
 	}
 
 	public void draw(Graphics g) {
-		System.out.println( getPosY() +"   "+ screenHeight);
 		g.drawImage(img, getPosX(), getPosY(), getPosX() - screenWidth, getPosY() - screenHeight, imgWidth * (cpt + 1),
 				imgHeight, imgWidth * (cpt), 0, p);
 	}

@@ -3,7 +3,6 @@ package Com.Observer;
 import Com.Model.ValeurCase;
 
 public interface Observer {
-	
 	void updateJoueur(int j, int x1, int x2, int y);
 	void updateCase(int j, int y, int x, ValeurCase val);
 	

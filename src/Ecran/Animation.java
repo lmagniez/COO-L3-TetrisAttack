@@ -20,7 +20,7 @@ public class Animation {
 	private int nbImage;
 
 	
-	protected int grilleX,grilleY,grillePosX,grillePosY,grilleTailleEltX,grilleTailleEltY;
+	public int grilleX,grilleY,grillePosX,grillePosY,grilleTailleEltX,grilleTailleEltY;
 	
 	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, 
 			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
@@ -69,7 +69,7 @@ public class Animation {
 	}
 	
 	public void setPosYGrille(int posGrilleY, int y, int tailleEltY) {
-		this.posY = posGrilleY+ (y+1) * tailleEltY;
+		this.posY = posGrilleY + (y+1) * tailleEltY;
 	}
 	
 

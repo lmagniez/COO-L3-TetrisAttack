@@ -71,6 +71,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				this.UpdateCase(i, a, tab[a][i].v);
 			}
 		}
+		joueurVue.reinitgrilleAnimation();
 	}
 
 	/**
@@ -114,13 +115,12 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		boolean changement = false;
 		for (int a = 0; a < nombredecase; a++) {
 			prec = tab[a][0].v;
-			for (int i = 1; i <= nombredeLigne - reserve ; i++) {
+			for (int i = 1; i <= nombredeLigne - reserve - 2 ; i++) {
 				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
 					nb++;
 				}
-				if(prec != tab[a][i].v || i==(nombredeLigne - reserve)){
-					if(i==(nombredeLigne - reserve - 1) && nb>=nbCaseCombo){
-						
+				if(prec != tab[a][i].v || i==(nombredeLigne - reserve - 2 )){
+					if(i==(nombredeLigne - reserve - 2) && nb>=nbCaseCombo){
 						changement=true;
 						//ici
 						supprimerCaseColonne(a,nb,i); //derniere case soit la case ou on est 
@@ -175,7 +175,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		int nb = 1;
 		ValeurCase prec;
 		boolean changement = false;
-		for (int i = 1; i <= nombredeLigne - reserve - 2 ; i++) {
+		for (int i = 1; i <= nombredeLigne - reserve - 1 ; i++) {
 			prec = tab[0][i].v;
 			for (int a = 1; a < nombredecase; a++) {
 				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
@@ -219,7 +219,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		this.swapCase(x1, x2, y1);
 		boolean chang=true;
 		this.comboColonne(); this.comboLigne();
-		
 	}
 	
 	/**

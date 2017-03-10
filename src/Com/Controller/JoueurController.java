@@ -38,7 +38,7 @@ public class JoueurController implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void verifDown(int y1) {
-		if (y1 != nombredeLigne - reserve -2) {
+		if (y1 != nombredeLigneTeste) {
 			this.joueurModel.changeBas();
 		}
 	}
@@ -51,7 +51,7 @@ public class JoueurController implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void verifRigth(int x2) {
-		if (x2 != nombredecase - 1) {
+		if (x2 != nombredecase - 2) {
 			this.joueurModel.changeDroit();
 		}
 	}

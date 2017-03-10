@@ -104,7 +104,7 @@ public class Case {
 	public void setValeur(ValeurCase valeur) {
 		this.valeur = valeur;
 		blocImg=blocsImg[valeur.ordinal()];
-		animBloc.setImg(blocImg);	
+		animBloc.setImg(blocImg);
 	}
 	
 	

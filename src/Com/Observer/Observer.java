@@ -12,4 +12,5 @@ public interface Observer {
 	void updateTimer(String sminute, String sseconde);
 	void bougeJoueurGraphique();
 	void bougerGrilleGraphique();
+	void reinitgrilleAnimation();
 }

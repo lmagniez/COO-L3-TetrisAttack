@@ -172,4 +172,12 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		g.monterGrille();
 		repaint();
 	}
+
+	@Override
+	public void reinitgrilleAnimation() {
+		j.reinitgrilleEmplacement();
+		g.reinitgrilleAnimation();
+		repaint();
+	}
+
 }

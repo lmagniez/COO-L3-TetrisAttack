@@ -240,4 +240,10 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 	}
 
+	@Override
+	public void reinitgrilleAnimation() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -10,7 +10,7 @@ public interface Observer {
 	void swapvertical(int j, int x, int y1, int y2);
 	void score(int id, int score);
 	void updateTimer(String sminute, String sseconde);
-	void bougeJoueurGraphique();
-	void bougerGrilleGraphique();
-	void reinitgrilleAnimation();
+	void bougeJoueurGraphique(int id);
+	void bougerGrilleGraphique(int id);
+	void reinitgrilleAnimation(int id);
 }

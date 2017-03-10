@@ -71,7 +71,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				this.UpdateCase(i, a, tab[a][i].v);
 			}
 		}
-		joueurVue.reinitgrilleAnimation();
+		joueurVue.reinitgrilleAnimation(id);
 	}
 
 	/**
@@ -236,6 +236,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 
 	public void monteGrilleGraphique() {
-		joueurVue.bougerGrilleGraphique();
+		joueurVue.bougerGrilleGraphique(id);
 	}
 }

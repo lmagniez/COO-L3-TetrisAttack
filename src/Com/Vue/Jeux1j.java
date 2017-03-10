@@ -162,19 +162,19 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void bougeJoueurGraphique() {
+	public void bougeJoueurGraphique(int id) {
 		j.setyGrille(j.getyGrille()-1);
 		repaint();
 	}
 
 	@Override
-	public void bougerGrilleGraphique() {
+	public void bougerGrilleGraphique(int id) {
 		g.monterGrille();
 		repaint();
 	}
 
 	@Override
-	public void reinitgrilleAnimation() {
+	public void reinitgrilleAnimation(int id) {
 		j.reinitgrilleEmplacement();
 		g.reinitgrilleAnimation();
 		repaint();

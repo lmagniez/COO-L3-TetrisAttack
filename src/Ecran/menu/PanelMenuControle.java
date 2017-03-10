@@ -36,7 +36,7 @@ import Run.Fenetre;
 
 
 
-public class PanelMenu4 extends PanelMenu implements ActionListener{
+public class PanelMenuControle extends PanelMenu implements ActionListener{
 	
 	
 	private Fenetre fen;
@@ -77,7 +77,7 @@ public class PanelMenu4 extends PanelMenu implements ActionListener{
     
     int cptButton=0;
     
-	public PanelMenu4(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
+	public PanelMenuControle(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		
 		this.ecran=ecran;
 		this.vue=vue;

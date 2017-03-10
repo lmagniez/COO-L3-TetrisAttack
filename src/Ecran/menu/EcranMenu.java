@@ -17,14 +17,15 @@ import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener {
 	protected static  int[] option=new int[4]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2
-	protected PanelMenu1 p1;
-	protected PanelMenu2 p2;
-	protected PanelMenu3 p3;
-	protected PanelMenu4 p4;
-	protected PanelMenu5 p5;
-	protected PanelMenu6 p6;
-	protected PanelMenu7 p7;
-	protected PanelMenu8 p8;
+
+	protected PanelMenuPrincipal p1;
+	protected PanelMenu1J p2;
+	protected PanelMenu2J p3;
+	protected PanelMenuControle p4;
+	protected PanelMenuCredits p5;
+	protected PanelMenuRegles p6;
+	protected PanelMenu1JPerso p7;
+	protected PanelMenu2JPerso p8;
 
 	private Timer timer;
 
@@ -53,14 +54,14 @@ public class EcranMenu extends Ecran implements ActionListener {
 		this.vue = f;
 		this.setLayout(null);
 
-		p1 = new PanelMenu1(f, this);
-		p2 = new PanelMenu2(f, this);
-		p3 = new PanelMenu3(f, this);
-		p4 = new PanelMenu4(f, this);
-		p5 = new PanelMenu5(f, this);
-		p6 = new PanelMenu6(f, this);
-		p7 = new PanelMenu7(f, this);
-		p8 = new PanelMenu8(f, this);
+		p1 = new PanelMenuPrincipal(f, this);
+		p2 = new PanelMenu1J(f, this);
+		p3 = new PanelMenu2J(f, this);
+		p4 = new PanelMenuControle(f, this);
+		p5 = new PanelMenuCredits(f, this);
+		p6 = new PanelMenuRegles(f, this);
+		p7 = new PanelMenu1JPerso(f, this);
+		p8 = new PanelMenu2JPerso(f, this);
 
 		changeMenuBox(this, p1);
 

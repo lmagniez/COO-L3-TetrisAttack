@@ -19,25 +19,40 @@ public class Animation {
 	private int cpt;
 	private int nbImage;
 
-	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, int screenWidth, int screenHeight,
-			int cpt, int nbImage, JPanel p) {
-		this.img = img;
+	
+	protected int grilleX,grilleY,grillePosX,grillePosY,grilleTailleEltX,grilleTailleEltY;
+	
+	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, 
+			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
+	{
+		this.img=img;
 		this.setPosX(posX);
 		this.setPosY(posY);
-		this.imgWidth = imgWidth;
-		this.imgHeight = imgHeight;
-		this.screenWidth = screenWidth;
-		this.screenHeight = screenHeight;
-		this.cpt = cpt;
-		this.nbImage = nbImage;
-		this.p = p;
+		this.imgWidth=imgWidth;
+		this.imgHeight=imgHeight;
+		this.screenWidth=screenWidth;
+		this.screenHeight=screenHeight;
+		this.cpt=cpt;
+		this.nbImage=nbImage;
+		this.p=p;
 	}
+	
+	public void addInfosGrille(int grilleX, int grilleY, int grillePosX, int grillePosY, int grilleTailleEltX, int grilleTailleEltY){
+		this.grilleX=grilleX;
+		this.grilleY=grilleY;
+		this.grilleTailleEltX=grilleTailleEltX;
+		this.grilleTailleEltY=grilleTailleEltY;
+		this.grillePosX=grillePosX;
+		this.grillePosY=grillePosY;
+	}
+
 
 	public void updateCpt() {
 		cpt = (cpt + 1) % nbImage;
 	}
 
 	public void draw(Graphics g) {
+		System.out.println( getPosY() +"   "+ screenHeight);
 		g.drawImage(img, getPosX(), getPosY(), getPosX() - screenWidth, getPosY() - screenHeight, imgWidth * (cpt + 1),
 				imgHeight, imgWidth * (cpt), 0, p);
 	}
@@ -49,6 +64,15 @@ public class Animation {
 	public void setPosX(int posX) {
 		this.posX = posX;
 	}
+	
+	public void setPosXGrille(int posGrilleX, int x, int tailleEltX) {
+		this.posX = posGrilleX+ (x+1) * tailleEltX;
+	}
+	
+	public void setPosYGrille(int posGrilleY, int y, int tailleEltY) {
+		this.posY = posGrilleY+ (y+1) * tailleEltY;
+	}
+	
 
 	public int getPosY() {
 		return posY;

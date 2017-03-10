@@ -23,7 +23,7 @@ import Bouton.SliderDifficulte;
 import Constante.ConstanteDimension;
 import Run.Fenetre;
 
-public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
+public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 
 
 	private SliderDifficulte sliderLevel;
@@ -32,7 +32,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 
 	private int cptButton = 0;
 	
-	public PanelMenu2(Fenetre vue, EcranMenu e) {
+	public PanelMenu1J(Fenetre vue, EcranMenu e) {
 		this.ecran = e;
 		this.vue = vue;
 		this.setOpaque(false);

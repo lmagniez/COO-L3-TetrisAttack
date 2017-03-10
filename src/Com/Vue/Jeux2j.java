@@ -228,4 +228,16 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		System.out.println("Temps: "+ minute+" : "+seconde);
 	}
 
+	@Override
+	public void bougeJoueurGraphique() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void bougerGrilleGraphique() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

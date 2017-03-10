@@ -61,6 +61,11 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		g.init();
 
 		creerlayout();
+		
+		this.setOpaque(true);
+		this.setBackground(Color.black);
+		
+		
 	}
 
 	public void animation() {
@@ -112,8 +117,10 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void paintComponent(Graphics g) {
-		Color c = Color.black;
-		g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
+		super.paintComponent(g);
+		//Color c = Color.black;
+		//g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
+
 		(this.g).paintComponent(g);
 		(this.j).dessinerJoueur(g);
 	}

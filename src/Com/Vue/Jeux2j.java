@@ -207,8 +207,6 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void updateCase(int j, int y, int x, ValeurCase val) {
-		System.out.println("j: "+j);
-		
 		if (j == 1)
 			this.g1.updateCase(y, x, val);
 		else

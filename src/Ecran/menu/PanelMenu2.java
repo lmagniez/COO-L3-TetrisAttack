@@ -87,6 +87,7 @@ public class PanelMenu2 extends PanelMenu implements ActionListener, ChangeListe
 		}
 		if (e.getActionCommand().equals("Démarrer")) {
 			EcranMenu.changeMenuBox(ecran,ecran.p7);
+			EcranMenu.option[0]=sliderLevel.getValue();
 		}
 	}
 

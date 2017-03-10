@@ -21,6 +21,4 @@ public abstract class AbstractModel implements Observable {
 	}
 
 
-	public abstract void swap(int x1, int x2, int y1);
-
 }

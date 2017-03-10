@@ -7,9 +7,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
 import Com.Controller.GrilleControler;
+import Com.Controller.JeuxControler;
 import Com.Controller.JoueurController;
 import Com.Model.GrilleModel;
 import Com.Model.JoueurModel;
+import Com.Model.ModelJeux;
 import Com.Model.ValeurCase;
 import Com.Observer.Observer;
 import Constante.ConstanteDimension;
@@ -25,25 +27,34 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private Grille g;
 	private Joueur j;
 
+	private JeuxControler controlerJeu;
+	private ModelJeux modelJeux;
+	
 	private GrilleModel modelGrille;
 	private GrilleControler controlerGrille;
 
 	private JoueurModel modelJoueur;
 	private JoueurController controlerJoueur;
-
-	private Thread GestionClavier;
+	
 	protected boolean deplacementJoueur = true;
+	private boolean pause=false;
 
-	public Jeux1j(Fenetre f, int indiceTheme) {
+	
+	
+	public Jeux1j(Fenetre f, int[] option) {
 		fen = f;
-
+		
+		modelJeux = new ModelJeux(this);
+		controlerJeu=new JeuxControler(modelJeux);
+		
+		
 		modelGrille = new GrilleModel(1);
 		controlerGrille = new GrilleControler(modelGrille);
 		g = new Grille(this, controlerGrille, PositionGrille1JX, PositionGrille1JY);
 		modelGrille.add(this);
 
 		modelJoueur = new JoueurModel(1);
-		controlerJoueur = new JoueurController(modelJoueur, controlerGrille);
+		controlerJoueur = new JoueurController(modelJoueur, controlerGrille,option[0]);
 		j = new Joueur(PositionGrille1JX, PositionGrille1JY, controlerJoueur, g.tailleX(), g.tailleY(), 1);
 		modelJoueur.add(this);
 
@@ -52,29 +63,40 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		creerlayout();
 	}
 
-	public void lancementAnimation() {
-		animation();
-	}
-
 	public void animation() {
 		controlerJoueur.animation();
+		controlerJeu.timer();
 	}
 
 	public void GestionClavier(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_Z) {
-			controlerJoueur.verifUp(j.getY1());
+		if(!pause){
+			if (e.getKeyCode() == KeyEvent.VK_Z) {
+				controlerJoueur.verifUp(j.getY1());
+			}
+			if (e.getKeyCode() == KeyEvent.VK_S) {
+				controlerJoueur.verifDown(j.getY1());
+			}
+			if (e.getKeyCode() == KeyEvent.VK_Q) {
+				controlerJoueur.verifLeft(j.getX1());
+			}
+			if (e.getKeyCode() == KeyEvent.VK_D) {
+				controlerJoueur.verifRigth(j.getX1());
+			}
+			if (e.getKeyCode() == KeyEvent.VK_F) {
+				controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());
+			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_S) {
-			controlerJoueur.verifDown(j.getY1());
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if(pause){
+				controlerJoueur.reprendre();
+				controlerJeu.reprendre();
+				pause=false;
+			}
 		}
-		if (e.getKeyCode() == KeyEvent.VK_Q) {
-			controlerJoueur.verifLeft(j.getX1());
-		}
-		if (e.getKeyCode() == KeyEvent.VK_D) {
-			controlerJoueur.verifRigth(j.getX1());
-		}
-		if (e.getKeyCode() == KeyEvent.VK_F) {
-			controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());
+		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			pause=true;
+			controlerJeu.pause();
+			controlerJoueur.pause();
 		}
 	}
 
@@ -92,9 +114,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void paintComponent(Graphics g) {
 		Color c = Color.black;
 		g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
-
 		(this.g).paintComponent(g);
-		// (this.g).dessinerGrille(g);
 		(this.j).dessinerJoueur(g);
 	}
 
@@ -129,4 +149,20 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.j.setScore(score);
 	}
 
+	@Override
+	public void updateTimer(String minute, String seconde) {
+		System.out.println("Temps: "+ minute+" : "+seconde);
+	}
+
+	@Override
+	public void bougeJoueurGraphique() {
+		j.setyGrille(j.getyGrille()-1);
+		repaint();
+	}
+
+	@Override
+	public void bougerGrilleGraphique() {
+		g.monterGrille();
+		repaint();
+	}
 }

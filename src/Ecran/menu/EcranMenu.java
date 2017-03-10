@@ -16,11 +16,7 @@ import Ecran.GestionBouton;
 import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener {
-
-	// Joueur joueur1 = new Joueur(this, 1);
-	// Joueur joueur2 = new Joueur(this, 2);
-	// JButton joueur1 = new Commande(this, "1 Player");
-
+	protected static  int[] option=new int[4]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2
 	protected PanelMenu1 p1;
 	protected PanelMenu2 p2;
 	protected PanelMenu3 p3;

@@ -27,7 +27,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	private Case[][] tab = new Case[nombredecase][nombredeLigne];
 
 	private GrilleControler controlerGrille;
-	//public static ValeurCase[] couleurs=new ValeurCase[ConstanteJeux.nombreCouleur];
 	private Timer timer;
 	
 	private int y;
@@ -51,17 +50,8 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 
 		this.setPreferredSize(new Dimension(DimensionGrillex, DimensionGrilley));
 		setBackground(new Color(0, 0, 0, 90));
-		
-		//pour faciliter dessin grille
-		/*
-		for(int i=0; i<ConstanteJeux.nombreCouleur; i++){
-			couleurs[i]=ValeurCase.fromInteger(i);
-		}*/
-		
-		timer = new Timer(100, this);
+		timer = new Timer(120, this);
 		timer.start();
-		
-		
 	}
 
 	
@@ -78,7 +68,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		}
 		else if (e.getActionCommand().equals("arreter")) timer.stop();
 		else if (e.getActionCommand().equals("reprendre")) timer.restart();
-		
 	}
 	
 	public void init() {controlerGrille.initGrille();}
@@ -105,7 +94,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 	
 	public void paintComponent(Graphics g){
-		for (int a = 0; a < nombredeLigne - reserve - 1; a++) {
+		for (int a = 0; a < nombredeLigne - reserve; a++) {
 			for (int i = 0; i < nombredecase; i++) {
 				tab[i][a].animBloc.draw(g);
 			}
@@ -119,8 +108,17 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public int tailleY() {
 		return tailleny;
 	}
-
+	
 	public void updateCase(int y, int x, ValeurCase val) {
 		tab[x][y] = new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, val);
+	}
+
+	public void monterGrille() {
+ 		for (int a = 0; a < nombredeLigne; a++) {
+			for (int i = 0; i < nombredecase; i++) {
+				tab[i][a].animBloc.setPosY(tab[i][a].animBloc.getPosY()-1);
+			}
+		}
+
 	}
 }

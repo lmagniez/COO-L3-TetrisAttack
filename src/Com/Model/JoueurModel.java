@@ -10,8 +10,6 @@ public class JoueurModel {
 	private int x1=5;
 	private int x2=6;
 	private int y1=9;
-	
-	
 			
 	public JoueurModel(int id) {
 		super();
@@ -58,6 +56,10 @@ public class JoueurModel {
 
 	public int getY1() {
 		return y1;
+	}
+
+	public void monteJoueurGraphique() {
+		joueurVue.bougeJoueurGraphique();
 	}
 	
 	

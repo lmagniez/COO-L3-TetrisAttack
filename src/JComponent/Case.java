@@ -19,8 +19,8 @@ public class Case {
 	private  int tailleY;
 	private ValeurCase valeur;
 	
-	
 	protected Animation animBloc;
+	
 	private Image blocImg;
 	private int cptbloc=0, widthbloc=16, heightbloc=16, 
 			screenwidthbloc, screenheightbloc;
@@ -30,13 +30,8 @@ public class Case {
 	protected Image[] blocsImg;
 	public static int NB_IMAGE=4;
 	
-	
-	
-	
-	
 	public Case(Grille g,int a,int b,int dimx,int dimy,ValeurCase v){
 		blocsImg=new Image[ConstanteJeux.nombreCouleur];
-		
 		blocsImg[0]=new ImageIcon("./ressources/Game/Blocks/vide.png").getImage();
 		blocsImg[1]=new ImageIcon("./ressources/Game/Blocks/cyan.png").getImage();
 		blocsImg[2]=new ImageIcon("./ressources/Game/Blocks/rouge.png").getImage();
@@ -56,11 +51,8 @@ public class Case {
 		tailleY=dimy;
 		valeur=v;
 
-		
-		
 		blocImg=blocsImg[v.ordinal()];
-		animBloc= new Animation(blocImg,0,0,widthbloc,heightbloc,
-				screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);	
+		animBloc= new Animation(blocImg,0,0,widthbloc,heightbloc,screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);	
 	}
 
 	public Case(Case case1) {

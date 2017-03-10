@@ -57,7 +57,7 @@ public class Case {
 		blocImg=blocsImg[v.ordinal()];
 		animBloc= new Animation(blocImg,0,0,widthbloc,heightbloc,
 				screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);	
-		animBloc.start();
+		//animBloc.start();
 	}
 
 	public Case(Case case1) {

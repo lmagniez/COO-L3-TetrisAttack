@@ -16,6 +16,7 @@ import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
+import Ecran.AnimationThread;
 
 public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux, ActionListener {
 
@@ -29,6 +30,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	private GrilleControler controlerGrille;
 	//public static ValeurCase[] couleurs=new ValeurCase[ConstanteJeux.nombreCouleur];
 	private Timer timer;
+	protected AnimationThread animThread;
 	
 	private int y;
 	private int tailleny, taillenx;
@@ -48,7 +50,9 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		posGy=y;
 		tailleny = DimensionGrilley / (nombredeLigne - 2 * reserve);
 		taillenx = DimensionGrillex / nombredecase;
-
+		animThread= new AnimationThread();
+		
+		
 		this.setPreferredSize(new Dimension(DimensionGrillex, DimensionGrilley));
 		setBackground(new Color(0, 0, 0, 90));
 		
@@ -58,17 +62,19 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 			couleurs[i]=ValeurCase.fromInteger(i);
 		}*/
 		
-		timer = new Timer(10, this);
+		timer = new Timer(50, this);
 		timer.start();
 		
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
 				tab[i][j]= new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, ValeurCase.VIDE);
 				tab[i][j].animBloc.addInfosGrille(i, j, posGx, posGy, taillenx, tailleny);
+				animThread.getAnimations().add(tab[i][j].animBloc);
 			}
 				
 		}
 		
+		animThread.start();
 		
 	}
 

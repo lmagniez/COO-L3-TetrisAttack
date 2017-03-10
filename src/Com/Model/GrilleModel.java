@@ -20,14 +20,14 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		id = id;
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
-				tab[i][j]=new CaseModel();
+				tab[i][j]=new CaseModel(i,j);
 			}
 				
 		}
 		initGrille();
 	}
 
-	private void initGrille() {
+	public void initGrille() {
 		for (int a = 0; a < nombredecase; a++) {
 			creercolonne(a);
 		}
@@ -37,7 +37,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * Initialisation? Création de colonne
 	 * @param a abscisse
 	 */
-	private void creercolonne(int a) {
+	public void creercolonne(int a) {
 		int val, nombrelignedessin = 2 + RND.nextInt(5 - 0);
 		;
 		for (int i = 0; i < nombredeLigne; i++) {
@@ -76,7 +76,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	/**
 	 * Faire descendre les blocs (/!\ cas des blocs gris)
 	 */
-	private void descendreCube() {
+	public void descendreCube() {
 		ValeurCase tmp;
 		for (int i = 0; i < nombredeLigne - 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {
@@ -145,7 +145,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param nbblock nombre de cases a supprimer
 	 * @param indicefin indice de départ (bas)
 	 */
-	private void supprimerCaseColonne(int colonne, int nbbloc, int indicefin) {
+	public void supprimerCaseColonne(int colonne, int nbbloc, int indicefin) {
 		for (int i = indicefin; i > (indicefin-nbbloc); i--) {
 			tab[colonne][i].v = ValeurCase.VIDE;
 			this.UpdateCase(i, colonne, tab[colonne][i].v);
@@ -159,7 +159,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param nbblock nombre de cases a supprimer
 	 * @param indicefin indice de départ (droite)
 	 */
-	private void supprimerCasesLigne(int ligne, int nbblock, int indicefin) {
+	public void supprimerCasesLigne(int ligne, int nbblock, int indicefin) {
 		for (int i = indicefin; i > (indicefin-nbblock); i--) {
 			tab[i][ligne].v = ValeurCase.VIDE;
 			this.UpdateCase(ligne, i, tab[i][ligne].v);

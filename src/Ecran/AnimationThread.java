@@ -10,10 +10,21 @@ public class AnimationThread extends Thread{
 	public AnimationThread(){
 		this.running=true;
 		this.setAnimations(new ArrayList<Animation>());
+		
+		
+		
 	}
 	
 	
 	public void run(){
+		
+		for(int i=0; i<getAnimations().size(); i++){
+			Animation a = getAnimations().get(i);
+			
+			a.setPosXGrille(a.grillePosX, a.grilleX, a.grilleTailleEltX);
+			a.setPosYGrille(a.grillePosY, a.grilleY, a.grilleTailleEltY);
+		}
+		
 		while(running){
 			try {
 				Thread.sleep(100);
@@ -21,8 +32,8 @@ public class AnimationThread extends Thread{
 					
 					Animation a = getAnimations().get(i);
 					a.updateCpt();
-					a.setPosXGrille(a.grillePosX, a.grilleX, a.grilleTailleEltX);
-					a.setPosYGrille(a.grillePosY, a.grilleY, a.grilleTailleEltY);
+					//a.setPosXGrille(a.grillePosX, a.grilleX, a.grilleTailleEltX);
+					//a.setPosYGrille(a.grillePosY, a.grilleY, a.grilleTailleEltY);
 				}
 				
 			} catch (InterruptedException e) {

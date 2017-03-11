@@ -75,6 +75,9 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		j2 = new Joueur(PositionGrille2JX2, PositionGrille2JY2, controlerJoueur2, g2.tailleX(), g2.tailleY(), 2);
 		modelJoueur2.add(this);
 
+		modelGrille1.setControlerJoueur(controlerJoueur1);
+		modelGrille2.setControlerJoueur(controlerJoueur2);
+		
 		g1.init();
 		g2.init();
 		creerlayout();
@@ -258,18 +261,26 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		
 	}
-
+	
 	@Override
 	public void stopCase(int id, int y, int x) {
-		// TODO Auto-generated method stub
-		
+		if(id==1)
+			this.g1.getTab()[x][y].getAnimBloc().stopperAnimation(5);
+		else
+			this.g2.getTab()[x][y].getAnimBloc().stopperAnimation(5);
+			
 	}
 
 	@Override
 	public void startCase(int id, int y, int x) {
-		// TODO Auto-generated method stub
-		
+		if(id==1)
+			this.g1.getTab()[x][y].getAnimBloc().reprendreAnimation();
+		else
+			this.g2.getTab()[x][y].getAnimBloc().reprendreAnimation();
+			
 	}
+	
+
 
 	@Override
 	public void bougeJoueurGraphique() {

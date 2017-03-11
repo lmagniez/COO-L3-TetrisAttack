@@ -43,8 +43,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param a abscisse
 	 */
 	public void creercolonne(int a) {
-		int val, nombrelignedessin = nombredeLigne;
-		;
+		int val, nombrelignedessin = 3+RND.nextInt(3);
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
 				val = 1 + RND.nextInt(5 - 0);
@@ -128,10 +127,12 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				if(prec != tab[a][i].v || i==(nombredeLigneTeste )){
 					if(i==(nombredeLigneTeste) && nb>=nbCaseCombo){
 						changement=true;
+						System.out.println("derniere ligne");
 						supprimerCaseColonne(a,nb,i); //derniere case soit la case ou on est 
 					}
 					else if(nb>=nbCaseCombo){
 						changement=true;
+						System.out.println("ligne milieu");
 						supprimerCaseColonne(a,nb,i-1); //case d'avant pour les cases du mileu
 					}
 					prec = tab[a][i].v;
@@ -151,21 +152,26 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		int nb = 1;
 		ValeurCase prec;
 		boolean changement = false;
-		for (int i = 1; i <= nombredeLigne - reserve - 1 ; i++) {
-			
+		for (int i = 0; i <= nombredeLigneTeste+1 ; i++) {
 			prec = tab[0][i].v;
+			nb=1;
+			System.out.println();
 			for (int a = 1; a < nombredecase; a++) {
 				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
 					nb++;
 				}
-				if(prec != tab[a][i].v || a==nombredecase-1){
-					if(a==nombredecase-1 && nb>=nbCaseCombo){
+				else if (prec != tab[a][i].v){
+					if(nb>=nbCaseCombo){
 						changement=true;
-						supprimerCasesLigne(i,nb,a); //derniere case soit la case ou on est 
+						supprimerCasesLigne(i,nb,a-1);
 					}
-					else if(nb>=nbCaseCombo){
+					nb=1;
+					prec= tab[a][i].v;
+				}
+				if(a == (nombredecase - 1 ) ){
+					if(nb>=nbCaseCombo){
 						changement=true;
-						supprimerCasesLigne(i,nb,a-1); //case d'avant pour les cases du mileu
+						supprimerCasesLigne(i,nb,a); //case d'avant pour les cases du mileu
 					}
 					prec = tab[a][i].v;
 					nb=1;
@@ -211,7 +217,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 */
 	public void supprimerCasesLigne(int ligne, int nbblock, int indicefin) {
 		ArrayList<CaseModel> casesSuppr = new ArrayList<CaseModel>();
-		for (int i = indicefin; i > (indicefin-nbblock); i--) {
+		for (int i = indicefin; i > (indicefin-nbblock) ; i--) {
 			casesSuppr.add(tab[i][ligne]);
 			//tab[i][ligne].v = ValeurCase.VIDE;
 			//this.UpdateCase(ligne, i, tab[i][ligne].v);

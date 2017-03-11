@@ -11,6 +11,8 @@ public class CaseModel extends Thread{
 		this.v=ValeurCase.VIDE;
 		this.x=x;
 		this.y=y;
+		this.swappable=true;
+		this.isBloc=false;
 	}
 	
 	public void run(){

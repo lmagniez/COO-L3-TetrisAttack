@@ -17,10 +17,17 @@ public class Animation {
 	private int imgWidth, imgHeight;
 	private int screenWidth, screenHeight;
 	private int cpt;
+	private int cptArret;
 	private int nbImage;
 
 	
-	public int grilleX,grilleY,grillePosX,grillePosY,grilleTailleEltX,grilleTailleEltY;
+	protected boolean moving;
+	
+	public int grilleX,grilleY,grillePosX,grillePosY;
+
+	public int grilleTailleEltX;
+
+	public int grilleTailleEltY;
 	
 	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, 
 			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
@@ -35,12 +42,13 @@ public class Animation {
 		this.cpt=cpt;
 		this.nbImage=nbImage;
 		this.p=p;
+		this.moving=true;
 	}
 	
 	public void addInfosGrille(int grilleX, int grilleY, int grillePosX, int grillePosY, int grilleTailleEltX, int grilleTailleEltY){
 		this.grilleX=grilleX;
 		this.grilleY=grilleY;
-		this.grilleTailleEltX=grilleTailleEltX;
+		this.setGrilleTailleEltX(grilleTailleEltX);
 		this.grilleTailleEltY=grilleTailleEltY;
 		this.grillePosX=grillePosX;
 		this.grillePosY=grillePosY;
@@ -48,12 +56,27 @@ public class Animation {
 
 
 	public void updateCpt() {
+		
 		cpt = (cpt + 1) % nbImage;
 	}
 
+	public void stopperAnimation(int cpt){
+		this.cptArret=cpt;
+		this.moving=false;
+	}
+	
+	public void reprendreAnimation(){
+		this.moving=true;
+	}
+	
+	
 	public void draw(Graphics g) {
-		g.drawImage(img, getPosX(), getPosY(), getPosX() - screenWidth, getPosY() - screenHeight, imgWidth * (cpt + 1),
+		if(moving)
+			g.drawImage(img, getPosX(), getPosY(), getPosX() - screenWidth, getPosY() - screenHeight, imgWidth * (cpt + 1),
 				imgHeight, imgWidth * (cpt), 0, p);
+		else
+			g.drawImage(img, getPosX(), getPosY(), getPosX() - screenWidth, getPosY() - screenHeight, imgWidth * (cptArret + 1),
+					imgHeight, imgWidth * (cptArret), 0, p);
 	}
 
 	public int getPosX() {
@@ -87,6 +110,14 @@ public class Animation {
 
 	public void setImg(Image img) {
 		this.img = img;
+	}
+
+	public int getGrilleTailleEltX() {
+		return grilleTailleEltX;
+	}
+
+	public void setGrilleTailleEltX(int grilleTailleEltX) {
+		this.grilleTailleEltX = grilleTailleEltX;
 	}
 
 }

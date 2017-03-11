@@ -60,9 +60,9 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
-				tab[i][j]= new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, ValeurCase.VIDE);
-				tab[i][j].animBloc.addInfosGrille(i, j, posGx, posGy, taillenx, tailleny);
-				animThread.getAnimations().add(tab[i][j].animBloc);
+				getTab()[i][j]= new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, ValeurCase.VIDE);
+				getTab()[i][j].getAnimBloc().addInfosGrille(i, j, posGx, posGy, taillenx, tailleny);
+				animThread.getAnimations().add(getTab()[i][j].getAnimBloc());
 			}
 				
 		}
@@ -78,24 +78,27 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		else if (e.getActionCommand().equals("reprendre")) timer.restart();
 	}
 	
-	public void init() {controlerGrille.initGrille();}
+	public void init() {controlerGrille.initGrille();
+	this.afficherGrille();}
 
 	public void swaphorizontal(int x1, int x2, int y) {
-		ValeurCase value = tab[x1][y].getValeur();
-		this.tab[x1][y].setValeur(this.tab[x2][y].getValeur());
-		this.tab[x2][y].setValeur(value);
+		ValeurCase value = getTab()[x1][y].getValeur();
+		this.getTab()[x1][y].setValeur(this.getTab()[x2][y].getValeur());
+		this.getTab()[x2][y].setValeur(value);
 	}
 
 	public void swapvertical(int x, int y1, int y2) {
-		ValeurCase value = tab[x][y2].getValeur();
-		this.tab[x][y2].setValeur(this.tab[x][y1].getValeur());
-		this.tab[x][y1].setValeur(value);
+		ValeurCase value = getTab()[x][y2].getValeur();
+		this.getTab()[x][y2].setValeur(this.getTab()[x][y1].getValeur());
+		this.getTab()[x][y1].setValeur(value);
 	}
 	
 	public void affiche(){
 		for (int a = 0; a < nombredeLigne-1; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-				 System.out.print(tab[i][a].animBloc.getPosY()+"  ");
+
+				 System.out.print(getTab()[i][a].getValeur()+"  ");
+				// System.out.print(tab[i][a].animBloc.getPosY()+"  ");
 			}
 			System.out.println();
 		}
@@ -104,7 +107,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public void paintComponent(Graphics g){
 		for (int a = 0; a < nombredeLigne; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-				tab[i][a].animBloc.draw(g);
+				getTab()[i][a].getAnimBloc().draw(g);
 			}
 		}
 		g.setColor(new Color(0,0,255,110));
@@ -120,7 +123,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 	
 	public void updateCase(int y, int x, ValeurCase val) {
-		tab[x][y].setValeur(val);
+		getTab()[x][y].setValeur(val);
 	}
 
 	public void monterGrille() {
@@ -135,11 +138,31 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public void reinitgrilleAnimation() {
 		for (int a = 0; a < nombredeLigne; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-				tab[i][a].animBloc.setPosXGrille(tab[i][a].animBloc.grillePosX, tab[i][a].animBloc.grilleX, tab[i][a].animBloc.grilleTailleEltX);
+				tab[i][a].animBloc.setPosXGrille(tab[i][a].animBloc.grillePosX, tab[i][a].animBloc.grilleX, tab[i][a].animBloc.getGrilleTailleEltX());
 				tab[i][a].animBloc.setPosYGrille(tab[i][a].animBloc.grillePosY, tab[i][a].animBloc.grilleY, tab[i][a].animBloc.grilleTailleEltY);
 			}
 		}
 	}
 	
+	public void afficherGrille(){
+		System.out.println("//////--------GRILLEGRAPHIQ---------");
+		for(int i=0; i<nombredeLigne; i++){
+			for(int j=0; j<nombredecase; j++){
+				System.out.print(this.getTab()[j][i].getValeur()+" ");
+			}
+			System.out.println();
+		}
+		System.out.println("----------------------");
+	}
+
+
+	public Case[][] getTab() {
+		return tab;
+	}
+
+
+	public void setTab(Case[][] tab) {
+		this.tab = tab;
+	}
 	
 }

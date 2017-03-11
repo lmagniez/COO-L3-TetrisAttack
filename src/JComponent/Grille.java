@@ -111,7 +111,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 			}
 		}
 		g.setColor(new Color(0,0,255,110));
-		g.fillRect(this.posGx,tab[0][nombredeLigne-reserve-2].animBloc.getPosY(), DimensionGrillex , 2*tailleny);
+		g.fillRect(this.posGx,nombredeLigne*tailleny, DimensionGrillex , tailleny);
 	}	
 
 	public int tailleX() {

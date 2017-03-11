@@ -19,7 +19,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	protected ArrayList<CaseThreadSuppr> listeThreadSuppr;
 	
-	
 	private final Random RND = new Random();
 
 	public GrilleModel(int id) {
@@ -28,8 +27,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
 				tab[i][j]=new CaseModel(i,j);
-			}
-				
+			}		
 		}
 		initGrille();
 	}
@@ -45,7 +43,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param a abscisse
 	 */
 	public void creercolonne(int a) {
-		int val, nombrelignedessin = 2 + RND.nextInt(5 - 0);
+		int val, nombrelignedessin = nombredeLigne;
 		;
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
@@ -67,20 +65,13 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 			val = 1 + RND.nextInt(6 - 1);
 			tab[i][nombredeLigne - 1].v = ValeurCase.fromInteger(val);
 		}
-		//this.comboColonne();
-		//this.comboLigne();
-		
-		//this.afficherGrille();
-		
-		
+		this.comboLigne();this.comboLigne();
 	}
-
+	
 	/**
 	 * Envoi la grille du modèle à la vue
 	 */
 	public void recupGrille() {
-		//System.out.println("récup grille");
-		//this.afficherGrille();
 		for (int i = 0; i < nombredeLigne; i++) {
 			for (int a = 0; a < nombredecase; a++) {
 				this.UpdateCase(i, a, tab[a][i].v);
@@ -105,8 +96,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
-		//this.comboColonne();
-		//this.comboLigne();
 	}
 
 	public void ajoutGrille() {
@@ -118,9 +107,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				tab[a][i].v = tmp;
 			}
 		}
-		
-		
-		
 		generationLigne();
 		recupGrille();
 	}
@@ -135,29 +121,13 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		boolean changement = false;
 		for (int a = 0; a < nombredecase; a++) {
 			prec = tab[a][0].v;
-//<<<<<<< HEAD
-/*
-			//for (int i = 1; i <= nombredeLigne - reserve ; i++) {
-			for (int i = 0; i < nombredeLigne; i++) {
+			for (int i = 1; i <= nombredeLigneTeste; i++) {
 				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
 					nb++;
 				}
-				//if(prec != tab[a][i].v || i==(nombredeLigne - reserve)){
-				if(prec != tab[a][i].v || i==(nombredeLigne)){
-					if(i==(nombredeLigne - 1) && nb>=nbCaseCombo){
-					//if(i==(nombredeLigne - reserve - 1) && nb>=nbCaseCombo){
-*/
-						
-//=======
-			for (int i = 1; i <= nombredeLigne - reserve - 2 ; i++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
-					nb++;
-				}
-				if(prec != tab[a][i].v || i==(nombredeLigne - reserve - 2 )){
-					if(i==(nombredeLigne - reserve - 2) && nb>=nbCaseCombo){
-//>>>>>>> f97c4f5db9b580ce50644c9a7473a5684cb277f6*/
+				if(prec != tab[a][i].v || i==(nombredeLigneTeste )){
+					if(i==(nombredeLigneTeste) && nb>=nbCaseCombo){
 						changement=true;
-						//ici
 						supprimerCaseColonne(a,nb,i); //derniere case soit la case ou on est 
 					}
 					else if(nb>=nbCaseCombo){
@@ -181,13 +151,8 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		int nb = 1;
 		ValeurCase prec;
 		boolean changement = false;
-//<<<<<<< HEAD
-		//for (int i = 1; i <= nombredeLigne - reserve - 2 ; i++) {
-//		for (int i = 1; i < nombredeLigne ; i++) {
-//=======
 		for (int i = 1; i <= nombredeLigne - reserve - 1 ; i++) {
-//>>>>>>> f97c4f5db9b580ce50644c9a7473a5684cb277f6
-
+			
 			prec = tab[0][i].v;
 			for (int a = 1; a < nombredecase; a++) {
 				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
@@ -287,6 +252,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		this.swapCase(x1, x2, y1);
 		boolean chang=true;
 		this.comboColonne(); this.comboLigne();
+		this.descendreCube();
 	}
 	
 	/**
@@ -296,7 +262,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param y1
 	 */
 	public void swapCase(int x1, int x2, int y1) {
-		
 		if(tab[x1][y1].swappable&&tab[x2][y1].swappable){
 			ValeurCase tmp = tab[x1][y1].v;
 			tab[x1][y1].v = tab[x2][y1].v;

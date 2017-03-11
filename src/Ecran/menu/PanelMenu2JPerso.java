@@ -27,10 +27,13 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 
 	private JButton[] icon1 = new JoueurIcon[6];
 	private JButton[] icon2 = new JoueurIcon[6];
-
+	private JButton valider;
+	
 	private Boolean[] tabIcon = { false, false };
 	private int cptButton = 0;
 
+	protected int idJ1,idJ2, indiceJ1X, indiceJ1Y, indiceJ2X, indiceJ2Y;
+	
 	public PanelMenu2JPerso(Fenetre vue, EcranMenu e) {
 
 		this.ecran = e;
@@ -39,12 +42,16 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 
 		this.has_cursor = false;
 		NB_BUTTONS_Y = 3;
-		NB_BUTTONS_X = 4;
+		NB_BUTTONS_X = 5;
 		buttons = new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 
 		posButtonX = new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY = new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 
+		idJ1=0;indiceJ1X=0; indiceJ1Y=0;
+		idJ2=0;indiceJ2X=0; indiceJ2Y=2;
+		
+		
 		for (int i = 0; i < NB_BUTTONS_X; i++) {
 			posButtonX[i][0] = ConstanteDimension.DimensionFenetrex * 1 / 7;
 			posButtonY[i][0] = 180 + 50 * i;
@@ -66,6 +73,9 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 			icon1[i] = new JoueurIcon(this, i, 1);
 			icon2[i] = new JoueurIcon(this, i, 2);
 		}
+		
+		valider= new JButton("Valider");
+		valider.addActionListener(this);
 	}
 
 	private void ajout() {
@@ -88,7 +98,10 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		for (int i = 0; i < 3; i++) {
 			buttons[cptButton][i] = icon2[i + 3];
 		}
-
+		cptButton++;
+		for (int i = 0; i < 3; i++) {
+			buttons[cptButton][i] = valider;
+		}
 		// Joueur1
 		this.add(Box.createRigidArea(new Dimension(0, 50)));
 		Box rowOne = Box.createHorizontalBox();
@@ -126,16 +139,50 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 			this.add(rowtwobis);
 		}
 
+		this.add(valider);
+		
 		ecran.setButtons(buttons);
 		ecran.addListener();
 
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		vue.afficheJeu2J(EcranMenu.getOption());
-		Sound.stop();
-		ConstanteParametres.ID_MUSIQUE = 2;
-		Sound.loop();
+		
+		
+		int buttonX=-1, buttonY=-1;
+		for (int i = 0; i < buttons.length; i++) {
+			for (int a = 0; a < buttons[0].length; a++) {
+				if (buttons[i][a].hasFocus()) {
+					buttonY=i;buttonX=a;
+				}
+			}
+		}
+		
+		if(buttonY<2){
+			idJ1 = ((JoueurIcon) e.getSource()).getIconId();
+			this.indiceJ1X=buttonX;
+			this.indiceJ1Y=buttonY;
+			
+		}
+		else if(buttonY<4){
+			idJ2 = ((JoueurIcon) e.getSource()).getIconId();
+			this.indiceJ2X=buttonX;
+			this.indiceJ2Y=buttonY;
+			
+		}
+		
+		String command = ((JButton) e.getSource()).getActionCommand();
+		if(command=="Valider"){
+			vue.afficheJeu2J(EcranMenu.getOption(), idJ1, idJ2);
+			//vue.afficheJeu2J(EcranMenu.getOption());
+			Sound.stop();
+			ConstanteParametres.ID_MUSIQUE = 2;
+			Sound.loop();
+		}
+		
+		
+		
+		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -146,6 +193,7 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		g.drawString("Joueur1", 20, 45);
 		g.drawString("Joueur2", 20, 236);
 
+		
 		for (int i = 0; i < buttons.length; i++) {
 			for (int a = 0; a < buttons[0].length; a++) {
 				if (buttons[i][a].hasFocus()) {
@@ -155,5 +203,10 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 				}
 			}
 		}
+		
+		buttons[this.indiceJ1Y][this.indiceJ1X].setBorder(BorderFactory.createLineBorder(Color.green, 5));
+		buttons[this.indiceJ2Y][this.indiceJ2X].setBorder(BorderFactory.createLineBorder(Color.green, 5));
+		
+		
 	}
 }

@@ -8,16 +8,16 @@ import javax.swing.JPanel;
 
 public class Animation {
 
-	private JPanel p;
+	protected JPanel p;
 
-	private Image img;
-	private int posX;
-	private int posY;
+	protected Image img;
+	protected int posX;
+	protected int posY;
 
-	private int imgWidth, imgHeight;
-	private int screenWidth, screenHeight;
-	private int cpt;
-	private int cptArret;
+	protected int imgWidth, imgHeight;
+	protected int screenWidth, screenHeight;
+	protected int cpt;
+	protected int cptArret;
 	private int nbImage;
 
 	
@@ -40,11 +40,20 @@ public class Animation {
 		this.screenWidth=screenWidth;
 		this.screenHeight=screenHeight;
 		this.cpt=cpt;
-		this.nbImage=nbImage;
+		this.setNbImage(nbImage);
 		this.p=p;
 		this.moving=true;
 	}
 	
+	/**
+	 * Utilisé que pour la grille (extension classe)
+	 * @param grilleX
+	 * @param grilleY
+	 * @param grillePosX
+	 * @param grillePosY
+	 * @param grilleTailleEltX
+	 * @param grilleTailleEltY
+	 */
 	public void addInfosGrille(int grilleX, int grilleY, int grillePosX, int grillePosY, int grilleTailleEltX, int grilleTailleEltY){
 		this.grilleX=grilleX;
 		this.grilleY=grilleY;
@@ -57,7 +66,7 @@ public class Animation {
 
 	public void updateCpt() {
 		
-		cpt = (cpt + 1) % nbImage;
+		cpt = (cpt + 1) % getNbImage();
 	}
 
 	public void stopperAnimation(int cpt){
@@ -119,5 +128,23 @@ public class Animation {
 	public void setGrilleTailleEltX(int grilleTailleEltX) {
 		this.grilleTailleEltX = grilleTailleEltX;
 	}
+
+	public int getNbImage() {
+		return nbImage;
+	}
+
+	public void setNbImage(int nbImage) {
+		this.nbImage = nbImage;
+	}
+
+	public int getCpt() {
+		return cpt;
+	}
+
+	public void setCpt(int cpt) {
+		this.cpt = cpt;
+	}
+	
+	
 
 }

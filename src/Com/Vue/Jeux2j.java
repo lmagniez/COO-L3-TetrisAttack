@@ -2,8 +2,10 @@ package Com.Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Com.Controller.GrilleControler;
@@ -17,6 +19,7 @@ import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
+import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
 import JComponent.Grille;
 import Run.Fenetre;
@@ -46,12 +49,37 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private ModelJeux modelJeux;
 
 	private boolean drawOnce = true;
-
 	private boolean pause=false;
 	
-	public Jeux2j(Fenetre f, int[] option) {  //Option =  0 -> vitesse J1 1->idtheme j1 2 -> vitesse J2 3 -> idtheme j2
+	protected int idJ1, idJ2;
+	
+	
+	//fond
+	protected Image fondYoshi= new ImageIcon("./ressources/Game/Fond2J/fond2.png").getImage();
+	protected Image fondFrog= new ImageIcon("./ressources/Game/Fond2J/fond5.png").getImage();
+	protected Image fondChien= new ImageIcon("./ressources/Game/Fond2J/fond1.png").getImage();
+	protected Image fondLakitu= new ImageIcon("./ressources/Game/Fond2J/fond3.png").getImage();
+	protected Image fondMaskass= new ImageIcon("./ressources/Game/Fond2J/fond6.png").getImage();
+	protected Image fondMonstre= new ImageIcon("./ressources/Game/Fond2J/fond4.png").getImage();
+	protected Image fond[] = {fondYoshi,fondLakitu,fondChien,fondMonstre,fondFrog,fondMaskass};
+	
+	//fond grille
+	//fond
+	protected Image yoshi= new ImageIcon("./ressources/Game/Fond2J/yoshi.png").getImage();
+	protected Image frog= new ImageIcon("./ressources/Game/Fond2J/frog.png").getImage();
+	protected Image chien= new ImageIcon("./ressources/Game/Fond2J/chien.png").getImage();
+	protected Image lakitu= new ImageIcon("./ressources/Game/Fond2J/lakitu.png").getImage();
+	protected Image maskass= new ImageIcon("./ressources/Game/Fond2J/maskass.png").getImage();
+	protected Image monstre= new ImageIcon("./ressources/Game/Fond2J/monstre.png").getImage();
+	protected Image fondGrille[] = {yoshi,lakitu,chien,monstre,frog,maskass};
+	
+	
+	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) {  //Option =  0 -> vitesse J1 1->idtheme j1 2 -> vitesse J2 3 -> idtheme j2
 		fen = f;
-
+		this.idJ1=idJ1;
+		this.idJ2=idJ2;
+		
+		
 		modelJeux = new ModelJeux(this);
 		controlerJeu=new JeuxControler(modelJeux);
 		
@@ -158,11 +186,16 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.revalidate();
 		this.validate();
 
+		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
+		g.drawImage(fondGrille[this.idJ1], 100, 100, 96, 192, this);
+		g.drawImage(fondGrille[this.idJ2], 400, 100, 96, 192, this);
+		
+		/*
 		if (this.drawOnce) {
 			Color c = Color.black;
 			g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
 			// drawOnce=false;
-		}
+		}*/
 
 		(this.g1).paintComponent(g);
 		// (this.g1).dessinerGrille(g);

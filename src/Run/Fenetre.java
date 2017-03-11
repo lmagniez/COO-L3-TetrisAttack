@@ -75,8 +75,8 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 		});
 	}
 	
-	public void afficheJeu2J(int[] option) {
-		j2= new Jeux2j(this,option);
+	public void afficheJeu2J(int[] option, int idJ1, int idJ2) {
+		j2= new Jeux2j(this,option, idJ1, idJ2);
 		swapEcran(j2);
 		this.setFocusable(false);
 		j2.lancementAnimation();

@@ -21,7 +21,9 @@ import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
+import JComponent.GameTimer;
 import JComponent.Grille;
+import JComponent.Score;
 import Run.Fenetre;
 
 public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
@@ -39,17 +41,38 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private JoueurModel modelJoueur;
 	private JoueurControler controlerJoueur;
 	
+	protected GameTimer timer;
+	protected Score highScore;
+	protected Score score;
+	protected Score speedLvl;
+	
+	
+	
+	
 	protected boolean deplacementJoueur = true;
 	private boolean pause=false;
 	
+	//fond
 	protected Image yoshi= new ImageIcon("./ressources/Game/Fond1J/yoshi.png").getImage();
 	protected Image frog= new ImageIcon("./ressources/Game/Fond1J/frog.png").getImage();
 	protected Image chien= new ImageIcon("./ressources/Game/Fond1J/chien.png").getImage();
 	protected Image lakitu= new ImageIcon("./ressources/Game/Fond1J/lakitu.png").getImage();
 	protected Image maskass= new ImageIcon("./ressources/Game/Fond1J/maskass.png").getImage();
 	protected Image monstre= new ImageIcon("./ressources/Game/Fond1J/monstre.png").getImage();
-	
 	protected Image fond[] = {yoshi,lakitu,chien,monstre,frog,maskass};
+	
+	//Time
+	protected Image time= new ImageIcon("./ressources/Game/Texte/time.png").getImage();
+	protected int timeX=50, timeY=60, widthTime=116, heightTime=22;
+	
+	protected Image hiScoreTxt= new ImageIcon("./ressources/Game/Texte/hiScore.png").getImage();
+	protected int hiScoreTxtX=600, hiScoreTxtY=100, widthHiScoreTxt=147, heightHiScoreTxt=22;
+	protected Image scoreTxt= new ImageIcon("./ressources/Game/Texte/score.png").getImage();
+	protected int scoreTxtX=600, scoreTxtY=200, widthScoreTxt=140, heightScoreTxt=22;
+	protected Image speedLvlTxt= new ImageIcon("./ressources/Game/Texte/speedLvl.png").getImage();
+	protected int speedLvlTxtX=600, speedLvlTxtY=300, widthSpeedLvlTxt=170, heightSpeedLvlTxt=25;
+	
+	
 	
 	public Jeux1j(Fenetre f, int[] option) {
 		fen = f;
@@ -78,6 +101,19 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		this.setOpaque(true);
 		this.setBackground(Color.black);
+		
+		this.timer=new GameTimer(this,70,120);
+		this.highScore=new Score(this,650,150,true,6);
+		this.score=new Score(this,650,250,false,6);
+		this.speedLvl=new Score(this,650,350,false,2);
+		
+		
+		highScore.setScore(20000);
+		score.setScore(1234);
+		speedLvl.setScore(12);
+		
+		
+		
 		
 		
 	}
@@ -135,11 +171,26 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		//Color c = Color.black;
 		//g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
 
+		
+		
 		g.drawImage(fond[EcranMenu.getOption()[1]], 0, 0, getWidth(), getHeight(), this);
 		
 		
 		(this.g).paintComponent(g);
 		(this.j).dessinerJoueur(g);
+		
+		g.drawImage(this.time, this.timeX, this.timeY, this.widthTime, this.heightTime, this);
+		g.drawImage(this.scoreTxt, this.scoreTxtX, this.scoreTxtY, this.widthScoreTxt, this.heightScoreTxt, this);
+		g.drawImage(this.hiScoreTxt, this.hiScoreTxtX, this.hiScoreTxtY, this.widthHiScoreTxt, this.heightHiScoreTxt, this);
+		g.drawImage(this.speedLvlTxt, this.speedLvlTxtX, this.speedLvlTxtY, this.widthSpeedLvlTxt, this.heightSpeedLvlTxt, this);
+		
+		
+		(this.timer).draw(g);
+		(this.score).draw(g);
+		(this.highScore).draw(g);
+		(this.speedLvl).draw(g);
+		
+		
 	}
 
 	@Override
@@ -176,6 +227,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	@Override
 	public void updateTimer(String minute, String seconde) {
 		//System.out.println("Temps: "+ minute+" : "+seconde);
+		timer.setTime(minute, seconde);
 	}
 
 	@Override

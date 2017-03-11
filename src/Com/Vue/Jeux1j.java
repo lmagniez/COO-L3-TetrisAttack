@@ -179,14 +179,14 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	@Override
-	public void bougeJoueurGraphique() {
+	public void bougeJoueurGraphique(int id) {
 		j.setyGrille(j.getyGrille()-1);
 		repaint();
 		
 	}
 
 	@Override
-	public void bougerGrilleGraphique() {
+	public void bougerGrilleGraphique(int id) {
 		g.monterGrille();
 		repaint();
 	}
@@ -200,5 +200,24 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void startCase(int id, int y, int x) {
 		this.g.getTab()[x][y].getAnimBloc().reprendreAnimation();
 		
+	}
+	
+	public void reinitgrilleAnimation(int id) {
+		j.reinitgrilleEmplacement();
+		g.reinitgrilleAnimation();
+		repaint();
+	}
+
+	@Override
+	public void bougeJoueurGraphique() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void bougerGrilleGraphique() {
+		// TODO Auto-generated method stub
+		g.monterGrille();
+		repaint();
 	}
 }

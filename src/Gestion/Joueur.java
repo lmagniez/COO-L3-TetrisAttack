@@ -85,8 +85,9 @@ public class Joueur implements ConstanteJeux {
 	}
 
 	public void setY1(int y1) {
+		if(y1<this.y1) {this.yGrille = yGrille - sizey;}
+		if(y1>this.y1) {this.yGrille = yGrille + sizey;}
 		this.y1 = y1;
-		this.yGrille = posYG + y1 * sizey;
 	}
 
 	public int getyGrille() {
@@ -110,6 +111,11 @@ public class Joueur implements ConstanteJeux {
 
 	public JLabel getScore() {
 		return score;
+	}
+
+	public void reinitgrilleEmplacement() {
+		this.yGrille =  posYG + y1*sizey;
+		
 	}
 	
 	

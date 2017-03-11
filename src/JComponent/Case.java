@@ -19,7 +19,7 @@ public class Case {
 	private  int tailleY;
 	private ValeurCase valeur;
 	
-	private Animation animBloc;
+	public Animation animBloc;
 	
 	private Image blocImg;
 	private int cptbloc=0, widthbloc=16, heightbloc=16, 
@@ -113,6 +113,7 @@ public class Case {
 
 	public void setAnimBloc(Animation animBloc) {
 		this.animBloc = animBloc;
+
 	}
 	
 	

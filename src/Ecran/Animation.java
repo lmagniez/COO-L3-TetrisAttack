@@ -23,7 +23,11 @@ public class Animation {
 	
 	protected boolean moving;
 	
-	protected int grilleX,grilleY,grillePosX,grillePosY,grilleTailleEltX,grilleTailleEltY;
+	public int grilleX,grilleY,grillePosX,grillePosY;
+
+	public int grilleTailleEltX;
+
+	public int grilleTailleEltY;
 	
 	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, 
 			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
@@ -44,7 +48,7 @@ public class Animation {
 	public void addInfosGrille(int grilleX, int grilleY, int grillePosX, int grillePosY, int grilleTailleEltX, int grilleTailleEltY){
 		this.grilleX=grilleX;
 		this.grilleY=grilleY;
-		this.grilleTailleEltX=grilleTailleEltX;
+		this.setGrilleTailleEltX(grilleTailleEltX);
 		this.grilleTailleEltY=grilleTailleEltY;
 		this.grillePosX=grillePosX;
 		this.grillePosY=grillePosY;
@@ -88,7 +92,7 @@ public class Animation {
 	}
 	
 	public void setPosYGrille(int posGrilleY, int y, int tailleEltY) {
-		this.posY = posGrilleY+ (y+1) * tailleEltY;
+		this.posY = posGrilleY + (y+1) * tailleEltY;
 	}
 	
 
@@ -106,6 +110,14 @@ public class Animation {
 
 	public void setImg(Image img) {
 		this.img = img;
+	}
+
+	public int getGrilleTailleEltX() {
+		return grilleTailleEltX;
+	}
+
+	public void setGrilleTailleEltX(int grilleTailleEltX) {
+		this.grilleTailleEltX = grilleTailleEltX;
 	}
 
 }

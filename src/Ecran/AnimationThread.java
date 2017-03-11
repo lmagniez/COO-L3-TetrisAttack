@@ -10,9 +10,6 @@ public class AnimationThread extends Thread{
 	public AnimationThread(){
 		this.running=true;
 		this.setAnimations(new ArrayList<Animation>());
-		
-		
-		
 	}
 	
 	
@@ -20,8 +17,8 @@ public class AnimationThread extends Thread{
 		
 		for(int i=0; i<getAnimations().size(); i++){
 			Animation a = getAnimations().get(i);
-			
-			a.setPosXGrille(a.grillePosX, a.grilleX, a.grilleTailleEltX);
+		
+			a.setPosXGrille(a.grillePosX, a.grilleX, a.getGrilleTailleEltX());
 			a.setPosYGrille(a.grillePosY, a.grilleY, a.grilleTailleEltY);
 		}
 		
@@ -29,7 +26,6 @@ public class AnimationThread extends Thread{
 			try {
 				Thread.sleep(100);
 				for(int i=0; i<getAnimations().size(); i++){
-					
 					Animation a = getAnimations().get(i);
 					a.updateCpt();
 					//a.setPosXGrille(a.grillePosX, a.grilleX, a.grilleTailleEltX);

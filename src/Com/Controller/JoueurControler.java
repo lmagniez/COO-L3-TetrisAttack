@@ -41,12 +41,17 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void verifDown(int y1) {
+/*<<<<<<< HEAD:src/Com/Controller/JoueurControler.java
 		if (y1 != nombredeLigne-1){
 		//if (y1 != nombredeLigne - reserve -2) {
+=======*/
+		if (y1 != nombredeLigneTeste) {
+//>>>>>>> f97c4f5db9b580ce50644c9a7473a5684cb277f6:src/Com/Controller/JoueurController.java
 			this.joueurModel.changeBas();
 		}
 	}
 
+	
 	public void verifLeft(int x1) {
 		if (x1 != 0) {
 			this.joueurModel.changeGauche();
@@ -76,18 +81,23 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 				while (true) {
 					try {
 						Thread.sleep(1);
-						i++;
-						if(i==JoueurControler.this.zzz&&monteActif){
+						
+						if(monteActif){
+							i++;
+						}
+						if(i==JoueurControler.this.zzz){
+						//if(i==JoueurControler.this.zzz&&monteActif){
 							System.out.println(">>>>>>>>>>>OKKKK");
 							JoueurControler.this.verifUp(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.ajoutLigne();
 							i=0;
 						}
+						/*
 						if(i==JoueurControler.this.zzz&&!monteActif){
 							System.out.println(">>>>>NOT OK");
 							i=0;
-						}
-						if( i % monte ==0 ){
+						}*/
+						if(monteActif&& i % monte ==0 ){
 							verifUpGraphique(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.montegrilleGraphique();
 						}

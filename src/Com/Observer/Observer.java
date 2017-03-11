@@ -16,4 +16,9 @@ public interface Observer {
 	
 	void bougeJoueurGraphique();
 	void bougerGrilleGraphique();
+	
+	void bougeJoueurGraphique(int id);
+	void bougerGrilleGraphique(int id);
+	void reinitgrilleAnimation(int id);
+	
 }

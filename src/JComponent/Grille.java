@@ -55,7 +55,6 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		this.setPreferredSize(new Dimension(DimensionGrillex, DimensionGrilley));
 		setBackground(new Color(0, 0, 0, 90));
 
-		
 		timer = new Timer(50, this);
 		timer.start();
 		
@@ -95,10 +94,11 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 	
 	public void affiche(){
-		for (int a = 0; a < nombredeLigne - reserve; a++) {
+		for (int a = 0; a < nombredeLigne-1; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-				
+
 				 System.out.print(getTab()[i][a].getValeur()+"  ");
+				// System.out.print(tab[i][a].animBloc.getPosY()+"  ");
 			}
 			System.out.println();
 		}
@@ -110,6 +110,8 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 				getTab()[i][a].getAnimBloc().draw(g);
 			}
 		}
+		g.setColor(new Color(0,0,0,110));
+		g.fillRect(this.posGx,DimensionGrilley+posGy+tailleny, DimensionGrillex , tailleny);
 	}	
 
 	public int tailleX() {
@@ -127,10 +129,19 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public void monterGrille() {
  		for (int a = 0; a < nombredeLigne; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-				//tab[i][a].animBloc.setPosY(tab[i][a].animBloc.getPosY()-1);
+				tab[i][a].animBloc.setPosY(tab[i][a].animBloc.getPosY()-1);
 			}
 		}
+	}
 
+
+	public void reinitgrilleAnimation() {
+		for (int a = 0; a < nombredeLigne; a++) {
+			for (int i = 0; i < nombredecase; i++) {
+				tab[i][a].animBloc.setPosXGrille(tab[i][a].animBloc.grillePosX, tab[i][a].animBloc.grilleX, tab[i][a].animBloc.getGrilleTailleEltX());
+				tab[i][a].animBloc.setPosYGrille(tab[i][a].animBloc.grillePosY, tab[i][a].animBloc.grilleY, tab[i][a].animBloc.grilleTailleEltY);
+			}
+		}
 	}
 	
 	public void afficherGrille(){

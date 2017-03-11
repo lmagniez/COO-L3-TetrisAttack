@@ -120,20 +120,24 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		boolean changement = false;
 		for (int a = 0; a < nombredecase; a++) {
 			prec = tab[a][0].v;
-			for (int i = 1; i <= nombredeLigneTeste; i++) {
+			nb=1;
+			for (int i = 1; i <= nombredeLigneTeste ; i++) {
 				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
 					nb++;
 				}
-				if(prec != tab[a][i].v || i==(nombredeLigneTeste )){
-					if(i==(nombredeLigneTeste) && nb>=nbCaseCombo){
+				else if (prec != tab[a][i].v){
+					if(nb>=nbCaseCombo){
 						changement=true;
-						System.out.println("derniere ligne");
-						supprimerCaseColonne(a,nb,i); //derniere case soit la case ou on est 
+						supprimerCaseColonne(a,nb,i-1);
 					}
-					else if(nb>=nbCaseCombo){
+					nb=1;
+					prec= tab[a][i].v;
+				}
+				if(i == (nombredeLigneTeste ) ){
+					if(nb>=nbCaseCombo){
+						System.out.println("coucou");
 						changement=true;
-						System.out.println("ligne milieu");
-						supprimerCaseColonne(a,nb,i-1); //case d'avant pour les cases du mileu
+						supprimerCaseColonne(a,nb,i); //case d'avant pour les cases du mileu
 					}
 					prec = tab[a][i].v;
 					nb=1;

@@ -132,7 +132,7 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		vue.afficheJeu2J(EcranMenu.option);
+		vue.afficheJeu2J(EcranMenu.getOption());
 		Sound.stop();
 		ConstanteParametres.ID_MUSIQUE = 2;
 		Sound.loop();

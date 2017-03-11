@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
 
-import Com.Controller.JoueurController;
+import Com.Controller.JoueurControler;
 import Constante.ConstanteJeux;
 import JComponent.Grille;
 import JComponent.Score;
@@ -31,9 +31,9 @@ public class Joueur implements ConstanteJeux {
 	
 	private JLabel score=new JLabel();
 
-	private JoueurController controlerJoueur;
+	private JoueurControler controlerJoueur;
 
-	public Joueur(int x, int y, JoueurController controler, int sizex, int sizey, int indice) {
+	public Joueur(int x, int y, JoueurControler controler, int sizex, int sizey, int indice) {
 		this.x1 = 5;
 		this.x2 = 6;
 		this.y1 = 9;

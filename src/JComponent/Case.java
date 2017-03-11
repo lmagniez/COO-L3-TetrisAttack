@@ -19,7 +19,7 @@ public class Case {
 	private  int tailleY;
 	private ValeurCase valeur;
 	
-	protected Animation animBloc;
+	private Animation animBloc;
 	
 	private Image blocImg;
 	private int cptbloc=0, widthbloc=16, heightbloc=16, 
@@ -54,7 +54,7 @@ public class Case {
 
 		blocImg=blocsImg[v.ordinal()];
 
-		animBloc= new Animation(blocImg,0,0,widthbloc,heightbloc,screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g);	
+		setAnimBloc(new Animation(blocImg,0,0,widthbloc,heightbloc,screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g));	
 	}
 
 	public Case(Case case1) {
@@ -104,7 +104,15 @@ public class Case {
 	public void setValeur(ValeurCase valeur) {
 		this.valeur = valeur;
 		blocImg=blocsImg[valeur.ordinal()];
-		animBloc.setImg(blocImg);	
+		getAnimBloc().setImg(blocImg);	
+	}
+
+	public Animation getAnimBloc() {
+		return animBloc;
+	}
+
+	public void setAnimBloc(Animation animBloc) {
+		this.animBloc = animBloc;
 	}
 	
 	

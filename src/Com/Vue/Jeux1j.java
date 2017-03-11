@@ -2,13 +2,15 @@ package Com.Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import Com.Controller.GrilleControler;
 import Com.Controller.JeuxControler;
-import Com.Controller.JoueurController;
+import Com.Controller.JoueurControler;
 import Com.Model.GrilleModel;
 import Com.Model.JoueurModel;
 import Com.Model.ModelJeux;
@@ -17,6 +19,7 @@ import Com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
+import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
 import JComponent.Grille;
 import Run.Fenetre;
@@ -34,12 +37,19 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private GrilleControler controlerGrille;
 
 	private JoueurModel modelJoueur;
-	private JoueurController controlerJoueur;
+	private JoueurControler controlerJoueur;
 	
 	protected boolean deplacementJoueur = true;
 	private boolean pause=false;
-
 	
+	protected Image yoshi= new ImageIcon("./ressources/Game/Fond1J/yoshi.png").getImage();
+	protected Image frog= new ImageIcon("./ressources/Game/Fond1J/frog.png").getImage();
+	protected Image chien= new ImageIcon("./ressources/Game/Fond1J/chien.png").getImage();
+	protected Image lakitu= new ImageIcon("./ressources/Game/Fond1J/lakitu.png").getImage();
+	protected Image maskass= new ImageIcon("./ressources/Game/Fond1J/maskass.png").getImage();
+	protected Image monstre= new ImageIcon("./ressources/Game/Fond1J/monstre.png").getImage();
+	
+	protected Image fond[] = {yoshi,lakitu,chien,monstre,frog,maskass};
 	
 	public Jeux1j(Fenetre f, int[] option) {
 		fen = f;
@@ -47,17 +57,21 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		modelJeux = new ModelJeux(this);
 		controlerJeu=new JeuxControler(modelJeux);
 		
-		
 		modelGrille = new GrilleModel(1);
 		controlerGrille = new GrilleControler(modelGrille);
 		g = new Grille(this, controlerGrille, PositionGrille1JX, PositionGrille1JY);
 		modelGrille.add(this);
-
+	
+		
 		modelJoueur = new JoueurModel(1);
-		controlerJoueur = new JoueurController(modelJoueur, controlerGrille,option[0]);
+		controlerJoueur = new JoueurControler(modelJoueur, controlerGrille,option[0]);
 		j = new Joueur(PositionGrille1JX, PositionGrille1JY, controlerJoueur, g.tailleX(), g.tailleY(), 1);
 		modelJoueur.add(this);
 
+		modelGrille.setControlerJoueur(controlerJoueur);
+		
+
+		
 		g.init();
 
 		creerlayout();
@@ -85,7 +99,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerJoueur.verifLeft(j.getX1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_D) {
-				controlerJoueur.verifRigth(j.getX1());
+				controlerJoueur.verifRight(j.getX1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_F) {
 				controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());
@@ -121,6 +135,9 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		//Color c = Color.black;
 		//g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
 
+		g.drawImage(fond[EcranMenu.getOption()[1]], 0, 0, getWidth(), getHeight(), this);
+		
+		
 		(this.g).paintComponent(g);
 		(this.j).dessinerJoueur(g);
 	}
@@ -158,18 +175,30 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void updateTimer(String minute, String seconde) {
-		System.out.println("Temps: "+ minute+" : "+seconde);
+		//System.out.println("Temps: "+ minute+" : "+seconde);
 	}
 
 	@Override
 	public void bougeJoueurGraphique() {
 		j.setyGrille(j.getyGrille()-1);
 		repaint();
+		
 	}
 
 	@Override
 	public void bougerGrilleGraphique() {
 		g.monterGrille();
 		repaint();
+	}
+
+	@Override
+	public void stopCase(int id, int y, int x) {
+		this.g.getTab()[x][y].getAnimBloc().stopperAnimation(5);
+	}
+
+	@Override
+	public void startCase(int id, int y, int x) {
+		this.g.getTab()[x][y].getAnimBloc().reprendreAnimation();
+		
 	}
 }

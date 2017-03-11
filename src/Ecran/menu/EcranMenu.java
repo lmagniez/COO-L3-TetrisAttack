@@ -16,7 +16,7 @@ import Ecran.GestionBouton;
 import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener {
-	protected static  int[] option=new int[4]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2
+	private static  int[] option=new int[4]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2
 
 	protected PanelMenuPrincipal p1;
 	protected PanelMenu1J p2;
@@ -170,6 +170,14 @@ public class EcranMenu extends Ecran implements ActionListener {
 			repaint();
 			yoshi.updateCpt();
 		}
+	}
+
+	public static int[] getOption() {
+		return option;
+	}
+
+	public static void setOption(int[] option) {
+		EcranMenu.option = option;
 	}
 
 }

@@ -59,7 +59,7 @@ public class JoueurModel {
 	}
 
 	public void monteJoueurGraphique() {
-		joueurVue.bougeJoueurGraphique();
+		//joueurVue.bougeJoueurGraphique();
 	}
 	
 	

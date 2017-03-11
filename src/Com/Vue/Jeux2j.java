@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import Com.Controller.GrilleControler;
 import Com.Controller.JeuxControler;
-import Com.Controller.JoueurController;
+import Com.Controller.JoueurControler;
 import Com.Model.GrilleModel;
 import Com.Model.JoueurModel;
 import Com.Model.ModelJeux;
@@ -34,13 +34,13 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private GrilleControler controlerGrille1;
 
 	private JoueurModel modelJoueur1;
-	private JoueurController controlerJoueur1;
+	private JoueurControler controlerJoueur1;
 
 	private GrilleModel modelGrille2;
 	private GrilleControler controlerGrille2;
 
 	private JoueurModel modelJoueur2;
-	private JoueurController controlerJoueur2;
+	private JoueurControler controlerJoueur2;
 
 	private JeuxControler controlerJeu;
 	private ModelJeux modelJeux;
@@ -61,7 +61,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		modelGrille1.add(this);
 
 		modelJoueur1 = new JoueurModel(1);
-		controlerJoueur1 = new JoueurController(modelJoueur1, controlerGrille1,option[0]);
+		controlerJoueur1 = new JoueurControler(modelJoueur1, controlerGrille1,option[0]);
 		j1 = new Joueur(PositionGrille2JX1, PositionGrille2JY1, controlerJoueur1, g1.tailleX(), g1.tailleY(), 1);
 		modelJoueur1.add(this);
 
@@ -71,7 +71,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		modelGrille2.add(this);
 
 		modelJoueur2 = new JoueurModel(2);
-		controlerJoueur2 = new JoueurController(modelJoueur2, controlerGrille2,option[2]);
+		controlerJoueur2 = new JoueurControler(modelJoueur2, controlerGrille2,option[2]);
 		j2 = new Joueur(PositionGrille2JX2, PositionGrille2JY2, controlerJoueur2, g2.tailleX(), g2.tailleY(), 2);
 		modelJoueur2.add(this);
 
@@ -92,7 +92,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerJoueur1.verifLeft(j1.getX1());
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_D) {
-				controlerJoueur1.verifRigth(j1.getX2());
+				controlerJoueur1.verifRight(j1.getX2());
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_F) {
 				controlerGrille1.swap(j1.getX1(), j1.getX2(), j1.getY1());
@@ -107,7 +107,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerJoueur2.verifLeft(j2.getX1());
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_M) {
-				controlerJoueur2.verifRigth(j2.getX2());
+				controlerJoueur2.verifRight(j2.getX2());
 			}
 			else if (e.getKeyCode() == KeyEvent.VK_J) {
 				controlerGrille2.swap(j2.getX1(), j2.getX2(), j2.getY1());
@@ -225,7 +225,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void updateTimer(String minute, String seconde) {
-		System.out.println("Temps: "+ minute+" : "+seconde);
+		//System.out.println("Temps: "+ minute+" : "+seconde);
 	}
 
 	@Override
@@ -236,6 +236,18 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void bougerGrilleGraphique() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stopCase(int id, int y, int x) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void startCase(int id, int y, int x) {
 		// TODO Auto-generated method stub
 		
 	}

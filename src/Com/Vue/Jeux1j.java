@@ -177,7 +177,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		
 		(this.g).paintComponent(g);
-		(this.j).dessinerJoueur(g);
+		(this.j).dessinerJoueur(g,this);
 		
 		g.drawImage(this.time, this.timeX, this.timeY, this.widthTime, this.heightTime, this);
 		g.drawImage(this.scoreTxt, this.scoreTxtX, this.scoreTxtY, this.widthScoreTxt, this.heightScoreTxt, this);

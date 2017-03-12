@@ -199,10 +199,10 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		(this.g1).paintComponent(g);
 		// (this.g1).dessinerGrille(g);
-		(this.j1).dessinerJoueur(g);
+		(this.j1).dessinerJoueur(g,this);
 		(this.g2).paintComponent(g);
 		// (this.g2).dessinerGrille(g);
-		(this.j2).dessinerJoueur(g);
+		(this.j2).dessinerJoueur(g,this);
 	}
 
 	@Override

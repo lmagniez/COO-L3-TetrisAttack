@@ -53,13 +53,23 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private boolean pause=false;
 	
 	//fond
-	protected Image yoshi= new ImageIcon("./ressources/Game/Fond1J/yoshi.png").getImage();
-	protected Image frog= new ImageIcon("./ressources/Game/Fond1J/frog.png").getImage();
-	protected Image chien= new ImageIcon("./ressources/Game/Fond1J/chien.png").getImage();
-	protected Image lakitu= new ImageIcon("./ressources/Game/Fond1J/lakitu.png").getImage();
-	protected Image maskass= new ImageIcon("./ressources/Game/Fond1J/maskass.png").getImage();
-	protected Image monstre= new ImageIcon("./ressources/Game/Fond1J/monstre.png").getImage();
+	protected Image yoshi= new ImageIcon("./ressources/Game/Fond1J/fondYoshi.png").getImage();
+	protected Image frog= new ImageIcon("./ressources/Game/Fond1J/fondFrog.png").getImage();
+	protected Image chien= new ImageIcon("./ressources/Game/Fond1J/fondChien.png").getImage();
+	protected Image lakitu= new ImageIcon("./ressources/Game/Fond1J/fondLakitu.png").getImage();
+	protected Image maskass= new ImageIcon("./ressources/Game/Fond1J/fondMaskass.png").getImage();
+	protected Image monstre= new ImageIcon("./ressources/Game/Fond1J/fondMonstre.png").getImage();
 	protected Image fond[] = {yoshi,lakitu,chien,monstre,frog,maskass};
+	
+	protected Image yoshiFond= new ImageIcon("./ressources/Game/Fond1J/yoshi.png").getImage();
+	protected Image frogFond= new ImageIcon("./ressources/Game/Fond1J/frog.png").getImage();
+	protected Image chienFond= new ImageIcon("./ressources/Game/Fond1J/chien.png").getImage();
+	protected Image lakituFond= new ImageIcon("./ressources/Game/Fond1J/lakitu.png").getImage();
+	protected Image maskassFond= new ImageIcon("./ressources/Game/Fond1J/maskass.png").getImage();
+	protected Image monstreFond= new ImageIcon("./ressources/Game/Fond1J/monstre.png").getImage();
+	protected Image fond2[] = {yoshiFond,lakituFond,chienFond,monstreFond,frogFond,maskassFond};
+	
+	
 	
 	//Time
 	protected Image time= new ImageIcon("./ressources/Game/Texte/time.png").getImage();
@@ -109,7 +119,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		
 		highScore.setScore(20000);
-		score.setScore(1234);
+		//score.setScore(1234);
 		speedLvl.setScore(12);
 		
 		
@@ -173,10 +183,14 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		
 		
-		g.drawImage(fond[EcranMenu.getOption()[1]], 0, 0, getWidth(), getHeight(), this);
 		
 		
+		g.drawImage(fond[EcranMenu.getOption()[1]], this.g.getPosGx(), this.g.getPosGy()-5, this.g.getTaillenx()*nombredecase,this.g.getTailleny()*(nombredeLigne-2)+50, this);
 		(this.g).paintComponent(g);
+		g.drawImage(fond2[EcranMenu.getOption()[1]], 0, 0, getWidth(), getHeight(), this);
+		
+		
+		
 		(this.j).dessinerJoueur(g);
 		
 		g.drawImage(this.time, this.timeX, this.timeY, this.widthTime, this.heightTime, this);
@@ -221,7 +235,9 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void score(int id, int score) {
+		System.out.println("score");
 		this.j.setScore(score);
+		this.score.setScore(score);
 	}
 
 	@Override

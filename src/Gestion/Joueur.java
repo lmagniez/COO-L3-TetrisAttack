@@ -43,7 +43,7 @@ public class Joueur implements ConstanteJeux {
 
 		this.x1Grille = posXG + x1 * sizex;
 		this.x2Grille = posXG + x2 * sizex;
-		this.yGrille = posYG + y1 * sizey;
+		this.yGrille = posYG + (y1+1) * sizey;
 
 		this.sizex = sizex;
 		this.sizey = sizey;
@@ -114,7 +114,7 @@ public class Joueur implements ConstanteJeux {
 	}
 
 	public void reinitgrilleEmplacement() {
-		this.yGrille =  posYG + y1*sizey;
+		this.yGrille =  posYG + (y1+1)*sizey;
 		
 	}
 	

@@ -76,7 +76,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				this.UpdateCase(i, a, tab[a][i].v);
 			}
 		}
-		joueurVue.reinitgrilleAnimation(id);
+		getJoueurVue().reinitgrilleAnimation(id);
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
-		joueurVue.score(id,score);
+		
 		return changement;
 	}
 	
@@ -182,7 +182,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
-		joueurVue.score(id, score);
+		getJoueurVue().score(id, score);
 		return changement;
 	}
 
@@ -234,28 +234,28 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	
 
 	public void UpdateCase(int y, int x, ValeurCase tab2) {
-		joueurVue.updateCase(id, y, x, tab2);
+		getJoueurVue().updateCase(id, y, x, tab2);
 	}
 
 	public void UpdateSwapHorizontal(int x1, int x2, int y) {
-		joueurVue.swaphorizontal(id, x1, x2, y);
+		getJoueurVue().swaphorizontal(id, x1, x2, y);
 	}
 
 	public void UpdateSwapVertical(int x, int y1, int y2) {
-		joueurVue.swapvertical(id, x, y1, y2);
+		getJoueurVue().swapvertical(id, x, y1, y2);
 	}
 
 	public void updateStopCase(int y, int x){
-		joueurVue.stopCase(id ,y, x);
+		getJoueurVue().stopCase(id ,y, x);
 	}
 	
 	public void updateStartCase(int y, int x){
-		joueurVue.startCase(id, y, x);
+		getJoueurVue().startCase(id, y, x);
 	}
 	
 	
 	public void add(Observer joueurVue) {
-		this.joueurVue = joueurVue;
+		this.setJoueurVue(joueurVue);
 	}
 
 	public void swap(int x1, int x2, int y1) {
@@ -282,7 +282,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 
 	public void monteGrilleGraphique() {
-		joueurVue.bougerGrilleGraphique(id);
+		getJoueurVue().bougerGrilleGraphique(id);
 	}
 	
 	public void afficherGrille(){
@@ -302,6 +302,14 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	public void setControlerJoueur(JoueurControler controlerJoueur) {
 		this.controlerJoueur = controlerJoueur;
+	}
+
+	public Observer getJoueurVue() {
+		return joueurVue;
+	}
+
+	public void setJoueurVue(Observer joueurVue) {
+		this.joueurVue = joueurVue;
 	}
 	
 }

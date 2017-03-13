@@ -60,8 +60,8 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
-				getTab()[i][j]= new Case(this, x * taillenx, y * tailleny, taillenx, tailleny, ValeurCase.VIDE);
-				getTab()[i][j].getAnimBloc().addInfosGrille(i, j, posGx, posGy, taillenx, tailleny);
+				getTab()[i][j]= new Case(this, x * taillenx, (y+1) * tailleny, taillenx, tailleny, ValeurCase.VIDE);
+				getTab()[i][j].getAnimBloc().addInfosGrille(i, (j+1), posGx, posGy, taillenx, tailleny);
 				animThread.getAnimations().add(getTab()[i][j].getAnimBloc());
 			}
 				
@@ -104,6 +104,46 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		}
 	}
 	
+	public int getPosGx() {
+		return posGx;
+	}
+
+
+	public void setPosGx(int posGx) {
+		this.posGx = posGx;
+	}
+
+
+	public int getPosGy() {
+		return posGy;
+	}
+
+
+	public void setPosGy(int posGy) {
+		this.posGy = posGy;
+	}
+
+
+	public int getTailleny() {
+		return tailleny;
+	}
+
+
+	public void setTailleny(int tailleny) {
+		this.tailleny = tailleny;
+	}
+
+
+	public int getTaillenx() {
+		return taillenx;
+	}
+
+
+	public void setTaillenx(int taillenx) {
+		this.taillenx = taillenx;
+	}
+
+
 	public void paintComponent(Graphics g){
 		for (int a = 0; a < nombredeLigne; a++) {
 			for (int i = 0; i < nombredecase; i++) {
@@ -111,7 +151,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 			}
 		}
 		g.setColor(new Color(0,0,255,110));
-		g.fillRect(this.posGx,nombredeLigne*tailleny, DimensionGrillex , tailleny);
+		g.fillRect(this.posGx,(nombredeLigne+1)*tailleny, DimensionGrillex , tailleny);
 	}	
 
 	public int tailleX() {

@@ -59,6 +59,9 @@ public class CaseThreadSuppr extends Thread{
 			
 			m.descendreCube();
 			
+			m.score+=casesSuppr.size()*10;
+			m.getJoueurVue().score(id,m.score);
+			
 			//this.m.listeThreadSuppr.remove(this);
 			//this.m.controlerJoueur.activerAjoutLigne();
 			

@@ -21,7 +21,9 @@ import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
+import JComponent.GameTimer;
 import JComponent.Grille;
+import JComponent.Score;
 import Run.Fenetre;
 
 public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
@@ -52,7 +54,9 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private boolean pause=false;
 	
 	protected int idJ1, idJ2;
-	
+	protected Score scoreJ1,lvlJ1;
+	protected Score scoreJ2,lvlJ2;
+	protected GameTimer timer;
 	
 	//fond
 	protected Image fondYoshi= new ImageIcon("./ressources/Game/Fond2J/fond2.png").getImage();
@@ -67,11 +71,16 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	//fond
 	protected Image yoshi= new ImageIcon("./ressources/Game/Fond2J/yoshi.png").getImage();
 	protected Image frog= new ImageIcon("./ressources/Game/Fond2J/frog.png").getImage();
-	protected Image chien= new ImageIcon("./ressources/Game/Fond2J/chien.png").getImage();
+	protected Image chien= new ImageIcon("./ressources/Game/Fond2J/dog.png").getImage();
 	protected Image lakitu= new ImageIcon("./ressources/Game/Fond2J/lakitu.png").getImage();
-	protected Image maskass= new ImageIcon("./ressources/Game/Fond2J/maskass.png").getImage();
+	protected Image maskass= new ImageIcon("./ressources/Game/Fond2J/penguin.png").getImage();
 	protected Image monstre= new ImageIcon("./ressources/Game/Fond2J/monstre.png").getImage();
 	protected Image fondGrille[] = {yoshi,lakitu,chien,monstre,frog,maskass};
+	
+	//interface
+	protected Image interf= new ImageIcon("./ressources/Game/Interface/interface.png").getImage();
+	
+	
 	
 	
 	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) {  //Option =  0 -> vitesse J1 1->idtheme j1 2 -> vitesse J2 3 -> idtheme j2
@@ -109,6 +118,22 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		g1.init();
 		g2.init();
 		creerlayout();
+		
+		
+		this.lvlJ1=new Score(this,385,125,false,1);
+		this.lvlJ2=new Score(this,435,125,true,1);
+		this.scoreJ1=new Score(this,385,320,false,4);
+		this.scoreJ2=new Score(this,385,405,true,4);
+		this.timer=new GameTimer(this,380,485);
+		
+		
+		
+		scoreJ1.setScore(1234);
+		scoreJ2.setScore(12);
+		
+		
+		
+		
 	}
 
 	public void GestionClavier(KeyEvent e) {
@@ -187,15 +212,11 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.validate();
 
 		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
-		g.drawImage(fondGrille[this.idJ1], 100, 100, 96, 192, this);
-		g.drawImage(fondGrille[this.idJ2], 400, 100, 96, 192, this);
+		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1, 
+				ConstanteDimension.DimensionGrillex, ConstanteDimension.DimensionGrilley, this);
+		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2, 
+				ConstanteDimension.DimensionGrillex, ConstanteDimension.DimensionGrilley, this);
 		
-		/*
-		if (this.drawOnce) {
-			Color c = Color.black;
-			g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
-			// drawOnce=false;
-		}*/
 
 		(this.g1).paintComponent(g);
 		// (this.g1).dessinerGrille(g);
@@ -203,6 +224,16 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		(this.g2).paintComponent(g);
 		// (this.g2).dessinerGrille(g);
 		(this.j2).dessinerJoueur(g);
+		g.drawImage(this.interf, ConstanteJeux.PositionGrille2JX1-5, ConstanteJeux.PositionGrille2JY1-10, 
+				ConstanteDimension.DimensionFenetrex-ConstanteJeux.PositionGrille2JX1*2+15,
+				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
+		(this.timer).draw(g);
+		(this.scoreJ1).draw(g);
+		(this.lvlJ1).draw(g);
+		(this.scoreJ2).draw(g);
+		(this.lvlJ2).draw(g);
+		
+		
 	}
 
 	@Override
@@ -262,6 +293,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	@Override
 	public void updateTimer(String minute, String seconde) {
 		//System.out.println("Temps: "+ minute+" : "+seconde);
+		timer.setTime(minute, seconde);
 	}
 
 	@Override

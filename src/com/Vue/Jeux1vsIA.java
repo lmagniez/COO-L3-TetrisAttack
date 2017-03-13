@@ -46,6 +46,11 @@ public class Jeux1vsIA  extends Jeux2j {
 			controlerJeu.pause();
 			controlerJoueur1.pause();
 			controlerJoueur2.pause();
+			
+			this.pausePanel.setVisible(true);
+			this.pausePanel.requestFocus();
+			this.pausePanel.getButtons()[0][0].requestFocusInWindow();
+			this.pausePanel.repaint();
 		}
 
 	}

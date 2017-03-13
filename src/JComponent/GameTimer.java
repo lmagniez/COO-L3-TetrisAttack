@@ -57,8 +57,6 @@ public class GameTimer {
 		this.minutes=minutes;
 		this.secondes=secondes;
 		
-		System.out.println("setTime "+minutes+" "+secondes);
-		
 		chiffres[0].setCpt(Integer.parseInt(""+minutes.charAt(0)));
 		chiffres[1].setCpt(Integer.parseInt(""+minutes.charAt(1)));
 		chiffres[3].setCpt(Integer.parseInt(""+secondes.charAt(0)));

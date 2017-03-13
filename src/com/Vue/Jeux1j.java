@@ -23,6 +23,7 @@ import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
 import JComponent.GameTimer;
 import JComponent.Grille;
+import JComponent.Pause;
 import JComponent.Score;
 import Run.Fenetre;
 
@@ -45,6 +46,8 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected Score highScore;
 	protected Score score;
 	protected Score speedLvl;
+	
+	protected Pause pausePanel;
 	
 	
 	
@@ -88,7 +91,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		fen = f;
 		
 		modelJeux = new ModelJeux(this);
-		controlerJeu=new JeuxControler(modelJeux);
+		setControlerJeu(new JeuxControler(modelJeux));
 		
 		modelGrille = new GrilleModel(1);
 		controlerGrille = new GrilleControler(modelGrille);
@@ -97,11 +100,11 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	
 		
 		modelJoueur = new JoueurModel(1);
-		controlerJoueur = new JoueurControler(modelJoueur, controlerGrille,option[0]);
-		j = new Joueur(PositionGrille1JX, PositionGrille1JY, controlerJoueur, g.tailleX(), g.tailleY(), 1);
+		setControlerJoueur(new JoueurControler(modelJoueur, controlerGrille,option[0]));
+		j = new Joueur(PositionGrille1JX, PositionGrille1JY, getControlerJoueur(), g.tailleX(), g.tailleY(), 1);
 		modelJoueur.add(this);
 
-		modelGrille.setControlerJoueur(controlerJoueur);
+		modelGrille.setControlerJoueur(getControlerJoueur());
 		
 
 		
@@ -116,52 +119,61 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.highScore=new Score(this,650,150,true,6);
 		this.score=new Score(this,650,250,false,6);
 		this.speedLvl=new Score(this,650,350,false,2);
-		
+		this.pausePanel=new Pause(this.fen, this);
 		
 		highScore.setScore(20000);
 		//score.setScore(1234);
 		speedLvl.setScore(12);
 		
-		
+		this.add(pausePanel);
+		pausePanel.setVisible(false);
 		
 		
 		
 	}
 
 	public void animation() {
-		controlerJoueur.animation();
-		controlerJeu.timer();
+		getControlerJoueur().animation();
+		getControlerJeu().timer();
 	}
 
 	public void GestionClavier(KeyEvent e) {
-		if(!pause){
+		if(!isPause()){
 			if (e.getKeyCode() == KeyEvent.VK_Z) {
-				controlerJoueur.verifUp(j.getY1());
+				getControlerJoueur().verifUp(j.getY1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_S) {
-				controlerJoueur.verifDown(j.getY1());
+				getControlerJoueur().verifDown(j.getY1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_Q) {
-				controlerJoueur.verifLeft(j.getX1());
+				getControlerJoueur().verifLeft(j.getX1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_D) {
-				controlerJoueur.verifRight(j.getX2());
+				getControlerJoueur().verifRight(j.getX2());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_F) {
 				controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());
 			}
 		}
+		
+		/*
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if(pause){
 				controlerJoueur.reprendre();
 				controlerJeu.reprendre();
 				pause=false;
 			}
-		}
+		}*/
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			pause=true;
-			controlerJeu.pause();
-			controlerJoueur.pause();
+			setPause(true);
+			getControlerJeu().pause();
+			getControlerJoueur().pause();
+			this.pausePanel.setVisible(true);
+			this.pausePanel.requestFocus();
+			this.pausePanel.getButtons()[0][0].requestFocusInWindow();
+			
+			
+			
 		}
 	}
 
@@ -180,7 +192,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		super.paintComponent(g);
 		//Color c = Color.black;
 		//g.fillRect(0, 0, ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);
-
+		
 		
 		
 		g.drawImage(fond[EcranMenu.getOption()[1]], this.g.getPosGx(), this.g.getPosGy()-5, this.g.getTaillenx()*nombredecase,this.g.getTailleny()*(nombredeLigne-2)+50, this);
@@ -285,7 +297,31 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void arretThread() {
-		controlerJeu.arreterThread();
-		controlerJoueur.arreterThread();
+		getControlerJeu().arreterThread();
+		getControlerJoueur().arreterThread();
+	}
+
+	public JoueurControler getControlerJoueur() {
+		return controlerJoueur;
+	}
+
+	public void setControlerJoueur(JoueurControler controlerJoueur) {
+		this.controlerJoueur = controlerJoueur;
+	}
+
+	public JeuxControler getControlerJeu() {
+		return controlerJeu;
+	}
+
+	public void setControlerJeu(JeuxControler controlerJeu) {
+		this.controlerJeu = controlerJeu;
+	}
+
+	public boolean isPause() {
+		return pause;
+	}
+
+	public void setPause(boolean pause) {
+		this.pause = pause;
 	}
 }

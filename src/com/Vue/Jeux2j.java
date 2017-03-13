@@ -23,6 +23,7 @@ import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
 import JComponent.GameTimer;
 import JComponent.Grille;
+import JComponent.Pause;
 import JComponent.Score;
 import Run.Fenetre;
 
@@ -58,6 +59,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected Score scoreJ1,lvlJ1;
 	protected Score scoreJ2,lvlJ2;
 	protected GameTimer timer;
+	protected Pause pausePanel; 
 	
 	//fond
 	protected Image fondYoshi= new ImageIcon("./ressources/Game/Fond2J/fond2.png").getImage();
@@ -75,7 +77,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected Image chien= new ImageIcon("./ressources/Game/Fond2J/dog.png").getImage();
 	protected Image lakitu= new ImageIcon("./ressources/Game/Fond2J/lakitu.png").getImage();
 	protected Image maskass= new ImageIcon("./ressources/Game/Fond2J/penguin.png").getImage();
-	protected Image monstre= new ImageIcon("./ressources/Game/Fond2J/monstre.png").getImage();
+	protected Image monstre= new ImageIcon("./ressources/Game/Fond2J/monster.png").getImage();
 	protected Image fondGrille[] = {yoshi,lakitu,chien,monstre,frog,maskass};
 	
 	//interface
@@ -126,10 +128,14 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.scoreJ2=new Score(this,385,405,true,4);
 		this.timer=new GameTimer(this,380,485);
 		
+		this.pausePanel=new Pause(this.fen, this);
+		
+		this.add(pausePanel);
+		pausePanel.setVisible(false);
 		
 		
-		scoreJ1.setScore(1234);
-		scoreJ2.setScore(12);
+		//scoreJ1.setScore(1234);
+		//scoreJ2.setScore(12);
 		
 	}
 
@@ -157,6 +163,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerGrille2.swap(j2.getX1(), j2.getX2(), j2.getY1());
 			}
 		}
+		/*
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			if (pause) {
 				controlerJoueur1.reprendre();
@@ -164,12 +171,17 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerJeu.reprendre();
 				pause = false;
 			}
-		}
+		}*/
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			pause = true;
 			controlerJeu.pause();
 			controlerJoueur1.pause();
 			controlerJoueur2.pause();
+			
+			this.pausePanel.setVisible(true);
+			this.pausePanel.requestFocus();
+			this.pausePanel.getButtons()[0][0].requestFocusInWindow();
+			this.pausePanel.repaint();
 		}
 
 	}
@@ -184,8 +196,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.setLayout(null);
 		this.add(g1);
 		this.add(g2);
-		this.add(j1.getScore());
-		this.add(j2.getScore());
+		
 	}
 
 	public void focus() {
@@ -195,16 +206,18 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	public void paintComponent(Graphics g) {
 
-		this.removeAll();
-		this.revalidate();
-		this.validate();
+		//this.removeAll();
+		//this.revalidate();
+		//this.validate();
 
 		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
 		
 		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1, 
-				ConstanteDimension.DimensionGrillex, ConstanteDimension.DimensionGrilley, this);
+				ConstanteDimension.DimensionGrillex, 
+				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
 		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2, 
-				ConstanteDimension.DimensionGrillex, ConstanteDimension.DimensionGrilley, this);
+				ConstanteDimension.DimensionGrillex, 
+				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
 		
 		
 		/*
@@ -276,10 +289,14 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void score(int id, int score) {
-		if (id == 1)
+		if (id == 1){
 			this.j1.setScore(score);
-		else
+			this.scoreJ1.setScore(score);
+		}
+		else{
 			this.j2.setScore(score);
+			this.scoreJ2.setScore(score);
+		}
 		repaint();
 	}
 
@@ -356,5 +373,40 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		controlerJoueur1.arreterThread();
 		controlerJoueur2.arreterThread();
 	}
+
+	public JoueurControler getControlerJoueur1() {
+		return controlerJoueur1;
+	}
+
+	public void setControlerJoueur1(JoueurControler controlerJoueur1) {
+		this.controlerJoueur1 = controlerJoueur1;
+	}
+
+	public JoueurControler getControlerJoueur2() {
+		return controlerJoueur2;
+	}
+
+	public void setControlerJoueur2(JoueurControler controlerJoueur2) {
+		this.controlerJoueur2 = controlerJoueur2;
+	}
+
+	public JeuxControler getControlerJeu() {
+		return controlerJeu;
+	}
+
+	public void setControlerJeu(JeuxControler controlerJeu) {
+		this.controlerJeu = controlerJeu;
+	}
+
+	public boolean isPause() {
+		return pause;
+	}
+
+	public void setPause(boolean pause) {
+		this.pause = pause;
+	}
+	
+	
+	
 
 }

@@ -2,17 +2,16 @@ package Run;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.text.ParseException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Com.Vue.Jeux1j;
-import Com.Vue.Jeux2j;
+import com.Vue.Jeux1j;
+import com.Vue.Jeux2j;
+
 import Constante.ConstanteDimension;
 import Constante.ConstanteMusique;
-import Constante.ConstanteParametres;
 import Ecran.menu.EcranMenu;
 import Ecran.titre.EcranTitre;
 

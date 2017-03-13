@@ -316,7 +316,16 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	@Override
 	public void bougerGrilleGraphique() {
 		// TODO Auto-generated method stub
+		g1.monterGrille();
+		g2.monterGrille();
+		repaint();
+	}
 
+	@Override
+	public void arretThread() {
+		controlerJeu.arreterThread();
+		controlerJoueur1.arreterThread();
+		controlerJoueur2.arreterThread();
 	}
 
 }

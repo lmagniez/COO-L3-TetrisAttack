@@ -27,4 +27,8 @@ public class GrilleControler {
 	public void montegrilleGraphique() {
 		grilleModel.monteGrilleGraphique();
 	}
+
+	public boolean gameOver() {
+		return grilleModel.Gameover();
+	}
 }

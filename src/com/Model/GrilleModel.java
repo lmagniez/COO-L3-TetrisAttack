@@ -213,6 +213,17 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 	
 
+	public boolean Gameover(){
+		for(int i=0;i<nombredecase;i++){
+			if(tab[i][0].v!=ValeurCase.VIDE){
+				joueurVue.arretThread();
+				afficherGrille();
+				return true;
+			}
+		}
+		
+		return false;
+	}
 	/**
 	 * Supprimer les cases d'une ligne (droite vers gauche)
 	 * @param ligne id de la ligne

@@ -13,11 +13,12 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	private Thread thread;
 	
 	private volatile boolean monteActif;
+	private boolean tourne=true;
 	
 	public JoueurControler(JoueurModel cal,GrilleControler grilleCont,int zzz) {
 		this.joueurModel=cal;
 		this.grilleCont=grilleCont;
-		this.zzz=this.zzz-(zzz*20);
+		this.zzz=this.zzz-(zzz*30);
 		this.monteActif=true;
 	}
 
@@ -41,12 +42,7 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void verifDown(int y1) {
-/*<<<<<<< HEAD:src/Com/Controller/JoueurControler.java
-		if (y1 != nombredeLigne-1){
-		//if (y1 != nombredeLigne - reserve -2) {
-=======*/
 		if (y1 != nombredeLigneTeste) {
-//>>>>>>> f97c4f5db9b580ce50644c9a7473a5684cb277f6:src/Com/Controller/JoueurController.java
 			this.joueurModel.changeBas();
 		}
 	}
@@ -78,7 +74,7 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 			public void run() {
 				int i = 0;
 				int monte=JoueurControler.this.zzz / (DimensionGrilley / (nombredeLigne - 2 * reserve) );
-				while (true) {
+				while (tourne) {
 					try {
 						Thread.sleep(1);
 						
@@ -86,17 +82,14 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 							i++;
 						}
 						if(i==JoueurControler.this.zzz){
-						//if(i==JoueurControler.this.zzz&&monteActif){
+						
 							System.out.println(">>>>>>>>>>>OKKKK");
 							JoueurControler.this.verifUp(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.ajoutLigne();
+							if(JoueurControler.this.grilleCont.gameOver())System.out.println("GameOver");
 							i=0;
 						}
-						/*
-						if(i==JoueurControler.this.zzz&&!monteActif){
-							System.out.println(">>>>>NOT OK");
-							i=0;
-						}*/
+					
 						if(monteActif&& i % monte ==0 ){
 							verifUpGraphique(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.montegrilleGraphique();
@@ -104,7 +97,6 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 						
 						
 					} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
@@ -121,5 +113,9 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 
 	public void pause() {
 		thread.suspend();
+	}
+
+	public void arreterThread() {
+		tourne=false;
 	}
 }

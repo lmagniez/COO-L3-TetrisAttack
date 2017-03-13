@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Com.Controller.JoueurControler;
+import Constante.ConstanteGraphique;
+import Constante.ConstanteImage;
 import Constante.ConstanteJeux;
 import JComponent.Grille;
 import JComponent.Score;
@@ -98,10 +101,10 @@ public class Joueur implements ConstanteJeux {
 		this.yGrille = yGrille;
 	}
 
-	public void dessinerJoueur(Graphics g) {
+	public void dessinerJoueur(Graphics g,JPanel p) {
 		g.setColor(Color.white);
-		g.drawRect(x1Grille, yGrille, sizex, sizey);
-		g.drawRect(x2Grille, yGrille, sizex, sizey);
+		g.drawImage(ConstanteImage.curseurgauche, x1Grille-2, yGrille, sizex+2, sizey, p);
+		g.drawImage(ConstanteImage.curseurdroit, x2Grille-2, yGrille, sizex+2, sizey, p);
 	}
 
 	public void setScore(int score) {

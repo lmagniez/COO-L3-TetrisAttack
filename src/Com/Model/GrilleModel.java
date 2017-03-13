@@ -64,7 +64,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 			val = 1 + RND.nextInt(6 - 1);
 			tab[i][nombredeLigne - 1].v = ValeurCase.fromInteger(val);
 		}
-		this.comboLigne();this.comboLigne();
 	}
 	
 	/**
@@ -108,6 +107,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 		generationLigne();
 		recupGrille();
+		this.comboLigne();this.comboLigne();
 	}
 
 	/**

@@ -37,6 +37,8 @@ public class ConstanteImage {
 			scaledButton("/Ressource/IconButton/2AI.png",260,50)
 	};
 	
+	public static Image curseurgauche=Toolkit.getDefaultToolkit().createImage("./ressources/curseurgauche.png");
+	public static Image curseurdroit=Toolkit.getDefaultToolkit().createImage("./ressources/curseurdroit.png");
 
 	public static ImageIcon scaled(String imageName,int n) {
 		try {

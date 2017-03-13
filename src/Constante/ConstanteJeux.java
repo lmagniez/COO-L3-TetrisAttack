@@ -13,10 +13,10 @@ public interface ConstanteJeux {
 	public int PositionGrille1JX=278;
 	public int PositionGrille1JY=69;
 	
-	public int PositionGrille2JX1=70;
+	public int PositionGrille2JX1=25;
 	public int PositionGrille2JY1=69;
 	
-	public int PositionGrille2JX2=500;
+	public int PositionGrille2JX2=475;
 	public int PositionGrille2JY2=69;
 
 	public int scorepoint=100;

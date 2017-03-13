@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.Vue.Jeux1j;
+import com.Vue.Jeux1vsIA;
 import com.Vue.Jeux2j;
 
 import Constante.ConstanteDimension;
@@ -88,22 +89,28 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 	}
 
 	public void swapEcran(JPanel j) {
-		//this.removeAll();
-		
 		getContentPane().removeAll();
 		getContentPane().revalidate();
 		getContentPane().repaint();
 		
 		this.add(j);
-		
-		//this.revalidate();
-		//this.repaint();
-		
-		//validate();
 	}
 
 	public EcranMenu getM() {
 		return m;
+	}
+
+	public void afficheJeu1vsIA(int[] option, int idJ1, int idJ2) {
+		j2= new Jeux1vsIA(this,option, idJ1, idJ2);
+		swapEcran(j2);
+		this.setFocusable(false);
+		j2.lancementAnimation();
+		j2.focus();
+		j2.addKeyListener(new KeyAdapter(){
+			public void keyPressed(KeyEvent e){
+				j2.GestionClavier(e);
+			}
+		});
 	}
 
 }

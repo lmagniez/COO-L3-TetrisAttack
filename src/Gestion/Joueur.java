@@ -119,7 +119,5 @@ public class Joueur implements ConstanteJeux {
 	public void reinitgrilleEmplacement() {
 		this.yGrille =  posYG + y1*sizey;
 		
-	}
-	
-	
+	}	
 }

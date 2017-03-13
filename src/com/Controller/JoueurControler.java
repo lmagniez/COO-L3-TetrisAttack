@@ -56,7 +56,8 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void verifRight(int x2) {
-		if (x2 != nombredecase - 2) {
+		System.out.println(x2);
+		if (x2 != nombredecase - 1) {
 			this.joueurModel.changeDroit();
 		}
 	}

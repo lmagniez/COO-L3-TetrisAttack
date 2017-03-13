@@ -26,30 +26,30 @@ import Run.Fenetre;
 
 public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
 
-	private Fenetre fen;
-	private Grille g1;
-	private Grille g2;
+	protected Fenetre fen;
+	protected Grille g1;
+	protected Grille g2;
 
-	private Joueur j1;
-	private Joueur j2;
+	protected Joueur j1;
+	protected Joueur j2;
 
-	private GrilleModel modelGrille1;
-	private GrilleControler controlerGrille1;
+	protected GrilleModel modelGrille1;
+	protected GrilleControler controlerGrille1;
 
-	private JoueurModel modelJoueur1;
-	private JoueurControler controlerJoueur1;
+	protected JoueurModel modelJoueur1;
+	protected JoueurControler controlerJoueur1;
 
-	private GrilleModel modelGrille2;
-	private GrilleControler controlerGrille2;
+	protected GrilleModel modelGrille2;
+	protected GrilleControler controlerGrille2;
 
-	private JoueurModel modelJoueur2;
-	private JoueurControler controlerJoueur2;
+	protected JoueurModel modelJoueur2;
+	protected JoueurControler controlerJoueur2;
 
-	private JeuxControler controlerJeu;
-	private ModelJeux modelJeux;
+	protected JeuxControler controlerJeu;
+	protected ModelJeux modelJeux;
 
-	private boolean drawOnce = true;
-	private boolean pause = false;
+	protected boolean drawOnce = true;
+	protected boolean pause = false;
 
 	protected int idJ1, idJ2;
 

@@ -135,7 +135,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerJoueur.verifLeft(j.getX1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_D) {
-				controlerJoueur.verifRight(j.getX1());
+				controlerJoueur.verifRight(j.getX2());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_F) {
 				controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());

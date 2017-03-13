@@ -103,8 +103,8 @@ public class Joueur implements ConstanteJeux {
 
 	public void dessinerJoueur(Graphics g,JPanel p) {
 		g.setColor(Color.white);
-		g.drawImage(ConstanteImage.curseurgauche, x1Grille-2, yGrille, sizex+2, sizey, p);
-		g.drawImage(ConstanteImage.curseurdroit, x2Grille-2, yGrille, sizex+2, sizey, p);
+		g.drawImage(ConstanteImage.curseurgauche, x1Grille-2, yGrille-2, sizex+4, sizey+4, p);
+		g.drawImage(ConstanteImage.curseurdroit, x2Grille-2, yGrille-2, sizex+4, sizey+4, p);
 	}
 
 	public void setScore(int score) {

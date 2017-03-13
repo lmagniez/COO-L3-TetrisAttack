@@ -37,8 +37,8 @@ public class Joueur implements ConstanteJeux {
 	private JoueurControler controlerJoueur;
 
 	public Joueur(int x, int y, JoueurControler controler, int sizex, int sizey, int indice) {
-		this.x1 = 5;
-		this.x2 = 6;
+		this.x1 = 3;
+		this.x2 = 4;
 		this.y1 = 9;
 		this.posXG = x;
 		this.posYG = y;

@@ -7,8 +7,8 @@ public class JoueurModel {
 	private Observer joueurVue;
 	
 	private int id;
-	private int x1=5;
-	private int x2=6;
+	private int x1=3;
+	private int x2=4;
 	private int y1=9;
 			
 	public JoueurModel(int id) {

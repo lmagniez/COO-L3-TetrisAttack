@@ -1,9 +1,9 @@
-package Com.Model;
+package com.Model;
 
 import java.util.ArrayList;
 
-import Com.Observer.Observable;
-import Com.Observer.Observer;
+import com.Observer.Observable;
+import com.Observer.Observer;
 
 public abstract class AbstractModel implements Observable {
 

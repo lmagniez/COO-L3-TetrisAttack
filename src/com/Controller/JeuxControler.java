@@ -1,11 +1,12 @@
-package Com.Controller;
+package com.Controller;
 
-import Com.Model.AbstractModel;
-import Com.Model.ModelJeux;
+import com.Model.AbstractModel;
+import com.Model.ModelJeux;
 
 public class JeuxControler extends AbstractControler {
 
 	private Thread timer;
+	private boolean tourne=true;
 	
 	public JeuxControler(AbstractModel modelJeux) {
 		super(modelJeux);
@@ -16,7 +17,7 @@ public class JeuxControler extends AbstractControler {
 				public void run() {
 					int seconde=0;
 					int minute=0;
-					while (true) {
+					while (tourne) {
 						try {
 							seconde++;
 							if(seconde%60==0){
@@ -40,5 +41,9 @@ public class JeuxControler extends AbstractControler {
 
 	public void pause() {
 		timer.suspend();
+	}
+
+	public void arreterThread() {
+		tourne=false;
 	}
 }

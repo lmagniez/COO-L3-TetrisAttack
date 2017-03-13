@@ -16,7 +16,7 @@ import Ecran.GestionBouton;
 import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener {
-	private static  int[] option=new int[4]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2
+	private static  int[] option=new int[5]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2 IA -> 1 | 0 
 
 	protected PanelMenuPrincipal p1;
 	protected PanelMenu1J p2;
@@ -151,7 +151,7 @@ public class EcranMenu extends Ecran implements ActionListener {
 		g.drawImage(shadow, ConstanteDimension.DimensionFenetrex - screenwidthyoshi * 4 / 3,
 				ConstanteDimension.DimensionFenetrey - screenheightyoshi * 3 / 4, 56 * 3, 72 * 3, this);
 		yoshi.draw(g);
-		g.drawImage(selectLabel, ConstanteDimension.DimensionFenetrex / 9, heightselect * 3 / 4, widthselect * 3 / 4,
+		g.drawImage(selectLabel, ConstanteDimension.DimensionFenetrex / 9, heightselect * 3 / 7, widthselect * 3 / 4,
 				heightselect * 3 / 4, this);
 		g.drawImage(buttonLabel, ConstanteDimension.DimensionFenetrex - widthbutton, heightbutton * 3 / 4, widthbutton,
 				heightbutton, this);

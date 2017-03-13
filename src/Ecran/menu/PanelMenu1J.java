@@ -82,8 +82,10 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("Retour")) {
-			EcranMenu.changeMenuBox(ecran,ecran.p1);
+		if (e.getActionCommand().equals("IA")) {
+			EcranMenu.changeMenuBox(ecran,ecran.p8);
+			EcranMenu.getOption()[0]=sliderLevel.getValue();
+			EcranMenu.getOption()[4]=1;
 		}
 		if (e.getActionCommand().equals("Démarrer")) {
 			EcranMenu.changeMenuBox(ecran,ecran.p7);

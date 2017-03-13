@@ -5,7 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
-import Com.Model.ValeurCase;
+import com.Model.ValeurCase;
 import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
 import Ecran.Animation;

@@ -1,4 +1,4 @@
-package Com.Model;
+package com.Model;
 
 import java.util.ArrayList;
 
@@ -59,12 +59,10 @@ public class CaseThreadSuppr extends Thread{
 			
 			m.descendreCube();
 			
-			m.score+=casesSuppr.size()*10;
-			m.getJoueurVue().score(id,m.score);
-			
 			//this.m.listeThreadSuppr.remove(this);
 			//this.m.controlerJoueur.activerAjoutLigne();
-			
+			m.score+=casesSuppr.size()*10;
+			m.getJoueurVue().score(id,m.score);
 			
 		} catch (InterruptedException e) {
 			e.printStackTrace();

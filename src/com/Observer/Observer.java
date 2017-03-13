@@ -1,6 +1,6 @@
-package Com.Observer;
+package com.Observer;
 
-import Com.Model.ValeurCase;
+import com.Model.ValeurCase;
 
 public interface Observer {
 	void updateJoueur(int j, int x1, int x2, int y);
@@ -20,5 +20,6 @@ public interface Observer {
 	void bougeJoueurGraphique(int id);
 	void bougerGrilleGraphique(int id);
 	void reinitgrilleAnimation(int id);
+	void arretThread();
 	
 }

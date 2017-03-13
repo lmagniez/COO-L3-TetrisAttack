@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import Com.Controller.JoueurControler;
+import com.Controller.JoueurControler;
+import Constante.ConstanteGraphique;
+import Constante.ConstanteImage;
 import Constante.ConstanteJeux;
 import JComponent.Grille;
 import JComponent.Score;
@@ -34,8 +37,8 @@ public class Joueur implements ConstanteJeux {
 	private JoueurControler controlerJoueur;
 
 	public Joueur(int x, int y, JoueurControler controler, int sizex, int sizey, int indice) {
-		this.x1 = 5;
-		this.x2 = 6;
+		this.x1 = 3;
+		this.x2 = 4;
 		this.y1 = 9;
 		this.posXG = x;
 		this.posYG = y;
@@ -98,10 +101,10 @@ public class Joueur implements ConstanteJeux {
 		this.yGrille = yGrille;
 	}
 
-	public void dessinerJoueur(Graphics g) {
+	public void dessinerJoueur(Graphics g,JPanel p) {
 		g.setColor(Color.white);
-		g.drawRect(x1Grille, yGrille, sizex, sizey);
-		g.drawRect(x2Grille, yGrille, sizex, sizey);
+		g.drawImage(ConstanteImage.curseurgauche, x1Grille-2, yGrille-2, sizex+4, sizey+4, p);
+		g.drawImage(ConstanteImage.curseurdroit, x2Grille-2, yGrille-2, sizex+4, sizey+4, p);
 	}
 
 	public void setScore(int score) {
@@ -116,7 +119,5 @@ public class Joueur implements ConstanteJeux {
 	public void reinitgrilleEmplacement() {
 		this.yGrille =  posYG + (y1+1)*sizey;
 		
-	}
-	
-	
+	}	
 }

@@ -93,9 +93,6 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		
 		ecran.setButtons(buttons);
 		ecran.addListener();
-		
-
-		
 	}
 	
 	public void actionPerformed(ActionEvent e){
@@ -107,17 +104,14 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 				EcranMenu.changeMenuBox(ecran,ecran.p8);
 				EcranMenu.getOption()[0]=sliderLevel1.getValue();
 				EcranMenu.getOption()[2]=sliderLevel2.getValue();
+				EcranMenu.getOption()[4]=0;
 			}
-		
 	}
 	
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 		g.drawImage(fond, 0, 0, getWidth(), getHeight(), this);
 		g.setFont(new Font("Verdana",Font.BOLD,20));
-		//posyoshiY=ConstanteDimension.DimensionFenetrey/2+screenheightyoshi/2,
-		//		posyoshiX=ConstanteDimension.DimensionFenetrex-screenwidthyoshi/2;
-	   
 		
 	}
 

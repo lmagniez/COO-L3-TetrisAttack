@@ -1,4 +1,4 @@
-package Com.Vue;
+package com.Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,14 +8,14 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Com.Controller.GrilleControler;
-import Com.Controller.JeuxControler;
-import Com.Controller.JoueurControler;
-import Com.Model.GrilleModel;
-import Com.Model.JoueurModel;
-import Com.Model.ModelJeux;
-import Com.Model.ValeurCase;
-import Com.Observer.Observer;
+import com.Controller.GrilleControler;
+import com.Controller.JeuxControler;
+import com.Controller.JoueurControler;
+import com.Model.GrilleModel;
+import com.Model.JoueurModel;
+import com.Model.ModelJeux;
+import com.Model.ValeurCase;
+import com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
@@ -69,8 +69,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected Image monstreFond= new ImageIcon("./ressources/Game/Fond1J/monstre.png").getImage();
 	protected Image fond2[] = {yoshiFond,lakituFond,chienFond,monstreFond,frogFond,maskassFond};
 	
-	
-	
 	//Time
 	protected Image time= new ImageIcon("./ressources/Game/Texte/time.png").getImage();
 	protected int timeX=50, timeY=60, widthTime=116, heightTime=22;
@@ -81,6 +79,8 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected int scoreTxtX=600, scoreTxtY=200, widthScoreTxt=140, heightScoreTxt=22;
 	protected Image speedLvlTxt= new ImageIcon("./ressources/Game/Texte/speedLvl.png").getImage();
 	protected int speedLvlTxtX=600, speedLvlTxtY=300, widthSpeedLvlTxt=170, heightSpeedLvlTxt=25;
+	
+	
 	
 	
 	
@@ -145,7 +145,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 				controlerJoueur.verifLeft(j.getX1());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_D) {
-				controlerJoueur.verifRight(j.getX1());
+				controlerJoueur.verifRight(j.getX2());
 			}
 			if (e.getKeyCode() == KeyEvent.VK_F) {
 				controlerGrille.swap(j.getX1(), j.getX2(), j.getY1());
@@ -183,15 +183,10 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		
 		
-		
-		
 		g.drawImage(fond[EcranMenu.getOption()[1]], this.g.getPosGx(), this.g.getPosGy()-5, this.g.getTaillenx()*nombredecase,this.g.getTailleny()*(nombredeLigne-2)+50, this);
 		(this.g).paintComponent(g);
 		g.drawImage(fond2[EcranMenu.getOption()[1]], 0, 0, getWidth(), getHeight(), this);
-		
-		
-		
-		(this.j).dessinerJoueur(g);
+		(this.j).dessinerJoueur(g,this);
 		
 		g.drawImage(this.time, this.timeX, this.timeY, this.widthTime, this.heightTime, this);
 		g.drawImage(this.scoreTxt, this.scoreTxtX, this.scoreTxtY, this.widthScoreTxt, this.heightScoreTxt, this);
@@ -235,7 +230,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void score(int id, int score) {
-		System.out.println("score");
 		this.j.setScore(score);
 		this.score.setScore(score);
 	}
@@ -287,5 +281,11 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		// TODO Auto-generated method stub
 		g.monterGrille();
 		repaint();
+	}
+
+	@Override
+	public void arretThread() {
+		controlerJeu.arreterThread();
+		controlerJoueur.arreterThread();
 	}
 }

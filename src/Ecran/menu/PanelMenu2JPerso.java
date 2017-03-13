@@ -58,7 +58,7 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		}
 
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, (ConstanteDimension.DimensionFenetrey / 6) + 20, 300, 430);
+		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, (ConstanteDimension.DimensionFenetrey / 6) , 300, 470);
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
@@ -121,7 +121,7 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		}
 
 		// Joueur 2
-		this.add(Box.createRigidArea(new Dimension(0, 27)));
+		this.add(Box.createRigidArea(new Dimension(0, 40)));
 
 		Box rowOnebis = Box.createHorizontalBox();
 		for (int i = 0; i < 3; i++) {
@@ -173,11 +173,18 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		
 		String command = ((JButton) e.getSource()).getActionCommand();
 		if(command=="Valider"){
-			vue.afficheJeu2J(EcranMenu.getOption(), idJ1, idJ2);
-			//vue.afficheJeu2J(EcranMenu.getOption());
-			Sound.stop();
-			ConstanteParametres.ID_MUSIQUE = 2;
-			Sound.loop();
+			if(EcranMenu.getOption()[4]==0){
+				vue.afficheJeu2J(EcranMenu.getOption(), idJ1, idJ2);
+				Sound.stop();
+				ConstanteParametres.ID_MUSIQUE = 2;
+				Sound.loop();
+			}
+			else {
+				vue.afficheJeu1vsIA(EcranMenu.getOption(), idJ1, idJ2);
+				Sound.stop();
+				ConstanteParametres.ID_MUSIQUE = 2;
+				Sound.loop();
+			}
 		}
 		
 		
@@ -191,8 +198,10 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		g.setColor(Color.white);
 		g.setFont(new Font("Verdana", Font.BOLD, 20));
 		g.drawString("Joueur1", 20, 45);
-		g.drawString("Joueur2", 20, 236);
-
+		if(EcranMenu.getOption()[4]==0)
+			g.drawString("Joueur2", 20, 250);
+		else 
+			g.drawString("Ordinateur", 20, 250);
 		
 		for (int i = 0; i < buttons.length; i++) {
 			for (int a = 0; a < buttons[0].length; a++) {

@@ -10,9 +10,8 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import Com.Controller.GrilleControler;
-import Com.Model.ValeurCase;
-import Com.Observer.Observer;
+import com.Controller.GrilleControler;
+import com.Model.ValeurCase;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;

@@ -1,6 +1,6 @@
-package Com.Model;
+package com.Model;
 
-import Com.Observer.Observer;
+import com.Observer.Observer;
 
 public class JoueurModel {
 

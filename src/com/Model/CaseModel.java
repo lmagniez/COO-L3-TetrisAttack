@@ -1,4 +1,4 @@
-package Com.Model;
+package com.Model;
 
 public class CaseModel extends Thread{
 	

@@ -1,8 +1,8 @@
-package Com.Controller;
+package com.Controller;
 
-import Com.Model.AbstractModel;
-import Com.Model.GrilleModel;
-import Com.Model.JoueurModel;
+import com.Model.AbstractModel;
+import com.Model.GrilleModel;
+import com.Model.JoueurModel;
 
 public class GrilleControler {
 

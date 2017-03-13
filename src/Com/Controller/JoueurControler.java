@@ -1,7 +1,7 @@
-package Com.Controller;
+package com.Controller;
 
-import Com.Model.JoueurModel;
-import Com.Vue.Jeux1j;
+import com.Model.JoueurModel;
+import com.Vue.Jeux1j;
 import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
 

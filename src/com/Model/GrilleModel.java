@@ -1,10 +1,10 @@
-package Com.Model;
+package com.Model;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import Com.Controller.JoueurControler;
-import Com.Observer.Observer;
+import com.Controller.JoueurControler;
+import com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
 
@@ -107,7 +107,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 		generationLigne();
 		recupGrille();
-		this.comboLigne();this.comboLigne();
+		this.comboLigne();this.comboColonne();
 	}
 
 	/**

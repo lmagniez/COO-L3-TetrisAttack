@@ -2,7 +2,7 @@ package Constante;
 
 public interface ConstanteJeux {
 
-	public int nombredecase=8;
+	public int nombredecase=6;
 	public int nombredeLigne=17;
 	public int nombredeLigneTeste=nombredeLigne-3;
 	public int nombredeLigneCombo=nombredeLigne-1;

@@ -1,4 +1,4 @@
-package Com.Observer;
+package com.Observer;
 
 public interface Observable {
 	

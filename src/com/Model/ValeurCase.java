@@ -1,4 +1,4 @@
-package Com.Model;
+package com.Model;
 
 public enum ValeurCase {
 	VIDE,CYAN,ROUGE,JAUNE,VERT,VIOLET,BLEU,GRIS;

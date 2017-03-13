@@ -1,4 +1,4 @@
-package Com.Vue;
+package com.Vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -8,14 +8,14 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import Com.Controller.GrilleControler;
-import Com.Controller.JeuxControler;
-import Com.Controller.JoueurControler;
-import Com.Model.GrilleModel;
-import Com.Model.JoueurModel;
-import Com.Model.ModelJeux;
-import Com.Model.ValeurCase;
-import Com.Observer.Observer;
+import com.Controller.GrilleControler;
+import com.Controller.JeuxControler;
+import com.Controller.JoueurControler;
+import com.Model.GrilleModel;
+import com.Model.JoueurModel;
+import com.Model.ModelJeux;
+import com.Model.ValeurCase;
+import com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;

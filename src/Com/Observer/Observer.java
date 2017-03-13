@@ -1,6 +1,6 @@
-package Com.Observer;
+package com.Observer;
 
-import Com.Model.ValeurCase;
+import com.Model.ValeurCase;
 
 public interface Observer {
 	void updateJoueur(int j, int x1, int x2, int y);

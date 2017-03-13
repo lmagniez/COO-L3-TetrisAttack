@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Com.Controller.JoueurControler;
+import com.Controller.JoueurControler;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteImage;
 import Constante.ConstanteJeux;

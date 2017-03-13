@@ -1,7 +1,7 @@
-package Com.Controller;
+package com.Controller;
 
-import Com.Model.AbstractModel;
-import Com.Model.ModelJeux;
+import com.Model.AbstractModel;
+import com.Model.ModelJeux;
 
 public class JeuxControler extends AbstractControler {
 

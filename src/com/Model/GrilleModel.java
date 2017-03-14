@@ -23,7 +23,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	public GrilleModel(int id) {
 		this.listeThreadSuppr=new ArrayList<CaseThreadSuppr>();
-		this.id = id;
+		this.setId(id);
 		for(int i=0; i<nombredecase; i++){
 			for(int j=0; j<nombredeLigne; j++){
 				tab[i][j]=new CaseModel(i,j);
@@ -32,6 +32,17 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		initGrille();
 	}
 
+	public void reinit(boolean score) {
+		this.listeThreadSuppr=new ArrayList<CaseThreadSuppr>();
+		for(int i=0; i<nombredecase; i++){
+			for(int j=0; j<nombredeLigne; j++){
+				tab[i][j]=new CaseModel(i,j);
+			}		
+		}
+		if(score)this.score=0;
+		initGrille();
+	}
+	
 	public void initGrille() {
 		for (int a = 0; a < nombredecase; a++) {
 			creercolonne(a);
@@ -75,7 +86,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				this.UpdateCase(i, a, tab[a][i].v);
 			}
 		}
-		joueurVue.reinitgrilleAnimation(id);
+		joueurVue.reinitgrilleAnimation(getId());
 	}
 
 	/**
@@ -152,7 +163,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
-		joueurVue.score(id,score);
+		joueurVue.score(getId(),score);
 		return changement;
 	}
 	
@@ -190,7 +201,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				}
 			}
 		}
-		joueurVue.score(id, score);
+		joueurVue.score(getId(), score);
 		return changement;
 	}
 
@@ -221,10 +232,14 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 	
 
+	/**
+	 * Retourne l'id si perd, sinon -1 
+	 * @return
+	 */
 	public boolean Gameover(){
 		for(int i=0;i<nombredecase;i++){
 			if(tab[i][0].v!=ValeurCase.VIDE){
-				joueurVue.arretThread();
+				joueurVue.arretThread(this.id);
 				afficherGrille();
 				return true;
 			}
@@ -253,23 +268,23 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	
 
 	public void UpdateCase(int y, int x, ValeurCase tab2) {
-		joueurVue.updateCase(id, y, x, tab2);
+		joueurVue.updateCase(getId(), y, x, tab2);
 	}
 
 	public void UpdateSwapHorizontal(int x1, int x2, int y) {
-		joueurVue.swaphorizontal(id, x1, x2, y);
+		joueurVue.swaphorizontal(getId(), x1, x2, y);
 	}
 
 	public void UpdateSwapVertical(int x, int y1, int y2) {
-		joueurVue.swapvertical(id, x, y1, y2);
+		joueurVue.swapvertical(getId(), x, y1, y2);
 	}
 
 	public void updateStopCase(int y, int x){
-		joueurVue.stopCase(id ,y, x);
+		joueurVue.stopCase(getId() ,y, x);
 	}
 	
 	public void updateStartCase(int y, int x){
-		joueurVue.startCase(id, y, x);
+		joueurVue.startCase(getId(), y, x);
 	}
 	
 	
@@ -301,7 +316,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 
 	public void monteGrilleGraphique() {
-		joueurVue.bougerGrilleGraphique(id);
+		joueurVue.bougerGrilleGraphique(getId());
 	}
 	
 	public void afficherGrille(){
@@ -322,6 +337,16 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	public void setControlerJoueur(JoueurControler controlerJoueur) {
 		this.controlerJoueur = controlerJoueur;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 
 	
 	

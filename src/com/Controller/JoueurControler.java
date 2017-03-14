@@ -116,7 +116,12 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 		thread.suspend();
 	}
 
+	
+	/**
+	 * Fin du jeu
+	 */
 	public void arreterThread() {
 		tourne=false;
+		//grilleCont.winner()
 	}
 }

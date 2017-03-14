@@ -20,6 +20,6 @@ public interface Observer {
 	void bougeJoueurGraphique(int id);
 	void bougerGrilleGraphique(int id);
 	void reinitgrilleAnimation(int id);
-	void arretThread();
+	void arretThread(int id);
 	
 }

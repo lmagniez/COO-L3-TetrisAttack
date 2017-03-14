@@ -25,6 +25,7 @@ import JComponent.GameTimer;
 import JComponent.Grille;
 import JComponent.Pause;
 import JComponent.Score;
+import JComponent.WinJ1;
 import Run.Fenetre;
 
 public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
@@ -48,6 +49,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected Score speedLvl;
 	
 	protected Pause pausePanel;
+	protected WinJ1 win;
 	
 	
 	
@@ -88,6 +90,13 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	
 	
 	public Jeux1j(Fenetre f, int[] option) {
+		
+		// 0 -> vitesse J1 
+		// 1 -> idtheme j1 
+		// 2 -> vitesse J2 
+		// 3 -> idtheme j2 
+		// 4 -> IA -> 1 | 0
+		
 		fen = f;
 		
 		modelJeux = new ModelJeux(this);
@@ -120,13 +129,18 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.score=new Score(this,650,250,false,6);
 		this.speedLvl=new Score(this,650,350,false,2);
 		this.pausePanel=new Pause(this.fen, this);
+		this.win=new WinJ1(this.fen, this);
+		
+		
 		
 		highScore.setScore(20000);
 		//score.setScore(1234);
-		speedLvl.setScore(12);
+		speedLvl.setScore(option[0]);
 		
 		this.add(pausePanel);
 		pausePanel.setVisible(false);
+		this.add(win);
+		win.setVisible(false);
 		
 		
 		
@@ -180,7 +194,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private void creerlayout() {
 		this.setLayout(null);
 		this.add(g);
-		this.add(j.getScore());
 	}
 
 	public void focus() {
@@ -295,8 +308,10 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		repaint();
 	}
 
-	@Override
-	public void arretThread() {
+	public void arretThread(int idJoueur) {
+		
+		this.win.setVisible(true);
+		
 		getControlerJeu().arreterThread();
 		getControlerJoueur().arreterThread();
 	}
@@ -324,4 +339,15 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void setPause(boolean pause) {
 		this.pause = pause;
 	}
+
+	public GrilleControler getControlerGrille() {
+		return controlerGrille;
+	}
+
+	public void setControlerGrille(GrilleControler controlerGrille) {
+		this.controlerGrille = controlerGrille;
+	}
+	
+	
+	
 }

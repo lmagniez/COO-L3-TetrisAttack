@@ -31,4 +31,13 @@ public class GrilleControler {
 	public boolean gameOver() {
 		return grilleModel.Gameover();
 	}
+	
+	public void reinitGrille1J(){
+		grilleModel.reinit(true);
+	}
+	
+	public void reinitGrille2J(){
+		grilleModel.reinit(false);
+	}
+	
 }

@@ -51,7 +51,6 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	protected JeuxControler controlerJeu;
 	protected ModelJeux modelJeux;
 
-	protected boolean drawOnce = true;
 	protected boolean pause = false;
 
 	protected int idJ1, idJ2;
@@ -88,6 +87,12 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	
 	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) {  //Option =  0 -> vitesse J1 1->idtheme j1 2 -> vitesse J2 3 -> idtheme j2
 	
+		// 0 -> vitesse J1 
+		// 1 -> idtheme j1 
+		// 2 -> vitesse J2 
+		// 3 -> idtheme j2 
+		// 4 -> IA -> 1 | 0
+		
 		fen = f;
 		this.idJ1 = idJ1;
 		this.idJ2 = idJ2;
@@ -122,8 +127,8 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		g2.init();
 		creerlayout();
 		
-		this.lvlJ1=new Score(this,385,125,false,1);
-		this.lvlJ2=new Score(this,435,125,true,1);
+		this.lvlJ1=new Score(this,385,125,false,2);
+		this.lvlJ2=new Score(this,435,125,true,2);
 		this.scoreJ1=new Score(this,385,320,false,4);
 		this.scoreJ2=new Score(this,385,405,true,4);
 		this.timer=new GameTimer(this,380,485);
@@ -136,6 +141,9 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		//scoreJ1.setScore(1234);
 		//scoreJ2.setScore(12);
+		
+		this.lvlJ1.setScore(option[0]);
+		this.lvlJ2.setScore(option[2]);
 		
 	}
 
@@ -367,8 +375,10 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		repaint();
 	}
 
-	@Override
-	public void arretThread() {
+	/**
+	 * Arrete les threads et indique le joueur gagnant
+	 */
+	public void arretThread(int id) {
 		controlerJeu.arreterThread();
 		controlerJoueur1.arreterThread();
 		controlerJoueur2.arreterThread();

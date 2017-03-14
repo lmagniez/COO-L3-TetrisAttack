@@ -65,6 +65,7 @@ public class Jeux1vsIA  extends Jeux2j {
 	
 	@Override
 	public void arretThread(int id) {
+		super.arretThread(id);
 		controlerJeu.arreterThread();
 		controlerJoueur1.arreterThread();
 		controlerJoueur2.arreterThread();

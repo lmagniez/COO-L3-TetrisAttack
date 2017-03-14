@@ -117,5 +117,8 @@ public class JoueurControlerIA extends JoueurControler {
 	public void reprendreThread() {
 		super.reprendreThread();
 		iatourne = true;
+		ia();
 	}
+	
+	
 }

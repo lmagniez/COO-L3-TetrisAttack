@@ -442,7 +442,22 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 	/**
 	 * Arrete les threads et indique le joueur gagnant
 	 */
-	public abstract void arretThread(int id);
+	public  void arretThread(int id){	
+		System.out.println("yes!!");
+				
+				if(id==1){
+					this.nbWinJ1++;
+				}
+				if(id==2){
+					this.nbWinJ2++;
+				}
+				
+				this.win.setIdWinner(id);
+				this.win.setVisible(true);
+				this.win.requestFocus();
+				this.win.getButtons()[0][0].requestFocusInWindow();
+				
+	}
 
 	public JoueurControler getControlerJoueur1() {
 		return controlerJoueur1;

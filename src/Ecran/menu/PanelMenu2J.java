@@ -36,6 +36,10 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 	private SliderDifficulte sliderLevel2= new SliderDifficulte(this);
 	private JButton start=new Commande(this,"Démarrer",6);
 	
+	private JLabel difficulte1= new JLabel("Difficulté J1: "+0);
+	private JLabel difficulte2= new JLabel("Difficulté J2: "+0);
+	
+	
 	private int cptButton=0;
 	
 	public PanelMenu2J(Fenetre vue, EcranMenu e)
@@ -83,13 +87,22 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		buttons[cptButton++][0]=start;
 		
 		this.setLayout(null);
-		sliderLevel1.setBounds(50, 30, 200, 50);
-		sliderLevel2.setBounds(50, 80, 200, 50);
+		sliderLevel1.setBounds(140, 30, 130, 30);
+		difficulte1.setBounds(30, 30, 130,30);
+		sliderLevel2.setBounds(140, 80, 130, 30);
+		difficulte2.setBounds(30, 80, 130,30);
+		
+		
+		
 		start.setBounds(10, 160, 280, 50);
+		
 		
 		this.add(sliderLevel1);
 		this.add(sliderLevel2);
+		this.add(this.difficulte1);
+		this.add(this.difficulte2);
 		this.add(start);
+		
 		
 		ecran.setButtons(buttons);
 		ecran.addListener();
@@ -123,7 +136,14 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-
+		if(e.getSource()== this.sliderLevel1){
+			int res= sliderLevel1.getValue();
+			this.difficulte1.setText("Difficulté J1: "+res);
+		}
+		if(e.getSource()== this.sliderLevel2){
+			int res= sliderLevel2.getValue();
+			this.difficulte2.setText("Difficulté J2: "+res);
+		}
 	}
 	
 

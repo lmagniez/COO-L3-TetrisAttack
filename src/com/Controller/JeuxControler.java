@@ -35,6 +35,10 @@ public class JeuxControler extends AbstractControler {
 			timer.start();
 	}
 	
+	public void start() {
+		timer.start();
+	}
+	
 	public void reprendre() {
 		timer.resume();
 	}
@@ -46,4 +50,8 @@ public class JeuxControler extends AbstractControler {
 	public void arreterThread() {
 		tourne=false;
 	}
+	public void reprendreThread() {
+		tourne=false;
+	}
+	
 }

@@ -30,7 +30,7 @@ public class WinJ1 extends Ecran implements ActionListener{
 	private JButton yes = new JButton("yes");
 	private JButton no = new JButton("no");
 	protected EcranMenu ecran;
-	protected Image gameOver, yesImg, noImg, cursor;
+	protected Image gameOver, yesImg, noImg, cursor, tryAgain;
 	protected Jeux1j panel1J;
 	
 	private int cptButton = 0;
@@ -51,39 +51,40 @@ public class WinJ1 extends Ecran implements ActionListener{
 								
 		
 		for(int i=0; i<NB_BUTTONS_Y; i++){
-			posButtonX[0][i]=20;
-			posButtonY[0][i]=20*i;
+			posButtonX[0][i]=300;
+			posButtonY[0][i]=50*i;
 		}
 		
 		this.cursor = new ImageIcon("./ressources/Game/Pause/cursor.png").getImage();
 		this.yesImg = new ImageIcon("./ressources/Game/GameOver/yes.png").getImage();
 		this.noImg = new ImageIcon("./ressources/Game/GameOver/no.png").getImage();
 		this.gameOver = new ImageIcon("./ressources/Game/GameOver/gameOver.png").getImage();
+		this.tryAgain = new ImageIcon("./ressources/Game/GameOver/tryAgain.png").getImage();
 		
 		
-		this.setBounds(ConstanteDimension.DimensionFenetrex / 2-165, ConstanteDimension.DimensionFenetrey / 2, 
-				
-				
-				331, 300);
+		this.setBounds(ConstanteDimension.DimensionFenetrex / 2-165, 100, 400, 450);
+		
 		//this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.requestFocusInWindow();
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setLayout(null);
 		
 		addListener();
 		
 		this.add(Box.createRigidArea(new Dimension(5,30)));
 		this.add(yes);
+		this.add(Box.createRigidArea(new Dimension(5,30)));
 		this.add(no);
 		
-		this.add(Box.createRigidArea(new Dimension(5,30)));
-		yes.setSize(new Dimension(1,50));
-		yes.setPreferredSize(new Dimension(1,50));
-		yes.setMaximumSize(new Dimension(1,50));
-		no.setSize(new Dimension(1,50));
-		no.setPreferredSize(new Dimension(1,50));
-		no.setMaximumSize(new Dimension(1,50));
 		
+		yes.setSize(new Dimension(1,40));
+		yes.setPreferredSize(new Dimension(1,40));
+		yes.setMaximumSize(new Dimension(1,40));
+		yes.setBounds(0,350,1,1);
+		no.setSize(new Dimension(1,40));
+		no.setPreferredSize(new Dimension(1,40));
+		no.setMaximumSize(new Dimension(1,40));
+		no.setBounds(200,350,1,1);
 		
 		yes.addActionListener(this);
 		no.addActionListener(this);
@@ -96,17 +97,18 @@ public class WinJ1 extends Ecran implements ActionListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(gameOver, 0, 0, 368, 328, this);
-		g.drawImage(yesImg, 50, 50, 115, 42, this);
-		g.drawImage(noImg, 100, 100, 80, 40, this);
+		g.drawImage(yesImg, 50, 350, 115, 42, this);
+		g.drawImage(noImg, 250, 350, 115, 42, this);
+		g.drawImage(tryAgain, 0, 300, 314, 41, this);
 		
 		
 		if(buttons[0][0].hasFocus()){
 			Point p=buttons[0][0].getLocation();
-			g.drawImage(cursor, p.x+20, p.y, 13, 19, this);
+			g.drawImage(cursor, p.x+20, p.y, 13*2, 19*2, this);
 		}
 		if(buttons[0][1].hasFocus()){
-			Point p=buttons[1][0].getLocation();
-			g.drawImage(cursor, p.x+20, p.y, 13, 19, this);
+			Point p=buttons[0][1].getLocation();
+			g.drawImage(cursor, p.x+20, p.y, 13*2, 19*2, this);
 		}
 		
 	}
@@ -117,10 +119,18 @@ public class WinJ1 extends Ecran implements ActionListener{
 		if (e.getActionCommand().equals("yes")) {
 			
 			this.panel1J.getControlerGrille().reinitGrille1J();
+			this.panel1J.getControlerGrille().initGrille();
 			
 			
-			this.panel1J.getControlerJoueur().reprendre();
-			this.panel1J.getControlerJeu().reprendre();
+			this.panel1J.getControlerJoueur().animation();
+			//this.panel1J.getControlerJoueur().start();
+			this.panel1J.getControlerJoueur().reprendreThread();
+			//this.panel1J.getControlerJoueur().reprendre();
+			
+			this.panel1J.getControlerJeu().timer();
+			this.panel1J.getControlerJeu().reprendreThread();
+			//this.panel1J.getControlerJeu().reprendre();
+			
 			this.panel1J.setPause(false);
 			this.setVisible(false);
 			this.panel1J.requestFocus();

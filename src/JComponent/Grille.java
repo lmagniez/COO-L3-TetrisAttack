@@ -77,8 +77,9 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		else if (e.getActionCommand().equals("reprendre")) timer.restart();
 	}
 	
-	public void init() {controlerGrille.initGrille();
-	this.afficherGrille();}
+	public void init() {
+		controlerGrille.initGrille();
+	}
 
 	public void swaphorizontal(int x1, int x2, int y) {
 		ValeurCase value = getTab()[x1][y].getValeur();

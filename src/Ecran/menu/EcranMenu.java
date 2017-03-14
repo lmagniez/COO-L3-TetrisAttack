@@ -16,7 +16,15 @@ import Ecran.GestionBouton;
 import Run.Fenetre;
 
 public class EcranMenu extends Ecran implements ActionListener {
-	private static  int[] option=new int[5]; // 0 -> vitesse J1 1->idtheme j1 3 -> vitesse J2 -> idtheme j2 IA -> 1 | 0 
+	
+	// 0 -> vitesse J1 
+	// 1 -> idtheme j1 
+	// 2 -> vitesse J2 
+	// 3 -> idtheme j2 
+	// 4 -> IA -> 1 | 0
+	
+	
+	private static  int[] option=new int[5];  
 
 	protected PanelMenuPrincipal p1;
 	protected PanelMenu1J p2;

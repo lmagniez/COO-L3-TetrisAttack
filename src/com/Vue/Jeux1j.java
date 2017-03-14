@@ -88,6 +88,13 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	
 	
 	public Jeux1j(Fenetre f, int[] option) {
+		
+		// 0 -> vitesse J1 
+		// 1 -> idtheme j1 
+		// 2 -> vitesse J2 
+		// 3 -> idtheme j2 
+		// 4 -> IA -> 1 | 0
+		
 		fen = f;
 		
 		modelJeux = new ModelJeux(this);
@@ -123,7 +130,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		highScore.setScore(20000);
 		//score.setScore(1234);
-		speedLvl.setScore(12);
+		speedLvl.setScore(option[0]);
 		
 		this.add(pausePanel);
 		pausePanel.setVisible(false);
@@ -180,7 +187,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private void creerlayout() {
 		this.setLayout(null);
 		this.add(g);
-		this.add(j.getScore());
 	}
 
 	public void focus() {

@@ -7,6 +7,7 @@ import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.Vue.Jeux1Jvs1J;
 import com.Vue.Jeux1j;
 import com.Vue.Jeux1vsIA;
 import com.Vue.Jeux2j;
@@ -76,7 +77,7 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 	}
 	
 	public void afficheJeu2J(int[] option, int idJ1, int idJ2) {
-		j2= new Jeux2j(this,option, idJ1, idJ2);
+		j2= new Jeux1Jvs1J(this,option, idJ1, idJ2);
 		swapEcran(j2);
 		this.setFocusable(false);
 		j2.lancementAnimation();

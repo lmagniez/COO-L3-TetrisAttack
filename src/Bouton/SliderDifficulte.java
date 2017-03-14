@@ -23,6 +23,7 @@ public class SliderDifficulte extends JProgressBar implements KeyListener {
 		this.addChangeListener((ChangeListener) j);
 		this.setBounds(x, y, sizex, sizey);
 		this.setMinimum(0);
+		this.setMaximum(99);
 		this.addKeyListener(this);
 		UIManager.put("ProgressBar.foreground", Color.GREEN);
 		

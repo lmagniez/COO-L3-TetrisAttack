@@ -27,7 +27,7 @@ import JComponent.Pause;
 import JComponent.Score;
 import Run.Fenetre;
 
-public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
+public abstract class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
 
 	protected Fenetre fen;
 	protected Grille g1;
@@ -35,6 +35,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	protected Joueur j1;
 	protected Joueur j2;
+	
 
 	protected GrilleModel modelGrille1;
 	protected GrilleControler controlerGrille1;
@@ -47,11 +48,10 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	protected JoueurModel modelJoueur2;
 	protected JoueurControler controlerJoueur2;
-
+	
 	protected JeuxControler controlerJeu;
 	protected ModelJeux modelJeux;
 
-	protected boolean drawOnce = true;
 	protected boolean pause = false;
 
 	protected int idJ1, idJ2;
@@ -83,17 +83,35 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	//interface
 	protected Image interf= new ImageIcon("./ressources/Game/Interface/interface.png").getImage();
 	
+	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) { 
 	
-	
-	
-	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) {  //Option =  0 -> vitesse J1 1->idtheme j1 2 -> vitesse J2 3 -> idtheme j2
-	
+		// 0 -> vitesse J1 
+		// 1 -> idtheme j1 
+		// 2 -> vitesse J2 
+		// 3 -> idtheme j2 
+		// 4 -> IA -> 1 | 0
+		
 		fen = f;
 		this.idJ1 = idJ1;
 		this.idJ2 = idJ2;
-
+		
+		this.lvlJ1=new Score(this,385,125,false,2);
+		this.lvlJ2=new Score(this,435,125,true,2);
+		this.scoreJ1=new Score(this,385,320,false,4);
+		this.scoreJ2=new Score(this,385,405,true,4);
+		this.timer=new GameTimer(this,380,485);
+		
+		this.pausePanel=new Pause(this.fen, this);
+		
+		this.add(pausePanel);
+		pausePanel.setVisible(false);
+		
+		this.lvlJ1.setScore(option[0]);
+		this.lvlJ2.setScore(option[2]);
+		
 		modelJeux = new ModelJeux(this);
 		controlerJeu = new JeuxControler(modelJeux);
+		
 
 		modelGrille1 = new GrilleModel(1);
 		controlerGrille1 = new GrilleControler(modelGrille1);
@@ -117,86 +135,32 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 		modelGrille1.setControlerJoueur(controlerJoueur1);
 		modelGrille2.setControlerJoueur(controlerJoueur2);
-
+		
 		g1.init();
 		g2.init();
-		creerlayout();
-		
-		this.lvlJ1=new Score(this,385,125,false,1);
-		this.lvlJ2=new Score(this,435,125,true,1);
-		this.scoreJ1=new Score(this,385,320,false,4);
-		this.scoreJ2=new Score(this,385,405,true,4);
-		this.timer=new GameTimer(this,380,485);
-		
-		this.pausePanel=new Pause(this.fen, this);
-		
-		this.add(pausePanel);
-		pausePanel.setVisible(false);
-		
-		
-		//scoreJ1.setScore(1234);
-		//scoreJ2.setScore(12);
-		
+
+		this.creerlayout();
 	}
 
-	public void GestionClavier(KeyEvent e) {
-		if (!pause) {
-			if (e.getKeyCode() == KeyEvent.VK_Z) {
-				controlerJoueur1.verifUp(j1.getY1());
-			} else if (e.getKeyCode() == KeyEvent.VK_S) {
-				controlerJoueur1.verifDown(j1.getY1());
-			} else if (e.getKeyCode() == KeyEvent.VK_Q) {
-				controlerJoueur1.verifLeft(j1.getX1());
-			} else if (e.getKeyCode() == KeyEvent.VK_D) {
-				controlerJoueur1.verifRight(j1.getX2());
-			} else if (e.getKeyCode() == KeyEvent.VK_F) {
-				controlerGrille1.swap(j1.getX1(), j1.getX2(), j1.getY1());
-			} else if (e.getKeyCode() == KeyEvent.VK_O) {
-				controlerJoueur2.verifUp(j2.getY1());
-			} else if (e.getKeyCode() == KeyEvent.VK_L) {
-				controlerJoueur2.verifDown(j2.getY1());
-			} else if (e.getKeyCode() == KeyEvent.VK_K) {
-				controlerJoueur2.verifLeft(j2.getX1());
-			} else if (e.getKeyCode() == KeyEvent.VK_M) {
-				controlerJoueur2.verifRight(j2.getX2());
-			} else if (e.getKeyCode() == KeyEvent.VK_J) {
-				controlerGrille2.swap(j2.getX1(), j2.getX2(), j2.getY1());
-			}
-		}
-		/*
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			if (pause) {
-				controlerJoueur1.reprendre();
-				controlerJoueur2.reprendre();
-				controlerJeu.reprendre();
-				pause = false;
-			}
-		}*/
-		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			pause = true;
-			controlerJeu.pause();
-			controlerJoueur1.pause();
-			controlerJoueur2.pause();
-			
-			this.pausePanel.setVisible(true);
-			this.pausePanel.requestFocus();
-			this.pausePanel.getButtons()[0][0].requestFocusInWindow();
-			this.pausePanel.repaint();
-		}
-
-	}
+	public abstract void GestionClavier(KeyEvent e);
 
 	public void lancementAnimation() {
 		controlerJoueur1.animation();
 		controlerJoueur2.animation();
 		controlerJeu.timer();
 	}
+	
+	@Override
+	public void arretThread() {
+		controlerJeu.arreterThread();
+		controlerJoueur1.arreterThread();
+		controlerJoueur2.arreterThread();
+	}
 
-	private void creerlayout() {
+	public void creerlayout() {
 		this.setLayout(null);
 		this.add(g1);
 		this.add(g2);
-		
 	}
 
 	public void focus() {
@@ -205,11 +169,6 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	}
 
 	public void paintComponent(Graphics g) {
-
-		//this.removeAll();
-		//this.revalidate();
-		//this.validate();
-
 		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
 		
 		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1, 
@@ -218,19 +177,10 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2, 
 				ConstanteDimension.DimensionGrillex, 
 				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
-		
-		
-		/*
-		 * if (this.drawOnce) { Color c = Color.black; g.fillRect(0, 0,
-		 * ConstanteDimension.DimensionFenetrex,
-		 * ConstanteDimension.DimensionFenetrey); // drawOnce=false; }
-		 */
 
 		(this.g1).paintComponent(g);
-		// (this.g1).dessinerGrille(g);
 		(this.j1).dessinerJoueur(g,this);
 		(this.g2).paintComponent(g);
-		// (this.g2).dessinerGrille(g);
 		(this.j2).dessinerJoueur(g,this);
 		g.drawImage(this.interf, ConstanteJeux.PositionGrille2JX1-5, ConstanteJeux.PositionGrille2JY1-10, 
 				ConstanteDimension.DimensionFenetrex-ConstanteJeux.PositionGrille2JX1*2+15,
@@ -259,7 +209,6 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		} else {
 			this.g2.swapvertical(x, y1, y2);
 		}
-
 		this.repaint();
 	}
 
@@ -355,8 +304,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void bougeJoueurGraphique() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -367,12 +315,6 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		repaint();
 	}
 
-	@Override
-	public void arretThread() {
-		controlerJeu.arreterThread();
-		controlerJoueur1.arreterThread();
-		controlerJoueur2.arreterThread();
-	}
 
 	public JoueurControler getControlerJoueur1() {
 		return controlerJoueur1;
@@ -397,7 +339,7 @@ public class Jeux2j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void setControlerJeu(JeuxControler controlerJeu) {
 		this.controlerJeu = controlerJeu;
 	}
-
+	
 	public boolean isPause() {
 		return pause;
 	}

@@ -65,10 +65,10 @@ public class Score {
 		
 		String scr=score+"";
 		
+		System.out.println(nbChiffresScore);
 		int cpt=nbChiffresScore-1;
 		for(int i=scr.length()-1;i>=0;i--){
 			chiffres[cpt--].setCpt(Integer.parseInt(""+scr.charAt(i)));
-			
 		}
 		
 	}

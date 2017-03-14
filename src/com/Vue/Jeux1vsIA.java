@@ -23,7 +23,7 @@ public class Jeux1vsIA  extends Jeux2j {
 
 	public Jeux1vsIA(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
-		controlerJoueur2=new JoueurControlerIA(modelJoueur2, controlerGrille2, option[2]);
+		controlerJoueur2=new JoueurControlerIA(modelJoueur2, controlerGrille2, option[0]);
 	}
 	
 	public void GestionClavier(KeyEvent e) {
@@ -54,8 +54,11 @@ public class Jeux1vsIA  extends Jeux2j {
 			controlerJeu.pause();
 			controlerJoueur1.pause();
 			controlerJoueur2.pause();
+			
 			this.pausePanel.setVisible(true);
 			this.pausePanel.requestFocus();
+			this.pausePanel.getButtons()[0][0].requestFocusInWindow();
+			this.pausePanel.repaint();
 		}
 	}
 	

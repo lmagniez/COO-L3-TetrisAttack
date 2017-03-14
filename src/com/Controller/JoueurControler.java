@@ -82,7 +82,6 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 							i++;
 						}
 						if(i==JoueurControler.this.zzz){
-						
 							JoueurControler.this.verifUp(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.ajoutLigne();
 							if(JoueurControler.this.grilleCont.gameOver())System.out.println("GameOver");

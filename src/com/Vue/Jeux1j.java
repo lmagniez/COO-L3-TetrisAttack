@@ -311,6 +311,9 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void arretThread(int idJoueur) {
 		
 		this.win.setVisible(true);
+		this.win.requestFocus();
+		this.win.getButtons()[0][0].requestFocusInWindow();
+		
 		
 		getControlerJeu().arreterThread();
 		getControlerJoueur().arreterThread();

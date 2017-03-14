@@ -60,7 +60,7 @@ public class Score {
 		System.out.println("setScore "+score);
 		
 		for(int i=0; i<nbChiffresScore; i++){
-			chiffres[0].setCpt(0);
+			chiffres[i].setCpt(0);
 		}
 		
 		String scr=score+"";
@@ -70,6 +70,7 @@ public class Score {
 		for(int i=scr.length()-1;i>=0;i--){
 			chiffres[cpt--].setCpt(Integer.parseInt(""+scr.charAt(i)));
 		}
+		this.vue.repaint();
 		
 	}
 	

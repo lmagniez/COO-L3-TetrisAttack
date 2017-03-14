@@ -84,7 +84,6 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 						}
 						if(i==JoueurControler.this.zzz){
 						
-							System.out.println(">>>>>>>>>>>OKKKK");
 							JoueurControler.this.verifUp(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.ajoutLigne();
 							if(JoueurControler.this.grilleCont.gameOver())System.out.println("GameOver");
@@ -108,6 +107,10 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 		thread.start();
 	}
 	
+	public void start() {
+		thread.start();
+	}
+	
 	public void reprendre() {
 		thread.resume();
 	}
@@ -122,6 +125,10 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	 */
 	public void arreterThread() {
 		tourne=false;
+		//grilleCont.winner()
+	}
+	public void reprendreThread() {
+		tourne=true;
 		//grilleCont.winner()
 	}
 }

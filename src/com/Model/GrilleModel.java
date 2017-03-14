@@ -39,7 +39,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				tab[i][j]=new CaseModel(i,j);
 			}		
 		}
-		if(score)this.score=0;
+		if(score){
+			this.score=0;
+			joueurVue.score(getId(),this.score);
+		}
 		initGrille();
 	}
 	

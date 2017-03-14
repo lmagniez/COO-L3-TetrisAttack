@@ -164,10 +164,10 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 	public void paintComponent(Graphics g) {
 		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
 		
-		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1, 
+		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1+30, 
 				ConstanteDimension.DimensionGrillex, 
 				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
-		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2, 
+		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2+30, 
 				ConstanteDimension.DimensionGrillex, 
 				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
 
@@ -175,9 +175,9 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 		(this.j1).dessinerJoueur(g,this);
 		(this.g2).paintComponent(g);
 		(this.j2).dessinerJoueur(g,this);
-		g.drawImage(this.interf, ConstanteJeux.PositionGrille2JX1-5, ConstanteJeux.PositionGrille2JY1-10, 
+		g.drawImage(this.interf, ConstanteJeux.PositionGrille2JX1-5, ConstanteJeux.PositionGrille2JY1+30, 
 				ConstanteDimension.DimensionFenetrex-ConstanteJeux.PositionGrille2JX1*2+15,
-				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
+				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1-30, this);
 		(this.timer).draw(g);
 		(this.scoreJ1).draw(g);
 		(this.lvlJ1).draw(g);

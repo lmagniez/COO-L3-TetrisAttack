@@ -8,7 +8,7 @@ import Constante.ConstanteJeux;
 public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 
 	JoueurModel joueurModel;
-	private GrilleControler grilleCont;
+	GrilleControler grilleCont;
 	protected int zzz=5000;
 	protected Thread thread;
 	

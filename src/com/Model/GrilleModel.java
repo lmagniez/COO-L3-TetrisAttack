@@ -97,7 +97,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 */
 	public void descendreCube() {
 		ValeurCase tmp;
-		for (int i = 0; i < nombredeLigne - 1; i++) {
+		for (int i = 0; i < nombredeLigneTeste + 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {
 				if (tab[a][i + 1].v == ValeurCase.VIDE && tab[a][i].v != ValeurCase.VIDE) {
 					tmp = tab[a][i].v;
@@ -347,6 +347,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public CaseModel[][] recupMaGrille() {
+		return tab;
 	}
 
 	

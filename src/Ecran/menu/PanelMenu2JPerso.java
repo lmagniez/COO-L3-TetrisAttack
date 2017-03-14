@@ -38,7 +38,7 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 
 		this.ecran = e;
 		this.vue = vue;
-		this.pred_panel = this.ecran.p2;
+		this.pred_panel = this.ecran.p3;
 
 		this.has_cursor = false;
 		NB_BUTTONS_Y = 3;

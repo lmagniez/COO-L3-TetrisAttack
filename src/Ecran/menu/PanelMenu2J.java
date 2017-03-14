@@ -57,8 +57,10 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		
 		for(int i=0; i<NB_BUTTONS_X; i++){
 			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
-			posButtonY[i][0]=180+50*i;
 		}
+		posButtonY[0][0]=170;
+		posButtonY[1][0]=170+50;
+		posButtonY[2][0]=170+50+85;
 		
 		
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();

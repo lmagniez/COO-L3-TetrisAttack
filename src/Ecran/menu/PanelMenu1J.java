@@ -48,7 +48,7 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 		
 		for(int i=0; i<NB_BUTTONS_X; i++){
 			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
-			posButtonY[i][0]=180+50*i;
+			posButtonY[i][0]=180+70*i;
 		}
 		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();

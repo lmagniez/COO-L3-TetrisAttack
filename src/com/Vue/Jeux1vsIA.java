@@ -23,7 +23,7 @@ public class Jeux1vsIA  extends Jeux2j {
 	public Jeux1vsIA(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
 	}
-
+	
 	public void GestionClavier(KeyEvent e) {
 		if (!pause) {
 			if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -55,5 +55,7 @@ public class Jeux1vsIA  extends Jeux2j {
 			this.pausePanel.requestFocus();
 		}
 	}
+	
+	
 
 }

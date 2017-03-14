@@ -1,6 +1,5 @@
 package com.Vue;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -16,10 +15,10 @@ import com.Model.JoueurModel;
 import com.Model.ModelJeux;
 import com.Model.ValeurCase;
 import com.Observer.Observer;
+
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
-import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
 import JComponent.GameTimer;
 import JComponent.Grille;
@@ -35,7 +34,6 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 	protected Joueur j1;
 	protected Joueur j2;
-	
 
 	protected GrilleModel modelGrille1;
 	protected GrilleControler controlerGrille1;
@@ -48,7 +46,7 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 	protected JoueurModel modelJoueur2;
 	protected JoueurControler controlerJoueur2;
-	
+
 	protected JeuxControler controlerJeu;
 	protected ModelJeux modelJeux;
 
@@ -56,61 +54,60 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 	protected int idJ1, idJ2;
 
-	protected Score scoreJ1,lvlJ1;
-	protected Score scoreJ2,lvlJ2;
+	protected Score scoreJ1, lvlJ1;
+	protected Score scoreJ2, lvlJ2;
 	protected GameTimer timer;
-	protected Pause pausePanel; 
-	
-	//fond
-	protected Image fondYoshi= new ImageIcon("./ressources/Game/Fond2J/fond2.png").getImage();
-	protected Image fondFrog= new ImageIcon("./ressources/Game/Fond2J/fond5.png").getImage();
-	protected Image fondChien= new ImageIcon("./ressources/Game/Fond2J/fond1.png").getImage();
-	protected Image fondLakitu= new ImageIcon("./ressources/Game/Fond2J/fond3.png").getImage();
-	protected Image fondMaskass= new ImageIcon("./ressources/Game/Fond2J/fond6.png").getImage();
-	protected Image fondMonstre= new ImageIcon("./ressources/Game/Fond2J/fond4.png").getImage();
-	protected Image fond[] = {fondYoshi,fondLakitu,fondChien,fondMonstre,fondFrog,fondMaskass};
-	
-	//fond grille
-	//fond
-	protected Image yoshi= new ImageIcon("./ressources/Game/Fond2J/yoshi.png").getImage();
-	protected Image frog= new ImageIcon("./ressources/Game/Fond2J/frog.png").getImage();
-	protected Image chien= new ImageIcon("./ressources/Game/Fond2J/dog.png").getImage();
-	protected Image lakitu= new ImageIcon("./ressources/Game/Fond2J/lakitu.png").getImage();
-	protected Image maskass= new ImageIcon("./ressources/Game/Fond2J/penguin.png").getImage();
-	protected Image monstre= new ImageIcon("./ressources/Game/Fond2J/monster.png").getImage();
-	protected Image fondGrille[] = {yoshi,lakitu,chien,monstre,frog,maskass};
-	
-	//interface
-	protected Image interf= new ImageIcon("./ressources/Game/Interface/interface.png").getImage();
-	
-	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) { 
-		// 0 -> vitesse J1 
-		// 1 -> idtheme j1 
-		// 2 -> vitesse J2 
-		// 3 -> idtheme j2 
+	protected Pause pausePanel;
+
+	// fond
+	protected Image fondYoshi = new ImageIcon("./ressources/Game/Fond2J/fond2.png").getImage();
+	protected Image fondFrog = new ImageIcon("./ressources/Game/Fond2J/fond5.png").getImage();
+	protected Image fondChien = new ImageIcon("./ressources/Game/Fond2J/fond1.png").getImage();
+	protected Image fondLakitu = new ImageIcon("./ressources/Game/Fond2J/fond3.png").getImage();
+	protected Image fondMaskass = new ImageIcon("./ressources/Game/Fond2J/fond6.png").getImage();
+	protected Image fondMonstre = new ImageIcon("./ressources/Game/Fond2J/fond4.png").getImage();
+	protected Image fond[] = { fondYoshi, fondLakitu, fondChien, fondMonstre, fondFrog, fondMaskass };
+
+	// fond grille
+	// fond
+	protected Image yoshi = new ImageIcon("./ressources/Game/Fond2J/yoshi.png").getImage();
+	protected Image frog = new ImageIcon("./ressources/Game/Fond2J/frog.png").getImage();
+	protected Image chien = new ImageIcon("./ressources/Game/Fond2J/dog.png").getImage();
+	protected Image lakitu = new ImageIcon("./ressources/Game/Fond2J/lakitu.png").getImage();
+	protected Image maskass = new ImageIcon("./ressources/Game/Fond2J/penguin.png").getImage();
+	protected Image monstre = new ImageIcon("./ressources/Game/Fond2J/monster.png").getImage();
+	protected Image fondGrille[] = { yoshi, lakitu, chien, monstre, frog, maskass };
+
+	// interface
+	protected Image interf = new ImageIcon("./ressources/Game/Interface/interface.png").getImage();
+
+	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) {
+		// 0 -> vitesse J1
+		// 1 -> idtheme j1
+		// 2 -> vitesse J2
+		// 3 -> idtheme j2
 		// 4 -> IA -> 1 | 0
-		
+
 		fen = f;
 		this.idJ1 = idJ1;
 		this.idJ2 = idJ2;
-		
-		this.lvlJ1=new Score(this,385,125,false,2);
-		this.lvlJ2=new Score(this,435,125,true,2);
-		this.scoreJ1=new Score(this,385,320,false,4);
-		this.scoreJ2=new Score(this,385,405,true,4);
-		this.timer=new GameTimer(this,380,485);
-		
-		this.pausePanel=new Pause(this.fen, this);
-		
+
+		this.lvlJ1 = new Score(this, 385, 125, false, 2);
+		this.lvlJ2 = new Score(this, 435, 125, true, 2);
+		this.scoreJ1 = new Score(this, 385, 320, false, 4);
+		this.scoreJ2 = new Score(this, 385, 405, true, 4);
+		this.timer = new GameTimer(this, 380, 485);
+
+		this.pausePanel = new Pause(this.fen, this);
+
 		this.add(pausePanel);
 		pausePanel.setVisible(false);
-		
+
 		this.lvlJ1.setScore(option[0]);
 		this.lvlJ2.setScore(option[2]);
-		
+
 		modelJeux = new ModelJeux(this);
 		controlerJeu = new JeuxControler(modelJeux);
-		
 
 		modelGrille1 = new GrilleModel(1);
 		controlerGrille1 = new GrilleControler(modelGrille1);
@@ -134,11 +131,11 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 		modelGrille1.setControlerJoueur(controlerJoueur1);
 		modelGrille2.setControlerJoueur(controlerJoueur2);
-		
+
 		g1.init();
 		g2.init();
 		creerlayout();
-			
+
 	}
 
 	public abstract void GestionClavier(KeyEvent e);
@@ -148,7 +145,6 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 		controlerJoueur2.animation();
 		controlerJeu.timer();
 	}
-	
 
 	public void creerlayout() {
 		this.setLayout(null);
@@ -163,21 +159,21 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 	public void paintComponent(Graphics g) {
 		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
-		
-		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1, 
-				ConstanteDimension.DimensionGrillex, 
-				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
-		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2, 
-				ConstanteDimension.DimensionGrillex, 
-				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
+
+		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1,
+				ConstanteDimension.DimensionGrillex,
+				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
+		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2,
+				ConstanteDimension.DimensionGrillex,
+				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
 
 		(this.g1).paintComponent(g);
-		(this.j1).dessinerJoueur(g,this);
+		(this.j1).dessinerJoueur(g, this);
 		(this.g2).paintComponent(g);
-		(this.j2).dessinerJoueur(g,this);
-		g.drawImage(this.interf, ConstanteJeux.PositionGrille2JX1-5, ConstanteJeux.PositionGrille2JY1-10, 
-				ConstanteDimension.DimensionFenetrex-ConstanteJeux.PositionGrille2JX1*2+15,
-				ConstanteDimension.DimensionFenetrey-ConstanteJeux.PositionGrille2JY1+15, this);
+		(this.j2).dessinerJoueur(g, this);
+		g.drawImage(this.interf, ConstanteJeux.PositionGrille2JX1 - 5, ConstanteJeux.PositionGrille2JY1 - 10,
+				ConstanteDimension.DimensionFenetrex - ConstanteJeux.PositionGrille2JX1 * 2 + 15,
+				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
 		(this.timer).draw(g);
 		(this.scoreJ1).draw(g);
 		(this.lvlJ1).draw(g);
@@ -231,11 +227,10 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 	@Override
 	public void score(int id, int score) {
-		if (id == 1){
+		if (id == 1) {
 			this.j1.setScore(score);
 			this.scoreJ1.setScore(score);
-		}
-		else{
+		} else {
 			this.j2.setScore(score);
 			this.scoreJ2.setScore(score);
 		}
@@ -297,12 +292,11 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 
 	@Override
 	public void bougeJoueurGraphique() {
-		
+
 	}
 
 	@Override
 	public void bougerGrilleGraphique() {
-		// TODO Auto-generated method stub
 		g1.monterGrille();
 		g2.monterGrille();
 		repaint();
@@ -340,7 +334,7 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 	public void setControlerJeu(JeuxControler controlerJeu) {
 		this.controlerJeu = controlerJeu;
 	}
-	
+
 	public boolean isPause() {
 		return pause;
 	}
@@ -348,8 +342,5 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 	public void setPause(boolean pause) {
 		this.pause = pause;
 	}
-	
-	
-	
 
 }

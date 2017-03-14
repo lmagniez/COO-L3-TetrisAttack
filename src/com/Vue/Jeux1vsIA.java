@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import com.Controller.GrilleControler;
 import com.Controller.JeuxControler;
 import com.Controller.JoueurControler;
+import com.Controller.JoueurControlerIA;
 import com.Model.GrilleModel;
 import com.Model.ValeurCase;
 import com.Observer.Observer;
@@ -22,6 +23,7 @@ public class Jeux1vsIA  extends Jeux2j {
 
 	public Jeux1vsIA(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
+		controlerJoueur2=new JoueurControlerIA(modelJoueur2, controlerGrille2, option[2]);
 	}
 	
 	public void GestionClavier(KeyEvent e) {
@@ -43,6 +45,7 @@ public class Jeux1vsIA  extends Jeux2j {
 				controlerJoueur1.reprendre();
 				controlerJoueur2.reprendre();
 				controlerJeu.reprendre();
+				
 				pause = false;
 			}
 		}
@@ -50,12 +53,21 @@ public class Jeux1vsIA  extends Jeux2j {
 			pause = true;
 			controlerJeu.pause();
 			controlerJoueur1.pause();
-			controlerJoueur2.reprendre();
+			controlerJoueur2.pause();
 			this.pausePanel.setVisible(true);
 			this.pausePanel.requestFocus();
 		}
 	}
 	
-	
+	@Override
+	public void arretThread(int id) {
+		controlerJeu.arreterThread();
+		controlerJoueur1.arreterThread();
+		controlerJoueur2.arreterThread();
+	}
 
+	public void lancementAnimation(){
+		super.lancementAnimation();
+		((JoueurControlerIA) controlerJoueur2).ia();
+	}
 }

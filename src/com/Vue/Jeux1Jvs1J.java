@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import com.Controller.GrilleControler;
 import com.Controller.JeuxControler;
 import com.Controller.JoueurControler;
+import com.Controller.JoueurControlerIA;
 import com.Model.GrilleModel;
 import com.Model.JoueurModel;
 import com.Model.ModelJeux;
@@ -13,12 +14,12 @@ import Gestion.Joueur;
 import JComponent.Grille;
 import Run.Fenetre;
 
-public class Jeux1Jvs1J extends Jeux2j{
-	
+public class Jeux1Jvs1J extends Jeux2j {
+
 	public Jeux1Jvs1J(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
 	}
-	
+
 	public void GestionClavier(KeyEvent e) {
 		if (!pause) {
 			if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -48,12 +49,19 @@ public class Jeux1Jvs1J extends Jeux2j{
 			controlerJeu.pause();
 			controlerJoueur1.pause();
 			controlerJoueur2.pause();
-			
+
 			this.pausePanel.setVisible(true);
 			this.pausePanel.requestFocus();
 			this.pausePanel.getButtons()[0][0].requestFocusInWindow();
 			this.pausePanel.repaint();
 		}
 	}
-	
+
+	@Override
+	public void arretThread(int id) {
+		controlerJeu.arreterThread();
+		controlerJoueur1.arreterThread();
+		controlerJoueur2.arreterThread();
+	}
+
 }

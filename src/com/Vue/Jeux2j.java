@@ -306,11 +306,7 @@ public abstract class Jeux2j extends JPanel implements ConstanteDimension, Const
 	/**
 	 * Arrete les threads et indique le joueur gagnant
 	 */
-	public void arretThread(int id) {
-		controlerJeu.arreterThread();
-		controlerJoueur1.arreterThread();
-		controlerJoueur2.arreterThread();
-	}
+	public abstract void arretThread(int id);
 
 	public JoueurControler getControlerJoueur1() {
 		return controlerJoueur1;

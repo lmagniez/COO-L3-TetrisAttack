@@ -7,13 +7,13 @@ import Constante.ConstanteJeux;
 
 public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 
-	private JoueurModel joueurModel;
+	JoueurModel joueurModel;
 	private GrilleControler grilleCont;
-	private int zzz=5000;
-	private Thread thread;
+	protected int zzz=5000;
+	protected Thread thread;
 	
 	private volatile boolean monteActif;
-	private boolean tourne=true;
+	protected boolean tourne=true;
 	
 	public JoueurControler(JoueurModel cal,GrilleControler grilleCont,int lvl) {
 		this.joueurModel=cal;
@@ -56,7 +56,6 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void verifRight(int x2) {
-		System.out.println(x2);
 		if (x2 != nombredecase - 1) {
 			this.joueurModel.changeDroit();
 		}
@@ -127,6 +126,8 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 		tourne=false;
 		//grilleCont.winner()
 	}
+	
+	
 	public void reprendreThread() {
 		tourne=true;
 		//grilleCont.winner()

@@ -24,10 +24,10 @@ import Ecran.Ecran;
 import Ecran.menu.EcranMenu;
 import Run.Fenetre;
 
-public class Pause extends Ecran implements ActionListener{
+public class Win extends Ecran implements ActionListener{
 
 	
-	private JButton reprendre = new JButton("reprendre");
+	private JButton continuer = new JButton("reprendre");
 	private JButton quitter = new JButton("quitter");
 	protected EcranMenu ecran;
 	protected Image fond, cursor;
@@ -37,13 +37,13 @@ public class Pause extends Ecran implements ActionListener{
 	
 	private int cptButton = 0;
 	
-	public Pause(Fenetre vue, Jeux1j panel1J) {
+	public Win(Fenetre vue, Jeux1j panel1J) {
 		this(vue);
 		this.panel1J=panel1J;
 		this.is1J=true;
 	}
 	
-	public Pause(Fenetre vue, Jeux2j panel2J) {
+	public Win(Fenetre vue, Jeux2j panel2J) {
 		this(vue);
 		
 		this.panel2J=panel2J;
@@ -51,7 +51,7 @@ public class Pause extends Ecran implements ActionListener{
 	}
 	
 	
-	public Pause(Fenetre vue){
+	public Win(Fenetre vue){
 		this.vue = vue;
 		this.setOpaque(true);
 		
@@ -62,7 +62,7 @@ public class Pause extends Ecran implements ActionListener{
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
-		buttons[0][0]=reprendre;
+
 		buttons[1][0]=quitter;
 								
 		
@@ -83,19 +83,14 @@ public class Pause extends Ecran implements ActionListener{
 		addListener();
 		
 		this.add(Box.createRigidArea(new Dimension(5,30)));
-		this.add(reprendre);
 		this.add(quitter);
 		
 		this.add(Box.createRigidArea(new Dimension(5,30)));
-		reprendre.setSize(new Dimension(1,50));
-		reprendre.setPreferredSize(new Dimension(1,50));
-		reprendre.setMaximumSize(new Dimension(1,50));
 		quitter.setSize(new Dimension(1,50));
 		quitter.setPreferredSize(new Dimension(1,50));
 		quitter.setMaximumSize(new Dimension(1,50));
 		
 		
-		reprendre.addActionListener(this);
 		quitter.addActionListener(this);
 		
 		

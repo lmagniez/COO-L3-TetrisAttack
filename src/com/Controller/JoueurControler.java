@@ -15,10 +15,10 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	private volatile boolean monteActif;
 	private boolean tourne=true;
 	
-	public JoueurControler(JoueurModel cal,GrilleControler grilleCont,int zzz) {
+	public JoueurControler(JoueurModel cal,GrilleControler grilleCont,int lvl) {
 		this.joueurModel=cal;
 		this.grilleCont=grilleCont;
-		this.zzz=this.zzz-(zzz*30);
+		this.zzz=this.zzz-(lvl*40);
 		this.monteActif=true;
 	}
 

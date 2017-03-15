@@ -61,6 +61,7 @@ public interface Observer {
 	 * @param x abscisse
 	 */
 	void stopCase(int id, int y, int x);
+	
 	/**
 	 * Reprendre l'animation d'une case
 	 * @param id id joueur

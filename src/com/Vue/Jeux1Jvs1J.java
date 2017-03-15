@@ -80,4 +80,10 @@ public class Jeux1Jvs1J extends Jeux2j {
 		controlerJoueur2.arreterThread();
 	}
 
+	@Override
+	public void affiche() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

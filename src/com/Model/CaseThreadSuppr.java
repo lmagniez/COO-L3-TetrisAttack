@@ -51,23 +51,21 @@ public class CaseThreadSuppr extends Thread{
 			this.m.getControlerJoueur().stopperAjoutLigne();
 			
 			
-			Thread.sleep(1000);
+			Thread.sleep(1500);
 			for(int i=0; i<casesSuppr.size(); i++){
 				CaseModel c=casesSuppr.get(i);
-				m.updateStartCase(c.y,c.x);
-				
 				c.v = ValeurCase.VIDE;
 				m.UpdateCase(c.y, c.x, ValeurCase.VIDE);
+				m.updateStartCase(c.y,c.x);
 				
 				c.swappable=true;
 			}
 			
 			this.m.getControlerJoueur().activerAjoutLigne();
 			
-			m.descendreCube();
 			m.score+=casesSuppr.size()*10;
+			m.combo();
 			m.getJoueurVue().score(id,m.score);
-			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

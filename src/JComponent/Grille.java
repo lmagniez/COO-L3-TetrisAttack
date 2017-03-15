@@ -117,9 +117,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	public void affiche(){
 		for (int a = 0; a < nombredeLigne-1; a++) {
 			for (int i = 0; i < nombredecase; i++) {
-
 				 System.out.print(getTab()[i][a].getValeur()+"  ");
-				// System.out.print(tab[i][a].animBloc.getPosY()+"  ");
 			}
 			System.out.println();
 		}

@@ -133,7 +133,4 @@ public class Case {
 		this.animBloc = animBloc;
 
 	}
-	
-	
-	
 }

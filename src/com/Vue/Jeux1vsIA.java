@@ -93,4 +93,10 @@ public class Jeux1vsIA  extends Jeux2j {
 		super.lancementAnimation();
 		((JoueurControlerIA) controlerJoueur2).ia();
 	}
+
+	@Override
+	public void affiche() {
+		// TODO Auto-generated method stub
+		
+	}
 }

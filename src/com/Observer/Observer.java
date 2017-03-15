@@ -21,5 +21,6 @@ public interface Observer {
 	void bougerGrilleGraphique(int id);
 	void reinitgrilleAnimation(int id);
 	void arretThread(int id);
+	void accelere();
 	
 }

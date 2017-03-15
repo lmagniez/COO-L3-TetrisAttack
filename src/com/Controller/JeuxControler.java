@@ -5,10 +5,11 @@ import com.Model.JeuxModel;
 
 public class JeuxControler extends AbstractControler {
 
+	
 	private Thread timer;
 	private boolean tourne=true;
 	
-	public JeuxControler(AbstractModel modelJeux) {
+	public JeuxControler(JeuxModel modelJeux) {
 		super(modelJeux);
 	}
 
@@ -20,6 +21,10 @@ public class JeuxControler extends AbstractControler {
 					while (tourne) {
 						try {
 							seconde++;
+							if(seconde%30==0){
+								((JeuxModel) calc).accelere();
+							}
+							
 							if(seconde%60==0){
 								minute++;
 								seconde=0;

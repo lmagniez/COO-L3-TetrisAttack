@@ -444,19 +444,20 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 	 */
 	public  void arretThread(int id){	
 		System.out.println("yes!!");
-				
-				if(id==1){
-					this.nbWinJ1++;
-				}
-				if(id==2){
-					this.nbWinJ2++;
-				}
-				
-				this.win.setIdWinner(id);
-				this.win.setVisible(true);
-				this.win.requestFocus();
-				this.win.getButtons()[0][0].requestFocusInWindow();
-				
+		controlerJoueur1.reinit();
+		controlerJoueur2.reinit();
+		
+		if(id==1){
+			this.nbWinJ1++;
+		}
+		if(id==2){
+			this.nbWinJ2++;
+		}
+		
+		this.win.setIdWinner(id);
+		this.win.setVisible(true);
+		this.win.requestFocus();
+		this.win.getButtons()[0][0].requestFocusInWindow();			
 	}
 
 	public JoueurControler getControlerJoueur1() {
@@ -523,7 +524,9 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 		this.nbWinJ2 = nbWinJ2;
 	}
 
-	
-	
+	public void accelere(){
+		controlerJoueur1.accelere();
+		controlerJoueur2.accelere();
+	}
 	
 }

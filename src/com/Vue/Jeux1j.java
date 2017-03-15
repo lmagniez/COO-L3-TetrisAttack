@@ -350,6 +350,11 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void setControlerGrille(GrilleControler controlerGrille) {
 		this.controlerGrille = controlerGrille;
 	}
+
+	@Override
+	public void accelere() {
+		controlerJoueur.accelere();
+	}
 	
 	
 	

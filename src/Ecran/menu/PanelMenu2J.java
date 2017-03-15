@@ -29,6 +29,11 @@ import Ecran.Ecran;
 import Run.Fenetre;
 import Variable.VariableJeu;
 
+/**
+ * Panel du jeu 2 joueur
+ * @author loick
+ *
+ */
 public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 	
 	private JLabel labelBox,labelBox2;
@@ -42,6 +47,11 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 	
 	private int cptButton=0;
 	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 * @param e ecranMenu
+	 */
 	public PanelMenu2J(Fenetre vue, EcranMenu e)
 	{
 		this.setOpaque(false);
@@ -81,7 +91,9 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		ajout();
 	}
 
-
+	/**
+	 * Ajouter les éléments au panel
+	 */
 	public void ajout() {
 		
 		buttons[cptButton++][0]=sliderLevel1;

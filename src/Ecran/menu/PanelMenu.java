@@ -12,6 +12,11 @@ import Constante.ConstanteDimension;
 import Ecran.Ecran;
 import Run.Fenetre;
 
+/**
+ * Sous menu
+ * @author loick
+ *
+ */
 public abstract class PanelMenu extends JPanel {
 
 	protected Fenetre vue;

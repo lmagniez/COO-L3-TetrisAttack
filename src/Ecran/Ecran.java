@@ -14,6 +14,12 @@ import javax.swing.event.AncestorListener;
 
 import Run.Fenetre;
 
+/**
+ * Classe abstraite d'un écran.
+ * Dispose d'une grille de boutons et sont gérés depuis la classe GestionBouton
+ * @author loick
+ *
+ */
 public abstract class Ecran extends JPanel {
 
 	protected int NB_BUTTONS_X;
@@ -23,6 +29,9 @@ public abstract class Ecran extends JPanel {
 	protected int[][] posButtonY;
 	protected Fenetre vue;
 
+	/**
+	 * Ajouter les listeners aux boutons
+	 */
 	public void addListener() {
 		for (int i = 0; i < NB_BUTTONS_X; i++) {
 			for (int j = 0; j < NB_BUTTONS_Y; j++) {
@@ -37,6 +46,10 @@ public abstract class Ecran extends JPanel {
 
 	}
 
+	/**
+	 * Changer d'écran
+	 * @param c nouvel écran
+	 */
 	public void focusNouvelEcran(Ecran c) {
 
 		for (int i = 0; i < NB_BUTTONS_X; i++) {
@@ -71,6 +84,11 @@ public abstract class Ecran extends JPanel {
 		this.buttons = buttons;
 	}
 
+	/**
+	 * Listener pour un bouton
+	 * @author loick
+	 *
+	 */
 	class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -84,6 +102,11 @@ public abstract class Ecran extends JPanel {
 		}
 	}
 
+	/**
+	 * Listener pour une comboBox
+	 * @author loick
+	 *
+	 */
 	class ComboBoxListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 

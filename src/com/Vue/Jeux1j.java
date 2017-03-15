@@ -28,6 +28,11 @@ import JComponent.Score;
 import JComponent.WinJ1;
 import Run.Fenetre;
 
+/**
+ * Vue pour un jeu 1 joueur
+ * @author loick
+ *
+ */
 public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
 
 	private Fenetre fen;
@@ -88,7 +93,11 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	
 	
 	
-	
+	/**
+	 * Constructeur 
+	 * @param f Fenetre
+	 * @param option options
+	 */
 	public Jeux1j(Fenetre f, int[] option) {
 		
 		// 0 -> vitesse J1 
@@ -146,11 +155,18 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 	}
 
+	/**
+	 * Gérer les animations du joueur et de la grille
+	 */
 	public void animation() {
 		getControlerJoueur().animation();
 		getControlerJeu().timer();
 	}
 
+	/**
+	 * Gestion du clavier pour le jeu
+	 * @param e
+	 */
 	public void GestionClavier(KeyEvent e) {
 		if(!isPause()){
 			if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -191,11 +207,17 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		}
 	}
 
+	/**
+	 * Créer le layout (initialisation)
+	 */
 	private void creerlayout() {
 		this.setLayout(null);
 		this.add(g);
 	}
 
+	/**
+	 * Focus sur le panel
+	 */
 	public void focus() {
 		this.setFocusable(true);
 		this.requestFocus();

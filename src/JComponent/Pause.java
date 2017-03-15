@@ -24,6 +24,11 @@ import Ecran.Ecran;
 import Ecran.menu.EcranMenu;
 import Run.Fenetre;
 
+/**
+ * Panel d'une pause
+ * @author loick
+ *
+ */
 public class Pause extends Ecran implements ActionListener{
 
 	
@@ -37,12 +42,22 @@ public class Pause extends Ecran implements ActionListener{
 	
 	private int cptButton = 0;
 	
+	/**
+	 * Pause pour une vue 1 joueur
+	 * @param vue fenetre 
+	 * @param panel1J vue 1 joueur
+	 */
 	public Pause(Fenetre vue, Jeux1j panel1J) {
 		this(vue);
 		this.panel1J=panel1J;
 		this.is1J=true;
 	}
 	
+	/**
+	 * Pause pour une vue 2 joueurs
+	 * @param vue fenetre 
+	 * @param panel2J vue 2 joueurs
+	 */
 	public Pause(Fenetre vue, Jeux2j panel2J) {
 		this(vue);
 		
@@ -51,6 +66,10 @@ public class Pause extends Ecran implements ActionListener{
 	}
 	
 	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 */
 	public Pause(Fenetre vue){
 		this.vue = vue;
 		this.setOpaque(true);

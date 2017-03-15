@@ -17,11 +17,21 @@ import javax.swing.JToggleButton;
 
 import Constante.ConstanteImage;
 
+/**
+ * JButton des differents joueurs
+ * @author loick
+ *
+ */
 public class JoueurIcon extends JButton{
 
 	private int icon;
 	private int idJ;
 	
+	/**
+	 * Constructeur
+	 * @param p panel du button
+	 * @param s id de l'icone
+	 */
 	public JoueurIcon(JPanel p,int s){
 		super(ConstanteImage.icon[s]);
 		this.icon=s;
@@ -38,6 +48,12 @@ public class JoueurIcon extends JButton{
 		this.setAlignmentX(Component.CENTER_ALIGNMENT);
 	}
 	
+	/**
+	 * Constructeur pour le choix de 2 joueurs
+	 * @param panelMenu8 panel du button
+	 * @param i id icone
+	 * @param j joueur
+	 */
 	public JoueurIcon(JPanel panelMenu8, int i, int j) {
 		this(panelMenu8,i);
 		idJ=j;

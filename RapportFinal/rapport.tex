@@ -1,0 +1,229 @@
+\documentclass[a4paper,utf8]{article}
+\usepackage{rapport}
+\usepackage[normalem]{ulem}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{MnSymbol,wasysym}
+\usepackage{hyperref}
+\usepackage[french]{babel}
+
+
+\formation{L3MI}
+\date{}
+\matiere{Conception Orientée Objet}
+\titre{Tetris Attack - Compte Rendu}
+
+\newcommand\code[1]{\textsf{#1}}
+\newcommand\srdjan[1]{{\color{red} #1}}
+
+\begin{document}
+
+\entete
+
+\section{Description du projet}
+Tetris Attack est un puzzle-game à 2 joueurs sorti en 1995 sur Super Nintendo. Ce jeu est une variante du bien connu Tetris à 2 joueurs. \\%
+Dans cette version, l\textquotesingle objectif est d\textquotesingle assembler des blocs entre eux afin de les faire disparaître avant que l\textquotesingle ensemble des blocs n\textquotesingle atteignent le haut de l\textquotesingle écran. Toutefois, ici, 2 joueurs s\textquotesingle affrontent en parallèle et peuvent à l\textquotesingle aide de différentes combinaisons envoyer de nouveaux blocs de briques à leur adversaire afin de précipiter sa perte. Ce jeu couple à la fois, la simplicité de Tetris à la dynamique nécessaire d\textquotesingle un bon Versus.
+
+\makebox[\textwidth]{\includegraphics[width=200pt]{Img/title}}
+
+\section{Répartition des tâches}
+
+\textbf{Loïck :} 
+	
+	Vue :
+	\begin{itemize}
+    \item Implémentation des classes génériques d\textquotesingle animation et de gestion clavier du menu. 
+    \item Implémentation de l\textquotesingle écran titre.
+    \item Réalisation de la structure du menu et son design.
+    \item Réalisation de l\textquotesingle ensemble des écrans de jeux. 
+	\end{itemize}
+	
+	Modèle :
+	\begin{itemize}
+    \item Gestion de la destruction des blocs (threads).
+    \item Gestion pause, victoire et game over.
+    \item Javadoc, UML final.
+    \item Rapport final.
+	\end{itemize}
+	
+\textbf{Vincent :}
+
+	Menu : 
+	\begin{itemize}
+	\item Sélection des personnages 
+	\end{itemize}
+	
+	Modèle :
+	\begin{itemize}	
+	\item Implémentation de l\textquotesingle ensemble du modèle de la grille, joueur
+	\end{itemize}
+	
+	Controler :
+	\begin{itemize}	
+	\item Thread monter la grille+génération grille
+	\item Détection game over
+	\item Curseur des joueurs
+	\end{itemize}
+	\begin{itemize}		
+	\item Rapports intermédiaires
+	\item Diapo
+	\end{itemize}
+
+\textbf{Kévin :}
+	\begin{itemize}	
+	\item Début d\textquotesingle implémentation de menu
+	\item Contrôle du jeu
+	\end{itemize}
+
+\section{Fonctionnalité du jeu :}
+
+\subsection{Écran titre :}
+Animation sans GIF.\\%
+Plusieurs objets Animation animés séparément.\\%
+
+contrôle : 
+appui d\textquotesingle une touche : Arrive sur le menu
+
+\subsection{Menu :}
+
+\textbf{Arborescence du menu}
+
+Menu principal
+\begin{itemize}
+	\item 1 joueur (Choix difficulté)
+		\begin{itemize}	
+		\item 1 joueur
+			\begin{itemize}				
+			\item Choix personnage 1J
+				\begin{itemize}
+				\item Lance partie 1 joueur
+				\end{itemize}
+			\end{itemize}
+		\item joueur contre IA
+			\begin{itemize}	
+			\item Choix personnage Joueur vs IA
+				\begin{itemize}					
+				\item Lance partie Joueur vs IA
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+	 \item 2 joueurs (Choix difficulté)
+		\begin{itemize}			
+		\item 2 joueur 
+			\begin{itemize}				
+			\item Choix personnage 2J
+				\begin{itemize}					
+				\item Lance partie 2J
+				\end{itemize}
+			\end{itemize}
+		\item joueur contre IA
+			\begin{itemize}	
+			\item Choix personnage Joueur vs IA
+				\begin{itemize}	
+				\item Lance partie Joueur vs IA
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+	\item Option (Choix contrôle)
+	\item How to Play (Règle du jeu)
+	\item Credit (Crédits du jeu)\\%
+\end{itemize}
+
+\underline{contrôle :}\\%
+appui d\textquotesingle une touche : Arrive sur le menu\\%
+
+\makebox[\textwidth]{
+\includegraphics[height=150pt]{Img/menuPrincipal}
+\includegraphics[height=150pt]{Img/2JPerso}
+\includegraphics[height=150pt]{Img/Regles}
+}
+\makebox[\textwidth]{
+\includegraphics[height=100pt]{Img/1J}
+\includegraphics[height=100pt]{Img/2J}
+\includegraphics[height=100pt]{Img/1JPerso}
+\includegraphics[height=100pt]{Img/credit}
+
+}
+
+\newpage
+
+\subsection{Jeu 1 joueur :}
+Mode de jeu sans limite, la vitesse augmente progressivement.\\%
+Affichage du score, du niveau actuel.\\%
+\makebox[\textwidth]{\includegraphics[width=200pt]{Img/1JJeux}}
+
+\subsection{Jeu 2 joueurs :}
+Versus entre 2 joueurs, IA ou joueur simple.\\%
+Le premier joueur à atteindre deux victoires a gagné.\\%
+\makebox[\textwidth]{\includegraphics[width=200pt]{Img/2JJeux}}
+
+\newpage
+
+\subsection{Événements :}
+	\begin{itemize}		
+	\item \textbf{Pause :} Mettre le jeu en pause.\\%
+		\underline{Déclenchement} : Appuie sur Echap.\\%
+		\underline{État final} : Appuie sur entrée sur l\textquotesingle un des deux choix\\%
+			Reprendre : Reprend la partie\\%
+			Quitter : Retour au menu\\%
+	\makebox[\textwidth]{\includegraphics[width=200pt]{Img/pause}}
+
+
+	\item \textbf{Fin de partie 1 joueur :} Affiche la fin de partie\\%
+		\underline{Déclenchement} : Au moins un bloc atteint le sommet.\\%
+		\underline{État final} : Appuie sur entrée sur l\textquotesingle un des deux choix :\\%
+			Recommencer : Redémarre une partie\\%
+			Quitter : Retour au menu\\%
+	\makebox[\textwidth]{\includegraphics[width=200pt]{Img/gameOver}}
+
+	\item \textbf{Fin de partie 2 joueurs :} Affiche la fin de partie.\\%
+		\underline{Déclenchement} : Au moins un bloc atteint le sommet pour un joueur.
+		\underline{État final} : Appuie sur entrée et redémarre une partie.
+			Si un joueur a deux victoires, on retourne au menu.\\%
+	\makebox[\textwidth]{\includegraphics[width=200pt]{Img/win}}
+	\end{itemize}	
+	
+	
+	\underline{contrôle :}\\%
+	ZQSD : Déplacement curseur 1 joueur\\%
+	F : Swapper deux cases\\%
+	Echap : Lancer l\textquotesingle écran de pause\\%
+	Entrée : Confirmer choix (pause et fin de partie)\\%
+
+\newpage
+
+\section{Utilisation des animations :}
+Tout au long du projet, nous avons du utiliser des animations.\\%
+Une classe générique à été implémenté pour ça. De ce fait, chaque animation comporte :\\%
+\begin{itemize}	
+\item Une feuille de sprite comme ci-dessous
+\item Une position x,y pouvant varier
+\item Une taille x,y pour une image découpée dans la feuille de sprite
+\item Une taille réelle x,y affiché sur l\textquotesingle écran
+\item Un nombre d\textquotesingle image défini
+\item Un Panel dans lequel on intègre l\textquotesingle animation\\%
+\end{itemize}
+
+On implémentera un compteur de différentes manières (exemple : dans un thread? Mettant à jour la valeur).\\%
+On peut ne pas afficher certaines images, ou en afficher seulement une à un moment donné (exemple : destruction d?un bloc).\\%
+
+\makebox[\textwidth]{\includegraphics[width=200pt]{Img/jaune}}
+
+
+
+\section{Amélioration à apporter au jeu :}
+
+\begin{itemize}
+\item Implémentation des blocs gris lorsque qu\textquotesingle un joueur effectue des combos de plus de 4 blocs.
+\item Implémentation des blocs exclamations.
+\item Appuie sur une touche pour ajouter une ligne de blocs manuellement.
+\end{itemize}
+
+
+\section{UML :}
+
+\makebox[\textwidth]{\includegraphics[width=580pt]{UML/diagramFinal}}
+
+
+
+\end{document}

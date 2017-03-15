@@ -5,6 +5,11 @@ import java.text.ParseException;
 
 import Run.Fenetre;
 
+/**
+ * Méthode main
+ * @author loick
+ *
+ */
 public class Main {
 	
 	public static void main(String[] args) throws ParseException {

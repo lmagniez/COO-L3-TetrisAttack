@@ -11,6 +11,12 @@ import javax.swing.JProgressBar;
 import javax.swing.UIManager;
 import javax.swing.event.ChangeListener;
 
+/**
+ * JProgressBar de la difficulté
+ * @author loick
+ *
+ */
+
 public class SliderDifficulte extends JProgressBar implements KeyListener {
 
 	private int x = 10;
@@ -18,6 +24,10 @@ public class SliderDifficulte extends JProgressBar implements KeyListener {
 	private int sizex = 240;
 	private int sizey = 50;
 
+	/**
+	 * Constructeur
+	 * @param j Panel de la progress bar
+	 */
 	public SliderDifficulte(JPanel j) {
 		this.setPreferredSize(new Dimension(280,50 ));
 		this.addChangeListener((ChangeListener) j);

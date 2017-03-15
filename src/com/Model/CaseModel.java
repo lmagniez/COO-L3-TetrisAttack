@@ -1,12 +1,22 @@
 package com.Model;
 
-public class CaseModel extends Thread{
+/**
+ * Modèle des cases
+ * @author loick
+ *
+ */
+public class CaseModel {
 	
 	protected boolean swappable;
 	protected boolean isBloc;
 	public ValeurCase v;
 	protected int x,y;
 	
+	/**
+	 * Constructeur
+	 * @param x abscisse
+	 * @param y ordonnée
+	 */
 	public CaseModel(int x, int y){
 		this.v=ValeurCase.VIDE;
 		this.x=x;
@@ -15,10 +25,6 @@ public class CaseModel extends Thread{
 		this.isBloc=false;
 	}
 	
-	public void run(){
-		//this.notify();
-		//Thread.sleep(1000);
-		
-	}
+	
 	
 }

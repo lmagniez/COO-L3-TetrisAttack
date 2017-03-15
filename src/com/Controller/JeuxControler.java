@@ -3,16 +3,28 @@ package com.Controller;
 import com.Model.AbstractModel;
 import com.Model.JeuxModel;
 
+/**
+ * Controler du jeux, gère le timer du 
+ * @author loick
+ *
+ */
 public class JeuxControler extends AbstractControler {
 
 	
 	private Thread timer;
 	private boolean tourne=true;
-	
-	public JeuxControler(JeuxModel modelJeux) {
+
+	/**
+	 * Constructeur
+	 * @param modelJeux modèle du jeu
+	 */
+	public JeuxControler(AbstractModel modelJeux) {
 		super(modelJeux);
 	}
 
+	/**
+	 * Démarre le timer et met à jour le timer dans le modèle
+	 */
 	public void timer() {
 			timer = new Thread(new Runnable() {
 				public void run() {
@@ -40,6 +52,9 @@ public class JeuxControler extends AbstractControler {
 			timer.start();
 	}
 	
+	/**
+	 * Démarrer
+	 */
 	public void start() {
 		timer.start();
 	}
@@ -52,9 +67,16 @@ public class JeuxControler extends AbstractControler {
 		timer.suspend();
 	}
 
+	/**
+	 * Arreter le thread
+	 */
 	public void arreterThread() {
 		tourne=false;
 	}
+	
+	/**
+	 * Reprendre le thread
+	 */
 	public void reprendreThread() {
 		tourne=false;
 	}

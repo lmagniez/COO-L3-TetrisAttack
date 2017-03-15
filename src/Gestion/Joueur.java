@@ -15,6 +15,11 @@ import JComponent.Grille;
 import JComponent.Score;
 import Run.Sound;
 
+/**
+ * Curseur d'un joueur
+ * @author loick
+ *
+ */
 public class Joueur implements ConstanteJeux {
 
 	private int x1;
@@ -36,6 +41,15 @@ public class Joueur implements ConstanteJeux {
 
 	private JoueurControler controlerJoueur;
 
+	/**
+	 * Constructeur
+	 * @param x abscisse
+	 * @param y ordonnée
+	 * @param controler controler du joeuur
+	 * @param sizex taille x du curseur
+	 * @param sizey taille y du curseur
+	 * @param indice id du joueur
+	 */
 	public Joueur(int x, int y, JoueurControler controler, int sizex, int sizey, int indice) {
 		this.x1 = 3;
 		this.x2 = 4;

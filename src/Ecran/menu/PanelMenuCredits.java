@@ -35,6 +35,12 @@ public class PanelMenuCredits extends PanelMenu implements ActionListener {
 
 	private String[] tache={"<br/>Animations,Menu,Jeu </html>","<br/> Jeu,Menu,Animations </html>","",""};
 	
+	
+	/**
+	 * Constructeur
+	 * @param f fenetre
+	 * @param ecran ecranMenu
+	 */
 	public PanelMenuCredits(Fenetre f, EcranMenu ecran) throws java.text.ParseException {
 
 		this.ecran = ecran;
@@ -73,6 +79,11 @@ public class PanelMenuCredits extends PanelMenu implements ActionListener {
 
 	}
 
+	/**
+	 * Panel pour une personne des crédits
+	 * @param i id de la personne
+	 * @return retour le panel
+	 */
 	private JPanel personne(int i){
 		JPanel pers=new JPanel();
 		pers.setLayout(null);

@@ -23,6 +23,11 @@ import Bouton.SliderDifficulte;
 import Constante.ConstanteDimension;
 import Run.Fenetre;
 
+/**
+ * Sous menu 1 joueur
+ * @author loick
+ *
+ */
 public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeListener, ItemListener {
 
 
@@ -34,6 +39,11 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 	
 	private int cptButton = 0;
 	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 * @param e ecranMenu
+	 */
 	public PanelMenu1J(Fenetre vue, EcranMenu e) {
 		this.ecran = e;
 		this.vue = vue;
@@ -49,6 +59,7 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 		for(int i=0; i<NB_BUTTONS_X; i++){
 			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
 			posButtonY[i][0]=180+70*i;
+			
 		}
 		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
@@ -63,6 +74,9 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 	}
 
 
+	/**
+	 * Ajouter les éléments au panel
+	 */
 	private void ajout() {
 		this.setLayout(null);
 		
@@ -87,7 +101,10 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 		ecran.addListener();
 
 	}
-
+	
+	/**
+	 * Gestion des événements
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals("IA")) {
 			EcranMenu.changeMenuBox(ecran,ecran.p8);

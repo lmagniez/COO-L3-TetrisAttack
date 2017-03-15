@@ -2,6 +2,11 @@ package com.Model;
 
 import com.Observer.Observer;
 
+/**
+ * Modèle du joueur
+ * @author loick
+ *
+ */
 public class JoueurModel {
 
 	private Observer joueurVue;
@@ -11,27 +16,43 @@ public class JoueurModel {
 	private int x2=4;
 	private int y1=9;
 			
+	/**
+	 * Modèle du joueur
+	 * @param id id du joueur
+	 */
 	public JoueurModel(int id) {
 		super();
 		this.id = id;
 	}
 
+	/**
+	 * Monter le curseur
+	 */
 	public void changeHaut() {
 		y1=y1-1;
 		this.updateJoueur(x1,x2,y1);
 	}
 
+	/**
+	 * Déplacer le curseur à gauche
+	 */
 	public void changeGauche() {
 		x2=x2-1;
 		x1=x1-1;
 		this.updateJoueur(x1,x2,y1);
 	}
 
+	/**
+	 * Déplacer le curseur vers le bas
+	 */
 	public void changeBas() {
 		y1=y1+1;
 		this.updateJoueur(x1,x2,y1);
 	}
 
+	/**
+	 * Déplacer le curseur à droite
+	 */
 	public void changeDroit() {
 		x2=x2+1;
 		x1=x1+1;
@@ -58,6 +79,9 @@ public class JoueurModel {
 		return y1;
 	}
 
+	/**
+	 * Faire monter le curseur dans la vue
+	 */
 	public void monteJoueurGraphique() {
 		joueurVue.bougeJoueurGraphique(id);
 		//

@@ -2,17 +2,28 @@ package Ecran;
 
 import java.util.ArrayList;
 
+/**
+ * Thread de l'animation.
+ * Utilisé pour animer l'ensemble des cases de manière synchronisés
+ * @author loick
+ *
+ */
 public class AnimationThread extends Thread{
 
 	private ArrayList<Animation> animations;
 	protected boolean running;
 	
+	/**
+	 * Constructeur
+	 */
 	public AnimationThread(){
 		this.running=true;
 		this.setAnimations(new ArrayList<Animation>());
 	}
 	
-	
+	/**
+	 * Méthode run du thread, initialise les positions de l'animation et les animent tous les X temps
+	 */
 	public void run(){
 		
 		for(int i=0; i<getAnimations().size(); i++){

@@ -19,6 +19,11 @@ import Constante.ConstanteDimension;
 import Ecran.Ecran;
 import Run.Fenetre;
 
+/**
+ * Panel du menu principal
+ * @author loick
+ *
+ */
 public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 	
 	protected JButton joueur1 = new Commande (this, "1 Player",0);
@@ -29,6 +34,12 @@ public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 	
 	private int cptButton=0;
 	
+	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 * @param e ecranMenu
+	 */
 	public PanelMenuPrincipal(Fenetre vue, EcranMenu e)
 	{
 		this.has_cursor=true;
@@ -48,8 +59,7 @@ public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 		this.ecran=e;
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
 		this.vue=vue;
-		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
-				300, 300);
+		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4, 300, 300);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
@@ -57,13 +67,12 @@ public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 		this.setMaximumSize(new Dimension(300,500));
 		
 		ajout();
-		
-		
-		
 	}
 	
+	/**
+	 * Ajouter les éléments au panel
+	 */
 	private void ajout() {
-		
 		buttons[cptButton++][0]=joueur1;
 		buttons[cptButton++][0]=joueur2;
 		buttons[cptButton++][0]=option;

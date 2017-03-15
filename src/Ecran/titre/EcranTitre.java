@@ -31,6 +31,12 @@ import Ecran.Ecran;
 import Run.Fenetre;
 import Run.Sound;
 
+/**
+ * Panel de l'écran titre.
+ * Gère une animation.
+ * @author loick
+ *
+ */
 public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	
 	private Fenetre f;
@@ -119,7 +125,10 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	public static final int NB_IMAGEFLEUR=2;
 	public static final int NB_IMAGEBULLE=2;
 	
-	
+	/**
+	 * Constructeur
+	 * @param f fenetre
+	 */
 	public EcranTitre(Fenetre f)
 	{
 		
@@ -185,18 +194,12 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e){
 		if (e.getSource() == timer){
 			repaint();
-			//cptyoshi1 = (cptyoshi1 + 1) % NB_IMAGE;
 			yoshi1.updateCpt();
 			yoshi2.updateCpt();
 			yoshi3.updateCpt();
 			yoshi4.updateCpt();
 			yoshi5.updateCpt();
 			
-			
-			//cptyoshi2 = (cptyoshi2 + 1) % NB_IMAGE2;
-			//cptyoshi3 = (cptyoshi3 + 1) % NB_IMAGE3;
-			//cptyoshi4 = (cptyoshi4 + 1) % NB_IMAGE4;
-			//cptyoshi5 = (cptyoshi5 + 1) % NB_IMAGE5;
 			
 			for(int i=0; i<NB_FLEUR; i++)
 				fleur[i].updateCpt();

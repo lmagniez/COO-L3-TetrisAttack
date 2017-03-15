@@ -16,6 +16,11 @@ public class CaseThreadSuppr extends Thread{
 	protected ArrayList<CaseModel> casesSuppr;
 	protected int id;
 	
+	/**
+	 * Constructeur 
+	 * @param m modèle de la grille
+	 * @param casesSuppr ensemble des cases à supprimer
+	 */
 	public CaseThreadSuppr(GrilleModel m,ArrayList<CaseModel> casesSuppr){
 		this.casesSuppr=casesSuppr;
 		//this.id=id;
@@ -31,7 +36,9 @@ public class CaseThreadSuppr extends Thread{
 		}
 	}*/
 	
-	
+	/**
+	 * Thread de la suppression
+	 */
 	public void run(){
 		
 		try {
@@ -58,9 +65,6 @@ public class CaseThreadSuppr extends Thread{
 			this.m.getControlerJoueur().activerAjoutLigne();
 			
 			m.descendreCube();
-			
-			//this.m.listeThreadSuppr.remove(this);
-			//this.m.controlerJoueur.activerAjoutLigne();
 			m.score+=casesSuppr.size()*10;
 			m.getJoueurVue().score(id,m.score);
 			

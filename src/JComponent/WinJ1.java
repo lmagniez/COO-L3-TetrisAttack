@@ -24,6 +24,11 @@ import Ecran.Ecran;
 import Ecran.menu.EcranMenu;
 import Run.Fenetre;
 
+/**
+ * Ecran de victoire 1 joueur
+ * @author loick
+ *
+ */
 public class WinJ1 extends Ecran implements ActionListener{
 
 	
@@ -35,6 +40,11 @@ public class WinJ1 extends Ecran implements ActionListener{
 	
 	private int cptButton = 0;
 	
+	/**
+	 * Constructeur 
+	 * @param vue fenetre
+	 * @param panel1J vue 1 joueur
+	 */
 	public WinJ1(Fenetre vue, Jeux1j panel1J) {
 		this.panel1J=panel1J;
 		this.vue = vue;

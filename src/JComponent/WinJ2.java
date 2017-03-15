@@ -109,8 +109,6 @@ public class WinJ2 extends Ecran implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		if (e.getActionCommand().equals("yes")) {
 			
 			if(panel2J.getNbWinJ1()>=2||panel2J.getNbWinJ2()>=2)
@@ -125,7 +123,6 @@ public class WinJ2 extends Ecran implements ActionListener{
 			this.panel2J.getControlerGrille2().initGrille();
 			this.panel2J.getControlerJoueur2().animation();
 			this.panel2J.getControlerJoueur2().reprendreThread();
-			
 			
 			
 			this.panel2J.getControlerJeu().timer();

@@ -24,6 +24,7 @@ public class Jeux1vsIA  extends Jeux2j {
 	public Jeux1vsIA(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
 		controlerJoueur2=new JoueurControlerIA(modelJoueur2, controlerGrille2, option[0]);
+		option[2]=option[0];
 	}
 	
 	public void GestionClavier(KeyEvent e) {
@@ -64,6 +65,7 @@ public class Jeux1vsIA  extends Jeux2j {
 	
 	@Override
 	public void arretThread(int id) {
+		super.arretThread(id);
 		controlerJeu.arreterThread();
 		controlerJoueur1.arreterThread();
 		controlerJoueur2.arreterThread();

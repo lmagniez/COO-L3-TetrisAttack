@@ -59,22 +59,7 @@ public class Jeux1Jvs1J extends Jeux2j {
 
 	@Override
 	public void arretThread(int id) {
-		
-		System.out.println("yes!!");
-		
-		if(id==1){
-			this.nbWinJ1++;
-		}
-		if(id==2){
-			this.nbWinJ2++;
-		}
-		
-		this.win.setIdWinner(id);
-		this.win.setVisible(true);
-		this.win.requestFocus();
-		this.win.getButtons()[0][0].requestFocusInWindow();
-		
-		
+		super.arretThread(id);
 		controlerJeu.arreterThread();
 		controlerJoueur1.arreterThread();
 		controlerJoueur2.arreterThread();

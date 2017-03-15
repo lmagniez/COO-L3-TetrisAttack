@@ -4,7 +4,7 @@ public class CaseModel extends Thread{
 	
 	protected boolean swappable;
 	protected boolean isBloc;
-	protected ValeurCase v;
+	public ValeurCase v;
 	protected int x,y;
 	
 	public CaseModel(int x, int y){

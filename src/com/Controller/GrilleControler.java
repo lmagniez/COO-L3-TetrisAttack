@@ -1,12 +1,18 @@
 package com.Controller;
 
 import com.Model.AbstractModel;
+import com.Model.CaseModel;
 import com.Model.GrilleModel;
 import com.Model.JoueurModel;
 
 public class GrilleControler {
 
 	private GrilleModel grilleModel;
+	
+	public CaseModel[][] recupGrille(){
+		return grilleModel.recupMaGrille();
+	}
+	
 	
 	public GrilleControler(GrilleModel cal) {
 		grilleModel=cal;

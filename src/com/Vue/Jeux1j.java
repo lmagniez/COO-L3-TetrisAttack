@@ -159,6 +159,8 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void animation() {
 		getControlerJoueur().animation();
 		getControlerJeu().timer();
+		getControlerJeu().start();
+		
 	}
 
 	/**

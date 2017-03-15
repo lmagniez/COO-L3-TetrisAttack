@@ -275,6 +275,7 @@ public abstract class Jeux2j extends JPanel
 		controlerJoueur1.animation();
 		controlerJoueur2.animation();
 		controlerJeu.timer();
+		controlerJeu.start();
 	}
 
 	/**
@@ -461,6 +462,8 @@ public abstract class Jeux2j extends JPanel
 		controlerJoueur1.reinit();
 		controlerJoueur2.reinit();
 
+		getControlerJeu().arreterThread();
+		
 		if (id == 2) {
 			this.nbWinJ1++;
 		}
@@ -472,6 +475,8 @@ public abstract class Jeux2j extends JPanel
 		this.win.setVisible(true);
 		this.win.requestFocus();
 		this.win.getButtons()[0][0].requestFocusInWindow();
+		
+		
 	}
 
 	public JoueurControler getControlerJoueur1() {

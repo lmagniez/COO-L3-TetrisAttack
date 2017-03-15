@@ -13,7 +13,9 @@ public class JeuxControler extends AbstractControler {
 	
 	private Thread timer;
 	private boolean tourne=true;
-
+	//protected int seconde=0;
+	//protected int minute=0;
+	
 	/**
 	 * Constructeur
 	 * @param modelJeux modèle du jeu
@@ -27,9 +29,10 @@ public class JeuxControler extends AbstractControler {
 	 */
 	public void timer() {
 			timer = new Thread(new Runnable() {
+				int seconde=0;
+				int minute=0;
+				
 				public void run() {
-					int seconde=0;
-					int minute=0;
 					while (tourne) {
 						try {
 							seconde++;
@@ -48,7 +51,6 @@ public class JeuxControler extends AbstractControler {
 					}
 				}
 			});
-			timer.start();
 	}
 	
 	/**
@@ -66,6 +68,7 @@ public class JeuxControler extends AbstractControler {
 		timer.suspend();
 	}
 
+	
 	/**
 	 * Arreter le thread
 	 */

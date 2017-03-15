@@ -36,7 +36,6 @@ public class JeuxControler extends AbstractControler {
 							if(seconde%30==0){
 								((JeuxModel) calc).accelere();
 							}
-							
 							if(seconde%60==0){
 								minute++;
 								seconde=0;
@@ -79,6 +78,11 @@ public class JeuxControler extends AbstractControler {
 	 */
 	public void reprendreThread() {
 		tourne=false;
+	}
+
+	public void reinitialisation() {
+		tourne=true;
+		timer();
 	}
 	
 }

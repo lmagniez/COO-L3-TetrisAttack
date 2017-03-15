@@ -97,6 +97,7 @@ public interface Observer {
 	 * @param id id du joueur
 	 */
 	void arretThread(int id);
+	
 	void accelere();
 	
 }

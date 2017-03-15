@@ -319,6 +319,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		boolean chang=this.comboColonne() || this.comboLigne();
 		this.descendreCube();
 		if(chang)combo();
+		this.descendreCube();
 	}
 	
 	/**

@@ -283,7 +283,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void updateTimer(String minute, String seconde) {
-		//System.out.println("Temps: "+ minute+" : "+seconde);
+		System.out.println("Temps: "+ minute+" : "+seconde);
 		timer.setTime(minute, seconde);
 	}
 

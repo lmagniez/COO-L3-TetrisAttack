@@ -8,7 +8,7 @@ import com.Controller.JoueurControler;
 import com.Controller.JoueurControlerIA;
 import com.Model.GrilleModel;
 import com.Model.JoueurModel;
-import com.Model.ModelJeux;
+import com.Model.JeuxModel;
 
 import Gestion.Joueur;
 import JComponent.Grille;

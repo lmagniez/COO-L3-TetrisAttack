@@ -48,7 +48,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	
 	public void initGrille() {
 		for (int a = 0; a < nombredecase; a++) {
-			creercolonne(a);
+			creerColonne(a);
 		}
 	}
 
@@ -56,7 +56,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * Initialisation? Création de colonne
 	 * @param a abscisse
 	 */
-	public void creercolonne(int a) {
+	public void creerColonne(int a) {
 		int val, nombrelignedessin = 3+RND.nextInt(3);
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
@@ -110,7 +110,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 	}
 
-	public void ajoutGrille() {
+	/**
+	 * Monte la grille de 1 et génère une ligne
+	 */
+	public void ajoutLigneGrille() {
 		ValeurCase tmp;
 		for (int i = 0; i < nombredeLigne - 1; i++) {
 			for (int a = 0; a < nombredecase; a++) {

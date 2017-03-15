@@ -13,7 +13,7 @@ import com.Controller.JeuxControler;
 import com.Controller.JoueurControler;
 import com.Model.GrilleModel;
 import com.Model.JoueurModel;
-import com.Model.ModelJeux;
+import com.Model.JeuxModel;
 import com.Model.ValeurCase;
 import com.Observer.Observer;
 import Constante.ConstanteDimension;
@@ -35,7 +35,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private Joueur j;
 
 	private JeuxControler controlerJeu;
-	private ModelJeux modelJeux;
+	private JeuxModel modelJeux;
 	
 	private GrilleModel modelGrille;
 	private GrilleControler controlerGrille;
@@ -99,7 +99,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		fen = f;
 		
-		modelJeux = new ModelJeux(this);
+		modelJeux = new JeuxModel(this);
 		setControlerJeu(new JeuxControler(modelJeux));
 		
 		modelGrille = new GrilleModel(1);

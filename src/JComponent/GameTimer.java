@@ -9,6 +9,11 @@ import javax.swing.JPanel;
 import Constante.ConstanteDimension;
 import Ecran.Animation;
 
+/**
+ * Timer dans la vue
+ * @author loick
+ *
+ */
 public class GameTimer {
 
 	protected String minutes;
@@ -29,7 +34,12 @@ public class GameTimer {
 	private int posChiffreX[]=new int[5],
 			posChiffreY[]=new int[5];
 	
-	
+	/**
+	 * Constructeur
+	 * @param vue vue
+	 * @param posX position X
+	 * @param posY position Y
+	 */
 	public GameTimer(JPanel vue, int posX, int posY ){
 		
 		this.vue=vue;
@@ -53,6 +63,11 @@ public class GameTimer {
 				
 	}
 	
+	/**
+	 * Mettre à jour le timer
+	 * @param minutes minute
+	 * @param secondes seconde
+	 */
 	public void setTime(String minutes, String secondes){
 		this.minutes=minutes;
 		this.secondes=secondes;

@@ -8,6 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 
+/**
+ * Classe abstraite gérant les boutons dans un panel
+ * @author loick
+ *
+ */
 public abstract class GestionBouton {
 
 	private static KeyListener enter = new KeyAdapter() {
@@ -26,6 +31,10 @@ public abstract class GestionBouton {
 		}
 	};
 
+	/**
+	 * Ajouter les listeners aux boutons
+	 * @param buttons Ensemble des composants
+	 */
 	public static void ajoutListenerBouton(JComponent[][] buttons) {
 
 		for (int i = 0; i < buttons.length; i++) {

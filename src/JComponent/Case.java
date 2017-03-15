@@ -10,6 +10,11 @@ import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
 import Ecran.Animation;
 
+/**
+ * Case dans la vue 
+ * @author loick
+ *
+ */
 public class Case {
 	protected Grille g;
 	
@@ -42,6 +47,15 @@ public class Case {
 
 	protected Image[] blocsImg={vide,cyan,rouge,jaune,vert,violet,bleu,gris};
 	
+	/**
+	 * Constructeur
+	 * @param g Grille 
+	 * @param a abscisse
+	 * @param b ordonnée
+	 * @param dimx tailleX
+	 * @param dimy tailleY
+	 * @param v valeur de la case
+	 */
 	public Case(Grille g,int a,int b,int dimx,int dimy,ValeurCase v){
 		this.g=g;
 		screenwidthbloc=g.tailleX(); screenheightbloc=g.tailleY();
@@ -57,6 +71,10 @@ public class Case {
 		setAnimBloc(new Animation(blocImg,0,0,widthbloc,heightbloc,screenwidthbloc,screenheightbloc,cptbloc, NB_IMAGE, g));	
 	}
 
+	/**
+	 * Constructeur d'une case (clone)
+	 * @param case1 case
+	 */
 	public Case(Case case1) {
 		x=case1.x;
 		y=case1.y;

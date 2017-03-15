@@ -1,5 +1,10 @@
 package Constante;
 
+/**
+ * Constante des musiques
+ * @author loick
+ *
+ */
 public class ConstanteMusique {
 
 	public static final int MUSIQUE_TITRE=0;

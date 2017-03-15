@@ -3,6 +3,11 @@ package com.Controller;
 
 import com.Model.AbstractModel;
 
+/**
+ * Controler abstrait
+ * @author loick
+ *
+ */
 public abstract class AbstractControler {
 
 	// on ajoute le model au controler

@@ -1,5 +1,10 @@
 package com.Model;
 
+/**
+ * Valeur d'une case
+ * @author loick
+ *
+ */
 public enum ValeurCase {
 	VIDE,CYAN,ROUGE,JAUNE,VERT,VIOLET,BLEU,GRIS;
 	

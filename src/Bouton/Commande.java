@@ -14,8 +14,19 @@ import javax.swing.JPanel;
 
 import Constante.ConstanteImage;
 
+/**
+ * Boutons stylisés pour le menu
+ * @author loick
+ *
+ */
 public class Commande extends JButton {
 
+	/**
+	 * Constructeur
+	 * @param j panel du bouton
+	 * @param Commande commande a effectuer
+	 * @param i image du bouton
+	 */
 	public Commande(JPanel j, String Commande,int i) {
 		super(ConstanteImage.iconbouton[i]);
 		setBorderPainted(false);

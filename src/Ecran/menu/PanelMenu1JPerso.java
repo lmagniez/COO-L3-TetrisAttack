@@ -32,7 +32,11 @@ public class PanelMenu1JPerso extends PanelMenu implements ActionListener {
 	private JButton[] icon = new JoueurIcon[6];
 	private int cptButton = 0;
 
-	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 * @param e ecranMenu
+	 */
 	public PanelMenu1JPerso(Fenetre vue, EcranMenu e) {
 		this.ecran=e;
 		this.vue=vue;
@@ -62,12 +66,18 @@ public class PanelMenu1JPerso extends PanelMenu implements ActionListener {
 		ajout();
 	}
 
+	/**
+	 * Création des icones du joueur
+	 */
 	private void creationIcon() {
 		for (int i = 0; i < 6; i++) {
 			icon[i] = new JoueurIcon(this, i);
 		}
 	}
-
+	
+	/**
+	 * Ajouter les éléments au panel
+	 */
 	private void ajout() {
 
 		for (int i = 0; i < 3; i++) {

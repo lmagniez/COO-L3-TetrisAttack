@@ -6,6 +6,11 @@ import java.awt.Image;
 
 import javax.swing.JPanel;
 
+/**
+ * Classe générique des animations
+ * @author loick
+ *
+ */
 public class Animation {
 
 	protected JPanel p;
@@ -29,6 +34,19 @@ public class Animation {
 
 	public int grilleTailleEltY;
 	
+	/**
+	 * Constructeur
+	 * @param img Image (feuille de sprite
+	 * @param posX position X
+	 * @param posY position Y
+	 * @param imgWidth largeur d'une image
+	 * @param imgHeight hauteur d'une image
+	 * @param screenWidth largeur réelle d'une image sur l'écran
+	 * @param screenHeight hauteur réelle d'une image sur l'écran
+	 * @param cpt compteur de l'image
+	 * @param nbImage nombre d'images dans l'animation
+	 * @param p panel dans lequel on intègre l'animation
+	 */
 	public Animation(Image img, int posX, int posY, int imgWidth, int imgHeight, 
 			int screenWidth, int screenHeight, int cpt, int nbImage, JPanel p)
 	{
@@ -64,21 +82,34 @@ public class Animation {
 	}
 
 
+	/**
+	 * Mettre à jour le compteur de l'image
+	 */
 	public void updateCpt() {
 		
 		cpt = (cpt + 1) % getNbImage();
 	}
 
+	/**
+	 * Stopper l'animation et définir une image 
+	 * @param cpt image 
+	 */
 	public void stopperAnimation(int cpt){
 		this.cptArret=cpt;
 		this.moving=false;
 	}
 	
+	/**
+	 * Reprendre l'animation
+	 */
 	public void reprendreAnimation(){
 		this.moving=true;
 	}
 	
-	
+	/**
+	 * Dessiner l'animation
+	 * @param g
+	 */
 	public void draw(Graphics g) {
 		if(moving)
 			g.drawImage(img, getPosX(), getPosY(), getPosX() - screenWidth, getPosY() - screenHeight, imgWidth * (cpt + 1),

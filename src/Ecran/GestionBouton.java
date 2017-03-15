@@ -16,6 +16,11 @@ import Ecran.menu.EcranMenu;
 import Ecran.menu.PanelMenu;
 import Run.Sound;
 
+/**
+ * Classe abstraite gérant les boutons dans un panel
+ * @author loick
+ *
+ */
 public abstract class GestionBouton {
 	
 	public static boolean is_busy=false;
@@ -51,6 +56,10 @@ public abstract class GestionBouton {
 	      }
 	};
 	
+	/**
+	 * Ajouter les listeners aux boutons
+	 * @param buttons Ensemble des composants
+	 */
 	public static void ajoutListenerBouton(JComponent[][] buttons)
 	{
 		

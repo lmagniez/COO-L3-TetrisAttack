@@ -57,6 +57,12 @@ public class PanelMenuRegles extends PanelMenu implements ActionListener{
 	private int sizexRegle=sizex-20;
 	private int sizeyRegle=sizey-20;
     
+	
+	/**
+	 * Constructeur
+	 * @param f fenetre
+	 * @param ecran ecranMenu
+	 */
 	public PanelMenuRegles(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		this.ecran=ecran;
 		this.vue=f;

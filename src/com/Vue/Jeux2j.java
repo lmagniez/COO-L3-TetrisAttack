@@ -32,6 +32,11 @@ import JComponent.WinJ1;
 import JComponent.WinJ2;
 import Run.Fenetre;
 
+/**
+ * Classe abstraite représentant un jeu 2 joueurs (Joueur contre joueur, ou Joueur contre IA)
+ * @author loick
+ *
+ */
 public abstract class Jeux2j extends JPanel implements ActionListener, ConstanteDimension, ConstanteJeux, ConstanteGraphique, Observer {
 
 	protected Fenetre fen;
@@ -173,6 +178,13 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 	
 	private Timer timerAnim;
 	
+	/**
+	 * Constructeur
+	 * @param f fenetre
+	 * @param option options
+	 * @param idJ1 id du joueur 1
+	 * @param idJ2 id du joueur 2
+	 */
 	public Jeux2j(Fenetre f, int[] option, int idJ1, int idJ2) {
 		// 0 -> vitesse J1
 		// 1 -> idtheme j1
@@ -242,6 +254,9 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 
 	}
 	
+	/**
+	 * Timer de l'animation des 2 joueurs (petites icones)
+	 */
 	public void actionPerformed(ActionEvent e){
 		if (e.getSource() == timerAnim){
 			//cptyoshi1 = (cptyoshi1 + 1) % NB_IMAGE;
@@ -260,18 +275,27 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 
 	public abstract void GestionClavier(KeyEvent e);
 
+	/**
+	 * Lancer l'animation des deux joueurs (grille + curseur) et du jeu (timer)
+	 */
 	public void lancementAnimation() {
 		controlerJoueur1.animation();
 		controlerJoueur2.animation();
 		controlerJeu.timer();
 	}
 
+	/**
+	 * Initialiser le layout
+	 */
 	public void creerlayout() {
 		this.setLayout(null);
 		this.add(g1);
 		this.add(g2);
 	}
 
+	/**
+	 * Demander le focus
+	 */
 	public void focus() {
 		this.setFocusable(true);
 		this.requestFocus();
@@ -279,10 +303,10 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 
 	public void paintComponent(Graphics g) {
 		g.drawImage(fond[this.idJ1], 0, 0, getWidth(), getHeight(), this);
-		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1,
+		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1+30,
 				ConstanteDimension.DimensionGrillex,
 				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
-		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2,
+		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2+30,
 				ConstanteDimension.DimensionGrillex,
 				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
 
@@ -445,10 +469,10 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 	public  void arretThread(int id){	
 		System.out.println("yes!!");
 				
-				if(id==1){
+				if(id==2){
 					this.nbWinJ1++;
 				}
-				if(id==2){
+				if(id==1){
 					this.nbWinJ2++;
 				}
 				

@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 import Constante.ConstanteParametres;
 
+/**
+ * Classe du son
+ * @author loick
+ *
+ */
 public class Sound {
 	public static ArrayList<AudioClip> musics = new ArrayList<AudioClip>();
 	public static ArrayList<AudioClip> sounds = new ArrayList<AudioClip>();
@@ -22,6 +27,11 @@ public class Sound {
 	
 	private int indice = 0;
 
+	/**
+	 * Constructeur
+	 * @param fichier fichier
+	 * @param type type du son
+	 */
 	public Sound(String fichier, SoundType type) {
 		
 		URL url=Sound.class.getResource(fichier);
@@ -37,11 +47,17 @@ public class Sound {
 		}
 	}
 	
-	
+	/**
+	 * Jouer un son
+	 * @param idSon
+	 */
 	public static void jouerSon(int idSon){
 		sounds.get(idSon).play();
 	}
 	
+	/**
+	 * Changer les paramètres de son (activé/désactivé)
+	 */
 	public static void changerParam(){
 	  if(ConstanteParametres.SOUND_ENABLED){
   		  ConstanteParametres.SOUND_ENABLED=false;
@@ -54,12 +70,19 @@ public class Sound {
   	  }
 	}
 	
+	/**
+	 * Changer la musique
+	 * @param idMusique id de la musique
+	 */
 	public static void changerMusique(int idMusique){
 		Sound.stop();
 		ConstanteParametres.ID_MUSIQUE=idMusique;
 		Sound.loop();
 	}
 	
+	/**
+	 * Boucler sur une musique
+	 */
 	public static void loop() {
 		if(ConstanteParametres.SOUND_ENABLED){
 			try {
@@ -74,6 +97,9 @@ public class Sound {
 		}
 	}
 
+	/**
+	 * Stopper une musique
+	 */
 	public static void stop() {
 		musics.get(ConstanteParametres.ID_MUSIQUE).stop();
 	}

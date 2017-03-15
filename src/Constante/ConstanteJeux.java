@@ -1,5 +1,10 @@
 package Constante;
 
+/**
+ * Constantes des jeux
+ * @author loick
+ *
+ */
 public interface ConstanteJeux {
 
 	public int nombredecase=6;

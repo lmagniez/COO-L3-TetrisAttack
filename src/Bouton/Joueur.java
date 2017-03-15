@@ -8,9 +8,19 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * JButton Joueur
+ * @author loick
+ *
+ */
 public class Joueur extends JButton{
 	
-public Joueur(JPanel j, int i){
+	/**
+	 * Constructeur
+	 * @param j panel
+	 * @param i id du joueur
+	 */
+	public Joueur(JPanel j, int i){
 		
 		this.setFont(new Font("Verdana", Font.BOLD, 20));
 		setBorderPainted(false);

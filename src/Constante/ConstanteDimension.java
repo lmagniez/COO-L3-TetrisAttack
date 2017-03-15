@@ -1,5 +1,10 @@
 package Constante;
 
+/**
+ * Constante des dimensions
+ * @author loick
+ *
+ */
 public interface ConstanteDimension {
 
 		public int DimensionFenetrex=800;//anciennement 900

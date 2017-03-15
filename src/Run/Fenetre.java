@@ -17,6 +17,11 @@ import Constante.ConstanteMusique;
 import Ecran.menu.EcranMenu;
 import Ecran.titre.EcranTitre;
 
+/**
+ * JFrame du jeu
+ * @author loick
+ *
+ */
 public class Fenetre extends JFrame implements ConstanteDimension {
 
 	private Jeux1j j1;
@@ -25,6 +30,10 @@ public class Fenetre extends JFrame implements ConstanteDimension {
 
 	protected EcranTitre title = new EcranTitre(this);
 
+	/**
+	 * Constructeur de la fenetre
+	 * @throws ParseException
+	 */
 	public Fenetre() throws ParseException {
 
 		this.setTitle("Tetris Attack");

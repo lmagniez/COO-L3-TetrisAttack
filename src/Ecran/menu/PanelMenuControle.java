@@ -35,7 +35,11 @@ import Run.Fenetre;
 
 
 
-
+/**
+ * Panel des controles
+ * @author loick
+ *
+ */
 public class PanelMenuControle extends PanelMenu implements ActionListener{
 	
 	
@@ -77,6 +81,11 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
     
     int cptButton=0;
     
+    /**
+	 * Constructeur
+	 * @param f fenetre
+	 * @param ecran ecranMenu
+	 */
 	public PanelMenuControle(Fenetre f, EcranMenu ecran) throws java.text.ParseException{
 		
 		this.ecran=ecran;
@@ -113,16 +122,11 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		
 	}
 	
+	/**
+	 * Ajouter les éléments au panel
+	 */
 	public void ajout() {
 		
-		/*
-		buttons[cptButton++][0]=sel1;
-		buttons[cptButton++][0]=g1;
-		buttons[cptButton++][0]=d1;
-		buttons[cptButton++][0]=sel2;
-		buttons[cptButton++][0]=g2;
-		buttons[cptButton++][0]=d2;
-		*/
 		buttons[0][cptButton++]=retour;
 		buttons[0][cptButton++]=start;
 		
@@ -181,15 +185,6 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		this.add(start);
 		
 		
-		
-		
-		/*
-		System.out.println(this.joueur2.isRequestFocusEnabled());
-		this.joueur2.setRequestFocusEnabled(true);
-		
-		System.out.println(this.joueur2.isFocusable());
-		*/
-		
 		ecran.setButtons(buttons);
 		ecran.addListener();
 		
@@ -197,6 +192,9 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		
 	}
 	
+	/**
+	 * Récupérer les données
+	 */
 	public void recupDonnees(){
 		
 		String[] donnees = new String[6];

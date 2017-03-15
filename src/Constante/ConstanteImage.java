@@ -7,7 +7,11 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-
+/**
+ * Constantes des images
+ * @author loick
+ *
+ */
 public class ConstanteImage {
 	// Grille
 	public static Image coeur = Toolkit.getDefaultToolkit().createImage("./sprites/coeur.png");

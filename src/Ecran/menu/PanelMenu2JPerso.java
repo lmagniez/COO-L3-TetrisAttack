@@ -23,6 +23,11 @@ import Constante.ConstanteParametres;
 import Run.Fenetre;
 import Run.Sound;
 
+/**
+ * Choix des persos 2 joueurs
+ * @author loick
+ *
+ */
 public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 
 	private JButton[] icon1 = new JoueurIcon[6];
@@ -34,6 +39,12 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 
 	protected int idJ1,idJ2, indiceJ1X, indiceJ1Y, indiceJ2X, indiceJ2Y;
 	
+	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 * @param e ecranMenu
+	 */
 	public PanelMenu2JPerso(Fenetre vue, EcranMenu e) {
 
 		this.ecran = e;
@@ -68,6 +79,9 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		ajout();
 	}
 
+	/**
+	 * Créer les icones des joueurs
+	 */
 	private void creationIcon() {
 		for (int i = 0; i < 6; i++) {
 			icon1[i] = new JoueurIcon(this, i, 1);
@@ -78,6 +92,9 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		valider.addActionListener(this);
 	}
 
+	/**
+	 * Ajouter les éléments au panel
+	 */
 	private void ajout() {
 
 		for (int i = 0; i < 3; i++) {

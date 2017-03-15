@@ -14,12 +14,27 @@ import Gestion.Joueur;
 import JComponent.Grille;
 import Run.Fenetre;
 
+/**
+ * Vue du Joueur contre joueur
+ * @author loick
+ *
+ */
 public class Jeux1Jvs1J extends Jeux2j {
 
+	/**
+	 * Constructeur
+	 * @param f fenetre
+	 * @param option options
+	 * @param idJ1 id joueur 1
+	 * @param idJ2 id joueur 2
+	 */
 	public Jeux1Jvs1J(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
 	}
 
+	/**
+	 * Gestion du clavier
+	 */
 	public void GestionClavier(KeyEvent e) {
 		if (!pause) {
 			if (e.getKeyCode() == KeyEvent.VK_Z) {

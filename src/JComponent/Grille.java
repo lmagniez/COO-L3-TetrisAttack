@@ -17,6 +17,11 @@ import Constante.ConstanteGraphique;
 import Constante.ConstanteJeux;
 import Ecran.AnimationThread;
 
+/**
+ * Classe représentant une grille dans la vue
+ * @author loick
+ *
+ */
 public class Grille extends JPanel implements ConstanteDimension, ConstanteGraphique, ConstanteJeux, ActionListener {
 
 	private boolean animationHaut = true;
@@ -77,16 +82,31 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		else if (e.getActionCommand().equals("reprendre")) timer.restart();
 	}
 	
+	/**
+	 * Initialiser la grille
+	 */
 	public void init() {
 		controlerGrille.initGrille();
 	}
 
+	/**
+	 * Swapper horizontalement 
+	 * @param x1 abscisse 1
+	 * @param x2 abscisse 2
+	 * @param y ordonnée
+	 */
 	public void swaphorizontal(int x1, int x2, int y) {
 		ValeurCase value = getTab()[x1][y].getValeur();
 		this.getTab()[x1][y].setValeur(this.getTab()[x2][y].getValeur());
 		this.getTab()[x2][y].setValeur(value);
 	}
 
+	/**
+	 * Swapper verticalement
+	 * @param x abscisse
+	 * @param y1 ordonnée 1
+	 * @param y2 ordonnée 2
+	 */
 	public void swapvertical(int x, int y1, int y2) {
 		ValeurCase value = getTab()[x][y2].getValeur();
 		this.getTab()[x][y2].setValeur(this.getTab()[x][y1].getValeur());
@@ -166,6 +186,9 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 		getTab()[x][y].setValeur(val);
 	}
 
+	/**
+	 * Faire monter la grille
+	 */
 	public void monterGrille() {
  		for (int a = 0; a < nombredeLigne; a++) {
 			for (int i = 0; i < nombredecase; i++) {
@@ -175,6 +198,9 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	}
 
 
+	/**
+	 * Réinitialiser l'animation de la grille
+	 */
 	public void reinitgrilleAnimation() {
 		for (int a = 0; a < nombredeLigne; a++) {
 			for (int i = 0; i < nombredecase; i++) {

@@ -2,6 +2,11 @@ package Constante;
 
 import java.awt.Color;
 
+/**
+ * Constantes graphiques (couleurs)
+ * @author loick
+ *
+ */
 public interface ConstanteGraphique {
 	
 	public Color transparent=new Color(0,0,0,90);

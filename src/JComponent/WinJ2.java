@@ -24,6 +24,11 @@ import Ecran.Ecran;
 import Ecran.menu.EcranMenu;
 import Run.Fenetre;
 
+/**
+ * Ecran de victoire 2 joueurs
+ * @author loick
+ *
+ */
 public class WinJ2 extends Ecran implements ActionListener{
 
 	
@@ -36,6 +41,11 @@ public class WinJ2 extends Ecran implements ActionListener{
 	
 	private int cptButton = 0;
 	
+	/**
+	 * Constructeur
+	 * @param vue fenetre
+	 * @param panel2J vue 2 joueurs
+	 */
 	public WinJ2(Fenetre vue, Jeux2j panel2J) {
 		this.panel2J=panel2J;
 		this.vue = vue;
@@ -85,6 +95,10 @@ public class WinJ2 extends Ecran implements ActionListener{
 		
 	}
 	
+	/**
+	 * Changer le gagnant
+	 * @param idWinner id du gagnant
+	 */
 	public void setIdWinner(int idWinner){
 		this.idWinner=idWinner;
 	}

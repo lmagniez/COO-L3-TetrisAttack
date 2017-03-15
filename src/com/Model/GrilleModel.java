@@ -8,6 +8,12 @@ import com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
 
+
+/**
+ * Modèle de la grille
+ * @author loick
+ *
+ */
 public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 
 	private Observer joueurVue;
@@ -21,6 +27,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	
 	private final Random RND = new Random();
 
+	/**
+	 * Constructeur
+	 * @param id id du joueur
+	 */
 	public GrilleModel(int id) {
 		this.listeThreadSuppr=new ArrayList<CaseThreadSuppr>();
 		this.setId(id);
@@ -31,7 +41,12 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 		initGrille();
 	}
-
+	
+	
+	/**
+	 * Réinitialiser la grille
+	 * @param score réinitialiser le score 
+	 */
 	public void reinit(boolean score) {
 		this.listeThreadSuppr=new ArrayList<CaseThreadSuppr>();
 		for(int i=0; i<nombredecase; i++){
@@ -46,6 +61,9 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		initGrille();
 	}
 	
+	/**
+	 * Initialiser la grille
+	 */
 	public void initGrille() {
 		for (int a = 0; a < nombredecase; a++) {
 			creerColonne(a);
@@ -53,7 +71,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 
 	/**
-	 * Initialisation? Création de colonne
+	 * Création d'une colonne
 	 * @param a abscisse
 	 */
 	public void creerColonne(int a) {
@@ -215,7 +233,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	/**
 	 * Supprimer les cases d'une colonne (bas vers haut)
 	 * @param colonne id de la colonne
-	 * @param nbblock nombre de cases a supprimer
+	 * @param nbbloc nombre de cases a supprimer
 	 * @param indicefin indice de départ (bas)
 	 */
 	public void supprimerCaseColonne(int colonne, int nbbloc, int indicefin) {
@@ -224,23 +242,19 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		
 		ArrayList<CaseModel> casesSuppr = new ArrayList<CaseModel>();
 		for (int i = indicefin; i > (indicefin-nbbloc); i--) {
-			//System.out.println("i: "+i+ " "+(indicefin-nbbloc));
 			casesSuppr.add(tab[colonne][i]);
-			//tab[colonne][i].v = ValeurCase.VIDE;
-			//this.UpdateCase(i, colonne, tab[colonne][i].v);
 		}
 		//descendreCube();
 		
 		CaseThreadSuppr threadsupp=new CaseThreadSuppr(this, casesSuppr);
 		threadsupp.start();
-		//this.listeThreadSuppr.add(threadsupp);
 		
 	}
 	
 
 	/**
 	 * Retourne l'id si perd, sinon -1 
-	 * @return
+	 * @return gameover ou non
 	 */
 	public boolean Gameover(){
 		for(int i=0;i<nombredecase;i++){
@@ -263,8 +277,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		ArrayList<CaseModel> casesSuppr = new ArrayList<CaseModel>();
 		for (int i = indicefin; i > (indicefin-nbblock) ; i--) {
 			casesSuppr.add(tab[i][ligne]);
-			//tab[i][ligne].v = ValeurCase.VIDE;
-			//this.UpdateCase(ligne, i, tab[i][ligne].v);
 		}
 		CaseThreadSuppr threadsupp=new CaseThreadSuppr(this, casesSuppr);
 		threadsupp.start();
@@ -298,6 +310,12 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		this.joueurVue = joueurVue;
 	}
 
+	/**
+	 * Swapper deux cases
+	 * @param x1 abscisse1
+	 * @param x2 abscisse2
+	 * @param y1 ordonnée
+	 */
 	public void swap(int x1, int x2, int y1) {
 		this.swapCase(x1, x2, y1);
 		boolean chang=true;
@@ -307,9 +325,9 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	
 	/**
 	 * Swap entre deux cases adjacentes horizontalement
-	 * @param x1
-	 * @param x2
-	 * @param y1
+	 * @param x1 abscisse1
+	 * @param x2 abscisse2
+	 * @param y1 ordonnée
 	 */
 	public void swapCase(int x1, int x2, int y1) {
 		if(tab[x1][y1].swappable&&tab[x2][y1].swappable){
@@ -321,6 +339,9 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 	}
 
+	/**
+	 * Monter la grille dans la vue
+	 */
 	public void monteGrilleGraphique() {
 		joueurVue.bougerGrilleGraphique(getId());
 	}

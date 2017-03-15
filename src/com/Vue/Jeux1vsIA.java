@@ -18,15 +18,30 @@ import Constante.ConstanteJeux;
 import JComponent.Grille;
 import Run.Fenetre;
 
+/**
+ * Vue joueur contre IA
+ * @author loick
+ *
+ */
 public class Jeux1vsIA  extends Jeux2j {
 
 
+	/**
+	 * Constructeur
+	 * @param f fenetre 
+	 * @param option options
+	 * @param idJ1 id joueur 1 
+	 * @param idJ2 id joueur 2
+	 */
 	public Jeux1vsIA(Fenetre f, int[] option, int idJ1, int idJ2) {
 		super(f, option, idJ1, idJ2);
 		controlerJoueur2=new JoueurControlerIA(modelJoueur2, controlerGrille2, option[0]);
 		option[2]=option[0];
 	}
 	
+	/**
+	 * Gestion du clavier
+	 */
 	public void GestionClavier(KeyEvent e) {
 		if (!pause) {
 			if (e.getKeyCode() == KeyEvent.VK_Z) {
@@ -71,6 +86,9 @@ public class Jeux1vsIA  extends Jeux2j {
 		controlerJoueur2.arreterThread();
 	}
 
+	/**
+	 * Lancer l'animation de l'ia
+	 */
 	public void lancementAnimation(){
 		super.lancementAnimation();
 		((JoueurControlerIA) controlerJoueur2).ia();

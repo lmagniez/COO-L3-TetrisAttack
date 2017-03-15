@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import com.Observer.Observable;
 import com.Observer.Observer;
 
+/**
+ * Modèle abstrait
+ * @author loick
+ *
+ */
 public abstract class AbstractModel implements Observable {
 
 	protected ArrayList<Observer> listObserver = new ArrayList<Observer>();

@@ -15,6 +15,11 @@ import Ecran.Ecran;
 import Ecran.GestionBouton;
 import Run.Fenetre;
 
+/**
+ * Ecran pour un menu, extension de la classe Ecran
+ * @author loick
+ *
+ */
 public class EcranMenu extends Ecran implements ActionListener {
 	
 	// 0 -> vitesse J1 
@@ -58,6 +63,11 @@ public class EcranMenu extends Ecran implements ActionListener {
 	protected int widthcursor = 5, heightcursor = 7;
 	protected int screenwidthcursor = widthcursor * 5, screenheightcursor = heightcursor * 5;
 
+	/**
+	 * Constructeur, initialise les différents écrans du menu
+	 * @param f fenetre
+	 * @throws ParseException
+	 */
 	public EcranMenu(Fenetre f) throws ParseException {
 		this.vue = f;
 		this.setLayout(null);
@@ -88,6 +98,11 @@ public class EcranMenu extends Ecran implements ActionListener {
 		animation();
 	}
 
+	/**
+	 * Changer de sous menu
+	 * @param m menu 
+	 * @param p sous menu
+	 */
 	public static void changeMenuBox(EcranMenu m, PanelMenu p) {
 
 		p.setVisible(true);
@@ -132,6 +147,9 @@ public class EcranMenu extends Ecran implements ActionListener {
 		this.vue = fen;
 	}
 
+	/**
+	 * Animation du curseur
+	 */
 	public void animation() {
 		Thread thread = new Thread(new Runnable() {
 			public void run() {

@@ -10,6 +10,11 @@ import Constante.ConstanteDimension;
 import Constante.ConstanteJeux;
 import Ecran.Animation;
 
+/**
+ * Afficher une suite de nombres dans la vue
+ * @author loick
+ *
+ */
 public class Score {
 
 	protected int score;
@@ -27,7 +32,14 @@ public class Score {
 	private int posChiffreX[], posChiffreY[];
 	int nbChiffresScore;
 	
-	
+	/**
+	 * Constructer
+	 * @param vue vue
+	 * @param posX position X 
+	 * @param posY position Y
+	 * @param highScore couleur rouge si true
+	 * @param nbChiffresScore nombre de chiffres
+	 */
 	public Score(JPanel vue, int posX, int posY, boolean highScore, int nbChiffresScore){
 		
 		this.vue=vue;
@@ -54,6 +66,10 @@ public class Score {
 				
 	}
 	
+	/**
+	 * Modifier le score
+	 * @param score valeur du score
+	 */
 	public void setScore(int score){
 		this.score=score;
 		

@@ -99,5 +99,6 @@ public interface Observer {
 	void arretThread(int id);
 	
 	void accelere();
+	void affiche();
 	
 }

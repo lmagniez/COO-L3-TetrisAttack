@@ -375,6 +375,13 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		controlerJoueur.accelere();
 	}
 
+	@Override
+	public void affiche() {
+		g.affiche();
+		
+		
+	}
+
 	
 	
 }

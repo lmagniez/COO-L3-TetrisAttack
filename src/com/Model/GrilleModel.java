@@ -143,7 +143,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 		generationLigne();
 		recupGrille();
-		this.comboLigne();this.comboColonne();
+		combo();
 	}
 
 	public Observer getJoueurVue() {
@@ -312,7 +312,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	public void swap(int x1, int x2, int y1) {
 		this.swapCase(x1, x2, y1);
 		combo();
-				
+		afficherGrille();joueurVue.affiche();
 	}
 	
 	public void combo(){

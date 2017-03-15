@@ -184,6 +184,7 @@ public class Grille extends JPanel implements ConstanteDimension, ConstanteGraph
 	
 	public void updateCase(int y, int x, ValeurCase val) {
 		getTab()[x][y].setValeur(val);
+		repaint();
 	}
 
 	/**

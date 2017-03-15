@@ -37,6 +37,10 @@ public class JeuxModel extends AbstractModel{
 		
 		jeux1j.updateTimer(Sminute,Sseconde);
 	}
+
+	public void accelere() {
+		jeux1j.accelere();
+	}
 	
 
 

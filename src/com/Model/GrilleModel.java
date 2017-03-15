@@ -75,7 +75,8 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param a abscisse
 	 */
 	public void creerColonne(int a) {
-		int val, nombrelignedessin = 3+RND.nextInt(3);
+		//3+RND.nextInt(3);
+		int val, nombrelignedessin = nombredeLigne-1;
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
 				val = 1 + RND.nextInt(5 - 0);
@@ -115,14 +116,14 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 */
 	public void descendreCube() {
 		ValeurCase tmp;
-		for (int i = 0; i < nombredeLigneTeste + 1; i++) {
-			for (int a = 0; a < nombredecase; a++) {
+		for (int a = 0; a < nombredecase; a++) {
+			for (int i = 0; i < nombredeLigne - 1; i++) {
 				if (tab[a][i + 1].v == ValeurCase.VIDE && tab[a][i].v != ValeurCase.VIDE) {
 					tmp = tab[a][i].v;
 					tab[a][i].v = tab[a][i + 1].v;
 					tab[a][i + 1].v = tmp;
 					this.UpdateSwapVertical(a, i, i + 1);
-					i = 0;
+					i=0;
 				}
 			}
 		}
@@ -165,10 +166,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 			prec = tab[a][0].v;
 			nb=1;
 			for (int i = 1; i <= nombredeLigneTeste ; i++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
+				if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
 					nb++;
 				}
-				else if (prec != tab[a][i].v){
+				else if (prec != tab[a][i].v || !tab[a][i].swappable){
 					if(nb>=nbCaseCombo){
 						changement=true;
 						supprimerCaseColonne(a,nb,i-1);
@@ -204,10 +205,10 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 			nb=1;
 			System.out.println();
 			for (int a = 1; a < nombredecase; a++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i].v) { //changemement
+				if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
 					nb++;
 				}
-				else if (prec != tab[a][i].v){
+				else if (prec != tab[a][i].v || !tab[a][i].swappable){
 					if(nb>=nbCaseCombo){
 						changement=true;
 						supprimerCasesLigne(i,nb,a-1);
@@ -237,18 +238,12 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param indicefin indice de départ (bas)
 	 */
 	public void supprimerCaseColonne(int colonne, int nbbloc, int indicefin) {
-		
-		//System.out.println("supprimerCaseColonne indiceFin:"+indicefin+" nbBloc:"+nbbloc+" colonne:"+colonne);
-		
 		ArrayList<CaseModel> casesSuppr = new ArrayList<CaseModel>();
 		for (int i = indicefin; i > (indicefin-nbbloc); i--) {
 			casesSuppr.add(tab[colonne][i]);
 		}
-		//descendreCube();
-		
 		CaseThreadSuppr threadsupp=new CaseThreadSuppr(this, casesSuppr);
 		threadsupp.start();
-		
 	}
 	
 
@@ -264,7 +259,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 				return true;
 			}
 		}
-		
 		return false;
 	}
 	/**
@@ -280,7 +274,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		}
 		CaseThreadSuppr threadsupp=new CaseThreadSuppr(this, casesSuppr);
 		threadsupp.start();
-		//this.descendreCube();
 	}
 
 	
@@ -318,8 +311,14 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 */
 	public void swap(int x1, int x2, int y1) {
 		this.swapCase(x1, x2, y1);
-		boolean chang=true;
-		this.comboColonne(); this.comboLigne();
+		combo();
+				
+	}
+	
+	public void combo(){
+		boolean chang=this.comboColonne() || this.comboLigne();
+		this.descendreCube();
+		if(chang)combo();
 		this.descendreCube();
 	}
 	
@@ -376,9 +375,4 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	public CaseModel[][] recupMaGrille() {
 		return tab;
 	}
-
-	
-
-	
-	
 }

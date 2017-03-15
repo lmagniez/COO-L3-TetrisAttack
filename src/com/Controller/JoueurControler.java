@@ -12,10 +12,12 @@ import Constante.ConstanteJeux;
  */
 public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 
-	JoueurModel joueurModel;
-	GrilleControler grilleCont;
+	protected JoueurModel joueurModel;
+	protected GrilleControler grilleCont;
 	protected int zzz=5000;
+	private int zzzdep=0;
 	protected Thread thread;
+	private int monte;
 	
 	private volatile boolean monteActif;
 	protected boolean tourne=true;
@@ -29,7 +31,7 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	public JoueurControler(JoueurModel cal,GrilleControler grilleCont,int lvl) {
 		this.joueurModel=cal;
 		this.grilleCont=grilleCont;
-		this.zzz=this.zzz-(lvl*40);
+		this.zzzdep=this.zzz=this.zzz-(lvl*40);
 		this.monteActif=true;
 	}
 
@@ -118,11 +120,10 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 		thread = new Thread(new Runnable() {
 			public void run() {
 				int i = 0;
-				int monte=JoueurControler.this.zzz / (DimensionGrilley / (nombredeLigne - 2 * reserve) );
 				while (tourne) {
 					try {
 						Thread.sleep(1);
-						
+						monte=JoueurControler.this.zzz / (DimensionGrilley / (nombredeLigne - 2 * reserve) );
 						if(monteActif){
 							i++;
 						}
@@ -142,8 +143,6 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
-					
-
 				}
 			}
 		});
@@ -177,5 +176,14 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	public void reprendreThread() {
 		tourne=true;
 		//grilleCont.winner()
+	}
+
+	public void accelere() {
+		this.zzz=this.zzz-100;
+		System.out.println(zzz);
+	}
+	
+	public void reinit() {
+		this.zzz=this.zzzdep;
 	}
 }

@@ -10,9 +10,10 @@ import com.Model.JeuxModel;
  */
 public class JeuxControler extends AbstractControler {
 
+	
 	private Thread timer;
 	private boolean tourne=true;
-	
+
 	/**
 	 * Constructeur
 	 * @param modelJeux modèle du jeu
@@ -32,6 +33,9 @@ public class JeuxControler extends AbstractControler {
 					while (tourne) {
 						try {
 							seconde++;
+							if(seconde%30==0){
+								((JeuxModel) calc).accelere();
+							}
 							if(seconde%60==0){
 								minute++;
 								seconde=0;
@@ -75,6 +79,11 @@ public class JeuxControler extends AbstractControler {
 
 	public void reprendreThread() {
 		tourne=true;
+	}
+
+	public void reinitialisation() {
+		tourne=true;
+		timer();
 	}
 	
 }

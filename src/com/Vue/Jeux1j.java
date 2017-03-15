@@ -105,9 +105,15 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		// 2 -> vitesse J2 
 		// 3 -> idtheme j2 
 		// 4 -> IA -> 1 | 0
-		
 		fen = f;
 		
+		this.timer=new GameTimer(this,70,120);
+		this.highScore=new Score(this,650,150,true,6);
+		this.score=new Score(this,650,250,false,6);
+		this.speedLvl=new Score(this,650,350,false,2);
+		this.pausePanel=new Pause(this.fen, this);
+		this.win=new WinJ1(this.fen, this);
+
 		modelJeux = new JeuxModel(this);
 		setControlerJeu(new JeuxControler(modelJeux));
 		
@@ -132,14 +138,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		this.setOpaque(true);
 		this.setBackground(Color.black);
-		
-		this.timer=new GameTimer(this,70,120);
-		this.highScore=new Score(this,650,150,true,6);
-		this.score=new Score(this,650,250,false,6);
-		this.speedLvl=new Score(this,650,350,false,2);
-		this.pausePanel=new Pause(this.fen, this);
-		this.win=new WinJ1(this.fen, this);
-		
 		
 		
 		highScore.setScore(20000);
@@ -283,7 +281,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 
 	@Override
 	public void updateTimer(String minute, String seconde) {
-		System.out.println("Temps: "+ minute+" : "+seconde);
 		timer.setTime(minute, seconde);
 	}
 
@@ -314,6 +311,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void reinitgrilleAnimation(int id) {
 		j.reinitgrilleEmplacement();
 		g.reinitgrilleAnimation();
+		controlerJeu.reinitialisation();
 		repaint();
 	}
 
@@ -335,7 +333,6 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		this.win.setVisible(true);
 		this.win.requestFocus();
 		this.win.getButtons()[0][0].requestFocusInWindow();
-		
 		
 		getControlerJeu().arreterThread();
 		getControlerJoueur().arreterThread();
@@ -372,7 +369,12 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	public void setControlerGrille(GrilleControler controlerGrille) {
 		this.controlerGrille = controlerGrille;
 	}
-	
+
+	@Override
+	public void accelere() {
+		controlerJoueur.accelere();
+	}
+
 	
 	
 }

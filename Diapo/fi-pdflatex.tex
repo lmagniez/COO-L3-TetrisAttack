@@ -1,0 +1,160 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% I, the copyright holder of this work, release this work into the
+%% public domain. This applies worldwide. In some countries this may
+%% not be legally possible; if so: I grant anyone the right to use
+%% this work for any purpose, without any conditions, unless such
+%% conditions are required by law.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+\usetheme[faculty=fi]{fibeamer}
+\usepackage[utf8]{inputenc}
+\usepackage[
+  main=english, %% By using `czech` or `slovak` as the main locale
+                %% instead of `english`, you can typeset the
+                %% presentation in either Czech or Slovak,
+                %% respectively.
+  czech, slovak %% The additional keys allow foreign texts to be
+]{babel}   
+
+%% These additional packages are used within the document:
+\usepackage{ragged2e}  % `\justifying` text
+\usepackage{booktabs}  % Tables
+\usepackage{tabularx}
+\usepackage{tikz}      % Diagrams
+\usetikzlibrary{calc, shapes, backgrounds}
+\usepackage{amsmath, amssymb}
+\usepackage{url}       % `\url`s
+\usepackage{listings}  % Code listings
+\frenchspacing
+\setbeamertemplate{frametitle}[default][center]
+\begin{document}
+  
+ \begin{darkframes}
+    \begin{frame}<beamer>
+     \frametitle[alignment=center]{Tetris Attack}
+      \begin{center}
+		\includegraphics[scale=0.45]{./Image/img1.png}
+		
+		\end{center}
+		\vspace*{0.1cm}
+		  \begin{center}
+		Valembois Vincent - Magniez Loick - Delabroye Kevin
+		\end{center}
+    \end{frame}
+
+    \begin{frame}<beamer>
+      \frametitle{Table des Matieres}
+      \tableofcontents[]
+    \end{frame}
+    
+
+ \section{Demonstation}
+ \begin{frame}
+ 	 \frametitle{Démonstration}
+ 	 \includegraphics[scale=0.3]{./Image/demo.png}
+    \end{frame}
+    
+ \section{Développement}
+ \begin{frame}
+ 	 \frametitle{Développement}
+ 	 \begin{center}
+ 	 \framesubtitle{GIT}
+		\includegraphics[scale=0.40]{./Image/git.png}
+		\end{center}
+    \end{frame}
+    
+     \begin{frame}
+ 	 \frametitle{Développement}
+ 	 \begin{center}
+ 	 \framesubtitle{UML}
+		
+		\end{center}
+    \end{frame}
+  
+   \section{IHM}
+ \begin{frame}
+ 	 \frametitle{IHM}
+ 	 \begin{center}
+ 	 \framesubtitle{Menu}
+		\includegraphics[scale=0.40]{./Image/menu.png}
+		\end{center}
+    \end{frame}
+    
+     \begin{frame}
+ 	 \frametitle{IHM}
+ 	 \begin{center}
+ 	 \framesubtitle{How To Play}
+		\includegraphics[scale=0.40]{./Image/howtoplay.png}
+		\end{center}
+    \end{frame}
+    
+     \begin{frame}
+ 	 \frametitle{IHM}
+ 	 \begin{center}
+ 	 \framesubtitle{Credit}
+		\includegraphics[scale=0.40]{./Image/credit.png}
+		\end{center}
+    \end{frame}
+    
+    \section{Fonctionnalite}
+ \begin{frame}
+ 	 \frametitle{Fonctionnalite}
+ 	   \begin{enumerate}
+    \item Jeu 1 joueur 
+  \end{enumerate}
+    \end{frame}
+    
+ \begin{frame}
+ 	 \frametitle{Fonctionnalite}
+ 	   \begin{enumerate}
+    \item Jeu 1 joueur 
+    \item Jeu Contre IA
+  \end{enumerate}
+    \end{frame}
+    
+ \begin{frame}
+ 	 \frametitle{Fonctionnalite}
+ 	   \begin{enumerate}
+    \item Jeu 1 joueur 
+    \item Jeu Contre IA
+    \item Jeu 2 joueurs 
+  \end{enumerate}
+    \end{frame}
+    
+     \section{Evolution du Jeu}
+ \begin{frame}
+  \frametitle{Evolution du Jeu}
+ 	   \begin{enumerate}
+    \item Ameliore IA
+    \item Ajout des blocs Handicap
+    \item Cubes exclamations
+  \end{enumerate}
+    \end{frame}
+
+
+     \section{Les Difficultés}
+ \begin{frame}
+  \frametitle{Les Difficultés}
+   	 \begin{center}
+  \includegraphics[scale=0.60]{./Image/difficulte.png}
+  		\end{center}
+    \end{frame}
+    
+         \section{Conclusion}
+ \begin{frame}
+   	 \begin{center}
+  \Huge	 Conclusion
+  		\end{center}
+    \end{frame}
+    
+     \section{Les Questions}
+ \begin{frame}
+   	 \begin{center}
+  	 \Huge	 Avez-vous des questions ?
+  		\end{center}
+    \end{frame}
+    
+  \end{darkframes}
+
+\end{document}

@@ -163,28 +163,30 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		ValeurCase prec;
 		boolean changement = false;
 		for (int a = 0; a < nombredecase; a++) {
-			prec = tab[a][0].v;
-			nb=1;
-			for (int i = 1; i <= nombredeLigneTeste ; i++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
-					nb++;
-				}
-				else if (prec != tab[a][i].v || !tab[a][i].swappable){
-					if(nb>=nbCaseCombo){
-						changement=true;
-						supprimerCaseColonne(a,nb,i-1);
+			if(tab[a][0].swappable){
+				prec = tab[a][0].v;
+				nb=1;
+				for (int i = 1; i <= nombredeLigneTeste ; i++) {
+					if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
+						nb++;
 					}
-					nb=1;
-					prec= tab[a][i].v;
-				}
-				if(i == (nombredeLigneTeste ) ){
-					if(nb>=nbCaseCombo){
-						System.out.println("coucou");
-						changement=true;
-						supprimerCaseColonne(a,nb,i); //case d'avant pour les cases du mileu
+					else if (prec != tab[a][i].v || !tab[a][i].swappable){
+						if(nb>=nbCaseCombo){
+							changement=true;
+							supprimerCaseColonne(a,nb,i-1);
+						}
+						nb=1;
+						prec= tab[a][i].v;
 					}
-					prec = tab[a][i].v;
-					nb=1;
+					if(i == (nombredeLigneTeste ) ){
+						if(nb>=nbCaseCombo){
+							System.out.println("coucou");
+							changement=true;
+							supprimerCaseColonne(a,nb,i); //case d'avant pour les cases du mileu
+						}
+						prec = tab[a][i].v;
+						nb=1;
+					}
 				}
 			}
 		}
@@ -201,28 +203,30 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		ValeurCase prec;
 		boolean changement = false;
 		for (int i = 0; i <= nombredeLigneTeste+1 ; i++) {
-			prec = tab[0][i].v;
-			nb=1;
-			System.out.println();
-			for (int a = 1; a < nombredecase; a++) {
-				if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
-					nb++;
-				}
-				else if (prec != tab[a][i].v || !tab[a][i].swappable){
-					if(nb>=nbCaseCombo){
-						changement=true;
-						supprimerCasesLigne(i,nb,a-1);
+			if(tab[0][i].swappable){
+				prec = tab[0][i].v;
+				nb=1;
+				System.out.println();
+				for (int a = 1; a < nombredecase; a++) {
+					if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
+						nb++;
 					}
-					nb=1;
-					prec= tab[a][i].v;
-				}
-				if(a == (nombredecase - 1 ) ){
-					if(nb>=nbCaseCombo){
-						changement=true;
-						supprimerCasesLigne(i,nb,a); //case d'avant pour les cases du mileu
+					else if (prec != tab[a][i].v || !tab[a][i].swappable){
+						if(nb>=nbCaseCombo){
+							changement=true;
+							supprimerCasesLigne(i,nb,a-1);
+						}
+						nb=1;
+						prec= tab[a][i].v;
 					}
-					prec = tab[a][i].v;
-					nb=1;
+					if(a == (nombredecase - 1 ) ){
+						if(nb>=nbCaseCombo){
+							changement=true;
+							supprimerCasesLigne(i,nb,a); //case d'avant pour les cases du mileu
+						}
+						prec = tab[a][i].v;
+						nb=1;
+					}
 				}
 			}
 		}

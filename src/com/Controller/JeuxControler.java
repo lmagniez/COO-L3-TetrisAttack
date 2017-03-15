@@ -76,8 +76,9 @@ public class JeuxControler extends AbstractControler {
 	/**
 	 * Reprendre le thread
 	 */
+
 	public void reprendreThread() {
-		tourne=false;
+		tourne=true;
 	}
 
 	public void reinitialisation() {

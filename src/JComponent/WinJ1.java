@@ -137,9 +137,13 @@ public class WinJ1 extends Ecran implements ActionListener{
 			this.panel1J.getControlerJoueur().reprendreThread();
 			//this.panel1J.getControlerJoueur().reprendre();
 			
+			this.panel1J.getControlerJeu().pause();
 			this.panel1J.getControlerJeu().timer();
 			this.panel1J.getControlerJeu().reprendreThread();
+			
 			//this.panel1J.getControlerJeu().reprendre();
+			
+			
 			
 			this.panel1J.setPause(false);
 			this.setVisible(false);

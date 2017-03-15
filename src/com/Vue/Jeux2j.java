@@ -15,7 +15,7 @@ import com.Controller.JeuxControler;
 import com.Controller.JoueurControler;
 import com.Model.GrilleModel;
 import com.Model.JoueurModel;
-import com.Model.ModelJeux;
+import com.Model.JeuxModel;
 import com.Model.ValeurCase;
 import com.Observer.Observer;
 
@@ -54,7 +54,7 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 	protected JoueurControler controlerJoueur2;
 
 	protected JeuxControler controlerJeu;
-	protected ModelJeux modelJeux;
+	protected JeuxModel modelJeux;
 
 	protected boolean pause = false;
 
@@ -197,7 +197,7 @@ public abstract class Jeux2j extends JPanel implements ActionListener, Constante
 		this.lvlJ1.setScore(option[0]);
 		this.lvlJ2.setScore(option[2]);
 
-		modelJeux = new ModelJeux(this);
+		modelJeux = new JeuxModel(this);
 		controlerJeu = new JeuxControler(modelJeux);
 
 		modelGrille1 = new GrilleModel(1);

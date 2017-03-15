@@ -17,7 +17,7 @@ public class GrilleControler {
 	}
 	
 	public void ajoutLigne() {
-		grilleModel.ajoutGrille();
+		grilleModel.ajoutLigneGrille();
 	}
 
 	public void swap(int x1, int x2, int y1) {

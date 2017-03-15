@@ -1,7 +1,7 @@
 package com.Controller;
 
 import com.Model.AbstractModel;
-import com.Model.ModelJeux;
+import com.Model.JeuxModel;
 
 public class JeuxControler extends AbstractControler {
 
@@ -24,7 +24,7 @@ public class JeuxControler extends AbstractControler {
 								minute++;
 								seconde=0;
 							}
-							((ModelJeux) JeuxControler.this.calc).updateTime(minute,seconde);
+							((JeuxModel) JeuxControler.this.calc).updateTime(minute,seconde);
 							Thread.sleep(1000);
 						} catch (InterruptedException e) {
 						}

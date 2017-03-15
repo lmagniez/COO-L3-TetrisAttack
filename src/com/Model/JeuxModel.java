@@ -2,11 +2,11 @@ package com.Model;
 
 import com.Observer.Observer;
 
-public class ModelJeux extends AbstractModel{
+public class JeuxModel extends AbstractModel{
 
 	private Observer jeux1j;
 	
-	public ModelJeux(Observer j) {
+	public JeuxModel(Observer j) {
 		jeux1j=j;
 	}
 	

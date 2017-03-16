@@ -51,7 +51,7 @@ public class CaseThreadSuppr extends Thread{
 			this.m.getControlerJoueur().stopperAjoutLigne();
 			
 			
-			Thread.sleep(1500);
+			Thread.sleep(1000);
 			for(int i=0; i<casesSuppr.size(); i++){
 				CaseModel c=casesSuppr.get(i);
 				c.v = ValeurCase.VIDE;

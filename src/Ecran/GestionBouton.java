@@ -94,7 +94,7 @@ public abstract class GestionBouton {
 		                  case KeyEvent.VK_DOWN:
 		                     if (curRow < buttons.length - 1)
 		                     {  
-		                    	 Sound.jouerSon(ConstanteSon.PRESS_BOUTON);
+		                    	Sound.jouerSon(ConstanteSon.PRESS_BOUTON);
 		                    	buttons[curRow + 1][curCol].requestFocus();
 		                     	//buttons[curRow + 1][curCol].setForeground(Color.GREEN);
 		                     	//buttons[curRow][curCol].setForeground(Color.BLACK);

@@ -59,7 +59,7 @@ public class EcranMenu extends Ecran implements ActionListener {
 	public static final int NB_IMAGE = 5;
 
 	// curseur
-	protected Image cursor;
+	protected static Image cursor;
 	protected int widthcursor = 5, heightcursor = 7;
 	protected int screenwidthcursor = widthcursor * 5, screenheightcursor = heightcursor * 5;
 
@@ -205,5 +205,12 @@ public class EcranMenu extends Ecran implements ActionListener {
 	public static void setOption(int[] option) {
 		EcranMenu.option = option;
 	}
+	
+	public static Image getCurseur() {
+		return cursor;
+	}
 
+	public static void setCurseur(Image img) {
+		cursor = img;
+	}
 }

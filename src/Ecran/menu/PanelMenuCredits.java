@@ -31,9 +31,9 @@ public class PanelMenuCredits extends PanelMenu implements ActionListener {
 
 	private Color[] tabCouleur={Color.blue,Color.ORANGE,Color.green,Color.WHITE};
 	
-	private String[] nomTab={"<html>LOICK MAGNIEZ","<html>VINCENT VALEMBOIS","MOHAMED AYAD ","KEVIN DELABROYE"};
+	private String[] nomTab={"<html>LOICK MAGNIEZ","<html>VINCENT VALEMBOIS","<html>MOHAMED AYAD ","<html>KEVIN DELABROYE"};
 
-	private String[] tache={"<br/>Animations,Menu,Jeu </html>","<br/> Jeu,Menu,Animations </html>","",""};
+	private String[] tache={"<br/>Animations,Menu,Jeu </html>","<br/> Jeu,Menu,Animations </html>","<br/>Mort au combat","<br/> Contrôles,faire le café </html>"};
 	
 	
 	/**

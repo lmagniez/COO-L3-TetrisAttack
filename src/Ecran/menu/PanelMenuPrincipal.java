@@ -102,6 +102,7 @@ public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 		
 			if (e.getActionCommand().equals("Option")){
 				EcranMenu.changeMenuBox(ecran,ecran.p4);
+				EcranMenu.setCurseur(null);
 			}
 			if (e.getActionCommand().equals("How To Play")){
 				EcranMenu.changeMenuBox(ecran,ecran.p6);

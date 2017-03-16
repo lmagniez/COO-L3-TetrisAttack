@@ -120,45 +120,7 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		for (int i = 0; i < 3; i++) {
 			buttons[cptButton][i] = valider;
 		}
-		
-		/*
-		// Joueur1
-		this.add(Box.createRigidArea(new Dimension(0, 50)));
-		Box rowOne = Box.createHorizontalBox();
-		for (int i = 0; i < 3; i++) {
-			rowOne.add(icon1[i]);
-			rowOne.add(Box.createRigidArea(new Dimension(10, 0)));
-			this.add(rowOne);
-		}
 
-		this.add(Box.createRigidArea(new Dimension(10, 20)));
-
-		Box rowtwo = Box.createHorizontalBox();
-		for (int i = 0; i < 3; i++) {
-			rowtwo.add(icon1[i + 3]);
-			rowtwo.add(Box.createRigidArea(new Dimension(10, 0)));
-			this.add(rowtwo);
-		}
-
-		// Joueur 2
-		this.add(Box.createRigidArea(new Dimension(0, 40)));
-
-		Box rowOnebis = Box.createHorizontalBox();
-		for (int i = 0; i < 3; i++) {
-			rowOnebis.add(icon2[i]);
-			rowOnebis.add(Box.createRigidArea(new Dimension(10, 0)));
-			this.add(rowOnebis);
-		}
-
-		this.add(Box.createRigidArea(new Dimension(10, 10)));
-
-		Box rowtwobis = Box.createHorizontalBox();
-		for (int i = 0; i < 3; i++) {
-			rowtwobis.add(icon2[i + 3]);
-			rowtwobis.add(Box.createRigidArea(new Dimension(10, 0)));
-			this.add(rowtwobis);
-		}
-*/
 		for (int i = 0; i < 3; i++) {
 			icon1[i].setBounds((50 + 20)* i + 50, 60, 60, 60);
 			this.add(icon1[i]);
@@ -244,21 +206,10 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 			g.drawString("Joueur2", 20, 250);
 		else 
 			g.drawString("Ordinateur", 20, 250);
-		
-/*		for (int i = 0; i < buttons.length; i++) {
-			for (int a = 0; a < buttons[0].length; a++) {
-				if (buttons[i][a].hasFocus()) {
-					g.setColor(Color.white);
-					System.out.println(buttons[i][a].getX() +"  "+buttons[i][a].getY());
-					g.fillRect(buttons[i][a].getX(), buttons[i][a].getY(), 60, 60);
-				} else {
-				}
-			}
-		}*/
+
 		for (int i = 0; i < this.getComponentCount(); i++) {
 				if (this.getComponent(i).hasFocus() && this.getComponent(i) instanceof JoueurIcon) {
 					g.setColor(Color.white);
-					System.out.println(this.getComponent(i).getX() + "   "+ this.getComponent(i).getY());
 					g.fillRect(this.getComponent(i).getX()-5, this.getComponent(i).getY()-5, 70, 70);
 				} 
 		}

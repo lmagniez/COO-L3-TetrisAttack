@@ -1,11 +1,17 @@
 \BOOKMARK [1][-]{section.1}{Description du projet}{}% 1
-\BOOKMARK [1][-]{section.2}{R\351partition des t\342ches}{}% 2
-\BOOKMARK [1][-]{section.3}{Fonctionnalit\351 du jeu :}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{\311cran titre :}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Menu :}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Jeu 1 joueur :}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Jeu 2 joueurs :}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.5}{\311v\351nements :}{section.3}% 8
-\BOOKMARK [1][-]{section.4}{Utilisation des animations :}{}% 9
-\BOOKMARK [1][-]{section.5}{Am\351lioration \340 apporter au jeu :}{}% 10
-\BOOKMARK [1][-]{section.6}{UML :}{}% 11
+\BOOKMARK [1][-]{section.2}{Fonctionnalit\351 du jeu :}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{\311cran titre :}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Menu :}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Action Menu :}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Les Modes de Jeu:}{section.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Jeu 1 joueur :}{subsection.2.4}% 7
+\BOOKMARK [3][-]{subsubsection.2.4.2}{Jeu 2 joueurs :}{subsection.2.4}% 8
+\BOOKMARK [2][-]{subsection.2.5}{\311v\351nements :}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.6}{Contr\364le}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Utilisation des animations :}{}% 11
+\BOOKMARK [1][-]{section.4}{Am\351lioration \340 apporter au jeu :}{}% 12
+\BOOKMARK [1][-]{section.5}{UML :}{}% 13
+\BOOKMARK [1][-]{section.6}{L'Equipe}{}% 14
+\BOOKMARK [2][-]{subsection.6.1}{R\351partition des t\342ches}{section.6}% 15
+\BOOKMARK [2][-]{subsection.6.2}{Les Probl\351mes rencontr\351s :}{section.6}% 16
+\BOOKMARK [1][-]{section.7}{Conclusion :}{}% 17

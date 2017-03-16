@@ -15,48 +15,46 @@
 \headcommand {\beamer@framepages {4}{4}}
 \headcommand {\slideentry {2}{0}{2}{5/5}{}{0}}
 \headcommand {\beamer@framepages {5}{5}}
-\headcommand {\slideentry {2}{0}{3}{6/6}{}{0}}
+\headcommand {\sectionentry {3}{IHM}{6}{IHM}{0}}
+\headcommand {\beamer@sectionpages {4}{5}}
+\headcommand {\beamer@subsectionpages {4}{5}}
+\headcommand {\slideentry {3}{0}{1}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\sectionentry {3}{IHM}{7}{IHM}{0}}
-\headcommand {\beamer@sectionpages {4}{6}}
-\headcommand {\beamer@subsectionpages {4}{6}}
-\headcommand {\slideentry {3}{0}{1}{7/7}{}{0}}
+\headcommand {\slideentry {3}{0}{2}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {3}{0}{2}{8/8}{}{0}}
+\headcommand {\slideentry {3}{0}{3}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {3}{0}{3}{9/9}{}{0}}
+\headcommand {\sectionentry {4}{Fonctionnalite}{9}{Fonctionnalite}{0}}
+\headcommand {\beamer@sectionpages {6}{8}}
+\headcommand {\beamer@subsectionpages {6}{8}}
+\headcommand {\slideentry {4}{0}{1}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\sectionentry {4}{Fonctionnalite}{10}{Fonctionnalite}{0}}
-\headcommand {\beamer@sectionpages {7}{9}}
-\headcommand {\beamer@subsectionpages {7}{9}}
-\headcommand {\slideentry {4}{0}{1}{10/10}{}{0}}
+\headcommand {\slideentry {4}{0}{2}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\slideentry {4}{0}{2}{11/11}{}{0}}
+\headcommand {\slideentry {4}{0}{3}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {4}{0}{3}{12/12}{}{0}}
+\headcommand {\sectionentry {5}{Evolution du Jeu}{12}{Evolution du Jeu}{0}}
+\headcommand {\beamer@sectionpages {9}{11}}
+\headcommand {\beamer@subsectionpages {9}{11}}
+\headcommand {\slideentry {5}{0}{1}{12/12}{}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\sectionentry {5}{Evolution du Jeu}{13}{Evolution du Jeu}{0}}
-\headcommand {\beamer@sectionpages {10}{12}}
-\headcommand {\beamer@subsectionpages {10}{12}}
-\headcommand {\slideentry {5}{0}{1}{13/13}{}{0}}
+\headcommand {\sectionentry {6}{Les Difficult\IeC {\'e}s}{13}{Les Difficult\IeC {\'e}s}{0}}
+\headcommand {\beamer@sectionpages {12}{12}}
+\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\slideentry {6}{0}{1}{13/13}{}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\sectionentry {6}{Les Difficult\IeC {\'e}s}{14}{Les Difficult\IeC {\'e}s}{0}}
+\headcommand {\sectionentry {7}{Conclusion}{14}{Conclusion}{0}}
 \headcommand {\beamer@sectionpages {13}{13}}
 \headcommand {\beamer@subsectionpages {13}{13}}
-\headcommand {\slideentry {6}{0}{1}{14/14}{}{0}}
+\headcommand {\slideentry {7}{0}{1}{14/14}{}{0}}
 \headcommand {\beamer@framepages {14}{14}}
-\headcommand {\sectionentry {7}{Conclusion}{15}{Conclusion}{0}}
+\headcommand {\sectionentry {8}{Les Questions}{15}{Les Questions}{0}}
 \headcommand {\beamer@sectionpages {14}{14}}
 \headcommand {\beamer@subsectionpages {14}{14}}
-\headcommand {\slideentry {7}{0}{1}{15/15}{}{0}}
+\headcommand {\slideentry {8}{0}{1}{15/15}{}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\sectionentry {8}{Les Questions}{16}{Les Questions}{0}}
-\headcommand {\beamer@sectionpages {15}{15}}
-\headcommand {\beamer@subsectionpages {15}{15}}
-\headcommand {\slideentry {8}{0}{1}{16/16}{}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\beamer@partpages {1}{16}}
-\headcommand {\beamer@subsectionpages {1}{16}}
-\headcommand {\beamer@sectionpages {1}{16}}
-\headcommand {\beamer@documentpages {16}}
-\headcommand {\def \inserttotalframenumber {16}}
+\headcommand {\beamer@partpages {1}{15}}
+\headcommand {\beamer@subsectionpages {1}{15}}
+\headcommand {\beamer@sectionpages {1}{15}}
+\headcommand {\beamer@documentpages {15}}
+\headcommand {\def \inserttotalframenumber {15}}

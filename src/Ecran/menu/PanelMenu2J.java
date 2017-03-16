@@ -70,16 +70,16 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
 		for(int i=0; i<NB_BUTTONS_X; i++){
-			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
+			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/12;
 		}
-		posButtonY[0][0]=170;
-		posButtonY[1][0]=170+50;
-		posButtonY[2][0]=170+50+85;
+		posButtonY[0][0]=220;
+		posButtonY[1][0]=220+50;
+		posButtonY[2][0]=220+50+60;
 		
 		
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,
-				300, 300);
+		this.setBounds(ConstanteDimension.DimensionFenetrex/7, ConstanteDimension.DimensionFenetrey/3,
+				300, 220);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
@@ -118,7 +118,7 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		difficulte2.setFont(new Font("verdana",Font.BOLD,12));
 		difficulte2.setForeground(tabcouleur[rnd.nextInt(tabcouleur.length)]);
 		
-		start.setBounds(10, 160, 280, 50);
+		start.setBounds(10, 130, 280, 50);
 		
 		
 		this.add(sliderLevel1);

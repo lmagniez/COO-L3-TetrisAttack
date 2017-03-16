@@ -62,13 +62,13 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		
 		for(int i=0; i<NB_BUTTONS_X; i++){
-			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
-			posButtonY[i][0]=180+70*i;
+			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex / 12;
+			posButtonY[i][0]=210+70*i;
 			
 		}
 		
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 300);
+		this.setBounds(ConstanteDimension.DimensionFenetrex / 7, ConstanteDimension.DimensionFenetrey / 3 - 20, 300, 250);
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.requestFocusInWindow();

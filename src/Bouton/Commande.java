@@ -31,6 +31,7 @@ public class Commande extends JButton {
 		super(ConstanteImage.iconbouton[i]);
 		setBorderPainted(false);
 		setOpaque(false);
+		this.setBackground(new Color(0,0,0,0));
 		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setActionCommand(Commande);
 		this.addActionListener((ActionListener) j);

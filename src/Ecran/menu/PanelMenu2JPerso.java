@@ -69,8 +69,9 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		}
 
 		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
-		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, (ConstanteDimension.DimensionFenetrey / 6) , 300, 470);
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, (ConstanteDimension.DimensionFenetrey / 7)+5 , 300, 480);
+		//this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setLayout(null);
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);
 		this.requestFocusInWindow();
@@ -119,6 +120,8 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		for (int i = 0; i < 3; i++) {
 			buttons[cptButton][i] = valider;
 		}
+		
+		/*
 		// Joueur1
 		this.add(Box.createRigidArea(new Dimension(0, 50)));
 		Box rowOne = Box.createHorizontalBox();
@@ -155,7 +158,28 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 			rowtwobis.add(Box.createRigidArea(new Dimension(10, 0)));
 			this.add(rowtwobis);
 		}
+*/
+		for (int i = 0; i < 3; i++) {
+			icon1[i].setBounds((50 + 20)* i + 50, 60, 60, 60);
+			this.add(icon1[i]);
+		}
 
+		for (int i = 0; i < 3; i++) {
+			icon1[i+3].setBounds((50 + 20)* i + 50, 140, 60, 60);
+			this.add(icon1[i+3]);
+		}
+
+		for (int i = 0; i < 3; i++) {
+			icon2[i].setBounds((50 + 20)* i + 50, 260, 60, 60);
+			this.add(icon2[i]);
+		}
+
+		for (int i = 0; i < 3; i++) {
+			icon2[i+3].setBounds((50 + 20)* i + 50, 340, 60, 60);
+			this.add(icon2[i+3]);
+		}
+		
+		valider.setBounds(20, 415, 260, 30);
 		this.add(valider);
 		
 		ecran.setButtons(buttons);
@@ -215,24 +239,34 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 		g.setColor(Color.white);
 		g.setFont(new Font("Verdana", Font.BOLD, 20));
 		g.drawString("Joueur1", 20, 45);
+		
 		if(EcranMenu.getOption()[4]==0)
 			g.drawString("Joueur2", 20, 250);
 		else 
 			g.drawString("Ordinateur", 20, 250);
 		
-		for (int i = 0; i < buttons.length; i++) {
+/*		for (int i = 0; i < buttons.length; i++) {
 			for (int a = 0; a < buttons[0].length; a++) {
 				if (buttons[i][a].hasFocus()) {
-					buttons[i][a].setBorder(BorderFactory.createLineBorder(Color.blue, 5));
+					g.setColor(Color.white);
+					System.out.println(buttons[i][a].getX() +"  "+buttons[i][a].getY());
+					g.fillRect(buttons[i][a].getX(), buttons[i][a].getY(), 60, 60);
 				} else {
-					buttons[i][a].setBorder(null);
 				}
 			}
+		}*/
+		for (int i = 0; i < this.getComponentCount(); i++) {
+				if (this.getComponent(i).hasFocus() && this.getComponent(i) instanceof JoueurIcon) {
+					g.setColor(Color.white);
+					System.out.println(this.getComponent(i).getX() + "   "+ this.getComponent(i).getY());
+					g.fillRect(this.getComponent(i).getX()-5, this.getComponent(i).getY()-5, 70, 70);
+				} 
 		}
 		
-		buttons[this.indiceJ1Y][this.indiceJ1X].setBorder(BorderFactory.createLineBorder(Color.green, 5));
-		buttons[this.indiceJ2Y][this.indiceJ2X].setBorder(BorderFactory.createLineBorder(Color.green, 5));
-		
+		g.setColor(Color.ORANGE);
+		g.fillRect(buttons[this.indiceJ1Y][this.indiceJ1X].getX()-5, buttons[this.indiceJ1Y][this.indiceJ1X].getY()-5, 70, 70);
+		g.setColor(Color.RED);
+		g.fillRect(buttons[this.indiceJ2Y][this.indiceJ2X].getX()-5, buttons[this.indiceJ2Y][this.indiceJ2X].getY()-5, 70, 70);
 		
 	}
 }

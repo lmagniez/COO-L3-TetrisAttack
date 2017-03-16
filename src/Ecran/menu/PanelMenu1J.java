@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Random;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -36,6 +37,10 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 	private JButton start = new Commande(this, "Démarrer", 6);
 
 	private JLabel difficulte= new JLabel("Difficulté: "+0);
+	
+	private Color[] tabcouleur = {Color.RED,Color.green,Color.ORANGE,Color.MAGENTA};
+	
+	private Random rnd=new Random();
 	
 	private int cptButton = 0;
 	
@@ -82,7 +87,10 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 		
 		
 		sliderLevel.setBounds(140, 40, 130, 30);
-		difficulte.setBounds(30, 30, 100,50);
+		difficulte.setBounds(20, 30, 110,50);
+		
+		difficulte.setFont(new Font("verdana",Font.BOLD,15));
+		difficulte.setForeground(tabcouleur[rnd.nextInt(tabcouleur.length)]);
 		
 		jeuxIa.setBounds(10, 100, 280, 50);
 		start.setBounds(10, 170, 280, 50);

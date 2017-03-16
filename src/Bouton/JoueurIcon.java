@@ -40,7 +40,6 @@ public class JoueurIcon extends JButton{
 		this.setFont(new Font("Verdana", Font.BOLD, 20));
 		setBorderPainted(false);
 		setOpaque(true);
-		this.setBorder(BorderFactory.createEmptyBorder());
 		this.setForeground(Color.BLACK);
 		this.setVisible(true);
 		this.setActionCommand("j"+icon);

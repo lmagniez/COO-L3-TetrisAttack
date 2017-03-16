@@ -75,8 +75,8 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	 * @param a abscisse
 	 */
 	public void creerColonne(int a) {
-		//3+RND.nextInt(3);
-		int val, nombrelignedessin = nombredeLigne-1;
+		//
+		int val, nombrelignedessin = 3+RND.nextInt(3);
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
 				val = 1 + RND.nextInt(5 - 0);

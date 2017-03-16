@@ -77,6 +77,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	public void creerColonne(int a) {
 		//
 		int val, nombrelignedessin = 3+RND.nextInt(3);
+		//nombrelignedessin = nombredeLigne-2+RND.nextInt(3);
 		for (int i = 0; i < nombredeLigne; i++) {
 			if (nombrelignedessin >= nombredeLigne - i) {
 				val = 1 + RND.nextInt(5 - 0);
@@ -119,6 +120,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 		ValeurCase tmp;
 		for (int a = 0; a < nombredecase; a++) {
 			for (int i = 0; i < nombredeLigne - 1; i++) {
+				if(tab[a][i].swappable&&tab[a][i+1].swappable)
 				if (tab[a][i + 1].v == ValeurCase.VIDE && tab[a][i].v != ValeurCase.VIDE) {
 					tmp = tab[a][i].v;
 					tab[a][i].v = tab[a][i + 1].v;
@@ -320,7 +322,7 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 	}
 	
 	public void combo(){
-		boolean chang=this.comboColonne() || this.comboLigne();
+		boolean chang=this.comboColonne() || this.comboLigne();	
 		this.descendreCube();
 	}
 	

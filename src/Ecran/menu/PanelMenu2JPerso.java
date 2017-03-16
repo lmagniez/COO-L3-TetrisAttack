@@ -150,8 +150,6 @@ public class PanelMenu2JPerso extends PanelMenu implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
-		
 		int buttonX=-1, buttonY=-1;
 		for (int i = 0; i < buttons.length; i++) {
 			for (int a = 0; a < buttons[0].length; a++) {

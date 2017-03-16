@@ -18,6 +18,7 @@ import com.Model.ValeurCase;
 import com.Observer.Observer;
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
+import Constante.ConstanteImage;
 import Constante.ConstanteJeux;
 import Ecran.menu.EcranMenu;
 import Gestion.Joueur;
@@ -231,6 +232,7 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 		
 		
 		g.drawImage(fond[EcranMenu.getOption()[1]], this.g.getPosGx(), this.g.getPosGy()-5, this.g.getTaillenx()*nombredecase,this.g.getTailleny()*(nombredeLigne-2)+50, this);
+		g.drawImage(ConstanteImage.filtre,this.g.getPosGx(), this.g.getPosGy()-5, this.g.getTaillenx()*nombredecase,this.g.getTailleny()*(nombredeLigne-2)+50, this);
 		(this.g).paintComponent(g);
 		g.drawImage(fond2[EcranMenu.getOption()[1]], 0, 0, getWidth(), getHeight(), this);
 		(this.j).dessinerJoueur(g,this);

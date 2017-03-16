@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class ConstanteImage {
 	// Grille
+	public static Image filtre = Toolkit.getDefaultToolkit().createImage("./ressources/Game/filtre.png");
 	public static Image coeur = Toolkit.getDefaultToolkit().createImage("./sprites/coeur.png");
 	public static Image etoile = Toolkit.getDefaultToolkit().createImage("./sprites/etoile.png");
 	public static Image losange = Toolkit.getDefaultToolkit().createImage("./sprites/losange.png");

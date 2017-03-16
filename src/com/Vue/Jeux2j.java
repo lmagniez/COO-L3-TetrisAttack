@@ -21,6 +21,7 @@ import com.Observer.Observer;
 
 import Constante.ConstanteDimension;
 import Constante.ConstanteGraphique;
+import Constante.ConstanteImage;
 import Constante.ConstanteJeux;
 import Ecran.Animation;
 import Gestion.Joueur;
@@ -300,7 +301,14 @@ public abstract class Jeux2j extends JPanel
 		g.drawImage(fondGrille[this.idJ1], ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1 + 30,
 				ConstanteDimension.DimensionGrillex,
 				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
+		g.drawImage(ConstanteImage.filtre,ConstanteJeux.PositionGrille2JX1, ConstanteJeux.PositionGrille2JY1 + 30,
+				ConstanteDimension.DimensionGrillex,
+				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
+		
 		g.drawImage(fondGrille[this.idJ2], ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2 + 30,
+				ConstanteDimension.DimensionGrillex,
+				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
+		g.drawImage(ConstanteImage.filtre, ConstanteJeux.PositionGrille2JX2, ConstanteJeux.PositionGrille2JY2 + 30,
 				ConstanteDimension.DimensionGrillex,
 				ConstanteDimension.DimensionFenetrey - ConstanteJeux.PositionGrille2JY1 + 15, this);
 

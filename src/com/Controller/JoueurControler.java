@@ -179,7 +179,7 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	}
 
 	public void accelere() {
-		this.zzz=this.zzz-500;
+		this.zzz=this.zzz-50;
 		System.out.println(zzz);
 	}
 	

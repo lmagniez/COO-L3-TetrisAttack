@@ -131,8 +131,7 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		for(int i=0; i<NB_BUTTONS_X; i++){
 			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
 			posButtonY[i][0]=385;
-		}
-		
+		}		
 		
 		this.setLayout(null);
 		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
@@ -162,7 +161,6 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 	 * Ajouter les éléments au panel
 	 */
 	public void ajout() {
-		
 		buttons[0][cptButton++]=valider;
 		
 		JLabel ply1 = new JLabel(player1);

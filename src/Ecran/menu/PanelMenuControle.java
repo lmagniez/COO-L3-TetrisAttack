@@ -46,8 +46,7 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 	
 	
 	private Fenetre fen;
-	private JButton retour=new Commande(this,"Retour",5);
-	private JButton start=new Commande(this,"Valider",6);
+	private JButton valider;
 	private JPanel container = new JPanel();
 	
 	
@@ -123,7 +122,7 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		this.has_cursor=true; 
 		
 		
-		NB_BUTTONS_Y=2;
+		NB_BUTTONS_Y=1;
 		NB_BUTTONS_X=1;
 		buttons=new JComponent[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
@@ -131,7 +130,7 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		
 		for(int i=0; i<NB_BUTTONS_X; i++){
 			posButtonX[i][0]=ConstanteDimension.DimensionFenetrex*1/7;
-			posButtonY[i][0]=180+50*i;
+			posButtonY[i][0]=385;
 		}
 		
 		
@@ -150,7 +149,8 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		container.setOpaque(false);
 		container.setBackground(new Color(90,90,90));
 		container.setLayout(new GridLayout(15,2));
-		
+		valider= new JButton("Valider");
+		valider.addActionListener(this);
 		this.add(container);
 		this.ajout();
 		
@@ -163,8 +163,7 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 	 */
 	public void ajout() {
 		
-		buttons[0][cptButton++]=retour;
-		buttons[0][cptButton++]=start;
+		buttons[0][cptButton++]=valider;
 		
 		JLabel ply1 = new JLabel(player1);
 		container.add(ply1);
@@ -254,10 +253,8 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		JLabel espace4 = new JLabel("");
 		container.add(espace4);*/
 		
-		retour.setBounds(30, 250, 125, 30);
-		start.setBounds(125+10+30, 250, 125, 30);
-		this.add(retour);
-		this.add(start);
+		valider.setBounds(30, 250, 260, 30);
+		this.add(valider);
 		
 		/*JLabel espace5 = new JLabel("");
 		this.add(espace5);

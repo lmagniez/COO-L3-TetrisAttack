@@ -183,7 +183,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 					}
 					if(i == (nombredeLigneTeste ) ){
 						if(nb>=nbCaseCombo){
-							System.out.println("coucou");
 							changement=true;
 							supprimerCaseColonne(a,nb,i); //case d'avant pour les cases du mileu
 						}
@@ -209,7 +208,6 @@ public class GrilleModel implements ConstanteJeux, ConstanteDimension {
 			if(tab[0][i].swappable){
 				prec = tab[0][i].v;
 				nb=1;
-				System.out.println();
 				for (int a = 1; a < nombredecase; a++) {
 					if (prec != ValeurCase.VIDE && prec == tab[a][i].v && tab[a][i].swappable) { //changemement
 						nb++;

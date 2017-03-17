@@ -119,7 +119,6 @@ public class PanelMenuRegles extends PanelMenu implements ActionListener{
 		
 		this.addKeyListener(new KeyAdapter(){
 			public void keyPressed(KeyEvent e){
-				System.out.println("pressed! ");
 				PanelMenuRegles.this.gestion(e);
 			}
 		});

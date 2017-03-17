@@ -349,7 +349,6 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 	    	}
 	    	fw.close();
 	    }catch(IOException e){
-	    	System.out.println("erreur de lecture : "+e.getMessage());
 	    }
 			
 	}

@@ -139,8 +139,6 @@ public class Pause extends Ecran implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		
-		System.out.println("ok "+e.getActionCommand());
-		
 		if (e.getActionCommand().equals("reprendre")) {
 			if(is1J){
 				this.panel1J.getControlerJoueur().reprendre();

@@ -47,7 +47,6 @@ public class JoueurControlerIA extends JoueurControler {
 				while (tourne) {
 					int dir = RND.nextInt(4);
 					dir=reflexion(dir);
-					System.out.println(dir);
 					switch (dir) {
 					case 0:
 						verifUp(joueurModel.getY1());

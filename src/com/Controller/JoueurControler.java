@@ -130,7 +130,7 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 						if(i==JoueurControler.this.zzz){
 							JoueurControler.this.verifUp(JoueurControler.this.joueurModel.getY1());
 							JoueurControler.this.grilleCont.ajoutLigne();
-							if(JoueurControler.this.grilleCont.gameOver())System.out.println("GameOver");
+							JoueurControler.this.grilleCont.gameOver();
 							i=0;
 						}
 					
@@ -180,7 +180,6 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 
 	public void accelere() {
 		this.zzz=this.zzz-50;
-		System.out.println(zzz);
 	}
 	
 	public void reinit() {

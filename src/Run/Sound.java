@@ -35,7 +35,6 @@ public class Sound {
 	public Sound(String fichier, SoundType type) {
 		
 		URL url=Sound.class.getResource(fichier);
-		System.out.println("Sound>>"+url);
 		try {
 			if(type==SoundType.MUSIQUE)
 				musics.add(Applet.newAudioClip(url));

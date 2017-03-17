@@ -73,15 +73,12 @@ public class Score {
 	public void setScore(int score){
 		this.score=score;
 		
-		System.out.println("setScore "+score);
-		
 		for(int i=0; i<nbChiffresScore; i++){
 			chiffres[i].setCpt(0);
 		}
 		
 		String scr=score+"";
 		
-		System.out.println(nbChiffresScore);
 		int cpt=nbChiffresScore-1;
 		for(int i=scr.length()-1;i>=0;i--){
 			chiffres[cpt--].setCpt(Integer.parseInt(""+scr.charAt(i)));

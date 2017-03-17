@@ -48,12 +48,10 @@ public class SliderDifficulte extends JProgressBar implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			this.setValue(this.getValue()+2);
 			repaint();
-			System.out.println(this.getValue());
 		}
 		else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			this.setValue(this.getValue()-2);
 			repaint();
-			System.out.println(this.getValue());
 		}
 		if( this.getValue() > 30 ){UIManager.put("ProgressBar.foreground", Color.ORANGE);}
 		if( this.getValue() > 70 ){UIManager.put("ProgressBar.foreground", Color.RED);}

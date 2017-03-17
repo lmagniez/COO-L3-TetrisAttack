@@ -86,10 +86,7 @@ public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 		this.add(howToPlay);
 		this.add(howToImprove);
 		
-		System.out.println(this.joueur2.isRequestFocusEnabled());
 		this.joueur2.setRequestFocusEnabled(true);
-		
-		System.out.println(this.joueur2.isFocusable());
 		
 		ecran.setButtons(buttons);
 		ecran.addListener();

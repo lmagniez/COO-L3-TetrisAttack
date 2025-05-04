@@ -7,7 +7,7 @@ package Constante;
  */
 public class ConstanteParametres {
 
-	public static boolean SOUND_ENABLED=false;
+	public static boolean SOUND_ENABLED=true;
 	public static int ID_MUSIQUE=0;
 	
 }

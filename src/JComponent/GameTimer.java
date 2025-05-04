@@ -44,8 +44,8 @@ public class GameTimer {
 		
 		this.vue=vue;
 		
-		chiffreImg=new ImageIcon("./ressources/Game/Chiffres/chiffresRouge.png").getImage();
-		virguleImg=new ImageIcon("./ressources/Game/Chiffres/virgule.png").getImage();
+		chiffreImg=new ImageIcon(getClass().getResource("/Ressource/Game/Chiffres/chiffresRouge.png")).getImage();
+		virguleImg=new ImageIcon(getClass().getResource("/Ressource/Game/Chiffres/virgule.png")).getImage();
 		
 		
 		this.minutes="00";

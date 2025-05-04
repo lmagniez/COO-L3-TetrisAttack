@@ -50,8 +50,8 @@ public class Score {
 		posChiffreY=new int[nbChiffresScore];
 		
 		
-		if(highScore) chiffreImg=new ImageIcon("./ressources/Game/Chiffres/chiffresRouge.png").getImage();
-		else chiffreImg=new ImageIcon("./ressources/Game/Chiffres/chiffresBleu.png").getImage();
+		if(highScore) chiffreImg=new ImageIcon(getClass().getResource("/Ressource/Game/Chiffres/chiffresRouge.png")).getImage();
+		else chiffreImg=new ImageIcon(getClass().getResource("/Ressource/Game/Chiffres/chiffresBleu.png")).getImage();
 			
 			
 		this.score=0;

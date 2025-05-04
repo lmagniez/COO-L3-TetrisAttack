@@ -78,31 +78,31 @@ public abstract class Jeux2j extends JPanel
 	protected WinJ2 win;
 
 	// fond
-	protected Image fondYoshi = new ImageIcon("./ressources/Game/Fond2J/fond2.png").getImage();
-	protected Image fondFrog = new ImageIcon("./ressources/Game/Fond2J/fond5.png").getImage();
-	protected Image fondChien = new ImageIcon("./ressources/Game/Fond2J/fond1.png").getImage();
-	protected Image fondLakitu = new ImageIcon("./ressources/Game/Fond2J/fond3.png").getImage();
-	protected Image fondMaskass = new ImageIcon("./ressources/Game/Fond2J/fond6.png").getImage();
-	protected Image fondMonstre = new ImageIcon("./ressources/Game/Fond2J/fond4.png").getImage();
+	protected Image fondYoshi = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/fond2.png")).getImage();
+	protected Image fondFrog = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/fond5.png")).getImage();
+	protected Image fondChien = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/fond1.png")).getImage();
+	protected Image fondLakitu = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/fond3.png")).getImage();
+	protected Image fondMaskass = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/fond6.png")).getImage();
+	protected Image fondMonstre = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/fond4.png")).getImage();
 	protected Image fond[] = { fondYoshi, fondLakitu, fondChien, fondMonstre, fondFrog, fondMaskass };
 
-	protected Image star1 = new ImageIcon("./ressources/Game/Interface/blueStar.gif").getImage();
-	protected Image star2 = new ImageIcon("./ressources/Game/Interface/blueStar.gif").getImage();
-	protected Image star3 = new ImageIcon("./ressources/Game/Interface/redStart.gif").getImage();
-	protected Image star4 = new ImageIcon("./ressources/Game/Interface/redStart.gif").getImage();
+	protected Image star1 = new ImageIcon(getClass().getResource("/Ressource/Game/Interface/blueStar.gif")).getImage();
+	protected Image star2 = new ImageIcon(getClass().getResource("/Ressource/Game/Interface/blueStar.gif")).getImage();
+	protected Image star3 = new ImageIcon(getClass().getResource("/Ressource/Game/Interface/redStart.gif")).getImage();
+	protected Image star4 = new ImageIcon(getClass().getResource("/Ressource/Game/Interface/redStart.gif")).getImage();
 
 	// fond grille
 	// fond
-	protected Image yoshi = new ImageIcon("./ressources/Game/Fond2J/yoshi.png").getImage();
-	protected Image frog = new ImageIcon("./ressources/Game/Fond2J/frog.png").getImage();
-	protected Image chien = new ImageIcon("./ressources/Game/Fond2J/dog.png").getImage();
-	protected Image lakitu = new ImageIcon("./ressources/Game/Fond2J/lakitu.png").getImage();
-	protected Image maskass = new ImageIcon("./ressources/Game/Fond2J/penguin.png").getImage();
-	protected Image monstre = new ImageIcon("./ressources/Game/Fond2J/monster.png").getImage();
+	protected Image yoshi = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/yoshi.png")).getImage();
+	protected Image frog = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/frog.png")).getImage();
+	protected Image chien = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/dog.png")).getImage();
+	protected Image lakitu = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/lakitu.png")).getImage();
+	protected Image maskass = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/penguin.png")).getImage();
+	protected Image monstre = new ImageIcon(getClass().getResource("/Ressource/Game/Fond2J/monster.png")).getImage();
 	protected Image fondGrille[] = { yoshi, lakitu, chien, monstre, frog, maskass };
 
 	// interface
-	protected Image interf = new ImageIcon("./ressources/Game/Interface/interface.png").getImage();
+	protected Image interf = new ImageIcon(getClass().getResource("/Ressource/Game/Interface/interface.png")).getImage();
 
 	// ANIMATIONS
 	private int posAnimJ1Y = (int) (ConstanteDimension.DimensionFenetrey) * 1 / 3,
@@ -111,7 +111,7 @@ public abstract class Jeux2j extends JPanel
 			posAnimJ2X = ConstanteDimension.DimensionFenetrex / 2 + 50;
 	private int cpt = 0;
 
-	private Image yoshiImg = new ImageIcon("./ressources/Game/WalkingCharacters/yoshi.png").getImage();
+	private Image yoshiImg = new ImageIcon(getClass().getResource("/Ressource/Game/WalkingCharacters/yoshi.png")).getImage();
 	private int cptyoshi = 0, widthyoshi = 18, heightyoshi = 30, screenwidthyoshi = widthyoshi * 2,
 			screenheightyoshi = heightyoshi * 2;
 	private int yoshiCptImg = 3;
@@ -120,7 +120,7 @@ public abstract class Jeux2j extends JPanel
 	private Animation yoshiAnim2 = new Animation(yoshiImg, posAnimJ2X, posAnimJ2Y, widthyoshi, heightyoshi,
 			screenwidthyoshi, screenheightyoshi, cptyoshi, yoshiCptImg, this);
 
-	private Image dogImg = new ImageIcon("./ressources/Game/WalkingCharacters/dog.png").getImage();
+	private Image dogImg = new ImageIcon(getClass().getResource("/Ressource/Game/WalkingCharacters/dog.png")).getImage();
 	private int cptdog = 0, widthdog = 25, heightdog = 30, screenwidthdog = widthdog * 2,
 			screenheightdog = heightdog * 2;
 	private int dogCptImg = 3;
@@ -129,7 +129,7 @@ public abstract class Jeux2j extends JPanel
 	private Animation dogAnim2 = new Animation(dogImg, posAnimJ2X, posAnimJ2Y, widthdog, heightdog, screenwidthdog,
 			screenheightdog, cptdog, dogCptImg, this);
 
-	private Image frogImg = new ImageIcon("./ressources/Game/WalkingCharacters/frog.png").getImage();
+	private Image frogImg = new ImageIcon(getClass().getResource("/Ressource/Game/WalkingCharacters/frog.png")).getImage();
 	private int cptfrog = 0, widthfrog = 24, heightfrog = 23, screenwidthfrog = widthfrog * 2,
 			screenheightfrog = heightfrog * 2;
 	private int frogCptImg = 2;
@@ -138,7 +138,7 @@ public abstract class Jeux2j extends JPanel
 	private Animation frogAnim2 = new Animation(frogImg, posAnimJ2X, posAnimJ2Y, widthfrog, heightfrog, screenwidthfrog,
 			screenheightfrog, cptfrog, frogCptImg, this);
 
-	private Image lakituImg = new ImageIcon("./ressources/Game/WalkingCharacters/lakitu.png").getImage();
+	private Image lakituImg = new ImageIcon(getClass().getResource("/Ressource/Game/WalkingCharacters/lakitu.png")).getImage();
 	private int cptlakitu = 0, widthlakitu = 18, heightlakitu = 33, screenwidthlakitu = widthlakitu * 2,
 			screenheightlakitu = heightlakitu * 2;
 	private int lakituCptImg = 3;
@@ -147,7 +147,7 @@ public abstract class Jeux2j extends JPanel
 	private Animation lakituAnim2 = new Animation(lakituImg, posAnimJ2X, posAnimJ2Y, widthlakitu, heightlakitu,
 			screenwidthlakitu, screenheightlakitu, cptlakitu, lakituCptImg, this);
 
-	private Image monsterImg = new ImageIcon("./ressources/Game/WalkingCharacters/monster.png").getImage();
+	private Image monsterImg = new ImageIcon(getClass().getResource("/Ressource/Game/WalkingCharacters/monster.png")).getImage();
 	private int cptmonster = 0, widthmonster = 20, heightmonster = 27, screenwidthmonster = widthmonster * 2,
 			screenheightmonster = heightmonster * 2;
 	private int monsterCptImg = 3;
@@ -156,7 +156,7 @@ public abstract class Jeux2j extends JPanel
 	private Animation monsterAnim2 = new Animation(monsterImg, posAnimJ2X, posAnimJ2Y, widthmonster, heightmonster,
 			screenwidthmonster, screenheightmonster, cptmonster, monsterCptImg, this);
 
-	private Image penguinImg = new ImageIcon("./ressources/Game/WalkingCharacters/penguin.png").getImage();
+	private Image penguinImg = new ImageIcon(getClass().getResource("/Ressource/Game/WalkingCharacters/penguin.png")).getImage();
 	private int cptpenguin = 0, widthpenguin = 18, heightpenguin = 23, screenwidthpenguin = widthpenguin * 2,
 			screenheightpenguin = heightpenguin * 2;
 	private int penguinCptImg = 2;

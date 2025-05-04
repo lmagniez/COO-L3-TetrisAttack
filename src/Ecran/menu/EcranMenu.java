@@ -86,15 +86,15 @@ public class EcranMenu extends Ecran implements ActionListener {
 		// ANIMATIONS
 		timer = new Timer(200, this);
 		timer.start();
-		fond = new ImageIcon("./ressources/Menu/menu.png").getImage();
-		shadow = new ImageIcon("./ressources/Accueil/shadow.png").getImage();
-		yoshiImg = new ImageIcon("./ressources/Accueil/YoshiMenu/spriteSheet.png").getImage();
+		fond = new ImageIcon(getClass().getResource("/Ressource/Menu/menu.png")).getImage();
+		shadow = new ImageIcon(getClass().getResource("/Ressource/Accueil/shadow.png")).getImage();
+		yoshiImg = new ImageIcon(getClass().getResource("/Ressource/Accueil/YoshiMenu/spriteSheet.png")).getImage();
 		yoshi = new Animation(yoshiImg, posyoshiX, posyoshiY, widthyoshi, heightyoshi, screenwidthyoshi,
 				screenheightyoshi, cptyoshi, NB_IMAGE, this);
 
-		buttonLabel = new ImageIcon("./ressources/Menu/buttonlabel.png").getImage();
-		selectLabel = new ImageIcon("./ressources/Menu/selectlabel.png").getImage();
-		cursor = new ImageIcon("./ressources/Menu/cursor.png").getImage();
+		buttonLabel = new ImageIcon(getClass().getResource("/Ressource/Menu/buttonlabel.png")).getImage();
+		selectLabel = new ImageIcon(getClass().getResource("/Ressource/Menu/selectlabel.png")).getImage();
+		cursor = new ImageIcon(getClass().getResource("/Ressource/Menu/cursor.png")).getImage();
 		animation();
 	}
 
@@ -157,7 +157,7 @@ public class EcranMenu extends Ecran implements ActionListener {
 				while (true) {
 					try {
 						if (cursor == null)
-							cursor = new ImageIcon("./ressources/Menu/cursor.png").getImage();
+							cursor = new ImageIcon(getClass().getResource("/Ressource/Menu/cursor.png")).getImage();
 						else {
 							cursor = null;
 						}

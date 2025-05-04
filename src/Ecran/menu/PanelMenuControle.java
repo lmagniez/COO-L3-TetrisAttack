@@ -29,8 +29,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
-
 import Bouton.Commande;
 import Constante.ConstanteDimension;
 import Run.Fenetre;
@@ -86,20 +84,20 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
     MaskFormatter basj2 = new MaskFormatter("U");//recup uniquement si c'est une lettre, U passe la lettre en maj automatiquement
 	JFormattedTextField b2 = new JFormattedTextField(basj2);
 	
-	private ImageIcon player1 = new ImageIcon("./ressources/Game/layoutControls/layoutplayer1.png");
-	private ImageIcon swimg1 = new ImageIcon("./ressources/Game/layoutControls/switch1.png");
-	private ImageIcon raimg1 = new ImageIcon("./ressources/Game/layoutControls/raise1.png");
-	private ImageIcon leimg1 = new ImageIcon("./ressources/Game/layoutControls/cursorleft1.png");
-	private ImageIcon riimg1 = new ImageIcon("./ressources/Game/layoutControls/cursorright1.png");
-	private ImageIcon upimg1 = new ImageIcon("./ressources/Game/layoutControls/cursorup1.png");
-	private ImageIcon doimg1 = new ImageIcon("./ressources/Game/layoutControls/cursordown1.png");
-	private ImageIcon player2 = new ImageIcon("./ressources/Game/layoutControls/layoutplayer2.png");
-	private ImageIcon swimg2 = new ImageIcon("./ressources/Game/layoutControls/switch2.png");
-	private ImageIcon raimg2 = new ImageIcon("./ressources/Game/layoutControls/raise2.png");
-	private ImageIcon leimg2 = new ImageIcon("./ressources/Game/layoutControls/cursorleft2.png");
-	private ImageIcon riimg2 = new ImageIcon("./ressources/Game/layoutControls/cursorright2.png");
-	private ImageIcon upimg2 = new ImageIcon("./ressources/Game/layoutControls/cursorup2.png");
-	private ImageIcon doimg2 = new ImageIcon("./ressources/Game/layoutControls/cursordown2.png");
+	private ImageIcon player1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/layoutplayer1.png"));
+	private ImageIcon swimg1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/switch1.png"));
+	private ImageIcon raimg1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/raise1.png"));
+	private ImageIcon leimg1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursorleft1.png"));
+	private ImageIcon riimg1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursorright1.png"));
+	private ImageIcon upimg1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursorup1.png"));
+	private ImageIcon doimg1 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursordown1.png"));
+	private ImageIcon player2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/layoutplayer2.png"));
+	private ImageIcon swimg2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/switch2.png"));
+	private ImageIcon raimg2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/raise2.png"));
+	private ImageIcon leimg2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursorleft2.png"));
+	private ImageIcon riimg2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursorright2.png"));
+	private ImageIcon upimg2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursorup2.png"));
+	private ImageIcon doimg2 = new ImageIcon(getClass().getResource("/Ressource/Game/layoutControls/cursordown2.png"));
 
 
     
@@ -134,7 +132,7 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		}		
 		
 		this.setLayout(null);
-		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		this.fond=new ImageIcon(getClass().getResource("/Ressource/Menu/menuframe.png")).getImage();
 		
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4,300, 300);
 		this.setOpaque(false);
@@ -173,37 +171,37 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		try{
 			g1.setBounds(10,0,5,0);
 			container.add(g1);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel rj1 = new JLabel(riimg1);
 		container.add(rj1);
 		try{
 			  container.add(d1);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel uj1 = new JLabel(upimg1);
 		container.add(uj1);
 		try{
 			container.add(h1);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel dj1 = new JLabel(doimg1);
 		container.add(dj1);
 		try{
 			  container.add(b1);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel swpj1 = new JLabel(swimg1);
 		container.add(swpj1);
 		try{
 			  container.add(sel1);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel raj1 = new JLabel(raimg1);
 		container.add(raj1);
 		try{
 			  container.add(rai1);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel ply2 = new JLabel(player2);
 		container.add(ply2);
@@ -214,37 +212,37 @@ public class PanelMenuControle extends PanelMenu implements ActionListener{
 		container.add(lj2);
 		try{
 			  container.add(g2);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel rj2 = new JLabel(riimg2);
 		container.add(rj2);
 		try{
 			  container.add(d2);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel uj2 = new JLabel(upimg2);
 		container.add(uj2);
 		try{
 			  container.add(h2);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel dj2 = new JLabel(doimg2);
 		container.add(dj2);
 		try{
 			  container.add(b2);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		JLabel swpj2 = new JLabel(swimg2);
 		container.add(swpj2);
 		try{
 			  container.add(sel2);
-		}catch(ParseException e){e.printStackTrace();}	
+		}catch(Exception e){e.printStackTrace();}	
 		
 		JLabel raj2 = new JLabel(raimg2);
 		container.add(raj2);
 		try{
 			  container.add(rai2);
-		}catch(ParseException e){e.printStackTrace();}
+		}catch(Exception e){e.printStackTrace();}
 		
 		/*JLabel espace3 = new JLabel("");
 		container.add(espace3);

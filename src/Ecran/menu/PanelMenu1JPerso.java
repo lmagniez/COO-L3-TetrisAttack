@@ -62,7 +62,7 @@ public class PanelMenu1JPerso extends PanelMenu implements ActionListener {
 			posButtonY[i][0]=180+50*i;
 		}
 		
-		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		this.fond = new ImageIcon(getClass().getResource("/Ressource/Menu/menuframe.png")).getImage();
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 5, ConstanteDimension.DimensionFenetrey / 4, 300, 300);
 		this.setLayout(null);
 		this.setBackground(new Color(90, 90, 90));

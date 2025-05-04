@@ -61,11 +61,13 @@ public class JeuxControler extends AbstractControler {
 	}
 	
 	public void reprendre() {
-		timer.resume();
+		// TODO: resume is deprecated
+		//timer.resume();
 	}
 
 	public void pause() {
-		timer.suspend();
+		// TODO: interrupt is deprecated
+		//timer.interrupt();
 	}
 
 	

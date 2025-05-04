@@ -90,8 +90,8 @@ public class Pause extends Ecran implements ActionListener{
 			posButtonY[i][0]=20*i;
 		}
 		
-		this.fond = new ImageIcon("./ressources/Game/Pause/fenetre.png").getImage();
-		this.cursor = new ImageIcon("./ressources/Game/Pause/cursor.png").getImage();
+		this.fond = new ImageIcon(getClass().getResource("/Ressource/Game/Pause/fenetre.png")).getImage();
+		this.cursor = new ImageIcon(getClass().getResource("/Ressource/Game/Pause/cursor.png")).getImage();
 		
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 2-165, ConstanteDimension.DimensionFenetrey / 2, 331, 100);
 		this.setBackground(new Color(90, 90, 90));

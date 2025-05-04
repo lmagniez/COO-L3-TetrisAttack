@@ -29,12 +29,14 @@ public class JoueurControlerIA extends JoueurControler {
 
 	public void reprendre() {
 		super.reprendre();
-		ia.resume();
+		// TODO: resume is deprecated
+		// ia.resume();
 	}
 
 	public void pause() {
 		super.pause();
-		ia.suspend();
+		// TODO: suspend is deprecated
+		//ia.suspend();
 	}
 
 	/**

@@ -65,10 +65,10 @@ public class WinJ2 extends Ecran implements ActionListener{
 			posButtonY[0][i]=50*i;
 		}
 		
-		this.lose = new ImageIcon("./ressources/Game/GameOver/lose.png").getImage();
-		this.win = new ImageIcon("./ressources/Game/GameOver/win.png").getImage();
-		this.press1 = new ImageIcon("./ressources/Game/GameOver/pushAnyKey.gif").getImage();
-		this.press2 = new ImageIcon("./ressources/Game/GameOver/pushAnyKey.gif").getImage();
+		this.lose = new ImageIcon(getClass().getResource("/Ressource/Game/GameOver/lose.png")).getImage();
+		this.win = new ImageIcon(getClass().getResource("/Ressource/Game/GameOver/win.png")).getImage();
+		this.press1 = new ImageIcon(getClass().getResource("/Ressource/Game/GameOver/pushAnyKey.gif")).getImage();
+		this.press2 = new ImageIcon(getClass().getResource("/Ressource/Game/GameOver/pushAnyKey.gif")).getImage();
 		
 		
 		this.setBounds(0,0,ConstanteDimension.DimensionFenetrex, ConstanteDimension.DimensionFenetrey);

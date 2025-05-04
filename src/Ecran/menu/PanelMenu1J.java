@@ -67,7 +67,7 @@ public class PanelMenu1J extends PanelMenu implements ActionListener, ChangeList
 			
 		}
 		
-		this.fond = new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		this.fond = new ImageIcon(getClass().getResource("/Ressource/Menu/menuframe.png")).getImage();
 		this.setBounds(ConstanteDimension.DimensionFenetrex / 7, ConstanteDimension.DimensionFenetrey / 3 - 20, 300, 250);
 		this.setBackground(new Color(90, 90, 90));
 		this.setFocusable(true);

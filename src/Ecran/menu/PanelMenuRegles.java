@@ -75,7 +75,7 @@ public class PanelMenuRegles extends PanelMenu implements ActionListener{
 		posButtonX=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 		posButtonY=new int[NB_BUTTONS_X][NB_BUTTONS_Y];
 	
-		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		this.fond=new ImageIcon(getClass().getResource("/Ressource/Menu/menuframe.png")).getImage();
 		
 		this.setBounds(ConstanteDimension.DimensionFenetrex/30, ConstanteDimension.DimensionFenetrey/4,sizex, sizey);
 		

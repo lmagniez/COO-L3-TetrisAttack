@@ -136,30 +136,30 @@ public class EcranTitre extends Ecran implements ActionListener, KeyListener{
 		
 		Toolkit.getDefaultToolkit().sync();
 		//fond= Toolkit.getDefaultToolkit().createImage("r")
-		fond=new ImageIcon("./ressources/Accueil/accueil.png").getImage();
-		titleImg=new ImageIcon("./ressources/Accueil/title.png").getImage();
+		fond=new ImageIcon(getClass().getResource("/Ressource/Accueil/accueil.png")).getImage();
+		titleImg=new ImageIcon(getClass().getResource("/Ressource/Accueil/title.png")).getImage();
 		
-		yoshi1Img=new ImageIcon("./ressources/Accueil/Yoshi1/feuille.png").getImage();
+		yoshi1Img=new ImageIcon(getClass().getResource("/Ressource/Accueil/Yoshi1/feuille.png")).getImage();
 		
-		yoshi2Img=new ImageIcon("./ressources/Accueil/Yoshi2/spriteSheet.png").getImage();
-		yoshi3Img=new ImageIcon("./ressources/Accueil/Yoshi3/spriteSheet.png").getImage();
-		yoshi4Img=new ImageIcon("./ressources/Accueil/Yoshi4/spriteSheet.png").getImage();
-		yoshi5Img=new ImageIcon("./ressources/Accueil/Yoshi4/spriteSheet2.png").getImage();
+		yoshi2Img=new ImageIcon(getClass().getResource("/Ressource/Accueil/Yoshi2/spriteSheet.png")).getImage();
+		yoshi3Img=new ImageIcon(getClass().getResource("/Ressource/Accueil/Yoshi3/spriteSheet.png")).getImage();
+		yoshi4Img=new ImageIcon(getClass().getResource("/Ressource/Accueil/Yoshi4/spriteSheet.png")).getImage();
+		yoshi5Img=new ImageIcon(getClass().getResource("/Ressource/Accueil/Yoshi4/spriteSheet2.png")).getImage();
 		
 		
 		
-		//press=new ImageIcon("./ressources/Accueil/pushKey.gif").getImage();
+		//press=new ImageIcon(getClass().getResource("/Ressource/Accueil/pushKey.gif").getImage();
 		
-		press = new ImageIcon("./ressources/Accueil/pushKey.gif").getImage();
+		press = new ImageIcon(getClass().getResource("/Ressource/Accueil/pushKey.gif")).getImage();
 	    
 		
 		for(int i=0; i<NB_FLEUR;i++){
-			fleurImg[i]=new ImageIcon("./ressources/Accueil/fleur.png").getImage();
+			fleurImg[i]=new ImageIcon(getClass().getResource("/Ressource/Accueil/fleur.png")).getImage();
 			fleur[i]=new Animation(fleurImg[i], fleurx[i], fleury[i], widthfleur, heightfleur,
 					widthfleur, heightfleur, cptfleur[i], NB_IMAGEFLEUR,this);
 		}
 		for(int i=0; i<NB_BULLE;i++){
-			bulleImg[i]=new ImageIcon("./ressources/Accueil/bulle.png").getImage();
+			bulleImg[i]=new ImageIcon(getClass().getResource("/Ressource/Accueil/bulle.png")).getImage();
 			bulle[i]=new Animation(bulleImg[i],bullex[i],bulley[i],widthbulle,heightbulle,
 					widthbulle*2,heightbulle*2,cptbulle[i], NB_IMAGEBULLE, this);
 		}

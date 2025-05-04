@@ -154,11 +154,13 @@ public class JoueurControler implements ConstanteJeux,ConstanteDimension {
 	}
 	
 	public void reprendre() {
-		thread.resume();
+		// TODO: resume is deprecated
+		//thread.resume();
 	}
 
 	public void pause() {
-		thread.suspend();
+		// TODO: suspend is deprecated
+		//thread.suspend();
 	}
 
 	

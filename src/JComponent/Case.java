@@ -36,14 +36,14 @@ public class Case {
 	public static int NB_IMAGE=4;
 	//blocsImg=new Image[ConstanteJeux.nombreCouleur];
 
-	protected Image vide=new ImageIcon("./ressources/Game/Blocks/vide.png").getImage();
-	protected Image cyan=new ImageIcon("./ressources/Game/Blocks/cyan.png").getImage();
-	protected Image rouge=new ImageIcon("./ressources/Game/Blocks/rouge.png").getImage();
-	protected Image jaune=new ImageIcon("./ressources/Game/Blocks/jaune.png").getImage();
-	protected Image vert=new ImageIcon("./ressources/Game/Blocks/vert.png").getImage();
-	protected Image violet=new ImageIcon("./ressources/Game/Blocks/violet.png").getImage();
-	protected Image bleu=new ImageIcon("./ressources/Game/Blocks/bleu.png").getImage();
-	protected Image gris=new ImageIcon("./ressources/Game/Blocks/gris.png").getImage();
+	protected Image vide=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/vide.png")).getImage();
+	protected Image cyan=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/cyan.png")).getImage();
+	protected Image rouge=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/rouge.png")).getImage();
+	protected Image jaune=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/jaune.png")).getImage();
+	protected Image vert=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/vert.png")).getImage();
+	protected Image violet=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/violet.png")).getImage();
+	protected Image bleu=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/bleu.png")).getImage();
+	protected Image gris=new ImageIcon(getClass().getResource("/Ressource/Game/Blocks/grey.png")).getImage();
 
 	protected Image[] blocsImg={vide,cyan,rouge,jaune,vert,violet,bleu,gris};
 	

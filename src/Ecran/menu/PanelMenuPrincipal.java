@@ -57,7 +57,7 @@ public class PanelMenuPrincipal extends PanelMenu implements ActionListener{
 		
 		this.setOpaque(false);
 		this.ecran=e;
-		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		this.fond=new ImageIcon(getClass().getResource("/Ressource/Menu/menuframe.png")).getImage();
 		this.vue=vue;
 		this.setBounds(ConstanteDimension.DimensionFenetrex/5, ConstanteDimension.DimensionFenetrey/4, 300, 300);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));

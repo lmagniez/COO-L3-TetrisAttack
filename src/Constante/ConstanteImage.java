@@ -14,13 +14,13 @@ import javax.swing.ImageIcon;
  */
 public class ConstanteImage {
 	// Grille
-	public static Image filtre = Toolkit.getDefaultToolkit().createImage("./ressources/Game/filtre.png");
-	public static Image coeur = Toolkit.getDefaultToolkit().createImage("./sprites/coeur.png");
-	public static Image etoile = Toolkit.getDefaultToolkit().createImage("./sprites/etoile.png");
-	public static Image losange = Toolkit.getDefaultToolkit().createImage("./sprites/losange.png");
-	public static Image rond = Toolkit.getDefaultToolkit().createImage("./sprites/rond.png");
-	public static Image triangle = Toolkit.getDefaultToolkit().createImage("./sprites/triangle.png");
-	public static Image triangleInverse = Toolkit.getDefaultToolkit().createImage("./sprites/triangleInverse.png");
+	public static Image filtre = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Game/filtre.png"));
+	public static Image coeur = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Sprites/coeur.png"));
+	public static Image etoile = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Sprites/etoile.png"));
+	public static Image losange = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Sprites/losange.png"));
+	public static Image rond = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Sprites/rond.png"));
+	public static Image triangle = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Sprites/triangle.png"));
+	public static Image triangleInverse = Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/Sprites/triangleInverse.png"));
 
 	public static ImageIcon[] icon = { 
 			scaled("/Ressource/IconJoueur/j1.png",70),
@@ -42,8 +42,8 @@ public class ConstanteImage {
 			scaledButton("/Ressource/IconButton/2AI.png",260,50)
 	};
 	
-	public static Image curseurgauche=Toolkit.getDefaultToolkit().createImage("./ressources/curseurgauche.png");
-	public static Image curseurdroit=Toolkit.getDefaultToolkit().createImage("./ressources/curseurdroit.png");
+	public static Image curseurgauche=Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/curseurgauche.png"));
+	public static Image curseurdroit=Toolkit.getDefaultToolkit().createImage(ConstanteImage.class.getResource("/Ressource/curseurdroit.png"));
 
 	public static ImageIcon scaled(String imageName,int n) {
 		try {

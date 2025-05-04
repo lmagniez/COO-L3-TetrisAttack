@@ -64,31 +64,31 @@ public class Jeux1j extends JPanel implements ConstanteDimension, ConstanteJeux,
 	private boolean pause=false;
 	
 	//fond
-	protected Image yoshi= new ImageIcon("./ressources/Game/Fond1J/fondYoshi.png").getImage();
-	protected Image frog= new ImageIcon("./ressources/Game/Fond1J/fondFrog.png").getImage();
-	protected Image chien= new ImageIcon("./ressources/Game/Fond1J/fondChien.png").getImage();
-	protected Image lakitu= new ImageIcon("./ressources/Game/Fond1J/fondLakitu.png").getImage();
-	protected Image maskass= new ImageIcon("./ressources/Game/Fond1J/fondMaskass.png").getImage();
-	protected Image monstre= new ImageIcon("./ressources/Game/Fond1J/fondMonstre.png").getImage();
+	protected Image yoshi= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/fondYoshi.png")).getImage();
+	protected Image frog= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/fondFrog.png")).getImage();
+	protected Image chien= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/fondChien.png")).getImage();
+	protected Image lakitu= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/fondLakitu.png")).getImage();
+	protected Image maskass= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/fondMaskass.png")).getImage();
+	protected Image monstre= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/fondMonstre.png")).getImage();
 	protected Image fond[] = {yoshi,lakitu,chien,monstre,frog,maskass};
 	
-	protected Image yoshiFond= new ImageIcon("./ressources/Game/Fond1J/yoshi.png").getImage();
-	protected Image frogFond= new ImageIcon("./ressources/Game/Fond1J/frog.png").getImage();
-	protected Image chienFond= new ImageIcon("./ressources/Game/Fond1J/chien.png").getImage();
-	protected Image lakituFond= new ImageIcon("./ressources/Game/Fond1J/lakitu.png").getImage();
-	protected Image maskassFond= new ImageIcon("./ressources/Game/Fond1J/maskass.png").getImage();
-	protected Image monstreFond= new ImageIcon("./ressources/Game/Fond1J/monstre.png").getImage();
+	protected Image yoshiFond= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/yoshi.png")).getImage();
+	protected Image frogFond= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/frog.png")).getImage();
+	protected Image chienFond= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/chien.png")).getImage();
+	protected Image lakituFond= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/lakitu.png")).getImage();
+	protected Image maskassFond= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/maskass.png")).getImage();
+	protected Image monstreFond= new ImageIcon(getClass().getResource("/Ressource/Game/Fond1J/monstre.png")).getImage();
 	protected Image fond2[] = {yoshiFond,lakituFond,chienFond,monstreFond,frogFond,maskassFond};
 	
 	//Time
-	protected Image time= new ImageIcon("./ressources/Game/Texte/time.png").getImage();
+	protected Image time= new ImageIcon(getClass().getResource("/Ressource/Game/Texte/time.png")).getImage();
 	protected int timeX=50, timeY=60, widthTime=116, heightTime=22;
 	
-	protected Image hiScoreTxt= new ImageIcon("./ressources/Game/Texte/hiScore.png").getImage();
+	protected Image hiScoreTxt= new ImageIcon(getClass().getResource("/Ressource/Game/Texte/hiScore.png")).getImage();
 	protected int hiScoreTxtX=600, hiScoreTxtY=100, widthHiScoreTxt=147, heightHiScoreTxt=22;
-	protected Image scoreTxt= new ImageIcon("./ressources/Game/Texte/score.png").getImage();
+	protected Image scoreTxt= new ImageIcon(getClass().getResource("/Ressource/Game/Texte/score.png")).getImage();
 	protected int scoreTxtX=600, scoreTxtY=200, widthScoreTxt=140, heightScoreTxt=22;
-	protected Image speedLvlTxt= new ImageIcon("./ressources/Game/Texte/speedLvl.png").getImage();
+	protected Image speedLvlTxt= new ImageIcon(getClass().getResource("/Ressource/Game/Texte/speedLvl.png")).getImage();
 	protected int speedLvlTxtX=600, speedLvlTxtY=300, widthSpeedLvlTxt=170, heightSpeedLvlTxt=25;
 	
 	

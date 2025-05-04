@@ -77,7 +77,7 @@ public class PanelMenu2J extends PanelMenu implements ActionListener, ChangeList
 		posButtonY[2][0]=220+50+60;
 		
 		
-		this.fond=new ImageIcon("./ressources/Menu/menuframe.png").getImage();
+		this.fond=new ImageIcon(getClass().getResource("/Ressource/Menu/menuframe.png")).getImage();
 		this.setBounds(ConstanteDimension.DimensionFenetrex/7, ConstanteDimension.DimensionFenetrey/3,
 				300, 220);
 		this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));

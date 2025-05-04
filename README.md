@@ -1,6 +1,7 @@
 # Tetris Attack (Java)
 
 **Conception docs (in French)**: [Conception docs](RapportFinal/rapport.pdf)  
+**Try it**: [TetrisAttack.jar](TetrisAttack.jar)  
 
 <img width=300 src="RapportFinal/Img/title.png">
 
